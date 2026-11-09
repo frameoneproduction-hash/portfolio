@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Email template concept — desktop &amp; mobile preview</title>
+<style>
+  body{margin:0;font:15px/1.5 Arial,Helvetica,sans-serif;background:#0B2545;color:#e8eef4}
+  header{padding:28px 20px 8px;text-align:center}
+  h1{margin:0 0 6px;font-size:22px}
+  p{margin:0;color:#9fb3c8}
+  .wrap{display:flex;gap:28px;justify-content:center;align-items:flex-start;flex-wrap:wrap;padding:24px 16px 40px}
+  figure{margin:0;text-align:center}
+  figcaption{margin-bottom:10px;font-weight:bold;color:#3DDC97}
+  iframe{border:0;background:#fff;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .desk{width:680px;height:1180px;max-width:calc(100vw - 32px)}
+  .mob{width:375px;height:1180px;max-width:calc(100vw - 32px)}
+  a{color:#3DDC97}
+</style>
+</head>
+<body>
+<header>
+  <h1>“Request received” email — concept</h1>
+  <p>Same HTML in both frames. Fully inline CSS, no media queries, so it survives Roundcube's HTML editor. <a href="email.html">Open the raw email</a></p>
+</header>
+<div class="wrap">
+  <figure><figcaption>Desktop</figcaption><iframe class="desk" src="email.html" title="Desktop preview"></iframe></figure>
+  <figure><figcaption>Mobile (375 px)</figcaption><iframe class="mob" src="email.html" title="Mobile preview"></iframe></figure>
+</div>
+</body>
+</html>
