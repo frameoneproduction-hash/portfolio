@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUMEN Sieci — sieci światłowodowe dla firm | projekt koncepcyjny</title>
+<meta name="description" content="Projektujemy i budujemy sieci światłowodowe oraz okablowanie strukturalne dla hal, magazynów, biurowców i operatorów w całej Polsce.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0F14; --bg2:#10161D; --line:#1E2833; --text:#EAF1F6; --muted:#8C9AA8;
+  --fiber:#39E0FF; --splice:#FFB547; --radius:14px;
+  --head:"Space Grotesk",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+.concept{background:var(--splice);color:#1a1300;font:600 13px/1.4 var(--body);text-align:center;padding:6px 16px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(11,15,20,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font:700 20px/1 var(--head);letter-spacing:.04em}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--fiber);box-shadow:0 0 14px var(--fiber)}
+.menu{display:flex;gap:32px;font-size:15px;color:var(--muted)}
+.menu a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--body);padding:14px 22px;border-radius:999px;transition:.2s}
+.btn-fiber{background:var(--fiber);color:#001319}
+.btn-fiber:hover{box-shadow:0 0 0 6px rgba(57,224,255,.18)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--fiber)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;font:600 14px var(--body)}
+
+/* hero */
+.hero{position:relative;padding:96px 0 120px;overflow:hidden}
+.hero svg.traces{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.traces path{fill:none;stroke:var(--line);stroke-width:1.5}
+.traces .pulse{stroke:var(--fiber);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:60 1400;filter:drop-shadow(0 0 6px var(--fiber));animation:run 5.5s linear infinite}
+.traces .pulse.p2{animation-duration:7s;animation-delay:-2s}
+.traces .pulse.p3{animation-duration:6.2s;animation-delay:-4s;stroke:var(--splice);filter:drop-shadow(0 0 6px var(--splice))}
+.traces circle{fill:var(--bg);stroke:var(--splice);stroke-width:2}
+@keyframes run{from{stroke-dashoffset:1460}to{stroke-dashoffset:0}}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end}
+.eyebrow{font:600 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--fiber);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--fiber)}
+h1{font:700 clamp(44px,7vw,92px)/.98 var(--head);letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--fiber);text-shadow:0 0 28px rgba(57,224,255,.35)}
+.lead{color:var(--muted);font-size:19px;max-width:520px;margin:28px 0 36px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.spec{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(16,22,29,.9),rgba(11,15,20,.9));padding:26px}
+.spec h3{font:600 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.spec ul{list-style:none;display:grid;gap:14px}
+.spec li{display:flex;gap:12px;font-size:15px}
+.spec li::before{content:"";flex:0 0 8px;height:8px;margin-top:8px;border-radius:50%;background:var(--splice);box-shadow:0 0 10px var(--splice)}
+
+/* sections */
+section{padding:110px 0;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;margin-bottom:56px;align-items:end}
+.num{font:600 14px/1 var(--head);color:var(--fiber);margin-bottom:14px}
+h2{font:700 clamp(34px,4.6vw,58px)/1.02 var(--head);letter-spacing:-.02em}
+.sec-head p{color:var(--muted);font-size:18px}
+
+/* services: list rows instead of icon cards */
+.services{border-top:1px solid var(--line)}
+.srv{display:grid;grid-template-columns:80px 1fr 1.2fr 40px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);transition:.25s}
+.srv:hover{background:linear-gradient(90deg,rgba(57,224,255,.06),transparent 70%)}
+.srv .k{font:600 15px var(--head);color:var(--muted)}
+.srv h3{font:600 26px/1.15 var(--head)}
+.srv p{color:var(--muted);font-size:16px}
+.srv .arr{color:var(--fiber);font-size:22px;transition:.25s}
+.srv:hover .arr{transform:translateX(6px)}
+
+/* process with connecting line */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.steps::before{content:"";position:absolute;top:19px;left:20px;right:20px;height:2px;background:linear-gradient(90deg,var(--fiber),var(--splice));opacity:.55}
+.step{position:relative}
+.dot{width:40px;height:40px;border-radius:50%;background:var(--bg);border:2px solid var(--fiber);display:grid;place-items:center;font:700 15px var(--head);color:var(--fiber);margin-bottom:22px;box-shadow:0 0 18px rgba(57,224,255,.25)}
+.step h3{font:600 21px/1.2 var(--head);margin-bottom:10px}
+.step p{color:var(--muted);font-size:15.5px}
+
+/* sectors */
+.sectors{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+.sector{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;background:var(--bg2)}
+.sector .art{position:absolute;inset:0 0 35% 0}
+.sector::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--bg2) 68%);pointer-events:none}
+.sector>*:not(.art){z-index:1}
+.sector .art svg{width:100%;height:100%}
+.sector .art path{fill:none;stroke:rgba(57,224,255,.35);stroke-width:1.2}
+.sector .art rect{fill:none;stroke:rgba(234,241,246,.12)}
+.sector .tag{position:relative;font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--splice);margin-bottom:10px}
+.sector h3{position:relative;font:600 26px/1.15 var(--head)}
+.sector p{position:relative;color:var(--muted);font-size:15px;margin-top:8px}
+.note{color:var(--muted);font-size:14px;margin-top:18px}
+
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pf{border-left:2px solid var(--fiber);padding:6px 0 6px 22px}
+.pf b{display:block;font:600 22px/1.2 var(--head);margin-bottom:8px}
+.pf span{color:var(--muted);font-size:15.5px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+form{display:grid;gap:16px}
+label{font-size:14px;color:var(--muted)}
+input,textarea,select{width:100%;margin-top:6px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--text);font:16px var(--body);padding:14px 16px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--fiber);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.consent{display:flex;gap:10px;font-size:13.5px;color:var(--muted);align-items:flex-start}
+.consent input{width:auto;margin-top:4px}
+.direct{display:grid;gap:22px;align-content:start}
+.direct div{border-bottom:1px solid var(--line);padding-bottom:18px}
+.direct small{display:block;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.direct b{font:600 22px var(--head)}
+
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .menu,.nav .btn{display:none}
+  .burger{display:block}
+  .menu.open{display:flex;flex-direction:column;gap:0;position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 20px}
+  .menu.open a{padding:14px 0;border-bottom:1px solid var(--line);color:var(--text);font-size:17px}
+  .hero{padding:64px 0 80px}
+  .hero-inner,.sec-head,.contact{grid-template-columns:1fr}
+  .srv{grid-template-columns:44px 1fr 28px}
+  .srv p{grid-column:2/3}
+  .steps{grid-template-columns:1fr 1fr;row-gap:40px}
+  .steps::before{display:none}
+  .sectors,.proof{grid-template-columns:1fr}
+  .sector{min-height:260px}
+  section{padding:76px 0}
+}
+@media (max-width:520px){
+  .wrap{width:calc(100% - 32px)}
+  .steps{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .srv h3{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .traces .pulse{animation:none;stroke-dasharray:none;opacity:.5}
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="concept">Projekt koncepcyjny strony głównej — nazwa „LUMEN Sieci”, logo i zdjęcia są robocze, do podmiany na Państwa materiały.</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="LUMEN Sieci — strona główna"><i></i>LUMEN SIECI</a>
+    <nav class="menu" aria-label="Menu główne">
+      <a href="#uslugi">Usługi</a><a href="#proces">Jak pracujemy</a><a href="#obiekty">Obiekty</a><a href="#kontakt">Kontakt</a>
+    </nav>
+    <a href="#kontakt" class="btn btn-fiber">Wyceń projekt</a>
+    <button class="burger" aria-label="Otwórz menu">Menu</button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <svg class="traces" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-20 735 H760 Q800 735 820 695 L880 575 Q900 535 940 535 H1460"/>
+    <path d="M1460 120 H1180 Q1140 120 1120 160 L1060 280 Q1040 320 1000 320 H880"/>
+    <path d="M1460 700 H1240 Q1200 700 1180 660 L1140 580"/>
+    <path class="pulse" d="M-20 735 H760 Q800 735 820 695 L880 575 Q900 535 940 535 H1460"/>
+    <path class="pulse p2" d="M1460 120 H1180 Q1140 120 1120 160 L1060 280 Q1040 320 1000 320 H880"/>
+    <path class="pulse p3" d="M1460 700 H1240 Q1200 700 1180 660 L1140 580"/>
+    <circle cx="820" cy="695" r="6"/><circle cx="1120" cy="160" r="6"/><circle cx="880" cy="320" r="6"/><circle cx="1140" cy="580" r="6"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Sieci światłowodowe B2B · cała Polska</div>
+      <h1>Budujemy sieci, na&nbsp;których <em>pracuje</em> Twoja firma.</h1>
+      <p class="lead">Światłowody i okablowanie strukturalne dla hal, magazynów, biurowców i operatorów — od projektu, przez spawanie i pomiary, po dokumentację powykonawczą.</p>
+      <div class="cta">
+        <a href="#kontakt" class="btn btn-fiber">Wyceń projekt →</a>
+        <a href="#obiekty" class="btn btn-ghost">Zobacz, gdzie pracujemy</a>
+      </div>
+    </div>
+    <aside class="spec rv" aria-label="Standard każdej realizacji">
+      <h3>Standard każdej realizacji</h3>
+      <ul>
+        <li>Pomiary reflektometrem OTDR dla każdego włókna</li>
+        <li>Certyfikacja okablowania miedzianego</li>
+        <li>Dokumentacja powykonawcza i opis tras</li>
+        <li>Jeden koordynator po stronie wykonawcy</li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+<section id="uslugi">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="num">01 — Usługi</div><h2>Infrastruktura, której nie widać, dopóki działa.</h2></div>
+      <p>Prowadzimy cały zakres prac sieciowych w obiekcie, żeby inwestor nie musiał koordynować kilku podwykonawców.</p>
+    </div>
+    <div class="services">
+      <a class="srv rv" href="#kontakt"><span class="k">01</span><h3>Sieci światłowodowe</h3><p>Trasy szkieletowe i dystrybucyjne, spawanie, przełącznice, pomiary OTDR.</p><span class="arr">→</span></a>
+      <a class="srv rv" href="#kontakt"><span class="k">02</span><h3>Okablowanie strukturalne</h3><p>Instalacje kat. 6A, punkty PEL, certyfikacja i oznaczenia zgodne z normą.</p><span class="arr">→</span></a>
+      <a class="srv rv" href="#kontakt"><span class="k">03</span><h3>Szafy rack i serwerownie</h3><p>Montaż, organizacja kabli, zasilanie gwarantowane, porządek, który da się utrzymać.</p><span class="arr">→</span></a>
+      <a class="srv rv" href="#kontakt"><span class="k">04</span><h3>Sieci dla operatorów</h3><p>Budowa i rozbudowa sieci FTTH/FTTB, przyłącza i podwykonawstwo dla operatorów.</p><span class="arr">→</span></a>
+      <a class="srv rv" href="#kontakt"><span class="k">05</span><h3>Serwis i pomiary</h3><p>Lokalizacja awarii, naprawy, pomiary odbiorcze i okresowe istniejących instalacji.</p><span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="proces">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="num">02 — Jak pracujemy</div><h2>Od wizji lokalnej do&nbsp;protokołu odbioru.</h2></div>
+      <p>Każdy etap kończy się dokumentem, który zostaje u Państwa: kosztorysem, harmonogramem, raportem z pomiarów.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="dot">1</div><h3>Wizja lokalna</h3><p>Oględziny obiektu, trasy kablowe, punkty dystrybucyjne, wymagania inwestora.</p></div>
+      <div class="step rv"><div class="dot">2</div><h3>Projekt i kosztorys</h3><p>Projekt sieci, zestawienie materiałów i jasny kosztorys z harmonogramem.</p></div>
+      <div class="step rv"><div class="dot">3</div><h3>Realizacja</h3><p>Prowadzenie tras, montaż, spawanie i terminowanie — z raportem postępu.</p></div>
+      <div class="step rv"><div class="dot">4</div><h3>Pomiary i odbiór</h3><p>Pomiary OTDR i certyfikacja, dokumentacja powykonawcza, protokół odbioru.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="obiekty">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="num">03 — Obiekty</div><h2>Hale, biurowce, operatorzy.</h2></div>
+      <p>W tej sekcji pojawią się Państwa realizacje: zdjęcia z obiektu, zakres prac i parametry. Nowe wpisy dodaje się z panelu WordPress.</p>
+    </div>
+    <div class="sectors">
+      <article class="sector rv">
+        <div class="art" aria-hidden="true"><svg viewBox="0 0 400 340" preserveAspectRatio="none"><rect x="30" y="60" width="340" height="230"/><path d="M30 120 H370 M30 180 H370 M30 240 H370"/><path d="M60 290 V90 Q60 80 70 80 H330"/></svg></div>
+        <div class="tag">Hale i magazyny</div><h3>Sieć dla centrum logistycznego</h3><p>Szkielet światłowodowy między halami, punkty dla skanerów i Wi-Fi na wysokości regałów.</p>
+      </article>
+      <article class="sector rv">
+        <div class="art" aria-hidden="true"><svg viewBox="0 0 300 340" preserveAspectRatio="none"><rect x="70" y="40" width="160" height="260"/><path d="M70 90 H230 M70 140 H230 M70 190 H230 M70 240 H230"/><path d="M150 300 V40"/></svg></div>
+        <div class="tag">Biurowce</div><h3>Okablowanie piętro po piętrze</h3><p>Pion światłowodowy i kat. 6A na każdej kondygnacji.</p>
+      </article>
+      <article class="sector rv">
+        <div class="art" aria-hidden="true"><svg viewBox="0 0 300 340" preserveAspectRatio="none"><path d="M20 300 Q150 40 280 300"/><path d="M60 300 Q150 110 240 300"/><path d="M100 300 Q150 180 200 300"/></svg></div>
+        <div class="tag">Operatorzy</div><h3>FTTH i przyłącza</h3><p>Podwykonawstwo w budowie i rozbudowie sieci dostępowych.</p>
+      </article>
+    </div>
+    <p class="note">Opisy obiektów są przykładowe — w gotowej stronie zastąpią je Państwa realizacje i zdjęcia.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="num">04 — Dlaczego my</div><h2>Inżynieria, nie&nbsp;obietnice.</h2></div>
+      <p>Tu warto pokazać konkretne liczby z Państwa praktyki: kilometry światłowodu, punkty sieciowe, lata na rynku.</p>
+    </div>
+    <div class="proof">
+      <div class="pf rv"><b>Pomiar każdego włókna</b><span>Raport OTDR w dokumentacji odbiorczej, a nie „działa, sprawdziliśmy”.</span></div>
+      <div class="pf rv"><b>Cała Polska</b><span>Ekipy dojeżdżają do obiektu, a koordynacja zostaje w jednych rękach.</span></div>
+      <div class="pf rv"><b>Dokumentacja na lata</b><span>Opis tras i oznaczenia, dzięki którym kolejna rozbudowa jest szybsza i tańsza.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap contact">
+    <div class="rv">
+      <div class="num">05 — Kontakt</div>
+      <h2>Opowiedz nam o&nbsp;obiekcie.</h2>
+      <p class="lead">Odpiszemy z pytaniami lub propozycją wizji lokalnej w ciągu jednego dnia roboczego.</p>
+      <div class="direct">
+        <div><small>Telefon</small><b>+48 000 000 000</b></div>
+        <div><small>E-mail</small><b>biuro@twojadomena.pl</b></div>
+        <div><small>Obszar działania</small><b>Cała Polska</b></div>
+      </div>
+    </div>
+    <form class="rv" onsubmit="event.preventDefault();this.querySelector('button').textContent='Dziękujemy — to wersja demonstracyjna';">
+      <div class="row2">
+        <label>Imię i nazwisko<input required autocomplete="name"></label>
+        <label>Firma<input autocomplete="organization"></label>
+      </div>
+      <div class="row2">
+        <label>E-mail<input type="email" required autocomplete="email"></label>
+        <label>Telefon<input type="tel" autocomplete="tel"></label>
+      </div>
+      <label>Rodzaj obiektu
+        <select><option>Hala / magazyn</option><option>Biurowiec</option><option>Sieć operatorska</option><option>Inny</option></select>
+      </label>
+      <label>Kilka słów o projekcie<textarea rows="4"></textarea></label>
+      <label class="consent"><input type="checkbox" required> Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na zapytanie. Szczegóły w polityce prywatności.</label>
+      <button class="btn btn-fiber" style="justify-self:start;border:0;cursor:pointer">Wyślij zapytanie →</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 LUMEN Sieci · projekt koncepcyjny</span>
+    <span>Polityka prywatności · Ustawienia cookies</span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const menu=document.querySelector('.menu'),burger=document.querySelector('.burger');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.textContent=o?'Zamknij':'Menu'});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.textContent='Menu'}));
+</script>
+</body>
+</html>

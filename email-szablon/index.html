@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Przykładowy szablon e-mail — podgląd</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f3f5f7;--ink:#10161d;--muted:#5c6773;--line:#dde3e9;--acc:#E5243B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{width:min(1180px,100% - 32px);margin:0 auto;padding:40px 0 60px}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 10px}
+.sub{color:var(--muted);max-width:720px;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:1fr 390px;gap:28px;align-items:start}
+.frame{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.frame b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line)}
+iframe{display:block;width:100%;border:0;background:#eef1f4}
+.phone iframe{width:375px;max-width:100%;margin:0 auto}
+ul{padding-left:20px;margin:24px 0 0;color:var(--muted)}
+li{margin:6px 0}
+li strong{color:var(--ink)}
+a{color:var(--acc)}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.desk{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Przykładowy szablon e-mail (komunikat ALERT)</h1>
+  <p class="sub">Kod napisany pod Outlooka desktop, webmaile i telefony. Marka i treści są fikcyjne. <a href="email.html" target="_blank" rel="noopener">Otwórz sam szablon</a>.</p>
+  <div class="grid">
+    <div class="frame desk"><b>Komputer · 600 px</b><iframe src="email.html" height="760" title="Podgląd szablonu na komputerze"></iframe></div>
+    <div class="frame phone"><b>Telefon · 375 px</b><iframe src="email.html" height="900" title="Podgląd szablonu na telefonie"></iframe></div>
+  </div>
+  <ul>
+    <li><strong>Układ tabelaryczny</strong> z warunkowymi komentarzami MSO — stała szerokość 600 px w Outlooku.</li>
+    <li><strong>Przycisk VML</strong> dla Outlooka i zwykły link dla pozostałych programów.</li>
+    <li><strong>Inline CSS</strong> + media queries: dwie kolumny układają się jedna pod drugą na telefonie.</li>
+    <li><strong>Tryb ciemny</strong> (Apple Mail, Outlook.com) i preheader widoczny w podglądzie skrzynki.</li>
+    <li><strong>Kolor kategorii</strong> zmienia się w jednym miejscu — tak samo zbudowane będą warianty EXECUTE, IMPLEMENT, SELL, LEARN, INFORM, ALERT.</li>
+  </ul>
+</div>
+</body>
+</html>
