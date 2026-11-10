@@ -20,7 +20,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .og-cloud:after{width:40%;height:120%;right:12%;bottom:35%}
 .og-c1{width:260px;height:70px;left:4%;top:72%}
 .og-c2{width:340px;height:90px;right:-60px;top:16%}
-.og-c3{width:200px;height:56px;left:44%;top:10%;opacity:.8}
+.og-c3{width:200px;height:56px;left:57%;top:5%;opacity:.8}
 .og-c4{width:300px;height:80px;right:24%;bottom:3%}
 @media (prefers-reduced-motion:no-preference){.og-cloud{animation:ogDrift 40s linear infinite alternate}.og-c2{animation-duration:55s}.og-c3{animation-duration:34s}@keyframes ogDrift{from{transform:translateX(-30px)}to{transform:translateX(40px)}}}
 
