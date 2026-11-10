@@ -7,7 +7,8 @@ foreach (get_posts(['post_type'=>['page','post'],'numberposts'=>-1,'post_status'
 
 $home = <<<HTML
 <!-- wp:group {"align":"full","className":"og-hero","layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull og-hero"><!-- wp:paragraph {"className":"og-kicker"} --><p class="og-kicker">Wood-fire kitchen · Ząbkowska 14 · Warsaw Praga</p><!-- /wp:paragraph -->
+<div class="wp-block-group alignfull og-hero"><!-- wp:html --><div class="og-sky" aria-hidden="true"><span class="og-cloud og-c1"></span><span class="og-cloud og-c2"></span><span class="og-cloud og-c3"></span><span class="og-cloud og-c4"></span></div><div class="og-tower" aria-hidden="true"><div class="og-antenna"></div><div class="og-pod"></div><div class="og-pole"></div><div class="og-ring"><div class="og-sign">OGIEŃ</div><div class="og-sign">Pierogi</div><div class="og-sign">Grill</div><div class="og-sign">Natural wine</div><div class="og-sign">Praga</div><div class="og-sign">Book now</div></div></div><!-- /wp:html -->
+<!-- wp:paragraph {"className":"og-kicker"} --><p class="og-kicker">Wood-fire kitchen · Ząbkowska 14 · Warsaw Praga</p><!-- /wp:paragraph -->
 <!-- wp:heading {"level":1,"className":"og-word"} --><h1 class="wp-block-heading og-word">OGIEŃ</h1><!-- /wp:heading -->
 <!-- wp:paragraph {"className":"og-lead"} --><p class="og-lead">Everything on the menu touches the fire: Polish produce, oak and beech embers, and a short list that changes with the market.</p><!-- /wp:paragraph -->
 <!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button {"className":"og-btn"} --><div class="wp-block-button og-btn"><a class="wp-block-button__link wp-element-button" href="#visit">Book a table</a></div><!-- /wp:button -->
