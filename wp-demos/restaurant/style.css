@@ -50,7 +50,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .wp-block-button__link:hover{transform:translateY(2px);box-shadow:0 3px 0 rgba(20,33,61,.9)}
 
 /* MENU AS BILLBOARDS */
-.og-menu{background:var(--sky2)!important;padding:clamp(60px,8vw,110px) 0!important;position:relative}
+.og-menu{background:var(--sky2)!important;padding-top:clamp(60px,8vw,110px)!important;padding-bottom:clamp(60px,8vw,110px)!important;position:relative}
 .og-menu h2{font-size:clamp(46px,6vw,92px)!important;line-height:.95!important;color:var(--ink)!important}
 .og-menu .og-kicker{color:var(--hot)!important}
 .og-dish{display:flex;justify-content:space-between;gap:20px;align-items:center;background:#fff;border-radius:18px;padding:16px 20px!important;margin:0 0 14px!important;box-shadow:0 6px 0 rgba(20,33,61,.9);transform:rotate(-.6deg);transition:transform .25s}
@@ -61,14 +61,14 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .og-dish em{font-style:normal;background:var(--sun);color:var(--ink);font-weight:800;font-size:18px;border-radius:999px;padding:6px 12px;white-space:nowrap}
 
 /* STORY: pink band */
-.og-story{background:var(--pink)!important;padding:clamp(60px,8vw,110px) 0!important}
+.og-story{background:var(--pink)!important;padding-top:clamp(60px,8vw,110px)!important;padding-bottom:clamp(60px,8vw,110px)!important}
 .og-story h2{font-size:clamp(44px,5.6vw,86px)!important;line-height:.95!important;max-width:12ch}
 .og-story p{color:var(--ink)!important}
 .og-story .og-kicker{color:var(--ink)!important}
 .og-num{font-family:"Bricolage Grotesque",sans-serif!important;font-size:clamp(64px,7vw,112px)!important;font-weight:800!important;color:#fff!important;line-height:1!important;margin:0!important;text-shadow:0 5px 0 var(--ink)}
 
 /* VISIT: sky again */
-.og-visit{background:linear-gradient(180deg,var(--sky2),var(--sky))!important;padding:clamp(60px,8vw,110px) 0!important}
+.og-visit{background:linear-gradient(180deg,var(--sky2),var(--sky))!important;padding-top:clamp(60px,8vw,110px)!important;padding-bottom:clamp(60px,8vw,110px)!important}
 .og-visit h2{font-size:clamp(52px,7vw,112px)!important;line-height:.9!important;color:#fff!important;text-shadow:0 5px 0 var(--ink)}
 .og-hours p{background:#fff;border-radius:14px;padding:12px 16px!important;margin:0 0 10px!important;color:var(--ink);box-shadow:0 4px 0 rgba(20,33,61,.85)}
 .og-hours p.has-small-font-size{background:transparent;box-shadow:none;color:var(--ink)}

@@ -45,7 +45,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .wl-area p{color:#B9B1A1}
 
 /* PROCESS: inverted ivory band */
-.wl-dark{background:var(--ivory)!important;color:var(--ink)!important;padding:clamp(70px,9vw,130px) 0!important}
+.wl-dark{background:var(--ivory)!important;color:var(--ink)!important;padding-top:clamp(70px,9vw,130px)!important;padding-bottom:clamp(70px,9vw,130px)!important}
 .wl-dark h2{color:var(--ink)!important;font-size:clamp(48px,6.6vw,108px)!important;line-height:.92!important;max-width:15ch}
 .wl-dark p{color:#3A3730!important}
 .wl-dark .wl-kicker{color:var(--brass2)!important}
@@ -56,7 +56,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .wl-quote{font-family:"Instrument Serif",serif;font-size:clamp(36px,4.8vw,76px)!important;line-height:1.02!important;max-width:24ch;color:var(--ivory)}
 
 /* CONTACT */
-.wl-contact{background:var(--ink2)!important;padding:clamp(70px,9vw,130px) 0!important;border-top:1px solid var(--line)}
+.wl-contact{background:var(--ink2)!important;padding-top:clamp(70px,9vw,130px)!important;padding-bottom:clamp(70px,9vw,130px)!important;border-top:1px solid var(--line)}
 .wl-contact h2{font-size:clamp(56px,7.6vw,128px)!important;line-height:.9!important}
 .wl-contact p{color:#CFC7B6}
 
