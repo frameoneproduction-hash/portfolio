@@ -15,8 +15,6 @@ $home = <<<HTML
 <!-- wp:button {"className":"wl-btn-ghost"} --><div class="wp-block-button wl-btn-ghost"><a class="wp-block-button__link wp-element-button" href="#practice">Obszary praktyki</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:html --><div class="wl-marquee alignfull" aria-hidden="true"><div class="wl-track"><span>Zakładanie spółek</span><span>§</span><span>Umowy handlowe</span><span>§</span><span>Zatrudnienie i B2B</span><span>§</span><span>Dane i RODO</span><span>§</span><span>Zakładanie spółek</span><span>§</span><span>Umowy handlowe</span><span>§</span><span>Zatrudnienie i B2B</span><span>§</span><span>Dane i RODO</span><span>§</span></div></div><!-- /wp:html -->
-
 <!-- wp:group {"align":"full","className":"wl-strip","layout":{"type":"constrained","contentSize":"1180px"}} -->
 <div class="wp-block-group alignfull wl-strip"><!-- wp:columns --><div class="wp-block-columns">
 <!-- wp:column --><div class="wp-block-column"><!-- wp:paragraph --><p><strong>Stała wycena</strong> zakładania spółek i umów</p><!-- /wp:paragraph --></div><!-- /wp:column -->
