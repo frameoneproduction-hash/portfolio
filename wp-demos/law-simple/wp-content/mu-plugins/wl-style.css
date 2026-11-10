@@ -1,0 +1,44 @@
+/* Wiśniewska Legal — demo theme layer on top of Twenty Twenty-Five */
+:root{--ink:#14161C;--paper:#F4EFE6;--brass:#B08D57;--muted:#6E6A62;--line:rgba(20,22,28,.14)}
+body{background:var(--paper)!important;color:var(--ink);font-family:"Inter Tight",system-ui,sans-serif}
+h1,h2,h3,.wp-block-site-title{font-family:"Instrument Serif",Georgia,serif!important;font-weight:400!important;letter-spacing:-.01em}
+.wp-block-site-title a{color:var(--ink)!important;text-decoration:none}
+header.wp-block-template-part{border-bottom:1px solid var(--line)}
+a{color:var(--ink)}
+.wl-hero{position:relative;overflow:hidden;padding:clamp(48px,8vw,120px) 0 clamp(40px,6vw,90px)!important}
+.wl-hero .wl-section-sign{position:absolute;right:-2vw;top:-6vw;font-family:"Instrument Serif",serif;font-size:clamp(260px,42vw,640px);line-height:1;color:var(--brass);opacity:.16;pointer-events:none;user-select:none}
+.wl-kicker{font-size:13px!important;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)!important;font-weight:600}
+.wl-hero h1{font-size:clamp(52px,8.2vw,120px)!important;line-height:.95!important;max-width:15ch;margin:18px 0 26px!important}
+.wl-hero h1 em{font-style:italic;color:var(--brass)}
+.wl-lead{font-size:clamp(18px,1.6vw,22px)!important;max-width:46ch;color:#3A3832}
+.wp-block-button__link{border-radius:0!important;padding:16px 28px!important;font-weight:600;letter-spacing:.02em}
+.wl-btn-primary .wp-block-button__link{background:var(--ink)!important;color:var(--paper)!important}
+.wl-btn-ghost .wp-block-button__link{background:transparent!important;color:var(--ink)!important;border:1px solid var(--ink)!important}
+.wl-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0!important}
+.wl-strip p{margin:0;font-size:15px;color:var(--muted)}
+.wl-strip strong{color:var(--ink);font-weight:600}
+.wl-practice h2{font-size:clamp(40px,5vw,72px)!important;line-height:1!important;margin-bottom:8px!important}
+.wl-area{border-top:1px solid var(--ink);padding-top:22px!important}
+.wl-area h3{font-size:30px!important;margin:6px 0 10px!important}
+.wl-area .wl-num{font-size:13px;letter-spacing:.14em;color:var(--brass);font-weight:600;margin:0}
+.wl-area p{color:#3A3832}
+.wl-dark{background:var(--ink)!important;color:var(--paper)!important;padding:clamp(56px,8vw,110px) 0!important}
+.wl-dark h2{color:var(--paper)!important;font-size:clamp(40px,5.6vw,80px)!important;line-height:1!important;max-width:16ch}
+.wl-dark p{color:#CFC8BB}
+.wl-dark .wl-kicker{color:var(--brass)!important}
+.wl-step{border-left:1px solid rgba(244,239,230,.25);padding-left:22px!important}
+.wl-step h3{color:var(--paper)!important;font-size:28px!important}
+.wl-quote{font-family:"Instrument Serif",serif;font-size:clamp(28px,3.2vw,44px)!important;line-height:1.15!important;max-width:28ch}
+.wl-people img{filter:grayscale(1) contrast(1.05);aspect-ratio:4/5;object-fit:cover}
+.wl-contact{background:#EAE3D6!important;padding:clamp(48px,7vw,96px) 0!important}
+.wl-contact h2{font-size:clamp(44px,6vw,88px)!important;line-height:.95!important}
+@media (prefers-reduced-motion:no-preference){.wl-hero h1,.wl-lead,.wl-hero .wp-block-buttons{animation:wlUp .9s cubic-bezier(.2,.7,.2,1) both}.wl-lead{animation-delay:.12s}.wl-hero .wp-block-buttons{animation-delay:.22s}@keyframes wlUp{from{transform:translateY(22px)}to{transform:none}}}
+
+.wl-hero>*{position:relative;z-index:1}
+.wl-hero .wl-section-sign{z-index:0!important;position:absolute!important}
+.alignfull{margin-top:0!important;margin-bottom:0!important}
+main.wp-block-group{margin-top:0!important;padding-top:0!important}
+footer.wp-block-template-part{display:none}
+
+.alignfull{padding-left:max(24px,calc((100vw - 1200px)/2))!important;padding-right:max(24px,calc((100vw - 1200px)/2))!important}
+.alignfull>*{margin-left:0!important;margin-right:0!important}

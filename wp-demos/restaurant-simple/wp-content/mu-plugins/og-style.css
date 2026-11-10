@@ -1,0 +1,41 @@
+/* OGIEŃ — demo theme layer on top of Twenty Twenty-Five */
+:root{--coal:#141110;--coal2:#1E1916;--ember:#FF5A1F;--gold:#FFB347;--cream:#F3E9DC;--smoke:#A89E93}
+body{background:var(--coal)!important;color:var(--cream)!important;font-family:"DM Sans",system-ui,sans-serif}
+h1,h2,h3,.wp-block-site-title{font-family:"Bricolage Grotesque",system-ui,sans-serif!important;letter-spacing:-.02em;color:var(--cream)!important}
+.wp-block-site-title a,.wp-block-navigation a{color:var(--cream)!important;text-decoration:none}
+header.wp-block-template-part{border-bottom:1px solid rgba(243,233,220,.12)}
+footer.wp-block-template-part{display:none}
+a{color:var(--gold)}
+.og-hero{position:relative;overflow:hidden;padding:clamp(40px,7vw,110px) 0 clamp(30px,5vw,70px)!important}
+.og-hero:before{content:"";position:absolute;left:50%;bottom:-45%;width:140%;height:80%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,90,31,.55),rgba(255,90,31,0));filter:blur(10px);pointer-events:none}
+.og-kicker{font-size:13px!important;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)!important;font-weight:600}
+.og-word{font-family:"Bricolage Grotesque",sans-serif!important;font-weight:800!important;font-size:clamp(84px,16vw,240px)!important;line-height:1!important;letter-spacing:-.05em;margin:0 0 10px!important;padding-top:.08em!important;background:linear-gradient(180deg,#FFE3B0 0%,#FFB347 35%,#FF5A1F 70%,#B3260B 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.og-lead{font-size:clamp(18px,1.7vw,24px)!important;max-width:40ch;color:#E9DCCB!important;position:relative}
+.wp-block-button__link{border-radius:999px!important;padding:15px 26px!important;font-weight:700}
+.og-btn .wp-block-button__link{background:var(--ember)!important;color:#1A0E08!important}
+.og-btn-ghost .wp-block-button__link{background:transparent!important;color:var(--cream)!important;border:1px solid rgba(243,233,220,.5)!important}
+.og-menu{padding:clamp(56px,8vw,110px) 0!important}
+.og-menu h2{font-size:clamp(44px,6vw,92px)!important;line-height:.95!important}
+.og-dish{display:flex;justify-content:space-between;gap:24px;border-bottom:1px dashed rgba(243,233,220,.22);padding:18px 0!important;margin:0!important}
+.og-dish strong{font-family:"Bricolage Grotesque",sans-serif;font-size:22px;color:var(--cream)}
+.og-dish span{color:var(--smoke);display:block;font-size:15px;margin-top:4px}
+.og-dish em{font-style:normal;color:var(--gold);font-weight:700;font-size:20px;white-space:nowrap}
+.og-story{background:var(--coal2)!important;padding:clamp(56px,8vw,110px) 0!important}
+.og-story h2{font-size:clamp(40px,5vw,76px)!important;line-height:1!important;max-width:14ch}
+.og-story p{color:#D8CBBB!important}
+.og-num{font-family:"Bricolage Grotesque",sans-serif!important;font-size:clamp(56px,6vw,96px)!important;font-weight:800!important;color:var(--ember)!important;line-height:1!important;margin:0!important}
+.og-visit{padding:clamp(56px,8vw,110px) 0!important}
+.og-visit h2{font-size:clamp(48px,7vw,110px)!important;line-height:.9!important}
+.og-hours p{border-top:1px solid rgba(243,233,220,.16);padding-top:12px;margin:0 0 12px!important;color:#E9DCCB}
+@media (prefers-reduced-motion:no-preference){.og-word{animation:ogFlicker 5s ease-in-out infinite}.og-hero:before{animation:ogGlow 4s ease-in-out infinite alternate}@keyframes ogFlicker{0%,100%{filter:brightness(1)}45%{filter:brightness(1.12)}50%{filter:brightness(.94)}55%{filter:brightness(1.08)}}@keyframes ogGlow{from{opacity:.75}to{opacity:1}}}
+
+.og-hero>*{position:relative;z-index:1}
+.alignfull{margin-top:0!important;margin-bottom:0!important}
+main.wp-block-group{margin-top:0!important;padding-top:0!important}
+
+.alignfull{padding-left:max(24px,calc((100vw - 1200px)/2))!important;padding-right:max(24px,calc((100vw - 1200px)/2))!important}
+.alignfull>*{margin-left:0!important;margin-right:0!important}
+
+/* mobile menu overlay */
+.wp-block-navigation__responsive-container.is-menu-open{background:var(--coal)!important;color:var(--cream)!important}
+.wp-block-navigation__responsive-container.is-menu-open a{font-size:36px;font-weight:700}

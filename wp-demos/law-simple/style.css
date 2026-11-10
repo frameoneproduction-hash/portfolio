@@ -32,7 +32,7 @@ a{color:var(--ink)}
 .wl-people img{filter:grayscale(1) contrast(1.05);aspect-ratio:4/5;object-fit:cover}
 .wl-contact{background:#EAE3D6!important;padding:clamp(48px,7vw,96px) 0!important}
 .wl-contact h2{font-size:clamp(44px,6vw,88px)!important;line-height:.95!important}
-@media (prefers-reduced-motion:no-preference){.wl-hero h1,.wl-lead,.wl-hero .wp-block-buttons{animation:wlUp .9s cubic-bezier(.2,.7,.2,1) both}.wl-lead{animation-delay:.12s}.wl-hero .wp-block-buttons{animation-delay:.22s}@keyframes wlUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}}
+@media (prefers-reduced-motion:no-preference){.wl-hero h1,.wl-lead,.wl-hero .wp-block-buttons{animation:wlUp .9s cubic-bezier(.2,.7,.2,1) both}.wl-lead{animation-delay:.12s}.wl-hero .wp-block-buttons{animation-delay:.22s}@keyframes wlUp{from{transform:translateY(22px)}to{transform:none}}}
 
 .wl-hero>*{position:relative;z-index:1}
 .wl-hero .wl-section-sign{z-index:0!important;position:absolute!important}

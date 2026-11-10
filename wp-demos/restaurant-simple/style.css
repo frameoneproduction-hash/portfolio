@@ -35,3 +35,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 
 .alignfull{padding-left:max(24px,calc((100vw - 1200px)/2))!important;padding-right:max(24px,calc((100vw - 1200px)/2))!important}
 .alignfull>*{margin-left:0!important;margin-right:0!important}
+
+/* mobile menu overlay */
+.wp-block-navigation__responsive-container.is-menu-open{background:var(--coal)!important;color:var(--cream)!important}
+.wp-block-navigation__responsive-container.is-menu-open a{font-size:36px;font-weight:700}
