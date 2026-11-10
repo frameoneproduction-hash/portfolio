@@ -1,0 +1,12 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": { "php": "8.2", "wp": "latest" },
+  "features": { "networking": true },
+  "steps": [
+    { "step": "writeFile", "path": "/wordpress/wp-content/mu-plugins/demo-style.php", "data": { "resource": "url", "url": "https://frameoneproduction-hash.github.io/portfolio/wp-demos/restaurant/demo-style.php.txt?v=5" } },
+    { "step": "writeFile", "path": "/wordpress/wp-content/mu-plugins/og-style.css", "data": { "resource": "url", "url": "https://frameoneproduction-hash.github.io/portfolio/wp-demos/restaurant/style.css?v=5" } },
+    { "step": "writeFile", "path": "/tmp/setup.php", "data": { "resource": "url", "url": "https://frameoneproduction-hash.github.io/portfolio/wp-demos/restaurant-pl/setup.php.txt?v=5" } },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; require '/tmp/setup.php';" }
+  ]
+}
