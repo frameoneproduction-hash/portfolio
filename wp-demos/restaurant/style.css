@@ -1,37 +1,76 @@
-/* OGIEŃ — demo theme layer on top of Twenty Twenty-Five */
-:root{--coal:#141110;--coal2:#1E1916;--ember:#FF5A1F;--gold:#FFB347;--cream:#F3E9DC;--smoke:#A89E93}
-body{background:var(--coal)!important;color:var(--cream)!important;font-family:"DM Sans",system-ui,sans-serif}
-h1,h2,h3,.wp-block-site-title{font-family:"Bricolage Grotesque",system-ui,sans-serif!important;letter-spacing:-.02em;color:var(--cream)!important}
-.wp-block-site-title a,.wp-block-navigation a{color:var(--cream)!important;text-decoration:none}
-header.wp-block-template-part{border-bottom:1px solid rgba(243,233,220,.12)}
+/* OGIEŃ — playful sky / billboard layer on top of Twenty Twenty-Five */
+:root{--sky:#38AFDE;--sky2:#9EDCF6;--pink:#F4A7CE;--hot:#FF5A1F;--sun:#FFC83D;--leaf:#7ED957;--cream:#FFF8EC;--ink:#14213D}
+body{background:var(--sky)!important;color:var(--ink)!important;font-family:"DM Sans",system-ui,sans-serif}
+h1,h2,h3,.wp-block-site-title{font-family:"Bricolage Grotesque",system-ui,sans-serif!important;letter-spacing:-.02em;color:var(--ink)!important}
+header.wp-block-template-part{background:#2E9FD8;position:relative;z-index:5}
+.wp-block-site-title a,.wp-block-navigation a{color:#fff!important;text-decoration:none;font-weight:800}
 footer.wp-block-template-part{display:none}
-a{color:var(--gold)}
-.og-hero{position:relative;overflow:hidden;padding:clamp(40px,7vw,110px) 0 clamp(30px,5vw,70px)!important}
-.og-hero:before{content:"";position:absolute;left:50%;bottom:-45%;width:140%;height:80%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,90,31,.55),rgba(255,90,31,0));filter:blur(10px);pointer-events:none}
-.og-kicker{font-size:13px!important;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)!important;font-weight:600}
-.og-word{font-family:"Bricolage Grotesque",sans-serif!important;font-weight:800!important;font-size:clamp(84px,16vw,240px)!important;line-height:1!important;letter-spacing:-.05em;margin:0 0 10px!important;padding-top:.08em!important;background:linear-gradient(180deg,#FFE3B0 0%,#FFB347 35%,#FF5A1F 70%,#B3260B 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important}
-.og-lead{font-size:clamp(18px,1.7vw,24px)!important;max-width:40ch;color:#E9DCCB!important;position:relative}
-.wp-block-button__link{border-radius:999px!important;padding:15px 26px!important;font-weight:700}
-.og-btn .wp-block-button__link{background:var(--ember)!important;color:#1A0E08!important}
-.og-btn-ghost .wp-block-button__link{background:transparent!important;color:var(--cream)!important;border:1px solid rgba(243,233,220,.5)!important}
-.og-menu{padding:clamp(56px,8vw,110px) 0!important}
-.og-menu h2{font-size:clamp(44px,6vw,92px)!important;line-height:.95!important}
-.og-dish{display:flex;justify-content:space-between;gap:24px;border-bottom:1px dashed rgba(243,233,220,.22);padding:18px 0!important;margin:0!important}
-.og-dish strong{font-family:"Bricolage Grotesque",sans-serif;font-size:22px;color:var(--cream)}
-.og-dish span{color:var(--smoke);display:block;font-size:15px;margin-top:4px}
-.og-dish em{font-style:normal;color:var(--gold);font-weight:700;font-size:20px;white-space:nowrap}
-.og-story{background:var(--coal2)!important;padding:clamp(56px,8vw,110px) 0!important}
-.og-story h2{font-size:clamp(40px,5vw,76px)!important;line-height:1!important;max-width:14ch}
-.og-story p{color:#D8CBBB!important}
-.og-num{font-family:"Bricolage Grotesque",sans-serif!important;font-size:clamp(56px,6vw,96px)!important;font-weight:800!important;color:var(--ember)!important;line-height:1!important;margin:0!important}
-.og-visit{padding:clamp(56px,8vw,110px) 0!important}
-.og-visit h2{font-size:clamp(48px,7vw,110px)!important;line-height:.9!important}
-.og-hours p{border-top:1px solid rgba(243,233,220,.16);padding-top:12px;margin:0 0 12px!important;color:#E9DCCB}
-@media (prefers-reduced-motion:no-preference){.og-word{animation:ogFlicker 5s ease-in-out infinite}.og-hero:before{animation:ogGlow 4s ease-in-out infinite alternate}@keyframes ogFlicker{0%,100%{filter:brightness(1)}45%{filter:brightness(1.12)}50%{filter:brightness(.94)}55%{filter:brightness(1.08)}}@keyframes ogGlow{from{opacity:.75}to{opacity:1}}}
-
-.og-hero>*{position:relative;z-index:1}
-.alignfull{margin-top:0!important;margin-bottom:0!important}
+a{color:var(--ink)}
+.alignfull{margin-top:0!important;margin-bottom:0!important;padding-left:max(24px,calc((100vw - 1200px)/2))!important;padding-right:max(24px,calc((100vw - 1200px)/2))!important}
+.alignfull>*{margin-left:0!important;margin-right:0!important}
 main.wp-block-group{margin-top:0!important;padding-top:0!important}
 
-.alignfull{padding-left:max(24px,calc((100vw - 1200px)/2))!important;padding-right:max(24px,calc((100vw - 1200px)/2))!important}
-.alignfull>*{margin-left:0!important;margin-right:0!important}
+/* SKY HERO */
+.og-hero{position:relative;overflow:hidden;min-height:92vh;padding-top:clamp(30px,5vw,70px)!important;padding-bottom:clamp(40px,6vw,90px)!important;background:linear-gradient(180deg,#2E9FD8 0%,var(--sky) 45%,var(--sky2) 100%)!important}
+.og-hero>*{position:relative;z-index:2;max-width:560px!important}
+.og-hero>.og-sky{position:absolute!important;inset:0;z-index:0!important;max-width:none!important;pointer-events:none}
+.og-cloud{position:absolute;background:#fff;border-radius:999px;opacity:.95;box-shadow:inset -18px -14px 0 rgba(160,200,230,.35)}
+.og-cloud:before,.og-cloud:after{content:"";position:absolute;background:#fff;border-radius:50%;box-shadow:inset -14px -10px 0 rgba(160,200,230,.3)}
+.og-cloud:before{width:55%;height:150%;left:12%;bottom:30%}
+.og-cloud:after{width:40%;height:120%;right:12%;bottom:35%}
+.og-c1{width:260px;height:70px;left:4%;top:72%}
+.og-c2{width:340px;height:90px;right:-60px;top:16%}
+.og-c3{width:200px;height:56px;left:44%;top:10%;opacity:.8}
+.og-c4{width:300px;height:80px;right:24%;bottom:3%}
+@media (prefers-reduced-motion:no-preference){.og-cloud{animation:ogDrift 40s linear infinite alternate}.og-c2{animation-duration:55s}.og-c3{animation-duration:34s}@keyframes ogDrift{from{transform:translateX(-30px)}to{transform:translateX(40px)}}}
+
+/* TOWER WITH ROTATING BILLBOARD RING */
+.og-hero>.og-tower{position:absolute!important;right:max(24px,calc((100vw - 1200px)/2 + 20px));top:50%;transform:translateY(-46%);width:420px;height:620px;z-index:1!important;max-width:none!important;perspective:1100px}
+.og-pole{position:absolute;left:50%;bottom:0;width:46px;height:62%;transform:translateX(-50%);background:linear-gradient(90deg,#8FA3B8,#E6EEF5 40%,#9FB0C2 70%,#6C7F93);border-radius:8px}
+.og-antenna{position:absolute;left:50%;top:0;width:6px;height:22%;transform:translateX(-50%);background:linear-gradient(#C9D6E3,#8FA3B8);border-radius:3px}
+.og-antenna:before{content:"";position:absolute;left:50%;top:-10px;width:16px;height:16px;transform:translateX(-50%);border-radius:50%;background:var(--hot);box-shadow:0 0 18px var(--hot)}
+.og-pod{position:absolute;left:50%;top:22%;width:150px;height:60px;transform:translateX(-50%);background:linear-gradient(90deg,#9FB0C2,#F2F6FA 45%,#8FA3B8);border-radius:40% 40% 18px 18px}
+.og-ring{position:absolute;left:50%;top:36%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-8deg)}
+.og-sign{position:absolute;left:-90px;top:-55px;width:180px;height:110px;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:26px;line-height:1;color:var(--ink);backface-visibility:hidden;box-shadow:inset 0 0 0 6px rgba(255,255,255,.55),0 10px 20px rgba(20,33,61,.18)}
+.og-sign:nth-child(1){background:var(--hot);color:#fff;transform:rotateY(0deg) translateZ(170px)}
+.og-sign:nth-child(2){background:var(--pink);transform:rotateY(60deg) translateZ(170px)}
+.og-sign:nth-child(3){background:var(--sun);transform:rotateY(120deg) translateZ(170px)}
+.og-sign:nth-child(4){background:var(--leaf);transform:rotateY(180deg) translateZ(170px)}
+.og-sign:nth-child(5){background:var(--cream);transform:rotateY(240deg) translateZ(170px)}
+.og-sign:nth-child(6){background:var(--ink);color:var(--sun);transform:rotateY(300deg) translateZ(170px)}
+@media (prefers-reduced-motion:no-preference){.og-ring{animation:ogSpin 18s linear infinite}@keyframes ogSpin{from{transform:rotateX(-8deg) rotateY(0)}to{transform:rotateX(-8deg) rotateY(-360deg)}}}
+
+/* HERO TYPE */
+.og-kicker{font-size:13px!important;letter-spacing:.18em;text-transform:uppercase;color:#fff!important;font-weight:800}
+.og-word{font-family:"Bricolage Grotesque",sans-serif!important;font-weight:800!important;font-size:clamp(88px,14vw,200px)!important;line-height:1!important;letter-spacing:-.04em;margin:6px 0 14px!important;padding-top:.06em!important;color:#fff!important;text-shadow:0 4px 0 var(--hot),0 8px 0 #D9440F,0 12px 0 #B3330A,0 22px 30px rgba(20,33,61,.25)}
+.og-lead{font-size:clamp(18px,1.7vw,23px)!important;max-width:30ch;color:var(--ink)!important;background:rgba(255,255,255,.88);border-radius:18px;padding:16px 20px!important;font-weight:500}
+.wp-block-button__link{border-radius:999px!important;padding:16px 26px!important;font-weight:800;box-shadow:0 5px 0 rgba(20,33,61,.9)}
+.og-btn .wp-block-button__link{background:var(--hot)!important;color:#fff!important}
+.og-btn-ghost .wp-block-button__link{background:#fff!important;color:var(--ink)!important}
+.wp-block-button__link:hover{transform:translateY(2px);box-shadow:0 3px 0 rgba(20,33,61,.9)}
+
+/* MENU AS BILLBOARDS */
+.og-menu{background:var(--sky2)!important;padding:clamp(60px,8vw,110px) 0!important;position:relative}
+.og-menu h2{font-size:clamp(46px,6vw,92px)!important;line-height:.95!important;color:var(--ink)!important}
+.og-menu .og-kicker{color:var(--hot)!important}
+.og-dish{display:flex;justify-content:space-between;gap:20px;align-items:center;background:#fff;border-radius:18px;padding:16px 20px!important;margin:0 0 14px!important;box-shadow:0 6px 0 rgba(20,33,61,.9);transform:rotate(-.6deg);transition:transform .25s}
+.og-dish:nth-child(even){transform:rotate(.7deg)}
+.og-dish:hover{transform:rotate(0) translateY(-4px) scale(1.02)}
+.og-dish strong{font-family:"Bricolage Grotesque",sans-serif;font-size:22px;color:var(--ink)}
+.og-dish span{color:#4A5875;display:block;font-size:15px;margin-top:2px}
+.og-dish em{font-style:normal;background:var(--sun);color:var(--ink);font-weight:800;font-size:18px;border-radius:999px;padding:6px 12px;white-space:nowrap}
+
+/* STORY: pink band */
+.og-story{background:var(--pink)!important;padding:clamp(60px,8vw,110px) 0!important}
+.og-story h2{font-size:clamp(44px,5.6vw,86px)!important;line-height:.95!important;max-width:12ch}
+.og-story p{color:var(--ink)!important}
+.og-story .og-kicker{color:var(--ink)!important}
+.og-num{font-family:"Bricolage Grotesque",sans-serif!important;font-size:clamp(64px,7vw,112px)!important;font-weight:800!important;color:#fff!important;line-height:1!important;margin:0!important;text-shadow:0 5px 0 var(--ink)}
+
+/* VISIT: sky again */
+.og-visit{background:linear-gradient(180deg,var(--sky2),var(--sky))!important;padding:clamp(60px,8vw,110px) 0!important}
+.og-visit h2{font-size:clamp(52px,7vw,112px)!important;line-height:.9!important;color:#fff!important;text-shadow:0 5px 0 var(--ink)}
+.og-hours p{background:#fff;border-radius:14px;padding:12px 16px!important;margin:0 0 10px!important;color:var(--ink);box-shadow:0 4px 0 rgba(20,33,61,.85)}
+.og-hours p.has-small-font-size{background:transparent;box-shadow:none;color:var(--ink)}
+
+@media (max-width:900px){.og-hero>.og-tower{opacity:.5;right:-120px;transform:translateY(-46%) scale(.8)}.og-hero>*{max-width:100%!important}}
