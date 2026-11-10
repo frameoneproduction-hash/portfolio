@@ -45,7 +45,7 @@ $home = <<<HTML
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"96px","bottom":"96px"}}},"layout":{"type":"constrained","contentSize":"1180px"}} -->
-<div class="wp-block-group" style="padding-top:96px;padding-bottom:96px"><!-- wp:paragraph {"className":"wl-quote"} --><p class="wl-quote">“The first lawyers who told us what could go wrong before it did — and then fixed the contract in two days.”</p><!-- /wp:paragraph -->
+<div class="wp-block-group alignfull" style="padding-top:96px;padding-bottom:96px"><!-- wp:paragraph {"className":"wl-quote"} --><p class="wl-quote">“The first lawyers who told us what could go wrong before it did — and then fixed the contract in two days.”</p><!-- /wp:paragraph -->
 <!-- wp:paragraph {"className":"wl-kicker"} --><p class="wl-kicker">Sample testimonial · concept text</p><!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
