@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Audyt i naprawa strony WordPress: przed i po</title>
-<meta name="description" content="Pokazowy audyt strony WordPress: szybkość, dostępność WCAG 2.2 i SEO. Lighthouse na telefonie 68 → 100, waga strony 8,3 MB → 77 kB. Obie wersje i pełne raporty do sprawdzenia.">
+<meta name="description" content="Pokazowy audyt strony WordPress: szybkość, dostępność WCAG 2.2 i SEO. Waga strony 8,3 MB → 77 kB, błędy WCAG wykryte automatycznie 19 → 0. Obie wersje online do sprawdzenia w PageSpeed Insights.">
 <meta name="robots" content="noindex">
 <link rel="preload" href="img/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -22,8 +22,8 @@ h2 { font-size: 28px; letter-spacing: -0.02em; margin: 56px 0 16px; font-weight:
 .score { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
 .score .label { font-size: 14px; color: var(--muted); font-weight: 600; }
 .score .v { display: flex; align-items: baseline; gap: 8px; margin-top: 4px; }
-.score .b { font-size: 22px; font-weight: 800; color: var(--bad); }
-.score .a { font-size: 38px; font-weight: 800; color: var(--good); letter-spacing: -0.03em; }
+.score .b { font-size: 20px; font-weight: 800; color: var(--bad); }
+.score .a { font-size: 32px; font-weight: 800; color: var(--good); letter-spacing: -0.03em; }
 .small { font-size: 14px; color: var(--muted); }
 table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
 th, td { padding: 14px 18px; border-bottom: 1px solid var(--line); text-align: left; }
@@ -66,12 +66,12 @@ footer { margin: 64px 0 0; padding: 28px 0 48px; border-top: 1px solid var(--lin
 </header>
 
 <div class="scores" role="list">
-<div class="score" role="listitem"><div class="label">Wydajność</div><div class="v"><span class="b">68</span>→<span class="a">100</span></div></div>
-<div class="score" role="listitem"><div class="label">Dostępność</div><div class="v"><span class="b">88</span>→<span class="a">100</span></div></div>
-<div class="score" role="listitem"><div class="label">Dobre praktyki</div><div class="v"><span class="b">96</span>→<span class="a">100</span></div></div>
-<div class="score" role="listitem"><div class="label">SEO</div><div class="v"><span class="b">50</span>→<span class="a">100</span></div></div>
+<div class="score" role="listitem"><div class="label">Waga strony</div><div class="v"><span class="b">8,3 MB</span>→<span class="a">77 kB</span></div></div>
+<div class="score" role="listitem"><div class="label">Pobierane pliki</div><div class="v"><span class="b">26</span>→<span class="a">8</span></div></div>
+<div class="score" role="listitem"><div class="label">Błędy WCAG (axe-core)</div><div class="v"><span class="b">19</span>→<span class="a">0</span></div></div>
+<div class="score" role="listitem"><div class="label">Widoczna dla Google</div><div class="v"><span class="b">nie</span>→<span class="a">tak</span></div></div>
 </div>
-<p class="small">Google Lighthouse 12.8, test na telefonie, mediana z 3 pomiarów, 10 listopada 2026.</p>
+<p class="small">Pomiar 10 listopada 2026, wersja na telefon. Wynik w punktach Google Lighthouse sprawdzisz samodzielnie w PageSpeed Insights (linki niżej).</p>
 
 <h2>Zobacz obie wersje</h2>
 <div class="versions">
@@ -83,12 +83,11 @@ footer { margin: 64px 0 0; padding: 28px 0 48px; border-top: 1px solid var(--lin
 <table>
 <thead><tr><th>Wskaźnik</th><th style="text-align:right">Przed</th><th style="text-align:right">Po</th></tr></thead>
 <tbody>
-<tr><td>Główny element na ekranie telefonu (LCP)</td><td class="n bad">42,9 s</td><td class="n good">1,4 s</td></tr>
-<tr><td>Pierwsza treść na ekranie (FCP)</td><td class="n bad">3,5 s</td><td class="n good">0,8 s</td></tr>
 <tr><td>Waga strony</td><td class="n bad">8,3 MB</td><td class="n good">77 kB</td></tr>
 <tr><td>Pobierane pliki</td><td class="n bad">26</td><td class="n good">8</td></tr>
 <tr><td>Błędy WCAG 2.2 AA wykryte automatycznie (axe-core)</td><td class="n bad">19</td><td class="n good">0</td></tr>
 <tr><td>Widoczność w Google</td><td class="n bad">zablokowana</td><td class="n good">włączona</td></tr>
+<tr><td>Problemy znalezione w audycie (szczegóły w raporcie PDF)</td><td class="n bad">18</td><td class="n good">0</td></tr>
 </tbody>
 </table>
 <p class="small">Mierzyłam statyczne kopie stron wygenerowanych przez WordPress, na serwerze z kompresją jak w GitHub Pages; czas odpowiedzi serwera WordPressa nie wchodzi do wyniku. Strona testowa ma płaskie grafiki, więc waga po naprawie jest wyjątkowo mała: strona ze zdjęciami po takiej samej optymalizacji waży zwykle kilka razy więcej.</p>
@@ -103,9 +102,9 @@ footer { margin: 64px 0 0; padding: 28px 0 48px; border-top: 1px solid var(--lin
 <h2>Jak powstał ten przykład</h2>
 <ol>
 <li>Zbudowałam stronę fikcyjnej firmy Zefirnia na WordPressie 7.1 i sama dodałam do niej błędy, o które zleceniodawcy najczęściej pytają w ogłoszeniach. To strona testowa przygotowana do pokazu, a nie realizacja dla klienta.</li>
-<li>Zmierzyłam ją narzędziami Lighthouse i axe-core oraz sprawdziłam ręcznie: etykiety, język, nagłówki.</li>
+<li>Sprawdziłam ją narzędziami axe-core i Lighthouse oraz ręcznie: etykiety, język, nagłówki.</li>
 <li>Naprawiłam ją tak, jak zrobię to na stronie klienta: w treści i w jednej małej wtyczce, bez zmiany wyglądu.</li>
-<li>Zmierzyłam ponownie. Wynik możesz sprawdzić samodzielnie w PageSpeed Insights; może różnić się o kilka punktów, bo zależy od sieci w chwili testu.</li>
+<li>Zmierzyłam ponownie. Wynik w punktach Lighthouse możesz sprawdzić samodzielnie w PageSpeed Insights.</li>
 </ol>
 
 <footer>Projekt koncepcyjny. Zefirnia to firma fikcyjna, ceny i dane na stronie testowej są przykładowe. Audyt przygotowała Maria | WWW · Aplikacje · AI (Useme).</footer>
