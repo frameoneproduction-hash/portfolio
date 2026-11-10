@@ -14,7 +14,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 /* HERO: giant glowing brass section sign */
 .wl-hero{position:relative;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding-top:clamp(40px,6vw,80px)!important;padding-bottom:clamp(40px,6vw,80px)!important}
 .wl-hero:before{content:"";position:absolute;right:-10%;top:10%;width:70vw;height:70vw;max-width:1000px;max-height:1000px;background:radial-gradient(closest-side,rgba(201,164,106,.28),rgba(201,164,106,0));pointer-events:none}
-.wl-hero .wl-section-sign{position:absolute!important;right:2vw;top:50%;transform:translateY(-52%);z-index:0!important;font-family:"Instrument Serif",serif;font-size:clamp(380px,62vw,980px);line-height:.8;pointer-events:none;user-select:none;background:linear-gradient(160deg,#F6E2B8 0%,#C9A46A 40%,#6E5129 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9;filter:drop-shadow(0 0 60px rgba(201,164,106,.25))}
+.wl-hero .wl-section-sign{position:absolute!important;right:-1vw;top:50%;transform:translateY(-52%);z-index:0!important;font-family:"Instrument Serif",serif;font-size:clamp(320px,50vw,800px);line-height:.8;pointer-events:none;user-select:none;background:linear-gradient(160deg,#F6E2B8 0%,#C9A46A 40%,#6E5129 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9;filter:drop-shadow(0 0 60px rgba(201,164,106,.25))}
 .wl-hero>*{position:relative;z-index:1}
 .wl-kicker{font-size:12px!important;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)!important;font-weight:600}
 .wl-hero h1{font-size:clamp(64px,10.5vw,172px)!important;line-height:.88!important;max-width:15ch;margin:22px 0 30px!important;text-shadow:0 2px 40px rgba(0,0,0,.6)}
@@ -31,7 +31,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 @media (prefers-reduced-motion:no-preference){.wl-marquee .wl-track{animation:wlMarq 32s linear infinite}@keyframes wlMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}}
 
 /* STRIP */
-.wl-strip{padding:26px 0!important;background:var(--ink)}
+.wl-strip{padding-top:26px!important;padding-bottom:26px!important;background:var(--ink)}
 .wl-strip p{margin:0;font-size:15px;color:var(--muted)}
 .wl-strip strong{color:var(--ivory);font-weight:600}
 
