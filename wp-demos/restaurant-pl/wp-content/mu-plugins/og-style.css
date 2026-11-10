@@ -74,3 +74,7 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .og-hours p.has-small-font-size{background:transparent;box-shadow:none;color:var(--ink)}
 
 @media (max-width:900px){.og-hero{display:flex;flex-direction:column;min-height:0}.og-hero>*{max-width:100%!important}.og-hero>.og-tower{position:relative!important;right:auto;top:auto;order:10;align-self:center;transform:scale(.62);transform-origin:top center;margin:18px 0 -236px!important}.og-c1{width:130px;height:36px;left:-24px;top:auto;bottom:34%}.og-c2{width:170px;height:46px;right:-56px;top:auto;bottom:14%}.og-c3{display:none}.og-c4{width:150px;height:40px;left:24%;right:auto;bottom:2%}}
+
+/* mobile menu overlay */
+.wp-block-navigation__responsive-container.is-menu-open{background:var(--sky)!important;color:#fff!important}
+.wp-block-navigation__responsive-container.is-menu-open a{color:#fff!important;font-family:"Bricolage Grotesque",sans-serif;font-size:40px}
