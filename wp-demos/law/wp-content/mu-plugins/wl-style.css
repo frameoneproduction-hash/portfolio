@@ -1,0 +1,64 @@
+/* Wiśniewska Legal — bold dark editorial layer on top of Twenty Twenty-Five */
+:root{--ink:#0C0D10;--ink2:#15171C;--ivory:#EFE8DA;--brass:#C9A46A;--brass2:#8E6B36;--muted:#9C9585;--line:rgba(239,232,218,.14)}
+body{background:var(--ink)!important;color:var(--ivory)!important;font-family:"Inter Tight",system-ui,sans-serif}
+h1,h2,h3,.wp-block-site-title{font-family:"Instrument Serif",Georgia,serif!important;font-weight:400!important;letter-spacing:-.015em;color:var(--ivory)!important}
+.wp-block-site-title a,.wp-block-navigation a{color:var(--ivory)!important;text-decoration:none}
+header.wp-block-template-part{border-bottom:1px solid var(--line)}
+footer.wp-block-template-part{display:none}
+a{color:var(--brass)}
+.alignfull{margin-top:0!important;margin-bottom:0!important}
+main.wp-block-group{margin-top:0!important;padding-top:0!important}
+.alignfull{padding-left:max(24px,calc((100vw - 1200px)/2))!important;padding-right:max(24px,calc((100vw - 1200px)/2))!important}
+.alignfull>*{margin-left:0!important;margin-right:0!important}
+
+/* HERO: giant glowing brass section sign */
+.wl-hero{position:relative;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding-top:clamp(40px,6vw,80px)!important;padding-bottom:clamp(40px,6vw,80px)!important}
+.wl-hero:before{content:"";position:absolute;right:-10%;top:10%;width:70vw;height:70vw;max-width:1000px;max-height:1000px;background:radial-gradient(closest-side,rgba(201,164,106,.28),rgba(201,164,106,0));pointer-events:none}
+.wl-hero .wl-section-sign{position:absolute!important;right:-1vw;top:50%;transform:translateY(-52%);z-index:0!important;font-family:"Instrument Serif",serif;font-size:clamp(320px,50vw,800px);line-height:.8;pointer-events:none;user-select:none;background:linear-gradient(160deg,#F6E2B8 0%,#C9A46A 40%,#6E5129 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9;filter:drop-shadow(0 0 60px rgba(201,164,106,.25))}
+.wl-hero>*{position:relative;z-index:1}
+.wl-kicker{font-size:12px!important;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)!important;font-weight:600}
+.wl-hero h1{font-size:clamp(64px,10.5vw,172px)!important;line-height:.88!important;max-width:15ch;margin:22px 0 30px!important;text-shadow:0 2px 40px rgba(0,0,0,.6)}
+.wl-hero h1 em{font-style:italic;color:var(--brass)}
+.wl-lead{font-size:clamp(18px,1.6vw,22px)!important;max-width:44ch;color:#CFC7B6!important}
+.wp-block-button__link{border-radius:0!important;padding:18px 30px!important;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:13px!important}
+.wl-btn-primary .wp-block-button__link{background:var(--brass)!important;color:var(--ink)!important}
+.wl-btn-ghost .wp-block-button__link{background:transparent!important;color:var(--ivory)!important;border:1px solid rgba(239,232,218,.45)!important}
+
+/* MARQUEE */
+.wl-marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;white-space:nowrap;background:var(--ink2)}
+.wl-marquee .wl-track{display:inline-flex;gap:56px;font-family:"Instrument Serif",serif;font-size:clamp(34px,4.6vw,64px);color:var(--ivory);padding-left:56px}
+.wl-marquee .wl-track span:nth-child(even){color:var(--brass);font-style:italic}
+@media (prefers-reduced-motion:no-preference){.wl-marquee .wl-track{animation:wlMarq 32s linear infinite}@keyframes wlMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}}
+
+/* STRIP */
+.wl-strip{padding-top:26px!important;padding-bottom:26px!important;background:var(--ink)}
+.wl-strip p{margin:0;font-size:15px;color:var(--muted)}
+.wl-strip strong{color:var(--ivory);font-weight:600}
+
+/* PRACTICE: huge outlined numbers */
+.wl-practice{padding-top:clamp(70px,9vw,130px)!important;padding-bottom:clamp(70px,9vw,130px)!important}
+.wl-practice h2{font-size:clamp(48px,6.4vw,104px)!important;line-height:.95!important;max-width:14ch}
+.wl-area{border-top:1px solid rgba(239,232,218,.35);padding-top:26px!important;transition:border-color .3s,transform .3s}
+.wl-area:hover{border-color:var(--brass);transform:translateY(-4px)}
+.wl-area .wl-num{font-family:"Instrument Serif",serif;font-size:clamp(64px,6vw,96px)!important;line-height:1;margin:0 0 6px!important;color:transparent!important;-webkit-text-stroke:1px var(--brass)}
+.wl-area h3{font-size:clamp(26px,2.2vw,34px)!important;margin:4px 0 10px!important}
+.wl-area p{color:#B9B1A1}
+
+/* PROCESS: inverted ivory band */
+.wl-dark{background:var(--ivory)!important;color:var(--ink)!important;padding-top:clamp(70px,9vw,130px)!important;padding-bottom:clamp(70px,9vw,130px)!important}
+.wl-dark h2{color:var(--ink)!important;font-size:clamp(48px,6.6vw,108px)!important;line-height:.92!important;max-width:15ch}
+.wl-dark p{color:#3A3730!important}
+.wl-dark .wl-kicker{color:var(--brass2)!important}
+.wl-step{border-left:1px solid rgba(12,13,16,.25);padding-left:24px!important}
+.wl-step h3{color:var(--ink)!important;font-size:30px!important}
+
+/* QUOTE: full-width statement */
+.wl-quote{font-family:"Instrument Serif",serif;font-size:clamp(36px,4.8vw,76px)!important;line-height:1.02!important;max-width:24ch;color:var(--ivory)}
+
+/* CONTACT */
+.wl-contact{background:var(--ink2)!important;padding-top:clamp(70px,9vw,130px)!important;padding-bottom:clamp(70px,9vw,130px)!important;border-top:1px solid var(--line)}
+.wl-contact h2{font-size:clamp(56px,7.6vw,128px)!important;line-height:.9!important}
+.wl-contact p{color:#CFC7B6}
+
+@media (prefers-reduced-motion:no-preference){.wl-hero h1,.wl-lead,.wl-hero .wp-block-buttons{animation:wlUp 1s cubic-bezier(.2,.7,.2,1) both}.wl-lead{animation-delay:.15s}.wl-hero .wp-block-buttons{animation-delay:.28s}@keyframes wlUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}}
+@media (max-width:700px){.wl-hero .wl-section-sign{opacity:.35;right:-20vw}}
