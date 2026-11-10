@@ -3,6 +3,7 @@
 update_option('blogname', 'Wiśniewska Legal');
 update_option('blogdescription', 'Business law in Warsaw');
 update_option('permalink_structure', '/%postname%/');
+foreach (get_posts(['post_type'=>['page','post'],'numberposts'=>-1,'post_status'=>'any']) as $p) { wp_delete_post($p->ID, true); }
 
 $home = <<<HTML
 <!-- wp:group {"className":"wl-hero","layout":{"type":"constrained","contentSize":"1180px"}} -->
