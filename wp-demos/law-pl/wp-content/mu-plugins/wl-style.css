@@ -60,5 +60,5 @@ main.wp-block-group{margin-top:0!important;padding-top:0!important}
 .wl-contact h2{font-size:clamp(56px,7.6vw,128px)!important;line-height:.9!important}
 .wl-contact p{color:#CFC7B6}
 
-@media (prefers-reduced-motion:no-preference){.wl-hero h1,.wl-lead,.wl-hero .wp-block-buttons{animation:wlUp 1s cubic-bezier(.2,.7,.2,1) both}.wl-lead{animation-delay:.15s}.wl-hero .wp-block-buttons{animation-delay:.28s}@keyframes wlUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}}
+@media (prefers-reduced-motion:no-preference){.wl-hero h1,.wl-lead,.wl-hero .wp-block-buttons{animation:wlUp 1s cubic-bezier(.2,.7,.2,1) both}.wl-lead{animation-delay:.15s}.wl-hero .wp-block-buttons{animation-delay:.28s}@keyframes wlUp{from{transform:translateY(26px)}to{transform:none}}}
 @media (max-width:700px){.wl-hero .wl-section-sign{opacity:.35;right:-20vw}}
