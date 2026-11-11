@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility audit for online shops (WCAG 2.2) — £450 / $590</title>
+<meta name="description" content="WCAG 2.2 AA accessibility audit for your online shop: keyboard-only checkout test, prioritised report with fixes for your developer, one re-test within 30 days. £450 / $590, report in 5 business days, re-test included.">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/oferta/audyt-dostepnosci/en/">
+<link rel="alternate" hreflang="pl" href="https://frameoneproduction-hash.github.io/portfolio/oferta/audyt-dostepnosci/">
+<link rel="alternate" hreflang="en" href="https://frameoneproduction-hash.github.io/portfolio/oferta/audyt-dostepnosci/en/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Accessibility audit for online shops (WCAG 2.2) — £450 / $590">
+<meta property="og:description" content="Keyboard-only checkout test, prioritised report with fixes, one re-test within 30 days. Report in 5 business days.">
+<meta property="og:url" content="https://frameoneproduction-hash.github.io/portfolio/oferta/audyt-dostepnosci/en/">
+<meta property="og:locale" content="en_GB">
+<link rel="preload" href="../../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../../../audyt-wp/img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --ink: #10222f; --paper: #f6f5f2; --card: #fff; --muted: #4a5963; --line: #dde2e3; --accent: #0c6e8c; --soft: #e8f1f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+.top { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: 15px; }
+.top strong { font-weight: 800; }
+.top nav a { margin-left: 16px; font-weight: 700; text-decoration: none; }
+header.hero { padding: 40px 0 24px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: end; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 14px; }
+h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.03; letter-spacing: -0.04em; margin: 0 0 18px; font-weight: 800; }
+.lead { font-size: 20px; color: var(--muted); margin: 0; max-width: 42ch; }
+.price { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.price .amount { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.price .amount small { font-size: 22px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; }
+.price ul { list-style: none; padding: 0; margin: 16px 0 20px; }
+.price li { padding: 6px 0; border-top: 1px solid var(--line); font-size: 15.5px; }
+.btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 800; padding: 14px 24px; border-radius: 999px; }
+.btn:hover { background: #0a5c75; }
+h2 { font-size: 30px; letter-spacing: -0.025em; margin: 64px 0 18px; font-weight: 800; line-height: 1.1; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.card h3 { font-size: 18px; margin: 0 0 8px; }
+.card p { color: var(--muted); font-size: 15.5px; margin: 0; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+th, td { padding: 14px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+thead th { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+td.n { white-space: nowrap; font-weight: 800; }
+ol.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; }
+ol.steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; font-size: 15.5px; color: var(--muted); }
+ol.steps li::before { content: "0" counter(s); display: block; font-size: 28px; font-weight: 800; color: var(--accent); }
+ol.steps strong { display: block; color: var(--ink); font-size: 17px; margin: 4px 0; }
+.markets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.markets div { background: var(--soft); border-radius: 14px; padding: 20px; }
+.markets h3 { margin: 0 0 6px; font-size: 17px; }
+.markets p { margin: 0; font-size: 15.5px; color: var(--ink); }
+.example { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.example img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+summary { font-weight: 700; font-size: 18px; cursor: pointer; }
+details p { color: var(--muted); margin: 10px 0 0; }
+.cta { background: var(--ink); color: #eef3f5; border-radius: 18px; padding: 36px; margin-top: 64px; display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+.cta h2 { margin: 0 0 6px; color: #fff; font-size: 26px; }
+.cta p { margin: 0; color: #c9d5da; }
+.cta .btn { background: #fff; color: var(--ink); white-space: nowrap; }
+footer { margin: 48px 0 0; padding: 24px 0 48px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 860px) {
+  header.hero, .example { grid-template-columns: 1fr; }
+  .grid, .markets { grid-template-columns: 1fr; }
+  ol.steps { grid-template-columns: 1fr 1fr; }
+  .cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  ol.steps { grid-template-columns: 1fr; }
+  th, td { padding: 12px; font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><strong>Maria | WWW · Aplikacje · AI</strong><nav aria-label="Language"><a href="../" hreflang="pl" lang="pl">Polski</a></nav></div>
+
+<header class="hero">
+<div>
+<p class="kicker">WCAG 2.2 AA · UK · US · EU</p>
+<h1>Accessibility audit for your online shop</h1>
+<p class="lead">Can a customer who uses only a keyboard, zooms the page or browses on a small phone get from your homepage to checkout? I test it and give your developer a prioritised list of fixes.</p>
+</div>
+<div class="price">
+<div class="amount">£450 <small>/ $590</small></div>
+<ul>
+<li>Report in 5 business days</li>
+<li>Up to 7 page types</li>
+<li>One re-test within 30 days included</li>
+</ul>
+<a class="btn" href="https://www.fiverr.com/mariak_webdev/fix-wordpress-errors-and-speed-up-your-website">Order on Fiverr</a>
+</div>
+</header>
+
+<h2>Why shops ask for it</h2>
+<div class="markets">
+<div><h3>United Kingdom</h3><p>The Equality Act 2010 asks service providers to make reasonable adjustments for disabled customers. WCAG 2.2 AA is the usual benchmark for websites.</p></div>
+<div><h3>United States</h3><p>Website accessibility is regularly raised under the ADA. WCAG 2.1 or 2.2 AA is the reference most often used.</p></div>
+<div><h3>Selling to the EU</h3><p>Since 28 June 2025 the European Accessibility Act covers e-commerce services for EU consumers. Microenterprises are exempt.</p></div>
+</div>
+<p style="color:var(--muted);font-size:15px">Whether a law applies to your shop is a question for a lawyer. The audit shows what to fix, and it makes buying easier for every customer.</p>
+
+<h2>What you get</h2>
+<div class="grid">
+<div class="card"><h3>Prioritised report</h3><p>Every issue with its WCAG criterion, location, priority and a fix your developer can act on, with screenshots where they help. PDF, in English.</p></div>
+<div class="card"><h3>Checkout path test</h3><p>From search through product page and cart to payment: keyboard only, 200% zoom, a 320 px phone screen.</p></div>
+<div class="card"><h3>One re-test</h3><p>Within 30 days of the report I check your fixes once and update the report. Need an accessibility statement or hands-on fixes? See the Standard and Premium packages below.</p></div>
+</div>
+
+<h2>What I check</h2>
+<table>
+<thead><tr><th>Area</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>Keyboard use</td><td>Menu, filters, product variants, cart, checkout form, visible focus, no keyboard traps</td></tr>
+<tr><td>Forms and errors</td><td>Field labels, error messages, autocomplete, CAPTCHA, login</td></tr>
+<tr><td>Content and images</td><td>Alt text for product photos, headings, page language, link text</td></tr>
+<tr><td>Visual design</td><td>Text and button contrast, 200% zoom, 320 px view without sideways scrolling</td></tr>
+<tr><td>Extras</td><td>Cookie banner, pop-ups, chat, sliders, videos</td></tr>
+<tr><td>Automated tests</td><td>axe-core on every selected page type, results in the report</td></tr>
+</tbody>
+</table>
+
+<h2>How it works</h2>
+<ol class="steps">
+<li><strong>Your shop URL</strong>Send the address. I test public pages and the checkout path as a guest, up to the payment step, without placing an order.</li>
+<li><strong>Pick the pages</strong>We agree on up to 7 page types, e.g. home, category, product, cart, checkout, account, contact.</li>
+<li><strong>Report</strong>Within 5 business days you get the PDF report with priorities.</li>
+<li><strong>Re-test</strong>Within 30 days of the report I check your fixes once and update the report at no extra cost.</li>
+</ol>
+
+<h2>Pricing</h2>
+<table>
+<thead><tr><th>Scope</th><th>Price</th></tr></thead>
+<tbody>
+<tr><td><strong>Basic</strong>: audit of up to 7 page types, prioritised PDF report, one re-test within 30 days</td><td class="n">£450 / $590</td></tr>
+<tr><td><strong>Standard</strong>: Basic plus a draft accessibility statement based on the findings</td><td class="n">$790</td></tr>
+<tr><td><strong>Premium</strong>: Standard plus up to 5 hours of fixes for high-priority issues</td><td class="n">$990</td></tr>
+<tr><td>Further fixes in your shop</td><td class="n">quoted after the report</td></tr>
+</tbody>
+</table>
+<p style="color:var(--muted);font-size:15px">Fiverr charges in US dollars; the pound price for Basic is approximate.</p>
+<p style="color:var(--muted);font-size:15px">On hosted platforms such as Shopify, some fixes depend on the theme provider; the report marks which ones. You can also hand the report to your own developer: it is written for them. Shopify, WooCommerce, BigCommerce, PrestaShop and others. Everything is handled in writing, no calls needed.</p>
+
+<h2>Sample report</h2>
+<div class="example">
+<div>
+<p>A demo audit of a test WordPress site (concept project, fictional company): 18 prioritised issues, all fixed, and both versions of the site online. The report is in English; the test site itself is in Polish.</p>
+<p><a href="sample-accessibility-audit-report.pdf">See the PDF report</a> · <a href="../../../audyt-wp/" hreflang="pl">Demo page (Polish)</a></p>
+</div>
+<img src="../../../audyt-wp/img/po-desktop.webp" width="1200" height="750" alt="Test site from the demo audit, after fixes" loading="lazy">
+</div>
+
+<h2>FAQ</h2>
+<details><summary>Do I get a certificate?</summary><p>There is no official accessibility certificate for online shops. You get a dated report with the scope and results, which documents the state of the shop and the fixes made.</p></details>
+<details><summary>Do you need admin access?</summary><p>Not for the audit. The shop address is enough: I test public pages and the checkout as a guest, without logging in or placing an order. Account areas behind a login only by separate agreement, through a test account you create for me. Admin access is only needed if you want me to implement the fixes, again through a separate user account; never share your own password.</p></details>
+<details><summary>Do you test with screen readers?</summary><p>The audit covers keyboard use, zoom, small screens, contrast, forms and the code structure screen readers rely on (labels, headings, names of buttons and links). Testing with assistive technology users is not included.</p></details>
+<details><summary>How do payments work?</summary><p>Through Fiverr: you pay when you order, and the platform releases the payment after you accept the delivery.</p></details>
+
+<div class="cta">
+<div><h2>Accessibility audit for £450 / $590</h2><p>Report in 5 business days, one re-test within 30 days included.</p></div>
+<a class="btn" href="https://www.fiverr.com/mariak_webdev/fix-wordpress-errors-and-speed-up-your-website">Order on Fiverr</a>
+</div>
+
+<footer>This page is not legal advice. Maria | WWW · Aplikacje · AI.</footer>
+</div>
+</body>
+</html>
