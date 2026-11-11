@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Próbka lokalizacji: 5 produktów w 5 językach</title>
+<meta name="description" content="Próbka lokalizacji sklepu: 5 kart produktów fikcyjnego sklepu z tekstyliami lnianymi po polsku, niemiecku, czesku, słowacku i angielsku, z meta tagami SEO i uwagami do każdego rynku.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/oferta/lokalizacja-sklepu/probka/">
+<link rel="preload" href="../../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../../../audyt-wp/img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --ink: #10222f; --paper: #f6f5f2; --card: #fff; --muted: #4a5963; --line: #dde2e3; --accent: #0c6e8c; --soft: #e8f1f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+a { color: var(--accent); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px 56px; }
+header { padding: 40px 0 8px; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 12px; }
+h1 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.05; letter-spacing: -0.035em; margin: 0 0 14px; font-weight: 800; }
+.lead { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 0 0 18px; }
+.tabs { position: sticky; top: 0; z-index: 2; background: var(--paper); padding: 12px 0; display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--line); }
+.tabs button { font: inherit; font-weight: 700; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); padding: 8px 16px; border-radius: 999px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.tabs button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.notes { background: var(--soft); border-left: 4px solid var(--accent); border-radius: 0 12px 12px 0; padding: 14px 20px; margin: 20px 0; }
+.notes h3 { margin: 0 0 6px; font-size: 16px; }
+.notes ul { margin: 0; padding-left: 18px; }
+.product { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin: 18px 0; display: grid; grid-template-columns: 90px 1fr; gap: 0 24px; }
+.swatch { width: 90px; height: 90px; border-radius: 12px; border: 1px solid var(--line); grid-row: span 2; }
+.sku { margin: 0; font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .06em; }
+.product h3 { font-size: 21px; letter-spacing: -0.015em; margin: 2px 0 8px; }
+.product p { margin: 0 0 12px; }
+.attrs { border-collapse: collapse; margin: 0 0 14px; font-size: 15px; }
+.attrs caption { text-align: left; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-bottom: 4px; }
+.attrs th { text-align: left; font-weight: 600; color: var(--muted); padding: 3px 18px 3px 0; vertical-align: top; }
+.attrs td { padding: 3px 0; }
+.serp { display: grid; gap: 2px; border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px; font-family: Arial, sans-serif; }
+.serp-url { font-size: 13px; color: #3c4043; }
+.serp-title { font-size: 18px; color: #1a0dab; }
+.serp-desc { font-size: 14px; color: #4d5156; }
+.serp-len { font-size: 12px; color: var(--muted); font-family: "Manrope", sans-serif; }
+.js .lang, .js .note-lang { display: none; }
+.js .lang.on, .js .note-lang.on { display: block; }
+.no-js-hint { font-size: 14px; color: var(--muted); }
+.js .no-js-hint { display: none; }
+.lang + .lang { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.js .lang + .lang { margin-top: 0; padding-top: 0; border-top: 0; }
+.dl { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 24px 0 0; }
+.btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 800; padding: 12px 22px; border-radius: 999px; }
+footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px 48px; }
+  .product { grid-template-columns: 1fr; padding: 18px; }
+  .swatch { width: 100%; height: 56px; grid-row: auto; margin-bottom: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<p class="kicker">Próbka lokalizacji · projekt koncepcyjny</p>
+<h1>5 produktów, 5 języków</h1>
+<p class="lead">Karty produktów fikcyjnego sklepu z lnem „Lenisko” po polsku, niemiecku, czesku, słowacku i angielsku: nazwa, opis, szczegóły, tytuł i opis dla Google, adres URL. Pod przełącznikiem języków — uwagi do każdego rynku. Teksty nie były sprawdzane przez native speakera.</p>
+<p><a href="../">← Oferta: lokalizacja sklepu</a></p>
+</header>
+<div class="tabs" role="tablist" aria-label="Język próbki"><button type="button" role="tab" aria-selected="false" data-lang="pl" lang="pl">Polski</button><button type="button" role="tab" aria-selected="true" data-lang="de" lang="de">Deutsch</button><button type="button" role="tab" aria-selected="false" data-lang="cs" lang="cs">Čeština</button><button type="button" role="tab" aria-selected="false" data-lang="sk" lang="sk">Slovenčina</button><button type="button" role="tab" aria-selected="false" data-lang="en" lang="en">English (UK)</button></div>
+<p class="no-js-hint">Bez JavaScriptu wszystkie języki są widoczne jeden pod drugim.</p>
+<div class="notes"><div class="note-lang" data-lang="pl"><h3>Źródło</h3><ul><li>Tekst wyjściowy sklepu. Nazwy kolekcji (Mgła, Żyto, Fala, Piekarnia, Ziele) zostają jako marka we wszystkich językach; w adresach URL piszę je bez polskich znaków.</li></ul></div><div class="note-lang" data-lang="de"><h3>Uwagi do rynku niemieckiego</h3><ul><li>Najpopularniejsze rozmiary pościeli w Niemczech to 135×200 i 155×220 cm, poszewki 80×80 cm. Rozmiar 160×200 warto opisać wprost w centymetrach albo dodać wariant 155×220.</li><li>Niemiecki zapis: „100 % Leinen”, „40 °C” (ze spacją), przecinek dziesiętny.</li><li>Nazwy, jakich używają niemieckie sklepy: „Leinenbettwäsche”, „Waffelpiqué”, a nie dosłowne tłumaczenie. Sprawdzam je w lokalnych sklepach i podpowiedziach Google.</li><li>Ręczniki: Handtuch to ok. 50×100 cm, Duschtuch 70×140 cm, Badetuch od ok. 100×150 cm. Ręcznik 70×140 to po niemiecku Duschtuch.</li><li>Impressum, Widerrufsbelehrung i regulamin przygotowuje prawnik: nie wchodzą w pakiet.</li></ul></div><div class="note-lang" data-lang="cs"><h3>Uwagi do rynku czeskiego</h3><ul><li>Standard w Czechach to pościel 140×200 cm i poszewka 70×90 cm. Inne rozmiary trzeba podać w centymetrach w nazwie lub w wariantach.</li><li>Ceny w CZK; czeski zapis: „100 % len”, „40 °C”.</li><li>„Aviváž” to płyn do zmiękczania tkanin: tak go nazywają czeskie metki.</li></ul></div><div class="note-lang" data-lang="sk"><h3>Uwagi do rynku słowackiego</h3><ul><li>Na Słowacji też dominuje 140×200 cm i 70×90 cm.</li><li>Słowacki to osobny język: tekst nie jest przeróbką czeskiego (np. „obliečky” zamiast „povlečení”, „vankúš” zamiast „polštář”).</li><li>Ceny w EUR.</li></ul></div><div class="note-lang" data-lang="en"><h3>Uwagi do rynku brytyjskiego</h3><ul><li>W Wielkiej Brytanii poszwy mają rozmiary Single 135×200, Double 200×200, King 230×220 cm, poszewki 50×75 cm. 160×200 nie pasuje do żadnego z nich, więc podaję wymiar wprost.</li><li>Pisownia brytyjska: colour, grey; temperatura w °C. Na rynek USA (cale, °F, rozmiary Queen/King) przygotowuję osobną wersję.</li></ul></div></div>
+<article class="product"><div class="swatch" style="background:#8d9397" aria-hidden="true"></div><p class="sku">LEN-MGLA-160</p><div class="lang" data-lang="pl" lang="pl">
+<h3>Pościel lniana Mgła 160×200 cm, szara</h3>
+<p>Komplet pościeli z lnu pranego kamieniowo: poszwa 160×200 cm i dwie poszewki 70×80 cm. Len oddycha i odprowadza wilgoć, więc latem daje chłód, a zimą przyjemne ciepło. Po każdym praniu tkanina jest bardziej miękka. Zapięcie na drewniane guziki.</p>
+<table class="attrs"><caption>Szczegóły</caption><tr><th scope="row">Skład</th><td>100% len, prany kamieniowo</td></tr><tr><th scope="row">Gramatura</th><td>160 g/m²</td></tr><tr><th scope="row">Wymiary</th><td>poszwa 160×200 cm, 2 poszewki 70×80 cm</td></tr><tr><th scope="row">Pielęgnacja</th><td>pranie w 40°C, suszenie w niskiej temperaturze</td></tr><tr><th scope="row">Kolor</th><td>szary</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/posciel-lniana-mgla-160x200-szara</span><span class="serp-title">Pościel lniana 160×200 szara, len prany | Lenisko</span><span class="serp-desc">Szara pościel z lnu pranego kamieniowo: poszwa 160×200 i 2 poszewki 70×80. Chłodna latem, ciepła zimą, miękka po każdym praniu.</span><span class="serp-len" lang="pl">tytuł 49/60 · opis 127/160 znaków</span></div>
+</div><div class="lang" data-lang="de" lang="de">
+<h3>Leinen-Bettwäsche Mgła 160×200 cm, grau</h3>
+<p>Bettwäsche-Set aus Stonewashed-Leinen: Bettbezug 160×200 cm und zwei Kissenbezüge 70×80 cm. Leinen ist atmungsaktiv und nimmt Feuchtigkeit auf – im Sommer angenehm kühl, im Winter wohlig warm. Mit jeder Wäsche wird der Stoff weicher. Verschluss mit Holzknöpfen.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100 % Leinen, stonewashed</td></tr><tr><th scope="row">Flächengewicht</th><td>160 g/m²</td></tr><tr><th scope="row">Maße</th><td>Bettbezug 160×200 cm, 2 Kissenbezüge 70×80 cm</td></tr><tr><th scope="row">Pflege</th><td>Waschen bei 40 °C, Trocknen bei niedriger Temperatur</td></tr><tr><th scope="row">Farbe</th><td>Grau</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/leinenbettwaesche-mgla-160x200-grau</span><span class="serp-title">Leinenbettwäsche 160×200 grau, stonewashed | Lenisko</span><span class="serp-desc">Graue Bettwäsche aus Stonewashed-Leinen: Bettbezug 160×200 und 2 Kissenbezüge 70×80. Kühl im Sommer, warm im Winter, mit jeder Wäsche weicher.</span><span class="serp-len" lang="pl">tytuł 52/60 · opis 142/160 znaków</span></div>
+</div><div class="lang" data-lang="cs" lang="cs">
+<h3>Lněné povlečení Mgła 160×200 cm, šedé</h3>
+<p>Sada povlečení z předpraného lnu (stonewashed): povlak na přikrývku 160×200 cm a dva povlaky na polštář 70×80 cm. Len dýchá a odvádí vlhkost, takže v létě příjemně chladí a v zimě hřeje. S každým praním je látka měkčí. Zapínání na dřevěné knoflíky.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Složení</th><td>100 % len, stonewashed</td></tr><tr><th scope="row">Gramáž</th><td>160 g/m²</td></tr><tr><th scope="row">Rozměry</th><td>povlak na přikrývku 160×200 cm, 2 povlaky na polštář 70×80 cm</td></tr><tr><th scope="row">Údržba</th><td>praní na 40 °C, sušení při nízké teplotě</td></tr><tr><th scope="row">Barva</th><td>šedá</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lnene-povleceni-mgla-160x200-sede</span><span class="serp-title">Lněné povlečení 160×200 šedé, stonewashed | Lenisko</span><span class="serp-desc">Šedé povlečení z předpraného lnu: povlak 160×200 a 2 povlaky na polštář 70×80. V létě chladí, v zimě hřeje a s každým praním je měkčí.</span><span class="serp-len" lang="pl">tytuł 51/60 · opis 134/160 znaków</span></div>
+</div><div class="lang" data-lang="sk" lang="sk">
+<h3>Ľanové obliečky Mgła 160×200 cm, sivé</h3>
+<p>Súprava obliečok z predpraného ľanu (stonewashed): obliečka na paplón 160×200 cm a dve obliečky na vankúš 70×80 cm. Ľan dýcha a odvádza vlhkosť, takže v lete príjemne chladí a v zime hreje. S každým praním je látka mäkšia. Zapínanie na drevené gombíky.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Zloženie</th><td>100 % ľan, stonewashed</td></tr><tr><th scope="row">Gramáž</th><td>160 g/m²</td></tr><tr><th scope="row">Rozmery</th><td>obliečka na paplón 160×200 cm, 2 obliečky na vankúš 70×80 cm</td></tr><tr><th scope="row">Starostlivosť</th><td>pranie na 40 °C, sušenie pri nízkej teplote</td></tr><tr><th scope="row">Farba</th><td>sivá</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lanove-obliecky-mgla-160x200-sive</span><span class="serp-title">Ľanové obliečky 160×200 sivé, stonewashed | Lenisko</span><span class="serp-desc">Sivé obliečky z predpraného ľanu: na paplón 160×200 a 2× na vankúš 70×80. V lete chladia, v zime hrejú a s každým praním sú mäkšie.</span><span class="serp-len" lang="pl">tytuł 51/60 · opis 131/160 znaków</span></div>
+</div><div class="lang" data-lang="en" lang="en">
+<h3>Stonewashed linen bedding set Mgła, 160×200 cm, grey</h3>
+<p>A bedding set in stonewashed linen: a 160×200 cm duvet cover and two 70×80 cm pillowcases. Linen breathes and wicks away moisture, so it feels cool in summer and cosy in winter. It gets softer with every wash. Wooden button fastening.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100% linen, stonewashed</td></tr><tr><th scope="row">Weight</th><td>160 g/m²</td></tr><tr><th scope="row">Size</th><td>duvet cover 160×200 cm, 2 pillowcases 70×80 cm</td></tr><tr><th scope="row">Care</th><td>machine wash at 40°C, tumble dry low</td></tr><tr><th scope="row">Colour</th><td>grey</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/stonewashed-linen-bedding-mgla-160x200-grey</span><span class="serp-title">Stonewashed Linen Bedding Set 160×200 cm, Grey | Lenisko</span><span class="serp-desc">Grey stonewashed linen bedding: a 160×200 cm duvet cover and two 70×80 cm pillowcases. Cool in summer, cosy in winter, softer with every wash.</span><span class="serp-len" lang="pl">tytuł 56/60 · opis 142/160 znaków</span></div>
+</div></article><article class="product"><div class="swatch" style="background:#cdb994" aria-hidden="true"></div><p class="sku">LEN-ZYTO-140</p><div class="lang" data-lang="pl" lang="pl">
+<h3>Obrus lniany Żyto 140×220 cm, beżowy</h3>
+<p>Obrus z grubszego lnu w kolorze dojrzałego zboża. Len łatwo się pierze, a lekko pognieciona faktura wygląda naturalnie także bez prasowania. Na stół dla 6–8 osób.</p>
+<table class="attrs"><caption>Szczegóły</caption><tr><th scope="row">Skład</th><td>100% len</td></tr><tr><th scope="row">Wymiary</th><td>140×220 cm</td></tr><tr><th scope="row">Pielęgnacja</th><td>pranie w 40°C, prasowanie na wilgotno</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/obrus-lniany-zyto-140x220-bezowy</span><span class="serp-title">Obrus lniany 140×220 beżowy, stół dla 6–8 osób | Lenisko</span><span class="serp-desc">Beżowy obrus z grubego lnu 140×220 cm na stół dla 6–8 osób. Łatwo się pierze i wygląda naturalnie bez prasowania.</span><span class="serp-len" lang="pl">tytuł 56/60 · opis 113/160 znaków</span></div>
+</div><div class="lang" data-lang="de" lang="de">
+<h3>Leinen-Tischdecke Żyto 140×220 cm, beige</h3>
+<p>Tischdecke aus kräftigem Leinen in der Farbe reifen Getreides. Leinen lässt sich leicht waschen, und die leicht knittrige Struktur wirkt auch ungebügelt natürlich. Für Tische mit 6–8 Plätzen.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100 % Leinen</td></tr><tr><th scope="row">Maße</th><td>140×220 cm</td></tr><tr><th scope="row">Pflege</th><td>Waschen bei 40 °C, feucht bügeln</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/leinen-tischdecke-zyto-140x220-beige</span><span class="serp-title">Leinen-Tischdecke 140×220 beige für 6–8 Personen | Lenisko</span><span class="serp-desc">Beige Tischdecke aus kräftigem Leinen, 140×220 cm, für 6–8 Personen. Leicht zu waschen und auch ungebügelt schön.</span><span class="serp-len" lang="pl">tytuł 58/60 · opis 113/160 znaków</span></div>
+</div><div class="lang" data-lang="cs" lang="cs">
+<h3>Lněný ubrus Żyto 140×220 cm, béžový</h3>
+<p>Ubrus ze silnějšího lnu v barvě zralého obilí. Len se snadno pere a lehce zmačkaná struktura působí přirozeně i bez žehlení. Na stůl pro 6–8 osob.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Složení</th><td>100 % len</td></tr><tr><th scope="row">Rozměry</th><td>140×220 cm</td></tr><tr><th scope="row">Údržba</th><td>praní na 40 °C, žehlení za vlhka</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lneny-ubrus-zyto-140x220-bezovy</span><span class="serp-title">Lněný ubrus 140×220 béžový pro 6–8 osob | Lenisko</span><span class="serp-desc">Béžový ubrus ze silného lnu, 140×220 cm, na stůl pro 6–8 osob. Snadno se pere a krásně vypadá i bez žehlení.</span><span class="serp-len" lang="pl">tytuł 49/60 · opis 108/160 znaków</span></div>
+</div><div class="lang" data-lang="sk" lang="sk">
+<h3>Ľanový obrus Żyto 140×220 cm, béžový</h3>
+<p>Obrus z hrubšieho ľanu vo farbe zrelého obilia. Ľan sa ľahko perie a jemne pokrčená štruktúra pôsobí prirodzene aj bez žehlenia. Na stôl pre 6–8 osôb.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Zloženie</th><td>100 % ľan</td></tr><tr><th scope="row">Rozmery</th><td>140×220 cm</td></tr><tr><th scope="row">Starostlivosť</th><td>pranie na 40 °C, žehlenie za vlhka</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lanovy-obrus-zyto-140x220-bezovy</span><span class="serp-title">Ľanový obrus 140×220 béžový pre 6–8 osôb | Lenisko</span><span class="serp-desc">Béžový obrus z hrubého ľanu, 140×220 cm, na stôl pre 6–8 osôb. Ľahko sa perie a pekne vyzerá aj bez žehlenia.</span><span class="serp-len" lang="pl">tytuł 50/60 · opis 109/160 znaków</span></div>
+</div><div class="lang" data-lang="en" lang="en">
+<h3>Linen tablecloth Żyto, 140×220 cm, beige</h3>
+<p>A tablecloth in heavyweight linen, the colour of ripe wheat. Linen is easy to wash, and its softly creased texture looks natural even without ironing. Fits a table for 6–8 people.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100% linen</td></tr><tr><th scope="row">Size</th><td>140×220 cm</td></tr><tr><th scope="row">Care</th><td>wash at 40°C, iron while damp</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/linen-tablecloth-zyto-140x220-beige</span><span class="serp-title">Linen Tablecloth 140×220 cm, Beige, Seats 6–8 | Lenisko</span><span class="serp-desc">Beige heavyweight linen tablecloth, 140×220 cm, for a table seating 6–8. Easy to wash and looks lovely without ironing.</span><span class="serp-len" lang="pl">tytuł 55/60 · opis 119/160 znaków</span></div>
+</div></article><article class="product"><div class="swatch" style="background:#eeece6" aria-hidden="true"></div><p class="sku">LEN-FALA-70</p><div class="lang" data-lang="pl" lang="pl">
+<h3>Ręcznik lniany waflowy Fala 70×140 cm, biały</h3>
+<p>Ręcznik z lnu o splocie waflowym: lekki, szybko schnie i dobrze chłonie wodę. Zajmuje mało miejsca w szafce i w walizce.</p>
+<table class="attrs"><caption>Szczegóły</caption><tr><th scope="row">Skład</th><td>100% len, splot waflowy</td></tr><tr><th scope="row">Wymiary</th><td>70×140 cm</td></tr><tr><th scope="row">Pielęgnacja</th><td>pranie w 60°C, bez płynu do zmiękczania</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/recznik-lniany-waflowy-fala-70x140-bialy</span><span class="serp-title">Ręcznik lniany waflowy 70×140 biały, szybkoschnący | Lenisko</span><span class="serp-desc">Biały ręcznik z lnu waflowego 70×140 cm: lekki, chłonny i szybko schnie. Mało miejsca w szafce i w walizce.</span><span class="serp-len" lang="pl">tytuł 60/60 · opis 107/160 znaków</span></div>
+</div><div class="lang" data-lang="de" lang="de">
+<h3>Leinen-Duschtuch Fala in Waffelpiqué, 70×140 cm, weiß</h3>
+<p>Duschtuch aus Leinen in Waffelstruktur: leicht, schnell trocknend und saugfähig. Braucht wenig Platz im Schrank und im Koffer.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100 % Leinen, Waffelpiqué</td></tr><tr><th scope="row">Maße</th><td>70×140 cm</td></tr><tr><th scope="row">Pflege</th><td>Waschen bei 60 °C, ohne Weichspüler</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/leinen-duschtuch-fala-waffelpique-70x140-weiss</span><span class="serp-title">Waffelpiqué-Duschtuch aus Leinen 70×140 weiß | Lenisko</span><span class="serp-desc">Weißes Duschtuch aus Leinen-Waffelpiqué, 70×140 cm: leicht, saugfähig und schnell trocken. Ideal für Bad und Reise.</span><span class="serp-len" lang="pl">tytuł 54/60 · opis 115/160 znaków</span></div>
+</div><div class="lang" data-lang="cs" lang="cs">
+<h3>Lněná vaflová osuška Fala 70×140 cm, bílá</h3>
+<p>Osuška z vaflového lnu: lehká, rychle schne a dobře saje vodu. Zabere málo místa ve skříni i v kufru.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Složení</th><td>100 % len, vaflová vazba</td></tr><tr><th scope="row">Rozměry</th><td>70×140 cm</td></tr><tr><th scope="row">Údržba</th><td>praní na 60 °C, bez aviváže</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lnena-vaflova-osuska-fala-70x140-bila</span><span class="serp-title">Lněná vaflová osuška 70×140 bílá, rychleschnoucí | Lenisko</span><span class="serp-desc">Bílá osuška z vaflového lnu, 70×140 cm: lehká, savá a rychle schne. Hodí se do koupelny i na cesty.</span><span class="serp-len" lang="pl">tytuł 58/60 · opis 99/160 znaków</span></div>
+</div><div class="lang" data-lang="sk" lang="sk">
+<h3>Ľanová vaflová osuška Fala 70×140 cm, biela</h3>
+<p>Osuška z vaflového ľanu: ľahká, rýchlo schne a dobre saje vodu. Zaberie málo miesta v skrini aj v kufri.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Zloženie</th><td>100 % ľan, vaflová väzba</td></tr><tr><th scope="row">Rozmery</th><td>70×140 cm</td></tr><tr><th scope="row">Starostlivosť</th><td>pranie na 60 °C, bez aviváže</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lanova-vaflova-osuska-fala-70x140-biela</span><span class="serp-title">Ľanová vaflová osuška 70×140 biela, rýchloschnúca | Lenisko</span><span class="serp-desc">Biela osuška z vaflového ľanu, 70×140 cm: ľahká, savá a rýchlo schne. Hodí sa do kúpeľne aj na cesty.</span><span class="serp-len" lang="pl">tytuł 59/60 · opis 101/160 znaków</span></div>
+</div><div class="lang" data-lang="en" lang="en">
+<h3>Waffle linen bath towel Fala, 70×140 cm, white</h3>
+<p>A bath towel in waffle-weave linen: light, quick-drying and absorbent. Takes up little room in the cupboard or a suitcase.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100% linen, waffle weave</td></tr><tr><th scope="row">Size</th><td>70×140 cm</td></tr><tr><th scope="row">Care</th><td>wash at 60°C, no fabric softener</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/waffle-linen-bath-towel-fala-70x140-white</span><span class="serp-title">Waffle Linen Bath Towel 70×140 cm, White | Lenisko</span><span class="serp-desc">White waffle-weave linen bath towel, 70×140 cm: light, absorbent and quick-drying. Great for the bathroom and for travel.</span><span class="serp-len" lang="pl">tytuł 50/60 · opis 121/160 znaków</span></div>
+</div></article><article class="product"><div class="swatch" style="background:#3d4246" aria-hidden="true"></div><p class="sku">LEN-PIEKARNIA</p><div class="lang" data-lang="pl" lang="pl">
+<h3>Fartuch kuchenny lniany Piekarnia, grafitowy</h3>
+<p>Fartuch kuchenny z grubego lnu z dużą kieszenią na przodzie. Regulowany pasek na szyję i długie wiązania w talii pasują na różne sylwetki.</p>
+<table class="attrs"><caption>Szczegóły</caption><tr><th scope="row">Skład</th><td>100% len</td></tr><tr><th scope="row">Wymiary</th><td>70×85 cm</td></tr><tr><th scope="row">Pielęgnacja</th><td>pranie w 40°C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/fartuch-kuchenny-lniany-piekarnia-grafitowy</span><span class="serp-title">Fartuch kuchenny lniany z kieszenią, grafitowy | Lenisko</span><span class="serp-desc">Grafitowy fartuch kuchenny z grubego lnu, 70×85 cm, z dużą kieszenią i regulowanym paskiem na szyję.</span><span class="serp-len" lang="pl">tytuł 56/60 · opis 100/160 znaków</span></div>
+</div><div class="lang" data-lang="de" lang="de">
+<h3>Leinen-Kochschürze Piekarnia, graphit</h3>
+<p>Kochschürze aus kräftigem Leinen mit großer Fronttasche. Verstellbares Nackenband und lange Taillenbänder passen sich verschiedenen Figuren an.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100 % Leinen</td></tr><tr><th scope="row">Maße</th><td>70×85 cm</td></tr><tr><th scope="row">Pflege</th><td>Waschen bei 40 °C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/leinen-kochschuerze-piekarnia-graphit</span><span class="serp-title">Leinen-Kochschürze mit Tasche, graphit | Lenisko</span><span class="serp-desc">Graphitgraue Kochschürze aus kräftigem Leinen, 70×85 cm, mit großer Tasche und verstellbarem Nackenband.</span><span class="serp-len" lang="pl">tytuł 48/60 · opis 104/160 znaków</span></div>
+</div><div class="lang" data-lang="cs" lang="cs">
+<h3>Lněná kuchyňská zástěra Piekarnia, grafitová</h3>
+<p>Kuchyňská zástěra ze silného lnu s velkou přední kapsou. Nastavitelný pásek kolem krku a dlouhé tkanice v pase sednou různým postavám.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Složení</th><td>100 % len</td></tr><tr><th scope="row">Rozměry</th><td>70×85 cm</td></tr><tr><th scope="row">Údržba</th><td>praní na 40 °C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lnena-kuchynska-zastera-piekarnia-grafitova</span><span class="serp-title">Lněná kuchyňská zástěra s kapsou, grafitová | Lenisko</span><span class="serp-desc">Grafitová kuchyňská zástěra ze silného lnu, 70×85 cm, s velkou kapsou a nastavitelným páskem kolem krku.</span><span class="serp-len" lang="pl">tytuł 53/60 · opis 104/160 znaków</span></div>
+</div><div class="lang" data-lang="sk" lang="sk">
+<h3>Ľanová kuchynská zástera Piekarnia, grafitová</h3>
+<p>Kuchynská zástera z hrubého ľanu s veľkým predným vreckom. Nastaviteľný pásik okolo krku a dlhé šnúrky v páse sadnú rôznym postavám.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Zloženie</th><td>100 % ľan</td></tr><tr><th scope="row">Rozmery</th><td>70×85 cm</td></tr><tr><th scope="row">Starostlivosť</th><td>pranie na 40 °C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lanova-kuchynska-zastera-piekarnia-grafitova</span><span class="serp-title">Ľanová kuchynská zástera s vreckom, grafitová | Lenisko</span><span class="serp-desc">Grafitová kuchynská zástera z hrubého ľanu, 70×85 cm, s veľkým vreckom a nastaviteľným pásikom okolo krku.</span><span class="serp-len" lang="pl">tytuł 55/60 · opis 106/160 znaków</span></div>
+</div><div class="lang" data-lang="en" lang="en">
+<h3>Linen kitchen apron Piekarnia, graphite</h3>
+<p>A kitchen apron in heavyweight linen with a large front pocket. The adjustable neck strap and long waist ties fit most body shapes.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100% linen</td></tr><tr><th scope="row">Size</th><td>70×85 cm</td></tr><tr><th scope="row">Care</th><td>wash at 40°C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/linen-kitchen-apron-piekarnia-graphite</span><span class="serp-title">Linen Kitchen Apron with Pocket, Graphite | Lenisko</span><span class="serp-desc">Graphite heavyweight linen kitchen apron, 70×85 cm, with a large pocket and an adjustable neck strap.</span><span class="serp-len" lang="pl">tytuł 51/60 · opis 101/160 znaków</span></div>
+</div></article><article class="product"><div class="swatch" style="background:#7c8459" aria-hidden="true"></div><p class="sku">LEN-ZIELE-4</p><div class="lang" data-lang="pl" lang="pl">
+<h3>Serwetki lniane Ziele 45×45 cm, 4 szt., oliwkowe</h3>
+<p>Zestaw czterech serwetek z miękkiego lnu w kolorze oliwkowym. Pasują do obrusu Żyto i do codziennych posiłków; z każdym praniem są przyjemniejsze w dotyku.</p>
+<table class="attrs"><caption>Szczegóły</caption><tr><th scope="row">Skład</th><td>100% len</td></tr><tr><th scope="row">Wymiary</th><td>45×45 cm, 4 szt.</td></tr><tr><th scope="row">Pielęgnacja</th><td>pranie w 40°C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/serwetki-lniane-ziele-45x45-4-szt-oliwkowe</span><span class="serp-title">Serwetki lniane 45×45, 4 szt., oliwkowe | Lenisko</span><span class="serp-desc">Cztery oliwkowe serwetki z miękkiego lnu, 45×45 cm. Na co dzień i od święta, z każdym praniem coraz miększe.</span><span class="serp-len" lang="pl">tytuł 49/60 · opis 108/160 znaków</span></div>
+</div><div class="lang" data-lang="de" lang="de">
+<h3>Leinen-Servietten Ziele 45×45 cm, 4er-Set, olivgrün</h3>
+<p>Vier Servietten aus weichem Leinen in Olivgrün. Passend zur Tischdecke Żyto und für jeden Tag; mit jeder Wäsche fühlen sie sich angenehmer an.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100 % Leinen</td></tr><tr><th scope="row">Maße</th><td>45×45 cm, 4 Stück</td></tr><tr><th scope="row">Pflege</th><td>Waschen bei 40 °C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/leinen-servietten-ziele-45x45-4er-set-olivgruen</span><span class="serp-title">Leinen-Servietten 45×45, 4er-Set, olivgrün | Lenisko</span><span class="serp-desc">Vier olivgrüne Servietten aus weichem Leinen, 45×45 cm. Für jeden Tag und für Feste, mit jeder Wäsche weicher.</span><span class="serp-len" lang="pl">tytuł 52/60 · opis 110/160 znaków</span></div>
+</div><div class="lang" data-lang="cs" lang="cs">
+<h3>Lněné ubrousky Ziele 45×45 cm, sada 4 ks, olivové</h3>
+<p>Sada čtyř ubrousků z měkkého lnu v olivové barvě. Ladí s ubrusem Żyto a hodí se i ke každodennímu stolování; s každým praním jsou příjemnější na dotek.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Složení</th><td>100 % len</td></tr><tr><th scope="row">Rozměry</th><td>45×45 cm, 4 ks</td></tr><tr><th scope="row">Údržba</th><td>praní na 40 °C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lnene-ubrousky-ziele-45x45-sada-4-ks-olivove</span><span class="serp-title">Lněné ubrousky 45×45, sada 4 ks, olivové | Lenisko</span><span class="serp-desc">Čtyři olivové ubrousky z měkkého lnu, 45×45 cm. Na každý den i pro slavnostní stůl, s každým praním měkčí.</span><span class="serp-len" lang="pl">tytuł 50/60 · opis 106/160 znaków</span></div>
+</div><div class="lang" data-lang="sk" lang="sk">
+<h3>Ľanové servítky Ziele 45×45 cm, súprava 4 ks, olivové</h3>
+<p>Súprava štyroch servítok z mäkkého ľanu v olivovej farbe. Ladia s obrusom Żyto a hodia sa na každodenné stolovanie; s každým praním sú príjemnejšie na dotyk.</p>
+<table class="attrs"><caption>Podrobnosti</caption><tr><th scope="row">Zloženie</th><td>100 % ľan</td></tr><tr><th scope="row">Rozmery</th><td>45×45 cm, 4 ks</td></tr><tr><th scope="row">Starostlivosť</th><td>pranie na 40 °C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/lanove-servitky-ziele-45x45-suprava-4-ks-olivove</span><span class="serp-title">Ľanové servítky 45×45, súprava 4 ks, olivové | Lenisko</span><span class="serp-desc">Štyri olivové servítky z mäkkého ľanu, 45×45 cm. Na každý deň aj na slávnostný stôl, s každým praním mäkšie.</span><span class="serp-len" lang="pl">tytuł 54/60 · opis 108/160 znaków</span></div>
+</div><div class="lang" data-lang="en" lang="en">
+<h3>Linen napkins Ziele, 45×45 cm, set of 4, olive</h3>
+<p>A set of four soft linen napkins in olive green. They go with the Żyto tablecloth and with everyday meals, and feel nicer with every wash.</p>
+<table class="attrs"><caption>Details</caption><tr><th scope="row">Material</th><td>100% linen</td></tr><tr><th scope="row">Size</th><td>45×45 cm, set of 4</td></tr><tr><th scope="row">Care</th><td>wash at 40°C</td></tr></table>
+<div class="serp" aria-label="Podgląd w Google"><span class="serp-url">lenisko.example/linen-napkins-ziele-45x45-set-of-4-olive</span><span class="serp-title">Linen Napkins 45×45 cm, Set of 4, Olive | Lenisko</span><span class="serp-desc">Four soft olive-green linen napkins, 45×45 cm. For everyday meals and special occasions, softer with every wash.</span><span class="serp-len" lang="pl">tytuł 49/60 · opis 112/160 znaków</span></div>
+</div></article>
+<div class="dl"><a class="btn" href="lenisko-probka.csv" download>Pobierz plik CSV (do importu)</a><span>Ten sam tekst w pliku: jeden wiersz na produkt i język.</span></div>
+<footer>Projekt koncepcyjny: „Lenisko” to sklep fikcyjny, produkty i dane są przykładowe. Lokalizacja: Maria | WWW · Aplikacje · AI, praca z narzędziami AI i sprawdzaniem terminologii, nazw w lokalnych sklepach i limitów znaków. Bez korekty native speakera.</footer>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const tabs = document.querySelectorAll('[role=tab]');
+function show(l) {
+  tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.lang === l ? 'true' : 'false'));
+  document.querySelectorAll('.lang, .note-lang').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+}
+tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.lang)));
+show('de');
+</script>
+</body>
+</html>
