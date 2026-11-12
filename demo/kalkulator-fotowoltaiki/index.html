@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Kalkulator fotowoltaiki i pompy ciepła · Heliovka (demo)</title>
+<meta name="description" content="Demo koncepcyjne kalkulatora dla firmy montażowej: dobór mocy fotowoltaiki lub pompy ciepła, cena orientacyjna i szacunkowy zwrot.">
+<meta name="theme-color" content="#a5470c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23a5470c'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%23fff' stroke-width='2.6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../_wspolne/demo.css">
+<style>
+:root { --acc: #a5470c; --acc-h: #823709; --acc-soft: #fbeee4; }
+.house { --sky: #eaf3f7; }
+.mode-hp .only-pv, .mode-pv .only-hp { display: none !important; }
+#dach { grid-template-columns: 1fr 1fr; }
+@media (max-width: 480px) { .mode-pv .kpi:nth-child(3), .mode-hp .kpi:nth-child(6) { grid-column: 1 / -1; } }
+</style>
+</head>
+<body class="mode-pv">
+<a class="skip" href="#kalkulator">Przejdź do kalkulatora</a>
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><circle cx="16" cy="16" r="5.5"/><path d="M16 4.5v3M16 24.5v3M4.5 16h3M24.5 16h3M8 8l2 2M22 22l2 2M8 24l2-2M22 10l2-2"/></svg>
+    <span class="brand-name">Heliovka</span>
+    <span class="brand-sub">fotowoltaika i pompy ciepła</span>
+  </div>
+  <p class="demo-badge"><span class="dot" aria-hidden="true"></span>Demo koncepcyjne — marka i ceny przykładowe</p>
+</header>
+
+<main class="app">
+  <section class="viewer" aria-label="Podgląd instalacji i wyniki">
+    <div class="stage">
+      <svg id="scena" viewBox="0 0 640 340" role="img" aria-labelledby="scena-opis"><title id="scena-opis">Schemat domu z dobraną instalacją</title></svg>
+      <p class="stage-cap" id="scena-cap"></p>
+    </div>
+    <div class="kpis" aria-live="polite">
+      <div class="kpi only-pv"><span>Moc instalacji</span><b id="k-moc">—</b><small id="k-panele"></small></div>
+      <div class="kpi only-pv"><span>Produkcja rocznie</span><b id="k-prod">—</b><small>szacunkowo</small></div>
+      <div class="kpi only-pv"><span>Zwrot inwestycji</span><b id="k-zwrot">—</b><small id="k-osz"></small></div>
+      <div class="kpi only-hp"><span>Zapotrzebowanie</span><b id="k-zap">—</b><small>ogrzewanie i ciepła woda</small></div>
+      <div class="kpi only-hp"><span>Dobrana pompa</span><b id="k-model">—</b><small>powietrze–woda</small></div>
+      <div class="kpi only-hp"><span>Zasobnik CWU</span><b id="k-cwu">—</b><small id="k-cwu-s"></small></div>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div class="panel" id="kalkulator" tabindex="-1">
+      <div class="intro">
+        <h1>Policz instalację dla swojego domu</h1>
+        <p>Wybierz, co chcesz zamontować. Moc, cena orientacyjna i szacunkowy zwrot zmieniają się na bieżąco.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Rodzaj instalacji">
+        <button type="button" role="tab" id="tab-pv" aria-selected="true" aria-controls="f-pv">Fotowoltaika</button>
+        <button type="button" role="tab" id="tab-hp" aria-selected="false" aria-controls="f-hp">Pompa ciepła</button>
+      </div>
+
+      <form id="f-pv" class="only-pv" role="tabpanel" aria-labelledby="tab-pv" novalidate>
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">1</span>Zużycie prądu</legend>
+          <div class="dim">
+            <div class="dim-head"><label for="zuz">Roczne zużycie</label><span class="num-in"><input type="number" id="zuz-n" inputmode="numeric" aria-label="Roczne zużycie w kWh"><span aria-hidden="true">kWh</span></span></div>
+            <input type="range" id="zuz" min="1500" max="15000" step="100" value="4500" aria-describedby="zuz-info">
+            <p class="lim"><span>1 500 kWh</span><span>15 000 kWh</span></p>
+            <p class="info" id="zuz-info"></p>
+          </div>
+          <div class="dim">
+            <div class="dim-head"><label for="pokr">Pokrycie zużycia</label><output for="pokr" id="pokr-out">100%</output></div>
+            <input type="range" id="pokr" min="70" max="130" step="5" value="100">
+            <p class="lim"><span>70%</span><span>130% (np. pod przyszłą pompę ciepła)</span></p>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">2</span>Miejsce montażu</legend>
+          <div class="cards" id="dach"></div>
+          <div class="dim" style="margin-top:14px">
+            <div class="dim-head"><label for="kier">Kierunek dachu</label></div>
+            <select id="kier" style="width:100%;margin-top:6px">
+              <option value="1">Południe</option>
+              <option value="0.95">Południowy wschód / zachód</option>
+              <option value="0.85">Wschód–zachód</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">3</span>Dodatki</legend>
+          <div class="cards" id="mag"></div>
+          <div class="checks" style="margin-top:14px">
+            <label class="check"><input type="checkbox" id="opt"><span><b>Optymalizatory mocy</b> <span class="muted" id="opt-opis"></span></span></label>
+          </div>
+        </fieldset>
+      </form>
+
+      <form id="f-hp" class="only-hp" role="tabpanel" aria-labelledby="tab-hp" novalidate>
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">1</span>Budynek</legend>
+          <div class="dim">
+            <div class="dim-head"><label for="pow">Powierzchnia ogrzewana</label><span class="num-in"><input type="number" id="pow-n" inputmode="numeric" aria-label="Powierzchnia w metrach kwadratowych"><span aria-hidden="true">m²</span></span></div>
+            <input type="range" id="pow" min="60" max="300" step="5" value="140">
+            <p class="lim"><span>60 m²</span><span>300 m²</span></p>
+          </div>
+          <p class="info" style="margin-bottom:8px"><b>Standard ocieplenia</b></p>
+          <div class="cards" id="std"></div>
+        </fieldset>
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">2</span>Instalacja i ciepła woda</legend>
+          <div class="cards" id="inst" style="grid-template-columns:1fr 1fr"></div>
+          <div class="dim" style="margin-top:14px">
+            <div class="dim-head"><label for="os">Liczba osób (ciepła woda)</label><output for="os" id="os-out">4</output></div>
+            <input type="range" id="os" min="1" max="8" step="1" value="4">
+          </div>
+          <div class="checks" style="margin-top:10px"><label class="check"><input type="checkbox" id="cwu" checked><span><b>Zasobnik ciepłej wody 250 l</b> <span class="muted" id="cwu-opis"></span></span></label></div>
+        </fieldset>
+      </form>
+
+      <section class="step" aria-labelledby="podsum-t">
+        <h2 id="podsum-t"><span class="num" aria-hidden="true">✓</span>Podsumowanie</h2>
+        <table class="breakdown"><caption class="sr-only">Rozbicie ceny orientacyjnej</caption><tbody id="rozbicie"></tbody>
+          <tfoot><tr><th scope="row">Razem netto</th><td id="t-netto"></td></tr><tr><th scope="row" id="t-vat-l">VAT</th><td id="t-vat"></td></tr><tr class="total"><th scope="row">Razem brutto</th><td id="t-brutto"></td></tr></tfoot>
+        </table>
+        <p class="note" id="nota"></p>
+        <details class="rates"><summary>Jak liczymy?</summary><ul id="zalozenia"></ul></details>
+      </section>
+    </div>
+    <div class="pricebar">
+      <div class="pb-price"><span class="pb-label">Cena orientacyjna</span><span class="pb-netto"><span id="cena-netto">—</span> <small>netto</small></span><span class="pb-brutto"><span id="cena-brutto">—</span> brutto</span></div>
+      <button type="button" class="btn-primary" id="btn-wycena">Wyślij do wyceny <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </aside>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="../_wspolne/wycena.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

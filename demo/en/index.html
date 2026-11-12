@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Business tool demos: price calculators, 3D configurator, AI assistant</title>
+<meta name="description" content="Working demos of website tools for businesses: 3D product configurator with pricing, solar and heat pump calculator, renovation estimate with PDF, AI assistant answering from a price list.">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/demo/en/">
+<link rel="alternate" hreflang="pl" href="https://frameoneproduction-hash.github.io/portfolio/demo/">
+<link rel="alternate" hreflang="en" href="https://frameoneproduction-hash.github.io/portfolio/demo/en/">
+<link rel="preload" href="../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../../audyt-wp/img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --ink: #10222f; --paper: #f6f5f2; --card: #fff; --muted: #4a5963; --line: #dde2e3; --accent: #0c6e8c; --soft: #e8f1f4; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.top { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: 15px; }
+.top strong { font-weight: 800; }
+.top nav a { margin-left: 16px; font-weight: 700; text-decoration: none; }
+header { padding: 36px 0 12px; max-width: 760px; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 14px; }
+h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.04; letter-spacing: -0.04em; margin: 0 0 18px; font-weight: 800; }
+.lead { font-size: 20px; color: var(--muted); margin: 0; max-width: 50ch; }
+h2 { font-size: 30px; letter-spacing: -0.025em; margin: 64px 0 18px; font-weight: 800; line-height: 1.1; }
+.demos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
+.demo { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
+.demo img { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--line); }
+.demo-b { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.demo h3 { font-size: 21px; letter-spacing: -0.015em; margin: 0; }
+.demo p { margin: 0; color: var(--muted); font-size: 15.5px; }
+.demo .for { font-size: 14px; }
+.demo .for b { color: var(--ink); }
+.demo a.open { margin-top: auto; align-self: flex-start; display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 800; padding: 11px 18px; border-radius: 999px; font-size: 15px; }
+.tag { align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--soft); padding: 3px 9px; border-radius: 999px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.card h3 { font-size: 18px; margin: 0 0 8px; }
+.card p { color: var(--muted); font-size: 15.5px; margin: 0; }
+.small { color: var(--muted); font-size: 15px; }
+.cta { background: var(--ink); color: #eef3f5; border-radius: 18px; padding: 36px; margin-top: 64px; display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+.cta h2 { margin: 0 0 6px; color: #fff; font-size: 26px; }
+.cta p { margin: 0; color: #c9d5da; }
+.cta .btn { background: #fff; color: var(--ink); white-space: nowrap; display: inline-block; text-decoration: none; font-weight: 800; padding: 14px 24px; border-radius: 999px; }
+footer { margin: 48px 0 0; padding: 24px 0 48px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 860px) { .demos, .grid { grid-template-columns: 1fr; } .cta { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 560px) { .wrap { padding: 0 16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><strong>Maria | WWW · Aplikacje · AI</strong><nav aria-label="Language"><a href="../" hreflang="pl" lang="pl">Polski</a></nav></div>
+
+<header>
+<p class="kicker">Concept demos · fictional brands and sample prices</p>
+<h1>Tools that quote prices and answer your customers</h1>
+<p class="lead">Customers configure the product and see an indicative price; you receive a ready enquiry with a PDF summary. Four working demos, on desktop and on a phone. The demo interfaces are in Polish; I build them in English for your business.</p>
+</header>
+
+<div class="demos">
+<article class="demo"><a href="../konfigurator-zadaszen/" tabindex="-1" aria-hidden="true"><img src="../img/konfigurator.webp" width="1200" height="750" alt="" loading="lazy"></a><div class="demo-b"><span class="tag">3D configurator</span><h3>Patio roof with live pricing</h3><p>The 3D model follows the size, roofing, colour and add-ons. The price updates as you go, and the enquiry reaches the company with a PDF and the visualisation.</p><p class="for"><b>For:</b> patio covers, pergolas, garages, fencing, made-to-measure furniture.</p><a class="open" href="../konfigurator-zadaszen/" hreflang="pl">Open the demo<span class="sr-only">: 3D patio roof configurator</span></a></div></article>
+<article class="demo"><a href="../kalkulator-fotowoltaiki/" tabindex="-1" aria-hidden="true"><img src="../img/fotowoltaika.webp" width="1200" height="750" alt="" loading="lazy"></a><div class="demo-b"><span class="tag">Calculator</span><h3>Solar panels and heat pumps</h3><p>System size from yearly electricity use, price from the company’s price list, estimated output and payback. A second tab sizes a heat pump from floor area and insulation.</p><p class="for"><b>For:</b> solar and heat pump installers, wholesalers.</p><a class="open" href="../kalkulator-fotowoltaiki/" hreflang="pl">Open the demo<span class="sr-only">: solar and heat pump calculator</span></a></div></article>
+<article class="demo"><a href="../kalkulator-remontu/" tabindex="-1" aria-hidden="true"><img src="../img/remont.webp" width="1200" height="750" alt="" loading="lazy"></a><div class="demo-b"><span class="tag">Calculator + PDF</span><h3>Renovation estimate</h3><p>Rooms, dimensions, scope of work and material grade. A floor plan to scale, labour vs materials, duration and a downloadable PDF estimate.</p><p class="for"><b>For:</b> renovation and fit-out teams, painters, cleaning companies.</p><a class="open" href="../kalkulator-remontu/" hreflang="pl">Open the demo<span class="sr-only">: renovation calculator</span></a></div></article>
+<article class="demo"><a href="../asystent-ai/" tabindex="-1" aria-hidden="true"><img src="../img/asystent.webp" width="1200" height="750" alt="" loading="lazy"></a><div class="demo-b"><span class="tag">AI assistant</span><h3>A chat that answers from your price list</h3><p>Answers questions about prices, turnaround and policies from the company’s price list and terms. When it doesn’t know, it doesn’t guess: it hands the question to a person. It says it is AI from the first message. In the demo, answers come from rules built on the price list; in a real deployment an AI model answers.</p><p class="for"><b>For:</b> repair shops, clinics, workshops, shops with lots of questions.</p><a class="open" href="../asystent-ai/" hreflang="pl">Open the demo<span class="sr-only">: AI assistant</span></a></div></article>
+</div>
+
+<h2>How it works for you</h2>
+<div class="grid">
+<div class="card"><h3>Your prices, your rules</h3><p>Prices, options, surcharges and wording come from you. Updating the price list means editing one file.</p></div>
+<div class="card"><h3>On your website</h3><p>WordPress or any other site: the tool sits on its own page or in a pop-up. The mobile version is included.</p></div>
+<div class="card"><h3>Enquiry with a PDF</h3><p>The customer sends the configuration and you receive an email with a PDF summary; personal data handled in line with GDPR.</p></div>
+</div>
+<p class="small" style="margin-top:16px">Agencies: I also build these tools under your brand — <a href="../../oferta/white-label/en/">white-label offer</a>.</p>
+
+<div class="cta">
+<div><h2>Want a calculator or an assistant like this?</h2><p>Tell me about your product and prices; I’ll reply with a proposal and a timeline.</p></div>
+<a class="btn" href="https://www.fiverr.com/mariak_webdev">Message me on Fiverr</a>
+</div>
+
+<footer>All demos are concept projects: Tarvio, Heliovka, Murelio and Szprychlo are fictional brands, prices are examples, and the forms send nothing. Maria | WWW · Aplikacje · AI.</footer>
+</div>
+</body>
+</html>
