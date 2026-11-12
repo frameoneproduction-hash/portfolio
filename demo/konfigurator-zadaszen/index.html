@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Konfigurator zadaszeń tarasu 3D · Tarvio (demo)</title>
+<meta name="description" content="Demo koncepcyjne konfiguratora 3D aluminiowych zadaszeń tarasu i pergoli: wymiary, pokrycie, kolor RAL, dodatki i cena orientacyjna.">
+<meta name="theme-color" content="#1f4f4a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f4f4a'/%3E%3Cpath d='M6 11l20-4M9 10v15M23 7.6V25' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#konfigurator">Przejdź do konfiguratora</a>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7"/><path d="M6 11l20-4M9 10v15M23 7.6V25"/></svg>
+    <span class="brand-name">Tarvio</span>
+    <span class="brand-sub">zadaszenia aluminiowe</span>
+  </div>
+  <p class="demo-badge"><span class="dot" aria-hidden="true"></span>Demo koncepcyjne — marka i ceny przykładowe</p>
+</header>
+
+<main class="app">
+  <section class="viewer" aria-label="Podgląd 3D zadaszenia">
+    <canvas id="scena" role="img" aria-label="Wizualizacja 3D skonfigurowanego zadaszenia tarasu przy ścianie domu"></canvas>
+
+    <div class="v-top">
+      <p class="chip" id="chip" aria-hidden="true">5,0 × 3,5 m · Szkło · RAL 7016</p>
+      <button type="button" class="v-btn" id="btn-noc" aria-pressed="false">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+        <span id="btn-noc-txt">Noc</span>
+      </button>
+    </div>
+
+    <div class="v-bottom">
+      <div class="views" role="group" aria-label="Widok kamery">
+        <button type="button" data-widok="perspektywa" aria-pressed="true">3/4</button>
+        <button type="button" data-widok="przod" aria-pressed="false">Przód</button>
+        <button type="button" data-widok="bok" aria-pressed="false">Bok</button>
+        <button type="button" data-widok="gora" aria-pressed="false">Z góry</button>
+      </div>
+      <p class="hint-3d" aria-hidden="true"><span class="h-desk">Przeciągnij, aby obrócić · kółko — zoom · prawy przycisk — przesuń</span><span class="h-touch">Przesuń palcem, aby obrócić · dwa palce — zoom</span></p>
+    </div>
+
+    <div class="loader" id="loader" role="status">
+      <span class="spin" aria-hidden="true"></span>
+      <span>Ładowanie wizualizacji 3D…</span>
+    </div>
+    <div class="v-error" id="v-error" hidden>
+      <p><strong>Podgląd 3D jest niedostępny</strong> w tej przeglądarce lub bez połączenia z internetem. Konfiguracja i cena działają normalnie.</p>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div class="panel" id="konfigurator" tabindex="-1">
+      <div class="intro">
+        <h1>Skonfiguruj zadaszenie tarasu</h1>
+        <p>Dobierz wymiary, pokrycie, kolor i dodatki. Model 3D i cena orientacyjna zmieniają się na bieżąco.</p>
+      </div>
+
+      <form id="cfg" novalidate>
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">1</span>Wymiary</legend>
+          <div class="dim" data-dim="w">
+            <div class="dim-head">
+              <label for="w-range">Szerokość <span class="muted">(wzdłuż ściany)</span></label>
+              <span class="num-in"><input type="number" id="w-num" inputmode="decimal" aria-label="Szerokość w metrach"><span aria-hidden="true">m</span></span>
+            </div>
+            <input type="range" id="w-range" aria-describedby="w-lim">
+            <p class="lim" id="w-lim"></p>
+          </div>
+          <div class="dim" data-dim="d">
+            <div class="dim-head">
+              <label for="d-range">Wysięg <span class="muted">(od ściany)</span></label>
+              <span class="num-in"><input type="number" id="d-num" inputmode="decimal" aria-label="Wysięg w metrach"><span aria-hidden="true">m</span></span>
+            </div>
+            <input type="range" id="d-range" aria-describedby="d-lim">
+            <p class="lim" id="d-lim"></p>
+          </div>
+          <div class="dim" data-dim="h">
+            <div class="dim-head">
+              <label for="h-range">Wysokość <span class="muted">(w świetle, przy słupach)</span></label>
+              <span class="num-in"><input type="number" id="h-num" inputmode="decimal" aria-label="Wysokość w metrach"><span aria-hidden="true">m</span></span>
+            </div>
+            <input type="range" id="h-range" aria-describedby="h-lim">
+            <p class="lim" id="h-lim"></p>
+          </div>
+          <p class="info" id="uklad-info"></p>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">2</span>Pokrycie dachu</legend>
+          <div class="cards" id="dach-opcje"></div>
+          <div class="sub" id="kat-wrap" hidden>
+            <div class="dim-head">
+              <label for="kat">Kąt otwarcia lamel</label>
+              <output for="kat" id="kat-out">45°</output>
+            </div>
+            <input type="range" id="kat" min="0" max="135" step="5" aria-describedby="kat-hint">
+            <p class="lim" id="kat-hint"><span>0° — dach zamknięty</span><span>135° — maksymalne otwarcie</span></p>
+          </div>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">3</span>Kolor konstrukcji (RAL)</legend>
+          <div class="swatches" id="ral-opcje"></div>
+          <p class="info" id="ral-info" aria-live="polite"></p>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend><span class="num" aria-hidden="true">4</span>Dodatki</legend>
+
+          <div class="addon">
+            <p class="addon-title" id="rolety-t">Rolety ZIP <span class="muted">— ochrona przed słońcem, wiatrem i owadami</span></p>
+            <div class="toggles" role="group" aria-labelledby="rolety-t">
+              <label class="tg"><input type="checkbox" id="r-lewa"><span class="tg-box"><b>Lewa</b><small data-cena="lewa"></small></span></label>
+              <label class="tg"><input type="checkbox" id="r-prawa"><span class="tg-box"><b>Prawa</b><small data-cena="prawa"></small></span></label>
+              <label class="tg"><input type="checkbox" id="r-przod"><span class="tg-box"><b>Przód</b><small data-cena="przod"></small></span></label>
+            </div>
+            <div class="sub" id="roz-wrap" hidden>
+              <div class="dim-head">
+                <label for="roz">Rozwinięcie rolet w podglądzie</label>
+                <output for="roz" id="roz-out">70%</output>
+              </div>
+              <input type="range" id="roz" min="0" max="100" step="5">
+            </div>
+          </div>
+
+          <div class="addon">
+            <label class="check"><input type="checkbox" id="led"><span><b>Oświetlenie LED</b> <span class="muted" id="led-opis"></span></span></label>
+            <div class="sub row" id="led-wrap" hidden>
+              <label for="barwa">Barwa światła</label>
+              <select id="barwa">
+                <option value="ciepla">Ciepła 3000 K</option>
+                <option value="neutralna">Neutralna 4000 K</option>
+              </select>
+              <button type="button" class="link-btn" id="btn-led-noc">Zobacz nocą</button>
+            </div>
+          </div>
+
+          <div class="addon">
+            <label class="check"><input type="checkbox" id="montaz"><span><b>Montaż i transport</b> <span class="muted" id="montaz-opis"></span></span></label>
+          </div>
+        </fieldset>
+
+        <section class="step" aria-labelledby="podsum-t">
+          <h2 id="podsum-t"><span class="num" aria-hidden="true">5</span>Podsumowanie</h2>
+          <table class="breakdown">
+            <caption class="sr-only">Rozbicie ceny orientacyjnej</caption>
+            <tbody id="rozbicie"></tbody>
+            <tfoot>
+              <tr><th scope="row">Razem netto</th><td id="t-netto"></td></tr>
+              <tr><th scope="row" id="t-vat-l">VAT 23%</th><td id="t-vat"></td></tr>
+              <tr class="total"><th scope="row">Razem brutto</th><td id="t-brutto"></td></tr>
+            </tfoot>
+          </table>
+          <p class="note">Cena orientacyjna, wyliczona na podstawie przykładowego cennika. Ostateczna oferta powstaje po bezpłatnym pomiarze. Kolory na ekranie są poglądowe.</p>
+          <details class="rates">
+            <summary>Jak liczymy cenę?</summary>
+            <ul id="stawki"></ul>
+          </details>
+          <button type="button" class="link-btn" id="btn-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L12 5.6M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.2-1.2"/></svg>
+            Kopiuj link do tej konfiguracji
+          </button>
+        </section>
+      </form>
+    </div>
+
+    <div class="pricebar">
+      <div class="pb-price">
+        <span class="pb-label">Cena orientacyjna</span>
+        <span class="pb-netto"><span id="cena-netto">—</span> <small>netto</small></span>
+        <span class="pb-brutto"><span id="cena-brutto">—</span> brutto</span>
+      </div>
+      <button type="button" class="btn-primary" id="btn-wycena">Wyślij do wyceny
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </aside>
+</main>
+
+<p class="sr-only" id="sr-status" aria-live="polite"></p>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <div class="dlg-in">
+    <button type="button" class="dlg-x" id="dlg-x" aria-label="Zamknij okno">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+
+    <div id="dlg-form-wrap">
+      <h2 id="dlg-title">Wyślij konfigurację do wyceny</h2>
+      <p class="dlg-lead">Przygotujemy dokładną ofertę dla Twojego tarasu. Do zapytania dołączymy podsumowanie PDF z wizualizacją.</p>
+      <div class="dlg-sum" id="dlg-sum"></div>
+
+      <form id="form-wycena" novalidate>
+        <div class="f-grid">
+          <div class="f">
+            <label for="f-imie">Imię i nazwisko <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-imie" name="imie" type="text" autocomplete="name" required maxlength="80" aria-describedby="e-imie">
+            <p class="err" id="e-imie" hidden>Podaj imię i nazwisko.</p>
+          </div>
+          <div class="f">
+            <label for="f-email">E-mail <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="120" aria-describedby="e-email">
+            <p class="err" id="e-email" hidden>Podaj poprawny adres e-mail.</p>
+          </div>
+          <div class="f">
+            <label for="f-tel">Telefon <span class="muted">(opcjonalnie)</span></label>
+            <input id="f-tel" name="telefon" type="tel" autocomplete="tel" maxlength="20" aria-describedby="e-tel">
+            <p class="err" id="e-tel" hidden>Numer może zawierać tylko cyfry, spacje i znak +.</p>
+          </div>
+          <div class="f">
+            <label for="f-miasto">Miejscowość montażu <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-miasto" name="miasto" type="text" autocomplete="address-level2" required maxlength="60" aria-describedby="e-miasto">
+            <p class="err" id="e-miasto" hidden>Podaj miejscowość.</p>
+          </div>
+          <div class="f full">
+            <label for="f-uwagi">Uwagi <span class="muted">(opcjonalnie)</span></label>
+            <textarea id="f-uwagi" name="uwagi" rows="3" maxlength="500" placeholder="Np. rodzaj elewacji, preferowany termin montażu"></textarea>
+          </div>
+        </div>
+        <div class="f consent">
+          <label class="check"><input type="checkbox" id="f-rodo" required aria-describedby="e-rodo"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu przygotowania wyceny i kontaktu w tej sprawie. Zgodę mogę w każdej chwili wycofać. <span class="req" aria-hidden="true">*</span></span></label>
+          <p class="err" id="e-rodo" hidden>Zgoda jest potrzebna, abyśmy mogli przygotować wycenę.</p>
+        </div>
+        <p class="demo-note"><strong>Wersja demonstracyjna:</strong> dane nie są nigdzie wysyłane ani zapisywane — po kliknięciu pobierzesz plik PDF z podsumowaniem.</p>
+        <div class="dlg-actions">
+          <button type="button" class="btn-ghost" id="dlg-cancel">Anuluj</button>
+          <button type="submit" class="btn-primary" id="dlg-submit">Wyślij do wyceny</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="dlg-ok" hidden tabindex="-1">
+      <div class="ok-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2>Podsumowanie gotowe</h2>
+      <p id="ok-txt"></p>
+      <p class="ok-prod">W wersji produkcyjnej ten sam PDF trafia automatycznie e-mailem do działu handlowego firmy, a klient otrzymuje potwierdzenie z kopią podsumowania. W tym demo nic nie zostało wysłane.</p>
+      <div class="dlg-actions">
+        <button type="button" class="btn-ghost" id="ok-again">Pobierz PDF ponownie</button>
+        <button type="button" class="btn-primary" id="ok-close">Zamknij</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="js/ceny.js"></script>
+<script src="js/scena.js"></script>
+<script src="js/pdf.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
