@@ -13,7 +13,7 @@
         { b: 'Привет! Я ИИ-ассистент [Brand] 🙂 Следующая вечеринка — Mikołajki, в пятницу, 11 декабря, с 22:00. Место: Варшава, точный адрес — в деталях. Дресс-код: что-нибудь красное или новогоднее.' },
         { b: 'Хочешь, внесу тебя в список гостей? Напиши, пожалуйста, своё имя и придёшь ли с кем-то (+1).', row: { id: 'katya', name: '@katya.waw', lang: 'RU', src: 'Story reply', status: 'invited' } },
         { g: 'Да! Катя, буду с подругой', lang: 'RU' },
-        { b: 'Готово, Катя: ты в списке, +1 ✨ Билеты и детали: ' + LINK + '. Накануне пришлю напоминание. До встречи 11-го!', row: { id: 'katya', name: 'Катя', lang: 'RU', src: 'Story reply', status: 'confirmed +1' } }
+        { b: 'Готово, Катя: ты в списке, +1 ✨ Билеты и детали: ' + LINK + '. Если захочешь, напиши накануне — пришлю адрес и детали. До встречи 11-го!', row: { id: 'katya', name: 'Катя', lang: 'RU', src: 'Story reply', status: 'confirmed +1' } }
       ]
     },
     {
@@ -29,7 +29,7 @@
     {
       desc: 'A guest who registered last time but didn’t come gets one friendly follow-up in Russian. No reply — no further messages.',
       steps: [
-        { sys: 'Follow-up: Dima confirmed the November party but didn’t come. He reacted to a story this week, so the conversation is open.' },
+        { sys: 'Follow-up: Dima confirmed the November party but didn’t come. He reacted to a story today, so Instagram’s 24-hour messaging window is open.' },
         { b: 'Привет, Дима! Это ИИ-ассистент [Brand]. Жаль, что в прошлый раз не получилось прийти. 11 декабря делаем Mikołajki — будет весело. Если интересно, просто ответь, и я пришлю детали.', row: { id: 'dima', name: 'Дима', lang: 'RU', src: 'Follow-up', status: 'invited' } },
         { sys: 'No reply in 48 hours → the assistant stops. One message only, no chasing.', stop: true, row: { id: 'dima', name: 'Дима', lang: 'RU', src: 'Follow-up', status: 'no reply' } }
       ]
@@ -39,7 +39,7 @@
       steps: [
         { g: 'А можно прийти с собакой? И в прошлый раз на входе была огромная очередь, это было неприятно.', lang: 'RU' },
         { b: 'Привет! Я ИИ-ассистент [Brand]. Спасибо за сообщение и извини за очередь — для нас это важно.' },
-        { b: 'Про собаку и твой отзыв передаю вопрос команде: тебе ответят здесь лично в ближайшее время.', handoff: true, row: { id: 'olga', name: '@olga.dance', lang: 'RU', src: 'DM', status: 'needs human' } },
+        { b: 'Вопрос про собаку и твой отзыв передаю команде: тебе ответят здесь лично в ближайшее время.', handoff: true, row: { id: 'olga', name: '@olga.dance', lang: 'RU', src: 'DM', status: 'needs human' } },
         { sys: 'The team gets a notification with the full conversation. The assistant stays silent in this chat until a person replies.' }
       ]
     }
