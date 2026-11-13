@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Demo: an AI assistant that answers party guests in DMs in Russian and Polish, invites them to the next event and keeps a guest list.">
+<title>AI DM assistant for party invitations — demo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23161321'/%3E%3Cpath d='M9 11h14v9H15l-4 3v-3H9z' fill='%23f2c14e'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="banner" role="note">Demo — brand, guests and messages are examples. The assistant always says it’s the brand’s AI assistant.</div>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">AI assistant for direct messages</p>
+    <h1>Invite warm leads to <span class="hl">Mikołajki · 11 December</span> — in Russian and Polish, 24/7</h1>
+    <p class="lead">Press <strong>Next</strong> to play a conversation. Every guest who answers lands in the live guest list — ready to download for Excel.</p>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="tabs" role="tablist" aria-label="Scenarios">
+    <button type="button" role="tab" id="tab-0" aria-controls="stage" aria-selected="true" data-sc="0"><span class="n">1</span>Story reply <span class="lang">RU</span></button>
+    <button type="button" role="tab" id="tab-1" aria-controls="stage" aria-selected="false" tabindex="-1" data-sc="1"><span class="n">2</span>Price question <span class="lang">PL</span></button>
+    <button type="button" role="tab" id="tab-2" aria-controls="stage" aria-selected="false" tabindex="-1" data-sc="2"><span class="n">3</span>Follow-up <span class="lang">RU</span></button>
+    <button type="button" role="tab" id="tab-3" aria-controls="stage" aria-selected="false" tabindex="-1" data-sc="3"><span class="n">4</span>Tricky question <span class="lang">RU</span></button>
+  </div>
+
+  <div class="layout">
+    <section class="stage" id="stage" role="tabpanel" aria-labelledby="tab-0">
+      <p class="sc-desc" id="scDesc"></p>
+      <div class="phone">
+        <div class="phone__bar">
+          <span class="avatar" aria-hidden="true">B</span>
+          <div>
+            <p class="phone__name">[Brand] <span class="ai-chip">AI assistant</span></p>
+            <p class="phone__sub">Direct messages · replies in a few seconds</p>
+          </div>
+        </div>
+        <div class="chat" id="chat" role="log" aria-live="polite" aria-label="Conversation"></div>
+        <div class="phone__input" aria-hidden="true"><span>Message…</span></div>
+      </div>
+      <div class="controls">
+        <button type="button" class="btn" id="nextBtn">Next</button>
+        <button type="button" class="btn btn--ghost" id="autoBtn" aria-pressed="false">Auto-play</button>
+        <button type="button" class="btn btn--ghost" id="restartBtn">Restart</button>
+        <span class="progress" id="progress" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <aside class="side">
+      <section class="sheet" aria-labelledby="h-list">
+        <div class="sheet__head">
+          <h2 id="h-list">Guest list · Mikołajki 11.12</h2>
+          <button type="button" class="btn btn--small" id="csvBtn">Download CSV</button>
+        </div>
+        <div class="sheet__scroll">
+          <table class="grid">
+            <caption class="sr">Guest list, updated live by the assistant</caption>
+            <thead><tr><th scope="col" class="rownum">#</th><th scope="col">Name</th><th scope="col">Language</th><th scope="col">Source</th><th scope="col">Status</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p class="sheet__note">CSV opens in Excel (UTF-8, semicolons). In the live setup the list syncs to Google Sheets or Excel automatically.</p>
+      </section>
+
+      <section class="how" aria-labelledby="h-how">
+        <h2 id="h-how">How it works</h2>
+        <ul>
+          <li><strong>Official integration</strong> — runs on your own Instagram account via ManyChat and Meta’s messaging API. No shared passwords, no unofficial bots.</li>
+          <li><strong>Answers from your materials</strong> — FAQ, price list and event details you approve. Russian and Polish detected automatically.</li>
+          <li><strong>Honest about being AI</strong> — the first message says it’s your brand’s AI assistant.</li>
+          <li><strong>Hands off to your team</strong> — complaints, special requests and anything unclear get a “needs human” status and a notification.</li>
+          <li><strong>No cold DMs</strong> — it answers people who wrote to you or reacted to a story; follow-ups only within Instagram’s messaging window, one message, no chasing.</li>
+          <li><strong>Group chats stay with your team.</strong></li>
+          <li><strong>Setup in 5–7 days</strong>, including tone of voice in both languages and a test week.</li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap"><p>Demo page · no cookies, no tracking, no external requests. Names, prices and links are examples.</p></div></footer>
+<script src="app.js"></script>
+</body>
+</html>
