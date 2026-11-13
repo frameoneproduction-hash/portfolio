@@ -15,13 +15,13 @@ window.ARCH = (function () {
 
   var SPRAWY = {
     kessbrand: 'Kessbrand — dostawy i ceny 2027',
-    brenvik: 'Brenvik — reklamacja ZK-200 (IX GC 812/26)',
+    tervanik: 'Tervanik — reklamacja ZK-200 (IX GC 812/26)',
     loftmere: 'Loftmere — zapytanie ofertowe 2027'
   };
 
   var USERS = {
-    prawny: { name: 'Anna Wiśniewska', role: 'Zarząd i dział prawny', short: 'A. Wiśniewska', vocative: 'Pani Anno', depts: ['zakupy', 'prawny', 'zarzad', 'sprzedaz'] },
-    zakupy: { name: 'Tomasz Lis', role: 'Dział zakupów', short: 'T. Lis', vocative: 'Panie Tomaszu', depts: ['zakupy'] }
+    prawny: { name: 'Anna Wiśniewska', role: 'Zarząd i dział prawny', short: 'A. Wiśniewska', vocative: 'Anno', depts: ['zakupy', 'prawny', 'zarzad', 'sprzedaz'] },
+    zakupy: { name: 'Tomasz Lesiak', role: 'Dział zakupów', short: 'T. Lesiak', vocative: 'Tomaszu', depts: ['zakupy'] }
   };
 
   var DOCS = [
@@ -74,7 +74,7 @@ window.ARCH = (function () {
       ent: [['Nadawca', 'e.vogt@kessbrand.example'], ['Zamówienie', '4471 — 120 szt. KB-40'], ['Nowy termin', 'KW 50 (07–11.12.2026)'], ['Przyczyna', 'brak łożysk u poddostawcy']],
       body: [
         { n: 1, h: [['Od', 'Erik Vogt <e.vogt@kessbrand.example>'], ['Do', 'zakupy@morvelin.example'], ['Data', '10.11.2026, 14:22'], ['Temat', 'AW: Liefertermin Auftrag 4471']], p: [
-          ['a', 'Hallo Herr Lis, leider müssen wir den Liefertermin für Ihren Auftrag 4471 (120 Stück KB-40) verschieben. Grund ist ein Engpass bei Wälzlagern unseres Unterlieferanten.'],
+          ['a', 'Hallo Herr Lesiak, leider müssen wir den Liefertermin für Ihren Auftrag 4471 (120 Stück KB-40) verschieben. Grund ist ein Engpass bei Wälzlagern unseres Unterlieferanten.'],
           ['b', 'Neuer voraussichtlicher Liefertermin: KW 50 (07.–11.12.2026). Eine Teillieferung von 40 Stück ist bereits in KW 48 möglich.'],
           ['c', 'Wir bitten um Ihr Verständnis. Viele Grüße, Erik Vogt']
         ] }
@@ -112,27 +112,27 @@ window.ARCH = (function () {
       ]
     },
     {
-      id: 'D06', file: 'RE_Reklamacja_ZK-200_Brenvik.eml', type: 'EML', lang: 'PL', src: 'poczta', path: 'Poczta › reklamacje@ › wątek (3 wiadomości)', pages: 3,
-      date: '25.08–02.10.2026', dept: ['prawny'], sprawa: 'brenvik',
-      ent: [['Strony', 'Brenvik Sp. z o.o.; Morvelin Sp. z o.o.'], ['Produkt', 'zawory kulowe ZK-200, partia 2026/07 (340 szt.)'], ['Kwota', '186 400 zł (roszczenie Brenvik)'], ['Wiadomości', '3 — połączone w jeden wątek']],
+      id: 'D06', file: 'RE_Reklamacja_ZK-200_Tervanik.eml', type: 'EML', lang: 'PL', src: 'poczta', path: 'Poczta › reklamacje@ › wątek (3 wiadomości)', pages: 3,
+      date: '25.08–02.10.2026', dept: ['prawny'], sprawa: 'tervanik',
+      ent: [['Strony', 'Tervanik Sp. z o.o.; Morvelin Sp. z o.o.'], ['Produkt', 'zawory kulowe ZK-200, partia 2026/07 (340 szt.)'], ['Kwota', '186 400 zł (roszczenie Tervanik)'], ['Wiadomości', '3 — połączone w jeden wątek']],
       body: [
-        { n: 1, h: [['Od', 'Marek Kowal <m.kowal@brenvik.example>'], ['Do', 'reklamacje@morvelin.example'], ['Data', '25.08.2026, 10:14'], ['Temat', 'Reklamacja zaworów ZK-200 — partia 2026/07']], p: [
-          ['a', 'Dzień dobry, w imieniu Brenvik Sp. z o.o. zgłaszam reklamację partii zaworów kulowych ZK-200 (partia 2026/07, 340 szt., WZ 2026/0711).'],
+        { n: 1, h: [['Od', 'Marek Kowal <m.kowal@tervanik.example>'], ['Do', 'reklamacje@morvelin.example'], ['Data', '25.08.2026, 10:14'], ['Temat', 'Reklamacja zaworów ZK-200 — partia 2026/07']], p: [
+          ['a', 'Dzień dobry, w imieniu Tervanik Sp. z o.o. zgłaszam reklamację partii zaworów kulowych ZK-200 (partia 2026/07, 340 szt., WZ 2026/0711).'],
           ['b', 'U 27 klientów końcowych stwierdzono wycieki na uszczelnieniu trzpienia. Żądamy wymiany całej partii oraz pokrycia kosztów serwisu.']
         ] },
-        { n: 2, h: [['Od', 'Joanna Bielska <j.bielska@morvelin.example>'], ['Do', 'm.kowal@brenvik.example'], ['Data', '29.08.2026, 08:40'], ['Temat', 'RE: Reklamacja zaworów ZK-200 — partia 2026/07']], p: [
+        { n: 2, h: [['Od', 'Joanna Bielska <j.bielska@morvelin.example>'], ['Do', 'm.kowal@tervanik.example'], ['Data', '29.08.2026, 08:40'], ['Temat', 'RE: Reklamacja zaworów ZK-200 — partia 2026/07']], p: [
           ['a', 'Dzień dobry, potwierdzamy przyjęcie reklamacji.'],
           ['b', 'Prosimy o przesłanie 12 sztuk zaworów do badań w niezależnym laboratorium. Do czasu otrzymania wyników nie uznajemy żądania wymiany całej partii.']
         ] },
-        { n: 3, h: [['Od', 'Marek Kowal <m.kowal@brenvik.example>'], ['Do', 'j.bielska@morvelin.example'], ['Data', '02.10.2026, 16:05'], ['Temat', 'RE: RE: Reklamacja zaworów ZK-200 — partia 2026/07']], p: [
+        { n: 3, h: [['Od', 'Marek Kowal <m.kowal@tervanik.example>'], ['Do', 'j.bielska@morvelin.example'], ['Data', '02.10.2026, 16:05'], ['Temat', 'RE: RE: Reklamacja zaworów ZK-200 — partia 2026/07']], p: [
           ['a', 'Nie zgadzamy się z wnioskami z raportu z badań. Montaż u naszych klientów wykonywali przeszkoleni instalatorzy.'],
           ['b', 'Jeżeli do 15 października nie otrzymamy propozycji ugody, skierujemy sprawę na drogę sądową. Nasze koszty szacujemy na 186 400 zł.']
         ] }
       ]
     },
     {
-      id: 'D07', file: 'Odpowiedz_na_reklamacje_Brenvik_2026-09-30.docx', type: 'DOCX', lang: 'PL', src: 'dysk', path: '\\\\FS01\\Jakosc\\Reklamacje\\2026\\', pages: 2,
-      date: '30.09.2026', dept: ['prawny'], sprawa: 'brenvik',
+      id: 'D07', file: 'Odpowiedz_na_reklamacje_Tervanik_2026-09-30.docx', type: 'DOCX', lang: 'PL', src: 'dysk', path: '\\\\FS01\\Jakosc\\Reklamacje\\2026\\', pages: 2,
+      date: '30.09.2026', dept: ['prawny'], sprawa: 'tervanik',
       ent: [['Autor', 'Dział jakości Morvelin'], ['Decyzja', 'uznanie częściowe'], ['Propozycja', 'wymiana 85 szt. (25% partii)'], ['Ważna do', '15.10.2026']],
       body: [
         { n: 1, p: [
@@ -146,13 +146,13 @@ window.ARCH = (function () {
       ]
     },
     {
-      id: 'D08', file: 'Notatka_spotkanie_Brenvik_2026-10-21.docx', type: 'DOCX', lang: 'PL', src: 'dysk', path: '\\\\FS01\\Zarzad\\Notatki\\', pages: 1,
-      date: '21.10.2026', dept: ['prawny'], sprawa: 'brenvik',
-      ent: [['Uczestnicy', 'J. Bielska, A. Wiśniewska (Morvelin); M. Kowal (Brenvik)'], ['Kwota', '186 400 zł'], ['Następny krok', 'decyzja zarządu do 04.11.2026']],
+      id: 'D08', file: 'Notatka_spotkanie_Tervanik_2026-10-21.docx', type: 'DOCX', lang: 'PL', src: 'dysk', path: '\\\\FS01\\Zarzad\\Notatki\\', pages: 1,
+      date: '21.10.2026', dept: ['prawny'], sprawa: 'tervanik',
+      ent: [['Uczestnicy', 'J. Bielska, A. Wiśniewska (Morvelin); M. Kowal (Tervanik)'], ['Kwota', '186 400 zł'], ['Następny krok', 'decyzja zarządu do 04.11.2026']],
       body: [
         { n: 1, p: [
-          ['a', 'Notatka ze spotkania z Brenvik Sp. z o.o., 21.10.2026, siedziba Morvelin. Uczestnicy: J. Bielska (jakość), A. Wiśniewska (zarząd), M. Kowal (Brenvik).'],
-          ['b', 'Brenvik podtrzymuje żądanie zapłaty 186 400 zł i zapowiada pozew.'],
+          ['a', 'Notatka ze spotkania z Tervanik Sp. z o.o., 21.10.2026, siedziba Morvelin. Uczestnicy: J. Bielska (jakość), A. Wiśniewska (zarząd), M. Kowal (Tervanik).'],
+          ['b', 'Tervanik podtrzymuje żądanie zapłaty 186 400 zł i zapowiada pozew.'],
           ['c', 'Morvelin może rozważyć wymianę 120 szt. i rabat 5% na kolejne zamówienie — wymaga to zgody zarządu.'],
           ['d', 'Ustalenie: kolejny kontakt po decyzji zarządu, nie później niż 04.11.2026.']
         ] }
@@ -160,7 +160,7 @@ window.ARCH = (function () {
     },
     {
       id: 'D09', file: 'Test_report_TR-26-1184_ZK-200.pdf', type: 'PDF', lang: 'EN', src: 'poczta', path: 'Poczta › jakosc@ › załącznik', pages: 4,
-      date: '22.09.2026', dept: ['prawny'], sprawa: 'brenvik',
+      date: '22.09.2026', dept: ['prawny'], sprawa: 'tervanik',
       ent: [['Wystawca', 'akredytowane laboratorium badawcze (nazwa pominięta w demo)'], ['Nr raportu', 'TR-26-1184'], ['Próbki', '12 szt., partia 2026/07'], ['Wynik', '9 × montaż, 3 × wada uszczelki']],
       body: [
         { n: 1, p: [
@@ -179,13 +179,13 @@ window.ARCH = (function () {
     },
     {
       id: 'D10', file: 'SO_Poznan_IX_GC_812-26_zarzadzenie.pdf', type: 'PDF', lang: 'PL', src: 'skany', path: 'Skaner sekretariatu › \\\\FS01\\Skany\\2026-11\\', pages: 2, ocr: 'pol',
-      date: '29.10.2026', dept: ['prawny'], sprawa: 'brenvik',
+      date: '29.10.2026', dept: ['prawny'], sprawa: 'tervanik',
       dup: 'Ten sam skan przyszedł też e-mailem z sekretariatu (Poczta › prawny@). Duplikat scalono — w bazie jest jeden dokument.',
-      ent: [['Sąd', 'Sąd Okręgowy w Poznaniu, IX Wydział Gospodarczy'], ['Sygnatura', 'IX GC 812/26'], ['Strony', 'powód: Brenvik Sp. z o.o.; pozwany: Morvelin Sp. z o.o.'], ['Wartość przedmiotu sporu', '186 400 zł'], ['Termin', 'odpowiedź na pozew — 2 tygodnie od doręczenia (06.11.2026) → 20.11.2026']],
+      ent: [['Sąd', 'Sąd Okręgowy w Poznaniu, IX Wydział Gospodarczy'], ['Sygnatura', 'IX GC 812/26'], ['Strony', 'powód: Tervanik Sp. z o.o.; pozwany: Morvelin Sp. z o.o.'], ['Wartość przedmiotu sporu', '186 400 zł'], ['Termin', 'odpowiedź na pozew — 2 tygodnie od doręczenia (06.11.2026) → 20.11.2026']],
       body: [
         { n: 1, p: [
           ['a', 'Sąd Okręgowy w Poznaniu, IX Wydział Gospodarczy · Sygn. akt IX GC 812/26 · Poznań, dnia 29 października 2026 r.'],
-          ['b', 'Powód: Brenvik Sp. z o.o. · Pozwany: Morvelin Sp. z o.o. · Wartość przedmiotu sporu: 186 400 zł.'],
+          ['b', 'Powód: Tervanik Sp. z o.o. · Pozwany: Morvelin Sp. z o.o. · Wartość przedmiotu sporu: 186 400 zł.'],
           ['c', 'ZARZĄDZENIE: doręczyć pozwanemu odpis pozwu wraz z załącznikami i zobowiązać go do złożenia odpowiedzi na pozew w terminie dwóch tygodni od dnia doręczenia.'],
           ['d', 'Pouczenie: w sprawie gospodarczej pozwany powinien powołać wszystkie twierdzenia i dowody w odpowiedzi na pozew; twierdzenia i dowody powołane później mogą zostać pominięte.']
         ] },
@@ -223,11 +223,11 @@ window.ARCH = (function () {
     {
       id: 'D13', file: 'Protokol_zarzadu_2026-11-02.docx', type: 'DOCX', lang: 'PL', src: 'dysk', path: '\\\\FS01\\Zarzad\\Protokoly\\', pages: 2,
       date: '02.11.2026', dept: ['zarzad'], sprawa: null,
-      ent: [['Organ', 'Zarząd Morvelin Sp. z o.o.'], ['Sprawy', 'Brenvik; dostawy Kessbrand'], ['Decyzje', 'bez nowej propozycji dla Brenvik; podwyżka cen akceptowalna maks. 4%'], ['Termin', 'zapytanie do alternatywnego dostawcy do 30.11.2026']],
+      ent: [['Organ', 'Zarząd Morvelin Sp. z o.o.'], ['Sprawy', 'Tervanik; dostawy Kessbrand'], ['Decyzje', 'bez nowej propozycji dla Tervanik; podwyżka cen akceptowalna maks. 4%'], ['Termin', 'zapytanie do alternatywnego dostawcy do 30.11.2026']],
       body: [
         { n: 1, p: [
           ['a', 'Protokół z posiedzenia zarządu Morvelin Sp. z o.o. z dnia 2 listopada 2026 r. Obecni: wszyscy członkowie zarządu.'],
-          ['b', 'Ad 2. Spór z Brenvik: zarząd nie wyraża zgody na wymianę 120 szt. i rabat 5%; podtrzymuje propozycję z 30.09.2026. W razie pozwu prowadzenie sprawy zostanie zlecone kancelarii zewnętrznej.']
+          ['b', 'Ad 2. Spór z Tervanik: zarząd nie wyraża zgody na wymianę 120 szt. i rabat 5%; podtrzymuje propozycję z 30.09.2026. W razie pozwu prowadzenie sprawy zostanie zlecone kancelarii zewnętrznej.']
         ] },
         { n: 2, p: [
           ['a', 'Ad 3. Dostawy Kessbrand: w razie podwyżki cen na 2027 r. akceptowalny poziom wynosi maksymalnie 4%. Informacja wewnętrzna — nie przekazywać dostawcy.'],

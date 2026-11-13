@@ -85,7 +85,7 @@
   function renderRole() {
     var u = user(), n = visibleDocs().length;
     $('rola-info').textContent = u.name + ' widzi ' + n + ' z ' + A.DOCS.length + ' dokumentów.' +
-      (state.role === 'zakupy' ? ' Sprawa Brenvik, zapytanie Loftmere i protokoły zarządu są dla niego niewidoczne — asystent też ich nie użyje.' : ' Pełny dostęp: zarząd, dział prawny, zakupy i sprzedaż.');
+      (state.role === 'zakupy' ? ' Sprawa Tervanik, zapytanie Loftmere i protokoły zarządu są dla niego niewidoczne — asystent też ich nie użyje.' : ' Pełny dostęp: zarząd, dział prawny, zakupy i sprzedaż.');
     $('who-name').textContent = u.name;
     $('who-role').textContent = u.role;
   }
@@ -152,7 +152,7 @@
     var urgent = wk.filter(function (t) { return t.urgent; })[0];
     var items = [];
     var first = '**' + wk.length + ' ' + (wk.length === 1 ? 'termin' : 'terminy') + ' w tym tygodniu**';
-    if (urgent) first += ', najpilniejszy: odpowiedź na pozew w sprawie Brenvik — pt. 20.11 {{' + urgent.cite + '}}';
+    if (urgent) first += ', najpilniejszy: odpowiedź na pozew w sprawie Tervanik — pt. 20.11 {{' + urgent.cite + '}}';
     else if (wk.length) first += ': ' + wk.map(function (t) { return t.what.charAt(0).toLowerCase() + t.what.slice(1) + ' (' + t.d + ') {{' + t.cite + '}}'; }).join('; ');
     items.push(first);
     if (can('D02')) items.push('Kessbrand zapowiada podwyżkę cen motoreduktorów średnio o 8,5% od 2027 r. (pismo po niemiecku) {{D02:1:c}}');
@@ -301,16 +301,16 @@
         ['next', ['Przygotuj szkic odpowiedzi do Kessbrand', 'Co Kessbrand pisze o cenach na 2027?']]
       ];
     },
-    brenvik: function () {
+    tervanik: function () {
       if (!can('D06')) return null;
       return [
-        ['p', '**Sprawa: Brenvik — reklamacja zaworów ZK-200, obecnie pozew IX GC 812/26.** 6 dokumentów (polski i angielski), ułożonych chronologicznie:'],
+        ['p', '**Sprawa: Tervanik — reklamacja zaworów ZK-200, obecnie pozew IX GC 812/26.** 6 dokumentów (polski i angielski), ułożonych chronologicznie:'],
         ['ul', [
-          '25.08.2026 — Brenvik reklamuje partię 2026/07 (340 szt.): wycieki u 27 klientów, żąda wymiany całej partii i kosztów serwisu {{D06:1:b}}',
+          '25.08.2026 — Tervanik reklamuje partię 2026/07 (340 szt.): wycieki u 27 klientów, żąda wymiany całej partii i kosztów serwisu {{D06:1:b}}',
           '29.08.2026 — dział jakości prosi o 12 próbek do badań i do czasu wyników nie uznaje żądania {{D06:2:b}}',
           '22.09.2026 — raport laboratorium (po angielsku): 9 z 12 próbek — montaż ze zbyt dużym momentem dokręcania, 3 z 12 — wada uszczelki PTFE {{D09:3:a}}',
           '30.09.2026 — Morvelin uznaje reklamację częściowo, proponuje wymianę 85 szt. (25% partii) do 15.10 {{D07:2:a}}',
-          '02.10.2026 — Brenvik odrzuca wnioski z raportu, zapowiada pozew, szacuje koszty na 186 400 zł {{D06:3:b}}',
+          '02.10.2026 — Tervanik odrzuca wnioski z raportu, zapowiada pozew, szacuje koszty na 186 400 zł {{D06:3:b}}',
           '21.10.2026 — spotkanie: rozważana wymiana 120 szt. i rabat 5%, pod warunkiem zgody zarządu {{D08:1:c}}',
           '02.11.2026 — zarząd nie zgadza się na nową propozycję; sprawę poprowadzi kancelaria zewnętrzna {{D13:1:b}}',
           '06.11.2026 — doręczenie pozwu; termin na odpowiedź: 2 tygodnie, czyli **pt. 20.11.2026** {{D10:1:c}} {{D10:2:a}}'
@@ -334,7 +334,7 @@
     }
   };
   function caseFrom(q) {
-    if (/(brenvik|reklamac|pozew|pozw|zk-200|zawor|sad|ix gc)/.test(q)) return 'brenvik';
+    if (/(tervanik|reklamac|pozew|pozw|zk-200|zawor|sad|ix gc)/.test(q)) return 'tervanik';
     if (/(loftmere|rfq|bryty|angiel|nda)/.test(q)) return 'loftmere';
     if (/(kessbrand|niemiec|dostawc|cen|4471|faktur)/.test(q)) return 'kessbrand';
     return null;
@@ -342,7 +342,7 @@
   function caseChips() {
     var c = [];
     if (can('D02')) c.push('Streść korespondencję w sprawie Kessbrand');
-    if (can('D06')) c.push('Streść korespondencję w sprawie Brenvik');
+    if (can('D06')) c.push('Streść korespondencję w sprawie Tervanik');
     if (can('D11')) c.push('Streść korespondencję w sprawie Loftmere');
     return c;
   }
@@ -355,11 +355,11 @@
       ];
     } },
     { id: 'szkic', keys: ['szkic', 'napisz', 'przygotuj odpowiedz', 'odpisz', 'draft', 'odpowiedz do', 'odpowiedz dla', 'mail do', 'e-mail do', 'wiadomosc do'], run: function (q) {
-      if (/(brenvik|pozew|pozw|sad)/.test(q)) {
+      if (/(tervanik|pozew|pozw|sad)/.test(q)) {
         if (!can('D06')) return null;
         return [
           ['p', 'Pism procesowych nie przygotowuję automatycznie — odpowiedź na pozew składa pełnomocnik {{D13:1:b}}. Mogę uporządkować fakty ze źródeł dla pełnomocnika albo zaproponować termin spotkania przed 20.11 {{D10:1:c}}.'],
-          ['next', ['Streść korespondencję w sprawie Brenvik', 'Zaproponuj termin spotkania']]
+          ['next', ['Streść korespondencję w sprawie Tervanik', 'Zaproponuj termin spotkania']]
         ];
       }
       if (/(loftmere|rfq|ofert|angiel|bryty)/.test(q)) {
@@ -385,7 +385,7 @@
     { id: 'podwyzka', keys: ['podwyzk', 'drozej', 'ceny na 2027', 'cen na 2027', 'cenach na 2027', 'preis', 'cennik', 'cen 2027', 'ceny 2027', '8 5', 'nowe ceny', 'zmiana cen', 'zmiane cen', 'dostawca z niemiec', 'niemiecki dostawca', 'kessbrand pisze', 'kessbrand o cen'], run: function () {
       if (!can('D02')) return null;
       return [
-        ['p', 'Tak. W piśmie z 3.11.2026 (po niemiecku) Kessbrand zapowiada podwyżkę cen motoreduktorów serii KB **średnio o 8,5% od 1.01.2027**, uzasadniając ją kosztami stali, miedzi i energii. Części zamienne nie drożeją. {{D02:1:c}}'],
+        ['p', 'W piśmie z 3.11.2026 (po niemiecku) Kessbrand zapowiada podwyżkę cen motoreduktorów serii KB **średnio o 8,5% od 1.01.2027**, uzasadniając ją kosztami stali, miedzi i energii. Części zamienne nie drożeją. {{D02:1:c}}'],
         ['quote', 'DE', '„…die Preise für Getriebemotoren der Baureihe KB zum 01.01.2027 um durchschnittlich 8,5 % anzupassen.”', 'D02:1:c'],
         ['ul', [
           'Odpowiedzi oczekują **do 27.11.2026**. {{D02:1:d}}',
@@ -412,10 +412,10 @@
     { id: 'pozew', keys: ['pozew', 'pozw', 'sad okregowy', 'ix gc', 'odpowiedz na pozew', 'sygnatur'], run: function () {
       if (!can('D10')) return null;
       return [
-        ['p', 'Sąd Okręgowy w Poznaniu (IX Wydział Gospodarczy, sygn. IX GC 812/26) zobowiązał Morvelin do złożenia odpowiedzi na pozew Brenvik w terminie dwóch tygodni od doręczenia {{D10:1:c}}. Doręczenie nastąpiło 6.11.2026 {{D10:2:a}}, więc termin upływa **w piątek 20.11.2026**.'],
+        ['p', 'Sąd Okręgowy w Poznaniu (IX Wydział Gospodarczy, sygn. IX GC 812/26) zobowiązał Morvelin do złożenia odpowiedzi na pozew Tervanik w terminie dwóch tygodni od doręczenia {{D10:1:c}}. Doręczenie nastąpiło 6.11.2026 {{D10:2:a}}, więc termin upływa **w piątek 20.11.2026**.'],
         ['p', 'Wartość przedmiotu sporu: 186 400 zł {{D10:1:b}}. Sąd poucza, że twierdzenia i dowody powołane później mogą zostać pominięte {{D10:1:d}}.'],
         ['note', 'Dokument to skan rozpoznany przez OCR. Termin wyliczył asystent — przed planowaniem potwierdź go z pełnomocnikiem.'],
-        ['next', ['Streść korespondencję w sprawie Brenvik', 'Zaproponuj termin spotkania']]
+        ['next', ['Streść korespondencję w sprawie Tervanik', 'Zaproponuj termin spotkania']]
       ];
     } },
     { id: 'lab', keys: ['laborator', 'badan', 'raport', 'test', 'przyczyn', 'wyciek', 'probk'], run: function () {
@@ -427,7 +427,7 @@
           '**3 z 12** — porowatość uszczelki PTFE, czyli wada materiałowa niezwiązana z montażem {{D09:3:a}}'
         ]],
         ['quote', 'EN', '„…the leakage in 9 of 12 samples is attributable to improper installation; in 3 of 12 samples to a material defect of the seal.”', 'D09:4:a'],
-        ['p', 'Na tej podstawie dział jakości uznał reklamację w części {{D07:1:b}}, a Brenvik zakwestionował wnioski z raportu {{D06:3:a}}.']
+        ['p', 'Na tej podstawie dział jakości uznał reklamację w części {{D07:1:b}}, a Tervanik zakwestionował wnioski z raportu {{D06:3:a}}.']
       ];
     } },
     { id: 'dostawa', keys: ['4471', 'dostaw', 'opozni', 'spozni', 'lozysk', 'liefer', 'kiedy dostaniemy', 'kiedy przyjdzie', 'zamowien'], run: function () {
@@ -457,7 +457,7 @@
     { id: 'spotkanie', keys: ['spotkan', 'zaproponuj termin', 'kalendarz', 'umow spotk', 'wolny termin', 'zaplanuj', 'kiedy mam czas'], run: function () {
       if (can('D10') && can('D12')) {
         return [
-          ['p', 'Proponuję spotkanie z pełnomocnikiem przed terminem odpowiedzi na pozew (pt. 20.11.2026) {{D10:1:c}}. W Pani kalendarzu wtorek 17.11 zajmuje audyt klienta {{D12:1:b}}, a w środę rano jest przegląd budżetu {{D12:1:c}}. Wolne okna:'],
+          ['p', 'Proponuję spotkanie z pełnomocnikiem przed terminem odpowiedzi na pozew (pt. 20.11.2026) {{D10:1:c}}. W Twoim kalendarzu wtorek 17.11 zajmuje audyt klienta {{D12:1:b}}, a w środę rano jest przegląd budżetu {{D12:1:c}}. Wolne okna:'],
           ['cal', { title: 'Przygotowanie odpowiedzi na pozew IX GC 812/26', slots: ['śr. 18.11.2026, 12:00–13:30', 'śr. 18.11.2026, 14:00–15:30', 'czw. 19.11.2026, 09:00–10:30'], who: 'A. Wiśniewska, J. Bielska (dział jakości), pełnomocnik zewnętrzny' }],
           ['note', 'Zaproszeń dla osób spoza firmy nie wysyłam automatycznie.']
         ];
@@ -469,7 +469,7 @@
       ];
     } },
     { id: 'loftmere', keys: ['loftmere', 'rfq', 'zapytanie ofertowe', 'brytyj', 'anglik', 'z anglii', 'nda'], run: function () { return CASES.loftmere(); } },
-    { id: 'brenvik', keys: ['brenvik', 'reklamac', 'zk-200', 'zawor'], run: function () { return CASES.brenvik(); } },
+    { id: 'tervanik', keys: ['tervanik', 'reklamac', 'zk-200', 'zawor'], run: function () { return CASES.tervanik(); } },
     { id: 'kessbrand', keys: ['kessbrand', 'niemiec', 'motoreduktor'], run: function () { return CASES.kessbrand(); } },
     { id: 'umowa', keys: ['kar', 'umow', 'wypowiedz', 'paragraf'], run: function () {
       if (!can('D01')) return null;
@@ -511,7 +511,7 @@
   }
   function fallback() {
     var topics = ['ceny Kessbrand na 2027', 'terminy w tym tygodniu', 'zamówienie 4471', 'fakturę RE-2026-10388', 'szkic odpowiedzi do Kessbrand', 'propozycję spotkania'];
-    if (can('D06')) topics.splice(2, 0, 'sprawę Brenvik i raport z badań', 'zapytanie Loftmere');
+    if (can('D06')) topics.splice(2, 0, 'sprawę Tervanik i raport z badań', 'zapytanie Loftmere');
     return [
       ['p', 'Nie znalazłem odpowiedzi w dokumentach, do których masz dostęp, więc nie będę zgadywać.'],
       ['note', 'W tym demo odpowiedzi są przygotowane wcześniej dla tematów: ' + topics.join(', ') + '. We wdrożeniu lokalny model odpowiada na dowolne pytania, ale zawsze na podstawie dokumentów i ze wskazaniem źródła.']
@@ -576,7 +576,7 @@
         lead: 'Asystent nigdy nie wysyła wiadomości sam. Sprawdź adresata i treść — wysyłka nastąpi dopiero po Twoim potwierdzeniu.',
         rows: [['Do', dr.to], ['Temat', dr.subject], ['Nadawca', user().name + ' (konto Exchange)']],
         doneTitle: 'Demo: nic nie zostało wysłane',
-        done: 'W tej wersji demonstracyjnej przycisk niczego nie wysyła. We wdrożeniu wiadomość trafiłaby do skrzynki nadawczej na Państwa serwerze pocztowym dopiero po tym potwierdzeniu, a operacja zostałaby zapisana w dzienniku dostępu (kto, kiedy, do kogo).',
+        done: 'W tej wersji demonstracyjnej przycisk niczego nie wysyła. We wdrożeniu wiadomość trafiłaby do skrzynki nadawczej na serwerze pocztowym firmy dopiero po tym potwierdzeniu, a operacja zostałaby zapisana w dzienniku dostępu (kto, kiedy, do kogo).',
         logAction: 'Wysyłka zatwierdzona (demo — nie wysłano)', logTarget: dr.subject
       });
     });
@@ -611,7 +611,7 @@
         lead: 'Asystent tylko proponuje termin. Wydarzenie pojawi się w kalendarzu dopiero po Twoim potwierdzeniu.',
         rows: [['Wydarzenie', c.title], ['Termin', sel ? sel.value : c.slots[0]], ['Uczestnicy', c.who]],
         doneTitle: 'Demo: nic nie zostało zapisane',
-        done: 'W tej wersji demonstracyjnej kalendarz nie jest podłączony. We wdrożeniu wydarzenie zapisałoby się w kalendarzu Exchange/CalDAV na Państwa serwerze, a zaproszenia dla uczestników wymagałyby osobnej decyzji.',
+        done: 'W tej wersji demonstracyjnej kalendarz nie jest podłączony. We wdrożeniu wydarzenie zapisałoby się w kalendarzu Exchange/CalDAV na serwerze firmy, a zaproszenia dla uczestników wymagałyby osobnej decyzji.',
         logAction: 'Dodanie wydarzenia zatwierdzone (demo — nie zapisano)', logTarget: c.title
       });
     });
@@ -644,7 +644,7 @@
     }, reduced() ? 150 : 650);
   }
 
-  var CHIPS = ['Co Kessbrand pisze o cenach na 2027?', 'Jakie terminy mamy w tym tygodniu?', 'Streść korespondencję w sprawie Brenvik', 'Przygotuj szkic odpowiedzi do Kessbrand', 'Kiedy dostawa zamówienia 4471?', 'Zaproponuj termin spotkania'];
+  var CHIPS = ['Co Kessbrand pisze o cenach na 2027?', 'Jakie terminy mamy w tym tygodniu?', 'Streść korespondencję w sprawie Tervanik', 'Przygotuj szkic odpowiedzi do Kessbrand', 'Kiedy dostawa zamówienia 4471?', 'Zaproponuj termin spotkania'];
   function renderChips() {
     var w = $('chips'); w.textContent = '';
     w.addEventListener('wheel', function (e) { if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && w.scrollWidth > w.clientWidth) { w.scrollLeft += e.deltaY; e.preventDefault(); } }, { passive: false });
