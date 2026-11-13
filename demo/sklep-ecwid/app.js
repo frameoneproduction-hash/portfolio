@@ -87,7 +87,7 @@
         name: 'Obrus lniany, prany',
         short: 'Miękki obrus o naturalnie pogniecionej fakturze — na codzienne posiłki i długie weekendowe kolacje.',
         desc: ['Wstępnie prany, dzięki czemu jest miękki w dotyku i praktycznie się nie kurczy. Nie wymaga prasowania — swobodne zagniecenia to część jego uroku.',
-          'Wykończony szerokim obrębem, z narożnikami szytymi na skos. Wybierz rozmiar, który będzie zwisał ok. 20–30 cm z każdej strony stołu.'],
+          'Wykończony szerokim obrębem, z narożnikami szytymi na skos. Wybierz rozmiar tak, by obrus zwisał ok. 20–30 cm z każdej strony stołu.'],
         spec: [['Materiał', '100% len'], ['Gramatura', '185 g/m²'], ['Wymiary', '140 × 140 cm / 140 × 220 cm / 140 × 280 cm'], ['Kurczliwość', 'poniżej 3%']],
         care: CARE_LINEN.pl
       },
@@ -546,7 +546,7 @@
       '<div class="card__img">' + productArt(p, null, 0) + '</div>' + badge +
       '<div class="card__body"><h3 class="card__name" lang="' + state.lang + '">' + esc(tx.name) + '</h3>' +
       '<p class="card__meta">' + esc(t(CATS[p.cat])) + ' · ' + variants + ' ' + plural(variants, 'wariant', 'warianty', 'wariantów') + '</p>' +
-      '<p class="card__price">' + (m.from ? 'od ' : '') + zl(m.price) + (m.old ? '<s><span class="sr">Cena przed obniżką: </span>' + zl(m.old) + '</s>' : '') + '</p></div></a>';
+      '<p class="card__price">' + (m.from ? 'od ' : '') + zl(m.price) + (m.old ? '<s><span class="sr">Najniższa cena z 30 dni przed obniżką: </span>' + zl(m.old) + '</s>' : '') + '</p></div></a>';
   }
   function langTag() {
     return state.lang === 'en'
