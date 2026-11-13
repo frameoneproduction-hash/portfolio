@@ -84,3 +84,5 @@
 .terms h2 { font-size: 1.2rem; margin-top: 1.2em; }
 .newsletter { background: var(--accent); }
 .why { background: #f6f5f2; }
+
+.card__omni{font-size:.78rem;color:#6b6b66;margin:.2rem 0 0}

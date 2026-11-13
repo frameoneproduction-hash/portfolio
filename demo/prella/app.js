@@ -152,7 +152,7 @@
     if (!made) return { avail: 'Na zamówienie', time: 'Wysyłka w 7–10 dni roboczych', ok: false };
     return { avail: 'Wykonywana na zamówienie', time: 'Wysyłka w 10–14 dni roboczych', ok: false };
   }
-  function needsPallet(p, sel) { return +sel.width >= 80 || p.mount === 'tall'; }
+  function needsPallet(p, sel) { return +sel.width >= 80 || p.mount === 'tall' || !!p.sinkIncluded; }
   function variantText(p, sel) {
     var parts = ['Szerokość: ' + sel.width + ' cm', 'Kolor: ' + find(COLORS, sel.color).name, 'Front: ' + find(FRONTS, sel.front).name];
     var sinks = sinkOptions(p);
@@ -288,7 +288,7 @@
       '<div class="card__body"><h3 class="card__name">' + esc(p.name) + '</h3>' +
       '<p class="card__meta">' + p.widths.map(function (w) { return w.cm; }).join(' / ') + ' cm</p>' +
       '<p class="card__sw" aria-label="4 kolory">' + sw + '</p>' +
-      '<p class="card__price">od ' + zl(m.price) + (m.old ? '<s><span class="sr">Cena przed obniżką: </span>' + zl(m.old) + '</s>' : '') + '</p></div></a>';
+      '<p class="card__price">od ' + zl(m.price) + (m.old ? '<s><span class="sr">Cena przed obniżką: </span>' + zl(m.old) + '</s>' : '') + '</p>' + (m.old ? '<p class="card__omni">Najniższa cena z 30 dni: ' + zl(m.old) + '</p>' : '') + '</div></a>';
   }
 
   var slideIdx = 0;
