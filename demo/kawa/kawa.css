@@ -1,0 +1,100 @@
+/* Bruvelo — motyw kawowy */
+:root {
+  --accent: #3b2a20;
+  --accent-2: #2a1d16;
+  --clay: #b0713f;
+  --ink: #1f1a17;
+  --muted: #625a53;
+  --sand: #f4eee6;
+  --line: #e7dfd5;
+}
+.demo-bar { font-size: .84rem; }
+.demo-bar .wrap { padding-top: 8px; padding-bottom: 8px; }
+.demo-bar__line { margin: 0; text-align: center; }
+.wordmark { font-family: var(--serif); font-size: 1.7rem; letter-spacing: .04em; color: var(--ink); line-height: 1; font-style: italic; }
+.footer__brand { font-style: italic; }
+.header__in { gap: 14px; }
+.nav { gap: 20px; }
+.switches { display: flex; gap: 6px; margin-left: 8px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: #fff; }
+.seg button { border: 0; background: transparent; padding: 4px 9px; min-height: 32px; min-width: 40px; border-radius: 999px; font-size: .78rem; font-weight: 700; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+@media (max-width: 1100px) { .nav { gap: 14px; font-size: .9rem; } }
+@media (max-width: 759px) {
+  .switches { margin-left: auto; }
+  .menu-btn { margin-left: 0; order: 3; }
+  .cart-link { order: 4; }
+  .wordmark { font-size: 1.4rem; }
+  .seg button { min-width: 36px; padding: 4px 7px; }
+}
+
+/* Produkt */
+.pdp { padding-top: 32px; }
+@media (min-width: 900px) { .product { grid-template-columns: 1.1fr 1fr; } }
+.gallery__main { background: var(--sand); border-radius: 12px; }
+.gallery__main img, .thumb img, .split__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pinfo h1 { font-size: clamp(1.9rem, 3.4vw, 2.8rem); margin-bottom: 8px; }
+.pname { font-weight: 600; margin: 0 0 8px; }
+.buybox { border: 1px solid var(--line); border-radius: 14px; padding: 20px; background: #fff; }
+.buy-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.mode input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.mode > span { display: grid; gap: 2px; border: 1px solid #d6cbbd; border-radius: 12px; padding: 12px 14px; cursor: pointer; min-height: 64px; background: #fff; }
+.mode strong { font-size: 1rem; }
+.mode em { font-style: normal; color: var(--muted); font-size: .85rem; }
+.mode input:checked + span { border-color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); background: #faf6f0; }
+.mode input:focus-visible + span { outline: 3px solid #c58a2b; outline-offset: 2px; }
+.pct { display: inline-block; background: var(--clay); color: #fff; font-size: .72rem; border-radius: 999px; padding: 1px 7px; margin-left: 4px; vertical-align: 2px; }
+.perks { list-style: none; padding: 0; margin: -4px 0 16px; display: grid; gap: 4px; font-size: .9rem; }
+.perks li::before { content: "✓"; color: var(--ok); font-weight: 700; margin-right: 8px; }
+.qty-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.qty-label { font-weight: 600; font-size: .92rem; }
+.qty output { width: 40px; text-align: center; font-weight: 600; }
+.qty button:disabled { opacity: .35; cursor: not-allowed; }
+.price-box { margin-bottom: 14px; }
+.price-box .price { margin: 0; font-size: 1.8rem; }
+.price-box .price s { font-size: 1.05rem; color: var(--muted); font-weight: 400; }
+.save { color: var(--ok); font-weight: 600; font-size: .9rem; margin: 4px 0 0; }
+.buybox .stock { margin: 12px 0 0; }
+
+/* Sekcje */
+.benefits .why__item h3 { font-size: 1.1rem; }
+@media (max-width: 1000px) { .benefits { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .benefits { grid-template-columns: 1fr; } }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.split__img { border-radius: 14px; overflow: hidden; aspect-ratio: 5 / 4; background: var(--sand); }
+.ing { font-size: 1.05rem; }
+@media (max-width: 899px) { .split { grid-template-columns: 1fr; gap: 24px; } }
+.brew__item { background: var(--sand); border-radius: 14px; padding: 22px; }
+.brew__n { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; margin-bottom: 10px; }
+.brew__item p { margin: 0; color: var(--muted); }
+@media (max-width: 759px) { .brew { grid-template-columns: 1fr; } }
+.ritual { position: relative; min-height: 420px; display: flex; align-items: center; color: #fff; overflow: hidden; background: #3b2a20; margin: 24px 0; }
+.ritual__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ritual__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(25,17,12,.78) 0%, rgba(25,17,12,.45) 55%, rgba(25,17,12,.1) 100%); }
+.ritual__in { position: relative; padding-top: 56px; padding-bottom: 56px; }
+.ritual h2 { color: #fff; max-width: 20ch; }
+.ritual p { max-width: 460px; color: #f1e7da; }
+@media (max-width: 759px) { .ritual__shade { background: rgba(25,17,12,.62); } }
+
+/* FAQ */
+.faq { display: grid; grid-template-columns: 1fr 1.6fr; gap: 32px; align-items: start; }
+.faq__item { border-bottom: 1px solid var(--line); }
+.faq__item summary { cursor: pointer; padding: 16px 32px 16px 0; font-weight: 600; list-style: none; position: relative; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 1.4rem; font-weight: 400; color: var(--muted); }
+.faq__item[open] summary::after { content: "−"; }
+.faq__item p { margin: 0 0 16px; color: var(--muted); }
+@media (max-width: 759px) { .faq { grid-template-columns: 1fr; gap: 8px; } }
+
+/* Koszyk */
+.line__img svg { width: 100%; height: 100%; }
+.qty--sm output { width: 30px; text-align: center; }
+.subbox { background: #f3efe8; border-left: 3px solid var(--clay); border-radius: 0 8px 8px 0; padding: 8px 12px; font-size: .85rem; margin: 10px 0 0; }
+.choice--off { opacity: .55; cursor: not-allowed; }
+.paym--paypal { background: #fff; color: #1f3d7a; border: 1px solid #d0c8bb; }
+.paym--klarna { background: #ffb3c7; color: #111; }
+.paym--ccard { background: #eceae6; color: #333; }
+.terms { padding-left: 0; list-style: none; }
+.terms h2 { font-size: 1.2rem; margin-top: 1.2em; }
+.newsletter { background: var(--accent); }
+.why { background: #faf7f2; }
