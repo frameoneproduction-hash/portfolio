@@ -67,7 +67,7 @@
         ['Sklep na WooCommerce (lub Shopify) z subskrypcjami', 'zakup jednorazowy i dostawy co 2 lub 4 tygodnie'],
         ['Dwa języki i dwie waluty', 'polski i niemiecki, PLN i EUR'],
         ['Teksty sklepu PL + DE', 'opis produktu, FAQ, strony informacyjne'],
-        ['Płatności', 'BLIK, Przelewy24, karta, PayPal, Klarna; płatności cykliczne w subskrypcji'],
+        ['Płatności', 'BLIK, Przelewy24, karta, PayPal, Klarna; w subskrypcji płatność cykliczna kartą (w euro także PayPal)'],
         ['Łatwa obsługa bez programisty', 'krótkie szkolenie i instrukcja']
       ],
       cartH: 'Koszyk i zamówienie', crumbsHome: 'Strona główna',
@@ -82,8 +82,8 @@
       ship: { inpost: ['Paczkomat InPost', '1–2 dni robocze'], dpd: ['Kurier DPD', '1–2 dni robocze'], dhl: ['DHL Paket (Niemcy)', '2–4 dni robocze'] },
       pay: { blik: ['BLIK', 'Kod z aplikacji bankowej'], p24: ['Przelewy24', 'Szybki przelew z Twojego banku'], card: ['Karta płatnicza', 'Visa, Mastercard'], paypal: ['PayPal', 'Konto PayPal'], klarna: ['Klarna', 'Zapłać później lub od razu'], ccard: ['Karta kredytowa', 'Visa, Mastercard, Amex'] },
       noSubPay: 'Niedostępne w subskrypcji',
-      subPayNote: 'Subskrypcja: płatność odnawia się automatycznie (karta lub BLIK).',
-      subPayNoteEUR: 'Subskrypcja: płatność odnawia się automatycznie (PayPal, Klarna lub karta).',
+      subPayNote: 'Subskrypcja: płatność odnawia się automatycznie kartą. BLIK i Przelewy24 — przy zakupie jednorazowym.',
+      subPayNoteEUR: 'Subskrypcja: płatność odnawia się automatycznie (karta lub PayPal).',
       accept: 'Akceptuję <a href="#/dostawa">regulamin sklepu</a> i <a href="#/regulamin-subskrypcji">regulamin subskrypcji</a>.',
       order: 'Zamawiam i płacę',
       orderMock: 'To makieta: zamówienie nie zostało złożone, a płatność nie została uruchomiona.',
@@ -173,7 +173,7 @@
         ['Shop auf WooCommerce (oder Shopify) mit Abo-Funktion', 'Einmalkauf und Lieferung alle 2 oder 4 Wochen'],
         ['Zwei Sprachen und zwei Währungen', 'Polnisch und Deutsch, PLN und EUR'],
         ['Shop-Texte auf Polnisch und Deutsch', 'Produktbeschreibung, FAQ, Infoseiten'],
-        ['Zahlungen', 'BLIK, Przelewy24, Karte, PayPal, Klarna; wiederkehrende Zahlungen im Abo'],
+        ['Zahlungen', 'BLIK, Przelewy24, Karte, PayPal, Klarna; im Abo wiederkehrend per Karte oder PayPal'],
         ['Einfache Bedienung ohne Programmierer', 'kurze Schulung und Anleitung']
       ],
       cartH: 'Warenkorb und Bestellung', crumbsHome: 'Startseite',
@@ -186,10 +186,10 @@
       countryPL: 'Polen', countryDE: 'Deutschland',
       shipH: 'Versand', payH: 'Zahlung',
       ship: { inpost: ['InPost Paketstation (Polen)', '1–2 Werktage'], dpd: ['DPD Kurier (Polen)', '1–2 Werktage'], dhl: ['DHL Paket', '2–4 Werktage'] },
-      pay: { blik: ['BLIK', 'Code aus der Banking-App'], p24: ['Przelewy24', 'Sofortüberweisung'], card: ['Kreditkarte', 'Visa, Mastercard'], paypal: ['PayPal', 'Mit deinem PayPal-Konto'], klarna: ['Klarna', 'Später bezahlen oder sofort'], ccard: ['Kreditkarte', 'Visa, Mastercard, Amex'] },
+      pay: { blik: ['BLIK', 'Code aus der Banking-App'], p24: ['Przelewy24', 'Online-Überweisung'], card: ['Kreditkarte', 'Visa, Mastercard'], paypal: ['PayPal', 'Mit deinem PayPal-Konto'], klarna: ['Klarna', 'Später bezahlen oder sofort'], ccard: ['Kreditkarte', 'Visa, Mastercard, Amex'] },
       noSubPay: 'Im Abo nicht verfügbar',
-      subPayNote: 'Abo: Die Zahlung erfolgt automatisch (Karte oder BLIK).',
-      subPayNoteEUR: 'Abo: Die Zahlung erfolgt automatisch per PayPal, Klarna oder Kreditkarte.',
+      subPayNote: 'Abo: Die Zahlung erfolgt automatisch per Karte. BLIK und Przelewy24 nur bei Einzelkauf.',
+      subPayNoteEUR: 'Abo: Die Zahlung erfolgt automatisch per Kreditkarte oder PayPal.',
       accept: 'Ich akzeptiere die <a href="#/dostawa">AGB</a> und die <a href="#/regulamin-subskrypcji">Abo-Bedingungen</a>.',
       order: 'Zahlungspflichtig bestellen',
       orderMock: 'Dies ist ein Entwurf: Es wurde keine Bestellung aufgegeben und keine Zahlung ausgelöst.',
@@ -227,7 +227,7 @@
   };
   var FREE_FROM = { PLN: 150, EUR: 39 };
   var PAY = { PLN: ['blik', 'p24', 'card'], EUR: ['paypal', 'klarna', 'ccard'] };
-  var NO_SUB_PAY = { p24: true };
+  var NO_SUB_PAY = { p24: true, blik: true, klarna: true };
   var PHOTOS = ['1695245503558-5cdb37f49092', '1562051036-e0eea191d42f', '1771736385651-c071580a9d78', '1759259639356-7c6e74eed1ec'];
 
   /* ---------- Stan ---------- */
@@ -371,7 +371,7 @@
     if (!state.ship || !opts.some(function (o) { return o.id === state.ship; })) state.ship = opts[0].id;
     var pays = PAY[state.cur];
     var hasSub = state.cart.some(function (i) { return i.mode === 'sub'; });
-    if (!state.pay || pays.indexOf(state.pay) < 0 || (hasSub && NO_SUB_PAY[state.pay])) state.pay = pays[0];
+    if (!state.pay || pays.indexOf(state.pay) < 0 || (hasSub && NO_SUB_PAY[state.pay])) state.pay = pays.filter(function (id) { return !(hasSub && NO_SUB_PAY[id]); })[0] || pays[0];
     var sub = state.cart.reduce(function (s, it) { return s + lineTotal(it); }, 0);
     var sh = opts.filter(function (o) { return o.id === state.ship; })[0];
     var free = hasSub || sub >= FREE_FROM[state.cur];
