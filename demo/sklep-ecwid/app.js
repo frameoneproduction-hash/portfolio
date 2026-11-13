@@ -330,11 +330,11 @@
     'obrus-lniany': ['1709626142596-f99fda8e68f1', '1604300026894-75f90702c181', '1596433904500-97b901c5d274'],
     'serwetki-lniane': ['1757625487036-1f9ad7f70289', '1705290304352-4beef0b626b3', '1596433904747-e8b061219a71'],
     'poszewka-lniana': ['1653601983541-a70f6f1e715b', '1600414428640-f78a67c2aa3b', '1617325247661-675ab4b64ae2'],
-    'kubek-kamionkowy': ['1782351076283-73aa35f76058', '1782351094137-14cef7134c18', '1590422749897-47036da0b0ff'],
+    'kubek-kamionkowy': ['1782351076283-73aa35f76058', '1782351094137-14cef7134c18'],
     'wazon-ceramiczny': ['1643569556871-91ec60671ed7', '1612196808214-b8e1d6145a8c', '1631125915902-d8abe9225ff2'],
     'talerz-obiadowy': ['1591632288574-a387f820a1ca', '1705948731485-6e4c6c180d0d', '1620818309896-df4306ec95d8'],
     'misa-do-serwowania': ['1530006498959-b7884e829a04', '1587560555570-4d3f84dcee05', '1510035618584-c442b241abe7'],
-    'swieca-sojowa': ['1603905179139-db12ab535ca9', '1612293905607-b003de9e54fb', '1757688525739-8d1e13daf44f'],
+    'swieca-sojowa': ['1612293905607-b003de9e54fb', '1757688525739-8d1e13daf44f'],
     'swiece-stolowe': ['1646171638130-9eefc42feaab', '1575980105619-7c0345ae0680', '1609109522442-783c4d5aeffd']
   };
   var CAT_PHOTO = { tekstylia: '1596433904500-97b901c5d274', ceramika: '1631125915902-d8abe9225ff2', swiece: '1612293905607-b003de9e54fb' };
@@ -694,8 +694,9 @@
     return '<button type="button" role="tab" class="tabs__tab" id="tb-' + id + '" aria-controls="tp-' + id + '" aria-selected="' + sel + '"' + (sel ? '' : ' tabindex="-1"') + '>' + label + '</button>';
   }
   function thumbs(p, sel, v) {
-    return [0, 1, 2].map(function (i) {
-      return '<button type="button" class="thumb" data-view="' + i + '" aria-pressed="' + (i === v) + '" aria-label="Zdjęcie ' + (i + 1) + ' z 3">' + productArt(p, sel, i, 'thumb') + '</button>';
+    var n = (p.photos && p.photos.length) || 3;
+    return Array.apply(null, Array(n)).map(function (_, i) {
+      return '<button type="button" class="thumb" data-view="' + i + '" aria-pressed="' + (i === v) + '" aria-label="Zdjęcie ' + (i + 1) + ' z ' + n + '">' + productArt(p, sel, i, 'thumb') + '</button>';
     }).join('');
   }
   function priceBlock(p, sel) {
