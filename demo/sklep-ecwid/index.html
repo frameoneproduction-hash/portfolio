@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Demo koncepcyjne sklepu w strukturze Ecwid Instant Site: polskie teksty produktów, warianty, koszyk i strony informacyjne. Marka i produkty są przykładowe.">
+<meta name="theme-color" content="#f7f4ef">
+<title>Szuwar &amp; Glina — demo sklepu</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%235b6b4a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' text-anchor='middle' fill='%23fff'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<div class="demo-bar" role="region" aria-label="Informacja o demo">
+  <div class="wrap demo-bar__in">
+    <div class="demo-bar__text">
+      <p><strong>Demo koncepcyjne</strong> — sklep, marka i produkty przykładowe. Struktura sekcji jak w Ecwid Instant Site.</p>
+      <p class="demo-bar__en" lang="en">Static mockup — not built in Ecwid; fictional store, products and prices.</p>
+    </div>
+    <div class="demo-bar__tools">
+      <div class="lang" role="group" aria-label="Język tekstów produktów">
+        <span class="lang__label" aria-hidden="true">Teksty produktów:</span>
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="false" title="Pokaż angielski oryginał">EN</button>
+        <button type="button" class="lang__btn" data-lang="pl" aria-pressed="true" title="Pokaż polskie tłumaczenie">PL</button>
+      </div>
+      <button type="button" class="sections-btn" id="sectionsBtn" aria-pressed="false">Pokaż sekcje Instant Site</button>
+    </div>
+  </div>
+</div>
+
+<div class="announce" data-section="Pasek ogłoszeń · Announcement bar">
+  <p>Darmowa dostawa od 200&nbsp;zł · Wysyłka w 1–2 dni robocze · 14 dni na zwrot</p>
+</div>
+
+<header class="header" data-section="Nagłówek · Header">
+  <div class="wrap header__in">
+    <a class="logo" href="#/" aria-label="Szuwar &amp; Glina — strona główna">
+      <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#5b6b4a"/><path d="M14 30c0-8 2-14 6-20M20 30c0-6 1-11 4-15M26 30c0-5-1-9-3-12" stroke="#f7f4ef" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+      <span>Szuwar <em>&amp;</em> Glina</span>
+    </a>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+      <span class="menu-btn__bars" aria-hidden="true"></span><span class="sr">Menu</span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Menu główne">
+      <a href="#/sklep" data-nav="sklep">Sklep</a>
+      <a href="#/o-nas" data-nav="o-nas">O nas</a>
+      <a href="#/dostawa-i-zwroty" data-nav="dostawa-i-zwroty">Dostawa i zwroty</a>
+      <a href="#/kontakt" data-nav="kontakt">Kontakt</a>
+    </nav>
+    <a class="cart-link" href="#/koszyk" data-nav="koszyk">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 7Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span class="sr">Koszyk, liczba sztuk:</span>
+      <span class="cart-link__count" id="cartCount">0</span>
+    </a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="footer" data-section="Stopka · Footer">
+  <div class="wrap footer__grid">
+    <div>
+      <p class="footer__brand">Szuwar <em>&amp;</em> Glina</p>
+      <p class="muted">Lniane tekstylia, ceramika i świece do spokojnego domu.</p>
+      <p class="muted small">Marka fikcyjna, stworzona na potrzeby demo.</p>
+    </div>
+    <div>
+      <h2 class="footer__h">Sklep</h2>
+      <ul>
+        <li><a href="#/sklep?kategoria=tekstylia">Tekstylia lniane</a></li>
+        <li><a href="#/sklep?kategoria=ceramika">Ceramika</a></li>
+        <li><a href="#/sklep?kategoria=swiece">Świece</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer__h">Informacje</h2>
+      <ul>
+        <li><a href="#/o-nas">O nas</a></li>
+        <li><a href="#/dostawa-i-zwroty">Dostawa i zwroty</a></li>
+        <li><a href="#/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer__h">Płatności i dostawa</h2>
+      <p class="pills"><span>BLIK</span><span>Przelewy24</span><span>Karta</span></p>
+      <p class="pills"><span>Paczkomat InPost</span><span>Kurier InPost</span><span>Poczta Polska</span></p>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <p>© 2026 Szuwar &amp; Glina (demo). Strona bez plików cookie i bez analityki.</p>
+  </div>
+</footer>
+
+<aside class="scope" id="scope" aria-label="Zakres wdrożenia">
+  <button type="button" class="scope__toggle" id="scopeToggle" aria-expanded="false" aria-controls="scopeBody">
+    <span class="scope__dot" aria-hidden="true"></span>Co obejmuje wdrożenie
+  </button>
+  <div class="scope__body" id="scopeBody" hidden>
+    <h2 class="scope__h">Co obejmuje wdrożenie</h2>
+    <ul class="scope__list">
+      <li><strong>5–6 stron Instant Site</strong> — strona główna, sklep, O nas, Dostawa i zwroty, Kontakt, Regulamin</li>
+      <li><strong>Tłumaczenie ~150 produktów z wariantami</strong> EN → PL (plik importu CSV)</li>
+      <li><strong>Sprawdzenie tekstów na grafikach</strong> — ortografia, polskie znaki, typografia</li>
+      <li><strong>Formatowanie stron regulaminu</strong> i polityk (treść prawną zatwierdza prawnik)</li>
+    </ul>
+    <p class="scope__en" lang="en">Included: 5–6 Instant Site pages · EN→PL translation of ~150 products with variants (CSV import file) · Polish text check on product images · policy page formatting.</p>
+    <button type="button" class="scope__close" id="scopeClose">Zwiń</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
