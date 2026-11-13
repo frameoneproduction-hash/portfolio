@@ -153,14 +153,14 @@
     {
       id: 'kubek-kamionkowy', cat: 'ceramika', art: 'mug', sku: 'SG-CR-120', bg: '#e3ded5',
       options: [
-        { key: 'color', en: 'Color', pl: 'Kolor', swatch: true, values: [col('speckled'), col('olive')] },
+        { key: 'color', en: 'Color', pl: 'Kolor', swatch: true, values: [col('olive'), col('speckled')] },
         { key: 'set', en: 'Set', pl: 'Zestaw', values: [
           { en: 'Single mug', pl: '1 szt.', price: 59 },
           { en: 'Set of 2', pl: 'Komplet 2 szt.', price: 109 }] }
       ],
       en: {
         name: 'Speckled Stoneware Mug, 12 oz',
-        short: 'A hand-glazed everyday mug with a comfortable handle and a reactive glaze that makes each piece one of a kind.',
+        short: 'A hand-glazed everyday mug with a reactive glaze that makes each piece one of a kind.',
         desc: ['Thrown in a small family-run workshop and fired at high temperature, which makes the stoneware dense and durable.',
           'The reactive glaze pools and breaks differently on every mug, so expect slight variations in color and speckling.'],
         spec: [['Capacity', '12 fl oz'], ['Dimensions', 'height 3.7 in, diameter 3.4 in'], ['Material', 'stoneware']],
@@ -168,7 +168,7 @@
       },
       pl: {
         name: 'Kubek z kamionki, nakrapiany, 350 ml',
-        short: 'Ręcznie szkliwiony kubek na co dzień z wygodnym uchem. Szkliwo reaktywne sprawia, że każdy egzemplarz jest niepowtarzalny.',
+        short: 'Ręcznie szkliwiony kubek na co dzień. Szkliwo reaktywne sprawia, że każdy egzemplarz jest niepowtarzalny.',
         desc: ['Powstaje w małej rodzinnej pracowni i jest wypalany w wysokiej temperaturze, dzięki czemu kamionka jest zwarta i wytrzymała.',
           'Szkliwo reaktywne układa się na każdym kubku inaczej, dlatego kolor i nakrapianie mogą się nieznacznie różnić.'],
         spec: [['Pojemność', '350 ml'], ['Wymiary', 'wys. 9,5 cm, Ø 8,5 cm'], ['Materiał', 'kamionka']],
@@ -325,6 +325,25 @@
         '„Ivory” → „ecru”; „Natural” → „naturalny (miodowy)”, bo sam „naturalny” nic nie mówi o kolorze.']
     }
   ];
+  var PH = {
+    'recznik-lniany': ['1591625591034-75d303d2e1a4', '1616663717839-2fea42e1a1f6', '1626325138381-c6b2309e3da4'],
+    'obrus-lniany': ['1709626142596-f99fda8e68f1', '1604300026894-75f90702c181', '1596433904500-97b901c5d274'],
+    'serwetki-lniane': ['1757625487036-1f9ad7f70289', '1705290304352-4beef0b626b3', '1596433904747-e8b061219a71'],
+    'poszewka-lniana': ['1653601983541-a70f6f1e715b', '1600414428640-f78a67c2aa3b', '1617325247661-675ab4b64ae2'],
+    'kubek-kamionkowy': ['1782351076283-73aa35f76058', '1782351094137-14cef7134c18', '1590422749897-47036da0b0ff'],
+    'wazon-ceramiczny': ['1643569556871-91ec60671ed7', '1612196808214-b8e1d6145a8c', '1631125915902-d8abe9225ff2'],
+    'talerz-obiadowy': ['1591632288574-a387f820a1ca', '1705948731485-6e4c6c180d0d', '1620818309896-df4306ec95d8'],
+    'misa-do-serwowania': ['1530006498959-b7884e829a04', '1587560555570-4d3f84dcee05', '1510035618584-c442b241abe7'],
+    'swieca-sojowa': ['1603905179139-db12ab535ca9', '1612293905607-b003de9e54fb', '1757688525739-8d1e13daf44f'],
+    'swiece-stolowe': ['1646171638130-9eefc42feaab', '1575980105619-7c0345ae0680', '1609109522442-783c4d5aeffd']
+  };
+  var CAT_PHOTO = { tekstylia: '1596433904500-97b901c5d274', ceramika: '1631125915902-d8abe9225ff2', swiece: '1612293905607-b003de9e54fb' };
+  var HERO = [
+    { id: '1631510390389-c1e4fb20ff31', eyebrow: 'Len · Glina · Wosk', h: 'Spokojny dom zaczyna się od prostych rzeczy', p: 'Lniane tekstylia, ręcznie robiona ceramika i świece z naturalnego wosku.', cta: 'Przejdź do sklepu', href: '#/sklep', alt: 'Jasne wnętrze salonu z fotelem i stolikiem' },
+    { id: '1709626142596-f99fda8e68f1', eyebrow: 'Tekstylia lniane', h: 'Len, który mięknie z każdym praniem', p: 'Ręczniki, obrusy, serwetki i poszewki ze 100% lnu europejskiego.', cta: 'Zobacz tekstylia', href: '#/sklep?kategoria=tekstylia', alt: 'Złożona tkanina lniana w naturalnym kolorze' },
+    { id: '1597696929736-6d13bed8e6a8', eyebrow: 'Ceramika', h: 'Kamionka toczona ręcznie', p: 'Każdy kubek, talerz i wazon jest trochę inny — i właśnie o to chodzi.', cta: 'Zobacz ceramikę', href: '#/sklep?kategoria=ceramika', alt: 'Ceramiczne wazony w naturalnych odcieniach na drewnianym blacie' }
+  ];
+  PRODUCTS.forEach(function (p) { p.photos = PH[p.id]; });
   var BY_ID = {};
   PRODUCTS.forEach(function (p) { BY_ID[p.id] = p; });
 
@@ -409,127 +428,54 @@
     return p.options.map(function (o) { return o[lang] + ': ' + o.values[sel[o.key] || 0][lang]; }).join(' · ');
   }
 
-  /* ---------- Grafiki SVG ---------- */
-  function shade(hex, amt) {
-    var n = parseInt(hex.slice(1), 16);
-    var r = n >> 16, g = (n >> 8) & 255, b = n & 255;
-    var tgt = amt < 0 ? 0 : 255, k = Math.abs(amt);
-    r = Math.round((tgt - r) * k + r); g = Math.round((tgt - g) * k + g); b = Math.round((tgt - b) * k + b);
-    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  /* ---------- Zdjęcia (Unsplash) ---------- */
+  var U = 'https://images.unsplash.com/photo-';
+  function usrc(id, w, h) { return U + id + '?w=' + w + '&amp;h=' + h + '&amp;q=80&amp;auto=format&amp;fit=crop'; }
+  function photo(id, alt, w, h, o) {
+    o = o || {};
+    var ws = o.widths || [w];
+    var set = ws.map(function (x) { return usrc(id, x, Math.round(x * h / w)) + ' ' + x + 'w'; }).join(', ');
+    return '<img src="' + usrc(id, w, h) + '" srcset="' + set + '" sizes="' + (o.sizes || '100vw') + '" width="' + w + '" height="' + h + '" alt="' + esc(alt) + '"' +
+      (o.eager ? ' loading="eager" fetchpriority="high"' : ' loading="lazy"') + ' decoding="async"' + (o.cls ? ' class="' + o.cls + '"' : '') + '>';
   }
-  function rng(seed) { return function () { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }; }
-  function speckles(cx, cy, rx, ry, n, color, seed) {
-    var r = rng(seed), out = '';
-    for (var i = 0; i < n; i++) {
-      var a = r() * Math.PI * 2, d = Math.sqrt(r());
-      out += '<circle cx="' + (cx + Math.cos(a) * rx * d).toFixed(1) + '" cy="' + (cy + Math.sin(a) * ry * d).toFixed(1) + '" r="' + (0.8 + r() * 1.6).toFixed(1) + '" fill="' + color + '" opacity=".55"/>';
-    }
-    return out;
+  var SIZES = {
+    card: [600, 600, [400, 600, 800], '(max-width: 759px) 50vw, (max-width: 1000px) 33vw, 25vw'],
+    main: [1000, 1000, [600, 1000, 1400], '(max-width: 899px) 100vw, 55vw'],
+    thumb: [160, 160, [160, 320], '80px'],
+    line: [168, 168, [168, 336], '84px']
+  };
+  function productArt(p, sel, view, size) {
+    size = size || 'card';
+    var s = SIZES[size];
+    var alt = size === 'main' ? t(p).name + (view ? ' — zdjęcie ' + (view + 1) : '') : '';
+    return photo(p.photos[view || 0], alt, s[0], s[1], { widths: s[2], sizes: s[3], eager: size === 'main' });
   }
-  function shapes(kind, c) {
-    var d1 = shade(c, -0.12), d2 = shade(c, -0.25), l1 = shade(c, 0.14);
-    switch (kind) {
-      case 'towel':
-        return '<rect x="78" y="252" width="244" height="58" rx="12" fill="' + d1 + '"/>' +
-          '<path d="M90 282h220" stroke="' + d2 + '" stroke-width="2" opacity=".5"/>' +
-          '<rect x="90" y="198" width="220" height="58" rx="12" fill="' + c + '"/>' +
-          '<path d="M102 228h196" stroke="' + d1 + '" stroke-width="2" opacity=".6"/>' +
-          '<rect x="104" y="146" width="192" height="56" rx="12" fill="' + l1 + '"/>' +
-          '<path d="M116 160h168M116 166h168" stroke="' + d1 + '" stroke-width="1.5" opacity=".45"/>' +
-          '<path d="M104 176h192" stroke="' + d1 + '" stroke-width="2" opacity=".5"/>';
-      case 'tablecloth':
-        return '<rect x="74" y="292" width="12" height="66" fill="#8b6c4f"/><rect x="314" y="292" width="12" height="66" fill="#8b6c4f"/>' +
-          '<polygon points="70,170 330,170 372,212 28,212" fill="' + l1 + '"/>' +
-          '<path d="M28 212H372L366 298Q200 314 34 298Z" fill="' + c + '"/>' +
-          [80, 136, 192, 248, 304, 352].map(function (x) { return '<path d="M' + x + ' 214q6 40 -2 86" stroke="' + d1 + '" stroke-width="2" fill="none" opacity=".55"/>'; }).join('') +
-          '<ellipse cx="200" cy="182" rx="44" ry="10" fill="#f4efe6"/><ellipse cx="200" cy="180" rx="30" ry="6" fill="#e2d9ca"/>';
-      case 'napkins':
-        return '<g transform="rotate(-9 200 230)"><rect x="112" y="142" width="176" height="176" rx="6" fill="' + d1 + '"/></g>' +
-          '<g transform="rotate(5 200 230)"><rect x="112" y="142" width="176" height="176" rx="6" fill="' + c + '"/></g>' +
-          '<rect x="124" y="156" width="152" height="152" rx="6" fill="' + l1 + '"/>' +
-          '<path d="M200 156v152M124 232h152" stroke="' + d1 + '" stroke-width="1.6" opacity=".5"/>' +
-          '<rect x="134" y="166" width="132" height="132" rx="3" fill="none" stroke="' + d1 + '" stroke-width="1.2" stroke-dasharray="4 4" opacity=".7"/>';
-      case 'pillow':
-        return '<path d="M86 132Q200 112 314 132Q336 225 314 318Q200 338 86 318Q64 225 86 132Z" fill="' + c + '"/>' +
-          '<path d="M104 150Q200 134 296 150Q314 225 296 300Q200 316 104 300Q86 225 104 150Z" fill="none" stroke="' + d1 + '" stroke-width="2" stroke-dasharray="5 5" opacity=".7"/>' +
-          '<path d="M120 170Q160 160 200 166" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".25" fill="none"/>' +
-          '<path d="M150 250q50 18 100 0" stroke="' + d1 + '" stroke-width="2" fill="none" opacity=".4"/>';
-      case 'mug':
-        return '<path d="M262 196c58 0 58 92 0 92" stroke="' + d1 + '" stroke-width="18" fill="none" stroke-linecap="round"/>' +
-          '<rect x="128" y="160" width="140" height="168" rx="20" fill="' + c + '"/>' +
-          '<rect x="128" y="290" width="140" height="38" rx="16" fill="' + d1 + '" opacity=".35"/>' +
-          '<ellipse cx="198" cy="162" rx="70" ry="13" fill="' + d1 + '"/><ellipse cx="198" cy="163" rx="60" ry="9" fill="' + shade(c, -0.45) + '"/>' +
-          speckles(198, 240, 62, 72, 40, shade(c, -0.55), 7) +
-          '<path d="M146 186v110" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".22"/>';
-      case 'vase':
-        return '<path d="M200 102c18 -30 30 -50 46 -66" stroke="#66734f" stroke-width="3" fill="none"/>' +
-          '<path d="M232 54c16 -10 30 -8 40 -2c-12 10 -26 12 -40 2Z" fill="#7d8a62"/><path d="M216 76c-16 -12 -32 -12 -42 -6c12 10 28 12 42 6Z" fill="#8d9a70"/>' +
-          '<path d="M200 98c-24 0 -30 12 -28 25c2 15 14 25 10 45c-6 30 -54 52 -54 102c0 50 38 72 72 72s72 -22 72 -72c0 -50 -48 -72 -54 -102c-4 -20 8 -30 10 -45c2 -13 -4 -25 -28 -25Z" fill="' + c + '"/>' +
-          '<ellipse cx="200" cy="102" rx="26" ry="6" fill="' + d2 + '"/>' +
-          '<path d="M150 250c0 -24 14 -40 28 -54" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".22" fill="none"/>';
-      case 'plate':
-        return '<circle cx="208" cy="222" r="132" fill="rgba(0,0,0,.08)"/>' +
-          '<circle cx="200" cy="212" r="132" fill="' + c + '"/>' +
-          '<circle cx="200" cy="212" r="96" fill="' + l1 + '"/>' +
-          '<circle cx="200" cy="212" r="96" fill="none" stroke="' + d1 + '" stroke-width="2" opacity=".6"/>' +
-          speckles(200, 212, 126, 126, 70, shade(c, -0.55), 11);
-      case 'bowl':
-        return '<path d="M58 188C62 282 128 314 200 314S338 282 342 188Z" fill="' + c + '"/>' +
-          '<path d="M166 312h68l-6 14h-56Z" fill="' + d1 + '"/>' +
-          '<ellipse cx="200" cy="188" rx="142" ry="34" fill="' + l1 + '"/>' +
-          '<ellipse cx="200" cy="190" rx="128" ry="26" fill="' + shade(c, -0.18) + '"/>' +
-          '<circle cx="170" cy="184" r="16" fill="#d9b44a"/><circle cx="204" cy="178" r="15" fill="#e2c35c"/><circle cx="234" cy="188" r="14" fill="#cfa63f"/>' +
-          '<path d="M186 172c10 -10 22 -12 30 -10" stroke="#5f7a45" stroke-width="5" stroke-linecap="round" fill="none"/>' +
-          speckles(200, 260, 120, 40, 34, shade(c, -0.55), 5);
-      case 'jar':
-        return '<rect x="134" y="168" width="132" height="164" rx="16" fill="' + c + '" opacity=".88"/>' +
-          '<rect x="144" y="196" width="112" height="126" rx="9" fill="#efe5d2" opacity=".9"/>' +
-          '<rect x="152" y="244" width="96" height="54" rx="4" fill="#faf6ee"/>' +
-          '<path d="M166 262h68M174 276h52" stroke="#8a7d68" stroke-width="3" stroke-linecap="round"/>' +
-          '<path d="M200 196v-14" stroke="#3a332a" stroke-width="3"/>' +
-          '<path d="M200 150c10 12 12 22 0 32c-12 -10 -10 -20 0 -32Z" fill="#f0b44c"/><path d="M200 162c5 6 5 12 0 18c-5 -6 -5 -12 0 -18Z" fill="#fff3cf"/>' +
-          '<path d="M146 186v124" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".25"/>';
-      case 'tapers':
-        return '<ellipse cx="200" cy="334" rx="106" ry="16" fill="#9a7b55"/><ellipse cx="200" cy="330" rx="96" ry="11" fill="#b8956a"/>' +
-          '<rect x="150" y="300" width="44" height="30" rx="6" fill="#a8865c"/><rect x="208" y="300" width="44" height="30" rx="6" fill="#a8865c"/>' +
-          '<rect x="161" y="128" width="22" height="176" rx="4" fill="' + c + '"/><rect x="219" y="104" width="22" height="200" rx="4" fill="' + c + '"/>' +
-          '<path d="M165 136v150M223 112v170" stroke="#fff" stroke-width="4" opacity=".25" stroke-linecap="round"/>' +
-          '<path d="M172 128v-10M230 104v-10" stroke="#3a332a" stroke-width="2.5"/>' +
-          '<path d="M172 86c8 10 9 18 0 30c-9 -12 -8 -20 0 -30Z" fill="#f0b44c"/><path d="M230 62c8 10 9 18 0 30c-9 -12 -8 -20 0 -30Z" fill="#f0b44c"/>';
-    }
-    return '';
+  function heroSlider() {
+    var slides = HERO.map(function (h, i) {
+      var heading = i === 0 ? 'h1' : 'h2';
+      return '<div class="hero__slide" role="group" aria-roledescription="slajd" aria-label="' + (i + 1) + ' z ' + HERO.length + '"' + (i === 0 ? '' : ' hidden') + '>' +
+        photo(h.id, h.alt, 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' }) +
+        '<div class="hero__shade" aria-hidden="true"></div>' +
+        '<div class="wrap hero__content"><p class="hero__eyebrow">' + h.eyebrow + '</p><' + heading + ' class="hero__title">' + h.h + '</' + heading + '>' +
+        '<p class="hero__text">' + h.p + '</p><a class="btn btn--light" href="' + h.href + '">' + h.cta + '</a></div></div>';
+    }).join('');
+    var dots = HERO.map(function (h, i) {
+      return '<button type="button" class="hero__dot" data-slide="' + i + '" aria-label="Slajd ' + (i + 1) + '"' + (i === 0 ? ' aria-current="true"' : '') + '></button>';
+    }).join('');
+    return '<section class="hero" data-section="Okładka · Cover" aria-roledescription="karuzela" aria-label="Wyróżnione">' + slides +
+      '<button type="button" class="hero__nav hero__nav--prev" data-slide="prev" aria-label="Poprzedni slajd"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>' +
+      '<button type="button" class="hero__nav hero__nav--next" data-slide="next" aria-label="Następny slajd"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>' +
+      '<div class="hero__dots">' + dots + '</div></section>';
   }
-  function art(kind, color, bg, view, label) {
-    var inner = shapes(kind, color);
-    var back = bg;
-    var extra = '';
-    if (view === 1) inner = '<g transform="translate(200 210) scale(1.75) translate(-200 -225)">' + inner + '</g>';
-    if (view === 2) {
-      back = shade(bg, -0.1);
-      extra = '<rect x="0" y="300" width="400" height="100" fill="' + shade(bg, -0.18) + '"/>';
-      inner = '<g transform="translate(200 230) scale(.82) translate(-200 -230)">' + inner + '</g>';
-    }
-    return '<svg viewBox="0 0 400 400" role="img" aria-label="' + esc(label) + '" preserveAspectRatio="xMidYMid slice">' +
-      '<rect width="400" height="400" fill="' + back + '"/>' + extra +
-      '<ellipse cx="200" cy="350" rx="140" ry="12" fill="rgba(0,0,0,.07)"/>' + inner + '</svg>';
-  }
-  function productArt(p, sel, view) {
-    return art(p.art, colorOf(p, sel || selOf(p)), p.bg, view || 0, t(p).name);
-  }
-  function coverArt() {
-    function place(x, y, s, kind, c, bg) {
-      return '<svg x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '" viewBox="0 0 400 400">' + shapes(kind, c) + '</svg>';
-    }
-    return '<svg viewBox="0 0 1200 520" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">' +
-      '<defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9e1d4"/><stop offset="1" stop-color="#d2c4ad"/></linearGradient></defs>' +
-      '<rect width="1200" height="520" fill="url(#cg)"/>' +
-      '<rect x="0" y="420" width="1200" height="100" fill="#c7b69b"/>' +
-      '<rect x="0" y="414" width="1200" height="8" fill="#b9a587"/>' +
-      '<circle cx="1010" cy="150" r="120" fill="#efe8dc" opacity=".7"/>' +
-      place(650, 120, 330, 'towel', '#a9b59a') +
-      place(860, 40, 380, 'vase', '#d8c3a0') +
-      place(980, 210, 230, 'jar', '#b9824a') +
-      '</svg>';
+  var slideIdx = 0;
+  function setSlide(i) {
+    var slides = document.querySelectorAll('.hero__slide');
+    if (!slides.length) return;
+    slideIdx = (i + slides.length) % slides.length;
+    slides.forEach(function (el, k) { el.hidden = k !== slideIdx; });
+    document.querySelectorAll('.hero__dot').forEach(function (d, k) {
+      if (k === slideIdx) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+    });
   }
 
   /* ---------- Szablony wspólne ---------- */
@@ -559,22 +505,15 @@
     var featured = ['obrus-lniany', 'kubek-kamionkowy', 'swieca-sojowa', 'wazon-ceramiczny'].map(function (id) { return card(BY_ID[id]); }).join('');
     var cats = Object.keys(CATS).map(function (k) {
       var c = CATS[k];
-      return '<a class="cat-card" href="#/sklep?kategoria=' + k + '"><div class="cat-card__img">' +
-        art(c.art, c.color, '#e8e1d5', 2, t(c)) + '</div><div class="cat-card__body"><h3 lang="' + state.lang + '">' + esc(t(c)) + '</h3><p lang="' + state.lang + '">' + esc(state.lang === 'en' ? c.enDesc : c.plDesc) + '</p></div></a>';
+      return '<a class="tile" href="#/sklep?kategoria=' + k + '">' + photo(CAT_PHOTO[k], '', 700, 700, { widths: [400, 700, 1000], sizes: '(max-width: 759px) 100vw, 33vw' }) +
+        '<span class="tile__label"><span class="tile__name" lang="' + state.lang + '">' + esc(t(c)) + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(state.lang === 'en' ? c.enDesc : c.plDesc) + '</span></span></a>';
     }).join('');
     return '' +
-      '<section class="cover" data-section="Okładka · Cover" aria-labelledby="h-cover">' +
-      '<div class="cover__art">' + coverArt() + '</div>' +
-      '<div class="wrap cover__in"><div class="cover__box">' +
-      '<p class="eyebrow">Len · Glina · Wosk</p>' +
-      '<h1 id="h-cover">Spokojny dom zaczyna się od prostych rzeczy</h1>' +
-      '<p>Lniane tekstylia, ręcznie robiona ceramika i świece z naturalnego wosku. Zamówienia wysyłamy w 1–2 dni robocze.</p>' +
-      '<div class="cover__cta"><a class="btn" href="#/sklep">Przejdź do sklepu</a><a class="btn btn--ghost" href="#/o-nas">Poznaj nas</a></div>' +
-      '</div></div></section>' +
+      heroSlider() +
 
       '<section class="section" data-section="Kategorie · Categories" aria-labelledby="h-cats"><div class="wrap">' +
       '<div class="section__head"><div><p class="eyebrow">Kategorie</p><h2 id="h-cats">Czego szukasz?</h2></div><a href="#/sklep">Wszystkie produkty →</a></div>' +
-      '<div class="grid grid--3 grid--stack">' + cats + '</div></div></section>' +
+      '<div class="grid grid--3 tiles">' + cats + '</div></div></section>' +
 
       '<section class="section section--tight" data-section="Polecane produkty · Featured products" aria-labelledby="h-feat"><div class="wrap">' +
       '<div class="section__head"><div><p class="eyebrow">Polecane</p><h2 id="h-feat">Ulubione w tym sezonie</h2></div><a href="#/sklep">Zobacz wszystkie →</a></div>' +
@@ -622,8 +561,11 @@
         '<rect x="214" y="183" width="58" height="4" fill="#c0392b" opacity=".75"/>'
       : '';
     return '<svg viewBox="0 0 560 220" role="img" aria-label="Baner: ' + esc(l1 + ', ' + l2 + ', ' + l3) + '">' +
-      '<rect width="560" height="220" rx="12" fill="#e9e1d4"/>' +
-      '<svg x="360" y="20" width="190" height="190" viewBox="0 0 400 400">' + shapes('tablecloth', '#d6c7ad') + '</svg>' +
+      '<defs><clipPath id="bclip' + (before ? 1 : 0) + '"><rect width="560" height="220" rx="12"/></clipPath>' +
+      '<linearGradient id="bfade' + (before ? 1 : 0) + '"><stop offset="0" stop-color="#efe9df"/><stop offset="1" stop-color="#efe9df" stop-opacity="0"/></linearGradient></defs>' +
+      '<g clip-path="url(#bclip' + (before ? 1 : 0) + ')"><rect width="560" height="220" fill="#efe9df"/>' +
+      '<image href="' + U + '1709626142596-f99fda8e68f1?w=440&amp;h=440&amp;q=75&amp;auto=format&amp;fit=crop" x="340" y="0" width="220" height="220" preserveAspectRatio="xMidYMid slice"/>' +
+      '<rect x="338" y="0" width="50" height="220" fill="url(#bfade' + (before ? 1 : 0) + ')"/></g>' +
       '<text x="36" y="88" font-family="Georgia, serif" font-size="34" fill="#22201c">' + esc(l1) + '</text>' +
       '<text x="36" y="134" font-family="system-ui, Segoe UI, sans-serif" font-size="20" fill="#4f5f3f" font-weight="600">' + esc(l2) + '</text>' +
       '<text x="36" y="178" font-family="system-ui, Segoe UI, sans-serif" font-size="17" fill="#3d3a34">' + esc(l3) + '</text>' +
@@ -705,9 +647,9 @@
 
     return '<div class="wrap page-head">' + crumbs([['Strona główna', '#/'], ['Sklep', '#/sklep'], [t(CATS[p.cat]), '#/sklep?kategoria=' + p.cat], [tx.name]]) + '</div>' +
       '<section class="wrap" data-section="Karta produktu · Product page" aria-labelledby="h-prod"><div class="product">' +
-      '<div class="gallery"><div class="gallery__main" id="gMain">' + productArt(p, sel, v) + '</div>' +
+      '<div class="gallery"><div class="gallery__main" id="gMain">' + productArt(p, sel, v, 'main') + '</div>' +
       '<div class="gallery__thumbs" id="gThumbs">' + thumbs(p, sel, v) + '</div>' +
-      '<p class="gallery__note">Grafiki poglądowe (SVG). W sklepie: zdjęcia produktów klienta.</p></div>' +
+      '<p class="gallery__note">Zdjęcia poglądowe (Unsplash). W sklepie: zdjęcia produktów klienta, także osobne dla wariantów kolorystycznych.</p></div>' +
       '<div class="pinfo">' + langTag() +
       '<h1 id="h-prod" lang="' + state.lang + '">' + esc(tx.name) + '</h1>' +
       '<div id="pPrice">' + priceBlock(p, sel) + '</div>' +
@@ -753,7 +695,7 @@
   }
   function thumbs(p, sel, v) {
     return [0, 1, 2].map(function (i) {
-      return '<button type="button" class="thumb" data-view="' + i + '" aria-pressed="' + (i === v) + '" aria-label="Zdjęcie ' + (i + 1) + ' z 3">' + productArt(p, sel, i) + '</button>';
+      return '<button type="button" class="thumb" data-view="' + i + '" aria-pressed="' + (i === v) + '" aria-label="Zdjęcie ' + (i + 1) + ' z 3">' + productArt(p, sel, i, 'thumb') + '</button>';
     }).join('');
   }
   function priceBlock(p, sel) {
@@ -812,7 +754,7 @@
     } else {
       lines.innerHTML = state.cart.map(function (it, i) {
         var p = BY_ID[it.id], pr = priceOf(p, it.sel);
-        return '<div class="line"><div class="line__img">' + productArt(p, it.sel, 0) + '</div><div>' +
+        return '<div class="line"><div class="line__img">' + productArt(p, it.sel, 0, 'line') + '</div><div>' +
           '<p class="line__name" lang="' + state.lang + '"><a href="#/produkt/' + p.id + '">' + esc(t(p).name) + '</a></p>' +
           '<p class="line__var" lang="' + state.lang + '">' + esc(variantText(p, it.sel)) + ' · ' + zl(pr.price) + '/szt.</p>' +
           '<div class="line__ctrl"><div class="qty qty--sm" role="group" aria-label="Ilość: ' + esc(t(p).name) + '">' +
@@ -851,9 +793,7 @@
   }
 
   function viewAbout() {
-    function place(x, y, s, kind, c) { return '<svg x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '" viewBox="0 0 400 400">' + shapes(kind, c) + '</svg>'; }
-    var img = '<svg viewBox="0 0 600 510" role="img" aria-label="Ilustracja: talerz, kubek i świece" preserveAspectRatio="xMidYMid slice"><rect width="600" height="510" fill="#e3dccf"/><rect y="380" width="600" height="130" fill="#cdbfa6"/>' +
-      place(30, 150, 300, 'plate', '#ece6da') + place(250, 120, 280, 'mug', '#7d7f55') + place(380, 40, 240, 'tapers', '#d9a84e') + '</svg>';
+    var img = photo('1618111415065-c20b4e1afd41', 'Jasna sypialnia z lnianą pościelą, ceramicznym wazonem i świecą', 900, 765, { widths: [600, 900, 1300], sizes: '(max-width: 899px) 100vw, 50vw' });
     return '<div class="wrap page-head">' + crumbs([['Strona główna', '#/'], ['O nas']]) + '</div>' +
       '<section class="wrap" data-section="O nas · Text and image" aria-labelledby="h-about"><div class="about"><div>' +
       '<p class="eyebrow">O nas</p><h1 id="h-about">Mała pracownia, rzeczy na długie lata</h1>' +
@@ -935,6 +875,7 @@
     document.querySelectorAll('[data-nav]').forEach(function (n) {
       if (n.getAttribute('data-nav') === a) n.setAttribute('aria-current', 'page'); else n.removeAttribute('aria-current');
     });
+    slideIdx = 0;
     if (a === 'sklep') renderResults();
     if (a === 'koszyk') renderCart();
     updateCount();
@@ -970,9 +911,6 @@
       var o = p.options.filter(function (x) { return x.key === key; })[0];
       document.getElementById('optv-' + key).textContent = o.values[sel[key]][state.lang];
       document.getElementById('pPrice').innerHTML = priceBlock(p, sel);
-      var v = state.view[p.id] || 0;
-      document.getElementById('gMain').innerHTML = productArt(p, sel, v);
-      document.getElementById('gThumbs').innerHTML = thumbs(p, sel, v);
     } else if (el.name === 'f-cat') {
       state.shop.cat = el.value;
       history.replaceState(null, '', el.value === 'all' ? '#/sklep' : '#/sklep?kategoria=' + el.value);
@@ -996,11 +934,16 @@
   main.addEventListener('click', function (e) {
     var b = e.target.closest('button');
     if (!b) return;
+    if (b.hasAttribute('data-slide')) {
+      var ds = b.getAttribute('data-slide');
+      setSlide(ds === 'prev' ? slideIdx - 1 : ds === 'next' ? slideIdx + 1 : +ds);
+      return;
+    }
     var p = currentProduct();
     if (b.hasAttribute('data-view') && p) {
       var v = +b.getAttribute('data-view');
       state.view[p.id] = v;
-      document.getElementById('gMain').innerHTML = productArt(p, selOf(p), v);
+      document.getElementById('gMain').innerHTML = productArt(p, selOf(p), v, 'main');
       document.querySelectorAll('#gThumbs .thumb').forEach(function (tb) { tb.setAttribute('aria-pressed', String(+tb.getAttribute('data-view') === v)); });
     } else if (b.hasAttribute('data-q') && p) {
       var input = document.getElementById('qtyInput');
@@ -1107,6 +1050,10 @@
       closeMenu();
     }
   });
+
+  document.addEventListener('error', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.target.classList.add('is-broken');
+  }, true);
 
   if (params.get('panel') === 'open') setScope(true);
   if (params.get('sections') === '1') setSections(true);
