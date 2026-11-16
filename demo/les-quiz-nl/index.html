@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Concept van een herontworpen les- en quizscherm voor een online cursus. Statisch voorbeeld, fictieve cursus.">
+<meta name="theme-color" content="#f6f4ef">
+<title>Concept: les en quiz — demo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f6f68'/%3E%3Cpath d='M9 17l5 5 9-11' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+
+<div class="demo-bar" role="region" aria-label="Over deze demo">
+  <p><strong>Concept</strong> — statisch voorbeeld in HTML/CSS van een les en een quiz, niet gebouwd in LearnDash. Fictieve cursus.</p>
+  <p lang="en">Concept — a static HTML/CSS mockup of a lesson and a quiz, not built in LearnDash. Fictional course.</p>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="outline">
+      <span aria-hidden="true">☰</span> Cursusoverzicht
+    </button>
+    <div class="topbar__course">
+      <span class="topbar__label">Basistraining gespreksvoering</span>
+      <div class="progress" role="group" aria-label="Voortgang cursus">
+        <div class="progress__bar"><span class="p40"></span></div>
+        <span class="progress__text">40% voltooid</span>
+      </div>
+    </div>
+    <div class="switch" role="tablist" aria-label="Scherm kiezen">
+      <button type="button" role="tab" id="tab-les" aria-selected="true" aria-controls="view-les">Les</button>
+      <button type="button" role="tab" id="tab-quiz" aria-selected="false" aria-controls="view-quiz" tabindex="-1">Quiz</button>
+    </div>
+  </header>
+
+  <nav class="outline" id="outline" aria-label="Cursusoverzicht">
+    <ol class="outline__modules">
+      <li class="done"><span class="mod">Module 1</span> Kennismaking en houding
+        <ol><li class="done"><span class="st" aria-hidden="true">✓</span> Je rol in het gesprek <span class="sr">(voltooid)</span></li><li class="done"><span class="st" aria-hidden="true">✓</span> Grenzen en neutraliteit <span class="sr">(voltooid)</span></li></ol>
+      </li>
+      <li class="current"><span class="mod">Module 2</span> Gesprekken met ouders
+        <ol>
+          <li class="done"><span class="st" aria-hidden="true">✓</span> Het gesprek voorbereiden <span class="sr">(voltooid)</span></li>
+          <li class="done"><span class="st" aria-hidden="true">✓</span> Openen en verwachtingen <span class="sr">(voltooid)</span></li>
+          <li class="now" aria-current="page"><span class="st" aria-hidden="true">●</span> Les 3: Actief luisteren</li>
+          <li><span class="st" aria-hidden="true">○</span> Quiz: actief luisteren</li>
+        </ol>
+      </li>
+      <li><span class="mod">Module 3</span> Lastige momenten</li>
+      <li><span class="mod">Module 4</span> Samenwerken met collega's</li>
+      <li><span class="mod">Module 5</span> Verslaglegging</li>
+    </ol>
+  </nav>
+
+  <main id="inhoud" class="main">
+    <section id="view-les" role="tabpanel" aria-labelledby="tab-les" class="view">
+      <p class="crumb">Module 2 · Les 3 van 4 · ca. 8 minuten</p>
+      <h1>Actief luisteren</h1>
+      <p class="lead">Ouders vertellen meer als ze merken dat je echt luistert. In deze les oefen je drie technieken die je in elk gesprek kunt gebruiken.</p>
+
+      <div class="goals">
+        <h2 class="goals__title">Na deze les kun je</h2>
+        <ul>
+          <li>samenvatten wat een ouder zegt, in je eigen woorden;</li>
+          <li>open vragen stellen in plaats van gesloten vragen;</li>
+          <li>een stilte laten vallen zonder die meteen op te vullen.</li>
+        </ul>
+      </div>
+
+      <h2>1. Samenvatten</h2>
+      <p>Vat na een paar zinnen kort samen wat je hoort. Zo laat je zien dat je het hebt begrepen, en kan de ouder je verbeteren als dat niet zo is.</p>
+      <blockquote class="example">
+        <p class="example__label">Voorbeeld</p>
+        <p>“Als ik je goed begrijp, maak je je vooral zorgen over de ochtenden, omdat het dan vaak misgaat.”</p>
+      </blockquote>
+
+      <h2>2. Open vragen</h2>
+      <p>Een open vraag begint meestal met <em>wat</em>, <em>hoe</em> of <em>waardoor</em>. De ouder kan dan zelf bepalen wat belangrijk is.</p>
+      <div class="compare">
+        <div class="compare__item compare__item--no"><p class="compare__label">Gesloten</p><p>“Gaat het goed thuis?”</p></div>
+        <div class="compare__item compare__item--yes"><p class="compare__label">Open</p><p>“Hoe gaat het thuis op dit moment?”</p></div>
+      </div>
+
+      <h2>3. Stilte laten vallen</h2>
+      <p>Na een moeilijke vraag is het even stil. Wacht een paar seconden. Vaak komt dan het belangrijkste antwoord.</p>
+
+      <div class="tip" role="note">
+        <p class="tip__label">Tip voor de praktijk</p>
+        <p>Schrijf tijdens het gesprek alleen kernwoorden op. Dan blijft je aandacht bij de ouder.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn--ghost" href="#inhoud">← Vorige les</a>
+        <button type="button" class="btn btn--primary" id="completeBtn">Les voltooien en naar de quiz</button>
+      </div>
+      <p class="hint">Je voortgang wordt automatisch opgeslagen.</p>
+    </section>
+
+    <section id="view-quiz" role="tabpanel" aria-labelledby="tab-quiz" class="view" hidden>
+      <p class="crumb">Module 2 · Quiz · 3 vragen</p>
+      <h1>Quiz: actief luisteren</h1>
+      <p class="lead">Kies bij elke vraag één antwoord en controleer het meteen. Je kunt de quiz zo vaak maken als je wilt.</p>
+
+      <div class="qprogress" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+
+      <form class="question" id="q1" novalidate>
+        <fieldset>
+          <legend><span class="qnum">Vraag 1 van 3</span> Welke vraag is een open vraag?</legend>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q1" value="a"> <span>“Heb je goed geslapen?”</span></label>
+            <label class="opt"><input type="radio" name="q1" value="b" data-correct> <span>“Hoe verliep de nacht?”</span></label>
+            <label class="opt"><input type="radio" name="q1" value="c"> <span>“Was het weer onrustig?”</span></label>
+          </div>
+        </fieldset>
+        <div class="feedback" id="fb1" role="status" aria-live="polite"></div>
+        <div class="actions actions--quiz">
+          <button type="submit" class="btn btn--primary">Controleer antwoord</button>
+        </div>
+      </form>
+
+      <form class="question" id="q2" novalidate>
+        <fieldset>
+          <legend><span class="qnum">Vraag 2 van 3</span> Een ouder zwijgt na je vraag. Wat doe je?</legend>
+          <div class="options">
+            <label class="opt"><input type="radio" name="q2" value="a"> <span>Ik stel snel een andere vraag.</span></label>
+            <label class="opt"><input type="radio" name="q2" value="b"> <span>Ik leg uit wat ik bedoel.</span></label>
+            <label class="opt"><input type="radio" name="q2" value="c" data-correct> <span>Ik wacht een paar seconden.</span></label>
+          </div>
+        </fieldset>
+        <div class="feedback" id="fb2" role="status" aria-live="polite"></div>
+        <div class="actions actions--quiz">
+          <button type="submit" class="btn btn--primary">Controleer antwoord</button>
+        </div>
+      </form>
+
+      <p class="hint">Vraag 3 en de uitslag staan niet in dit concept.</p>
+    </section>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
