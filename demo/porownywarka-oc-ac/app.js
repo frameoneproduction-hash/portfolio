@@ -102,10 +102,20 @@
   $$('[data-next]').forEach(function (b) { b.addEventListener('click', function () { go(+b.dataset.next); }); });
 
   function carAge() { return YEAR - +$('#rok').value; }
+  // Faktyczny zakres po regułach (auto > 15 lat bez AC; leasing zawsze z AC)
+  function hasAC() {
+    var z = val('zakres'), age = carAge();
+    if (age > 15) return false;
+    return z !== 'oc' || val('wlasnosc') === 'leasing';
+  }
+  function coverLabel(sep) {
+    sep = sep || ' + ';
+    return ['OC'].concat(hasAC() ? ['AC'] : []).concat(val('zakres') === 'ocacnnw' ? ['NNW'] : []).join(sep);
+  }
   function acNote() {
     var z = val('zakres'), n = $('#ac-note');
     if (z !== 'oc' && carAge() > 15) { n.hidden = false; n.textContent = 'AC zwykle obejmuje auta do 15 lat — dla tego rocznika pokażemy OC (i NNW), a AC policzy doradca indywidualnie.'; }
-    else if (z !== 'oc' && val('wlasnosc') === 'leasing') { n.hidden = false; n.textContent = 'Auto w leasingu: AC jest zwykle wymagane przez leasingodawcę — uwzględniamy je w każdym wariancie.'; }
+    else if (val('wlasnosc') === 'leasing' && carAge() <= 15) { n.hidden = false; n.textContent = 'Auto w leasingu: leasingodawca zwykle wymaga AC — dodajemy je do każdego wariantu.'; }
     else n.hidden = true;
     $('#f-nnw').hidden = z !== 'ocacnnw';
   }
@@ -123,8 +133,7 @@
     var fWiek = firma ? 1.05 : ({ 18: 1.9, 26: 1.3, 31: 1, 51: 0.95, 66: 1.15 })[wiek];
     var znizka = Math.min(lata * 0.06, 0.6);
     var reg = region().f, km = +$('#przebieg').value;
-    var withAC = zakres !== 'oc' && age <= 15;
-    if (val('wlasnosc') === 'leasing' && age <= 15) withAC = true;
+    var withAC = hasAC();
     var acRate = 0.031 * (age <= 3 ? 1 : age <= 8 ? 1.15 : 1.3) * (typ === 'motocykl' ? 1.6 : 1);
     var assist = $('#assist').value;
     var nnwSum = +$('#nnw').value;
@@ -179,7 +188,7 @@
     $$('[data-pick]').forEach(function (b) { b.addEventListener('click', function () { openLead(b.dataset.pick); }); });
     var marka = $('#marka').value, model = $('#model').value.trim(), plate = $('#plate').value.trim();
     $('#res-auto').textContent = (marka === 'Inna' ? 'Twojego auta' : marka + (model ? ' ' + model : '')) + ' (' + $('#rok').value + ')';
-    $('#res-sub').textContent = (plate ? plate + ' · ' : '') + ({ oc: 'OC', ocac: 'OC + AC', ocacnnw: 'OC + AC + NNW' })[z] + ' · ' + $('#lata').selectedOptions[0].text + ' bez szkody' + ($('#kodpol').value ? ' · kod ' + $('#kodpol').value.toUpperCase() : '');
+    $('#res-sub').textContent = (plate ? plate + ' · ' : '') + coverLabel() + ' · ' + $('#lata').selectedOptions[0].text + ' bez szkody' + ($('#kodpol').value ? ' · kod ' + $('#kodpol').value.toUpperCase() : '');
   }
   $('#calc-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -196,7 +205,7 @@
   function openLead(id) {
     chosen = last.filter(function (x) { return x.t.id === id; })[0] || null;
     $('#lead-sum').textContent = chosen
-      ? 'Wybrany wariant: ' + chosen.t.name + ' — ' + zl(chosen.total) + ' (' + ({ oc: 'OC', ocac: 'OC + AC', ocacnnw: 'OC + AC + NNW' })[val('zakres')] + '). Doradca potwierdzi cenę i wyśle polisę.'
+      ? 'Wybrany wariant: ' + chosen.t.name + ' — ' + zl(chosen.total) + ' (' + coverLabel() + '). Doradca potwierdzi cenę i przygotuje polisę.'
       : (id === 'flota' ? 'Flota firmowa — policzymy ją z rabatem flotowym.' : 'Doradca oddzwoni i przygotuje porównanie za Ciebie.');
     $('#lead-form-wrap').hidden = false; $('#lead-ok').hidden = true;
     if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
@@ -226,13 +235,13 @@
       referral_code: $('#kodpol').value.toUpperCase() || null,
       customer: { first_name: $('#l-imie').value.trim(), phone: '+48 ' + tel.slice(0, 3) + ' *** ***', type: val('klient') },
       vehicle: { plate: $('#plate').value.trim() || null, make: $('#marka').value, model: $('#model').value.trim() || null, year: +$('#rok').value, value_pln: +String($('#wartosc').value).replace(/\D/g, '') },
-      cover: ({ oc: 'OC', ocac: 'OC+AC', ocacnnw: 'OC+AC+NNW' })[val('zakres')],
+      cover: coverLabel('+'),
       chosen_offer: chosen ? { insurer: chosen.t.name, premium_pln: Math.round(chosen.total), installments: chosen.raty } : null,
       next_step: tryb === 'online' ? 'send_payment_link_sms' : 'advisor_callback'
     };
     $('#lead-ok-txt').textContent = tryb === 'online'
-      ? 'We wdrożeniu klient dostaje SMS z linkiem do płatności, a polisa przychodzi e-mailem.'
-      : 'We wdrożeniu doradca dostaje powiadomienie i oddzwania z gotową polisą.';
+      ? 'Zakup online z płatnością to następny etap — w tym demo doradca oddzwania z gotową ofertą.'
+      : 'We wdrożeniu doradca dostaje powiadomienie i oddzwania z gotową ofertą.';
     $('#lead-json').textContent = JSON.stringify(payload, null, 2);
     $('#lead-form-wrap').hidden = true; $('#lead-ok').hidden = false;
     $('#lead-ok-t').focus();

@@ -30,7 +30,7 @@
     <ul class="nav-links">
       <li><a href="#kalkulator">Porównywarka</a></li>
       <li><a href="#jak">Jak to działa</a></li>
-      <li><a href="#firmy">Dla firm</a></li>
+      <li><a href="#nastepny">Następny etap</a></li>
     </ul>
     <button type="button" class="pill pill-dark" data-lead="ogolny">Zostaw kontakt</button>
   </nav>
@@ -41,7 +41,7 @@
     <div class="hero-in">
       <p class="eyebrow">Niezależny pośrednik · Lublin, Chełm, Zamość, Biała Podlaska</p>
       <h1 id="hero-t">Porównaj OC, AC i&nbsp;NNW <span>w 2 minuty.</span></h1>
-      <p class="lead">Wpisz auto i kilka danych o kierowcy — od razu zobaczysz 4 warianty z ceną. Wybierasz jeden, a doradca kończy formalności.</p>
+      <p class="lead">Wpisz auto, dane kierowcy i zakres — od razu zobaczysz 4 warianty z ceną. Wybierasz jeden, a doradca kończy formalności.</p>
       <form class="plate-form" id="plate-form" novalidate>
         <label for="plate" class="sr-only">Numer rejestracyjny</label>
         <div class="plate">
@@ -208,9 +208,9 @@
     <ol class="how-list">
       <li><b>Klient liczy sam</b><span>na telefonie, bez długiego formularza i bez czekania na telefon.</span></li>
       <li><b>Ceny z Insly</b><span>formularz wysyła dane do API Insly, wyniki wracają jako warianty do porównania.</span></li>
-      <li><b>Lead w CRM</b><span>„Wybieram” zapisuje klienta, wariant, cenę i kod polecający w Insly — doradca widzi wszystko od razu.</span></li>
+      <li><b>Lead w CRM</b><span>„Wybieram” zapisuje klienta i wybraną ofertę w Insly, a przy leadzie widać kod polecający — doradca ma wszystko od razu.</span></li>
     </ol>
-    <div class="next" id="firmy">
+    <div class="next" id="nastepny">
       <p class="next-k">Następny etap</p>
       <p><b>Asystent czatu</b> — rozmawia o ubezpieczeniu, pyta o potrzeby, proponuje wariant z porównywarki i przekazuje klienta doradcy.</p>
     </div>
@@ -232,7 +232,7 @@
         <div class="field"><label for="l-tel">Telefon</label><input id="l-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="500 000 000" required><small class="err" id="l-tel-err" hidden>Wpisz 9 cyfr numeru telefonu.</small></div>
         <div class="seg seg-sm" role="radiogroup" aria-label="Jak chcesz kontynuować">
           <label><input type="radio" name="l-tryb" value="telefon" checked><span>Doradca oddzwoni</span></label>
-          <label><input type="radio" name="l-tryb" value="online"><span>Kupię online (link SMS)</span></label>
+          <label><input type="radio" name="l-tryb" value="online"><span>Kupię online (następny etap)</span></label>
         </div>
         <label class="check"><input type="checkbox" id="l-zgoda" required><span>Zgadzam się na kontakt w sprawie oferty. Administrator danych: AUTOOCAC.PL (w demo dane nie są wysyłane).</span></label>
         <small class="err" id="l-zgoda-err" hidden>Zaznacz zgodę, żeby doradca mógł się odezwać.</small>
@@ -242,7 +242,7 @@
     <div id="lead-ok" hidden>
       <h2 tabindex="-1" id="lead-ok-t">Dziękujemy!</h2>
       <p id="lead-ok-txt"></p>
-      <p class="k">Tak lead trafi do Insly we wdrożeniu (przykład):</p>
+      <p class="k">Dane, które zbiera formularz (przykład — we wdrożeniu przekazujemy je do Insly przez API):</p>
       <pre id="lead-json"></pre>
       <button type="button" class="btn" id="lead-close">Zamknij</button>
     </div>
