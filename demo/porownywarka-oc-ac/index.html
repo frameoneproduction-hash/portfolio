@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Porównywarka OC, AC i NNW · koncepcja dla AUTOOCAC.PL (demo)</title>
+<meta name="description" content="Demo koncepcyjne porównywarki ubezpieczeń OC, AC i NNW na telefon: pojazd, kierowca, zakres i 4 warianty z ceną. Dane i ceny przykładowe.">
+<meta name="theme-color" content="#1863dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231863dc'/%3E%3Cpath d='M16 6l8 3v6c0 5-3.4 8.6-8 11-4.6-2.4-8-6-8-11V9z' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#kalkulator">Przejdź do porównywarki</a>
+
+<div class="demo-bar" role="note">
+  <p><span class="dot" aria-hidden="true"></span><b>Demo</b> — koncepcja porównywarki dla AUTOOCAC.PL. Dane i ceny przykładowe, towarzystwa fikcyjne; we wdrożeniu ceny z API Insly.</p>
+</div>
+
+<p class="promo">Odbierz rabat <b>50 zł</b> na pierwszą polisę — doliczamy go w porównaniu</p>
+
+<header class="nav-wrap">
+  <nav class="nav" aria-label="Menu główne">
+    <a class="logo" href="#top" aria-label="AUTOOCAC.PL — strona główna">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M16 6l8 3v6c0 5-3.4 8.6-8 11-4.6-2.4-8-6-8-11V9z"/></svg>
+      <span>AUTO<b>OCAC</b>.PL</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#kalkulator">Porównywarka</a></li>
+      <li><a href="#jak">Jak to działa</a></li>
+      <li><a href="#firmy">Dla firm</a></li>
+    </ul>
+    <button type="button" class="pill pill-dark" data-lead="ogolny">Zostaw kontakt</button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-t">
+    <div class="hero-in">
+      <p class="eyebrow">Niezależny pośrednik · Lublin, Chełm, Zamość, Biała Podlaska</p>
+      <h1 id="hero-t">Porównaj OC, AC i&nbsp;NNW <span>w 2 minuty.</span></h1>
+      <p class="lead">Wpisz auto i kilka danych o kierowcy — od razu zobaczysz 4 warianty z ceną. Wybierasz jeden, a doradca kończy formalności.</p>
+      <form class="plate-form" id="plate-form" novalidate>
+        <label for="plate" class="sr-only">Numer rejestracyjny</label>
+        <div class="plate">
+          <span class="plate-eu" aria-hidden="true"><i>★</i>PL</span>
+          <input id="plate" name="plate" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" placeholder="LU 12345" inputmode="text">
+        </div>
+        <button type="submit" class="go" aria-label="Oblicz składkę">
+          <span>Oblicz składkę</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <p class="hero-note">Bez rejestracji. Numer możesz pominąć.</p>
+    </div>
+    <ul class="tags" aria-label="Co może obejmować polisa">
+      <li class="t1">* stłuczka na parkingu</li>
+      <li class="t2">* holowanie 24/7</li>
+      <li class="t3">* kradzież auta</li>
+      <li class="t4">* szyby bez utraty zniżek</li>
+    </ul>
+  </section>
+
+  <section class="calc" id="kalkulator" tabindex="-1" aria-labelledby="calc-t">
+    <div class="calc-head">
+      <h2 id="calc-t">Twoja wycena</h2>
+      <ol class="steps" aria-label="Kroki">
+        <li class="on" data-step-ind="1"><span>1</span>Pojazd</li>
+        <li data-step-ind="2"><span>2</span>Kierowca</li>
+        <li data-step-ind="3"><span>3</span>Zakres</li>
+      </ol>
+    </div>
+
+    <form id="calc-form" novalidate>
+      <fieldset class="step" data-step="1">
+        <legend class="sr-only">Krok 1: pojazd</legend>
+        <div class="seg" role="radiogroup" aria-label="Rodzaj pojazdu">
+          <label><input type="radio" name="typ" value="osobowy" checked><span>Osobowy</span></label>
+          <label><input type="radio" name="typ" value="dostawczy"><span>Dostawczy do 3,5 t</span></label>
+          <label><input type="radio" name="typ" value="motocykl"><span>Motocykl</span></label>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="marka">Marka</label>
+            <select id="marka" name="marka"></select>
+          </div>
+          <div class="field">
+            <label for="model">Model <span class="opt">(opcjonalnie)</span></label>
+            <input id="model" name="model" placeholder="np. Corolla" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="rok">Rok produkcji</label>
+            <select id="rok" name="rok"></select>
+          </div>
+          <div class="field">
+            <label for="wartosc">Wartość auta (zł)</label>
+            <input id="wartosc" name="wartosc" inputmode="numeric" value="45000">
+            <small class="hint" id="wartosc-hint">Podpowiedź na podstawie rocznika — możesz zmienić.</small>
+          </div>
+        </div>
+        <div class="seg" role="radiogroup" aria-label="Własność pojazdu">
+          <label><input type="radio" name="wlasnosc" value="wlasny" checked><span>Auto własne</span></label>
+          <label><input type="radio" name="wlasnosc" value="leasing"><span>Leasing / kredyt</span></label>
+        </div>
+        <div class="step-nav"><span></span><button type="button" class="btn" data-next="2">Dalej: kierowca</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2" hidden>
+        <legend class="sr-only">Krok 2: kierowca</legend>
+        <div class="seg" role="radiogroup" aria-label="Kto jest właścicielem">
+          <label><input type="radio" name="klient" value="osoba" checked><span>Osoba prywatna</span></label>
+          <label><input type="radio" name="klient" value="firma"><span>Firma</span></label>
+        </div>
+        <div class="grid2">
+          <div class="field" id="f-wiek">
+            <label for="wiek">Wiek głównego kierowcy</label>
+            <select id="wiek" name="wiek">
+              <option value="18">18–25 lat</option>
+              <option value="26">26–30 lat</option>
+              <option value="31" selected>31–50 lat</option>
+              <option value="51">51–65 lat</option>
+              <option value="66">66 lat i więcej</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kod">Kod pocztowy właściciela</label>
+            <input id="kod" name="kod" inputmode="numeric" placeholder="22-100" maxlength="6" value="22-100" autocomplete="postal-code">
+            <small class="hint" id="kod-hint"></small>
+          </div>
+          <div class="field">
+            <label for="lata">Lata jazdy bez szkody z OC</label>
+            <select id="lata" name="lata"></select>
+          </div>
+          <div class="field">
+            <label for="przebieg">Roczny przebieg</label>
+            <select id="przebieg" name="przebieg">
+              <option value="0.97">do 10 000 km</option>
+              <option value="1" selected>10–20 tys. km</option>
+              <option value="1.06">ponad 20 tys. km</option>
+            </select>
+          </div>
+        </div>
+        <p class="firm-note" id="firm-note" hidden>Masz flotę (3 auta lub więcej)? Policzymy ją osobno z rabatem flotowym — <button type="button" class="link" data-lead="flota">zostaw kontakt</button>.</p>
+        <div class="step-nav"><button type="button" class="btn-ghost" data-next="1">Wstecz</button><button type="button" class="btn" data-next="3">Dalej: zakres</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="3" hidden>
+        <legend class="sr-only">Krok 3: zakres ochrony</legend>
+        <div class="cards" role="radiogroup" aria-label="Zakres">
+          <label class="card"><input type="radio" name="zakres" value="oc"><span><b>OC</b><small>obowiązkowe</small></span></label>
+          <label class="card"><input type="radio" name="zakres" value="ocac" checked><span><b>OC + AC</b><small>także Twoje auto</small></span></label>
+          <label class="card"><input type="radio" name="zakres" value="ocacnnw"><span><b>OC + AC + NNW</b><small>też kierowca i pasażerowie</small></span></label>
+        </div>
+        <p class="ac-note" id="ac-note" hidden></p>
+        <div class="grid2">
+          <div class="field">
+            <label for="assist">Assistance</label>
+            <select id="assist" name="assist">
+              <option value="0">Bez assistance</option>
+              <option value="pl" selected>Polska — holowanie, pomoc na drodze</option>
+              <option value="eu">Polska i Europa</option>
+            </select>
+          </div>
+          <div class="field" id="f-nnw">
+            <label for="nnw">Suma NNW</label>
+            <select id="nnw" name="nnw">
+              <option value="10">10 000 zł</option>
+              <option value="20" selected>20 000 zł</option>
+              <option value="50">50 000 zł</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="raty">Płatność</label>
+            <select id="raty" name="raty">
+              <option value="1">Jednorazowo</option>
+              <option value="2">2 raty</option>
+              <option value="4">4 raty</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kodpol">Kod polecający <span class="opt">(np. od influencera)</span></label>
+            <input id="kodpol" name="kodpol" placeholder="np. KASIA10" autocomplete="off" autocapitalize="characters" maxlength="16">
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="rabat" checked><span>Pierwsza polisa w AUTOOCAC.PL — rabat 50 zł</span></label>
+        <div class="step-nav"><button type="button" class="btn-ghost" data-next="2">Wstecz</button><button type="submit" class="btn btn-big">Pokaż warianty</button></div>
+      </fieldset>
+    </form>
+  </section>
+
+  <section class="results" id="wyniki" aria-labelledby="wyniki-t" hidden tabindex="-1">
+    <div class="res-head">
+      <h2 id="wyniki-t">4 warianty dla <span id="res-auto">Twojego auta</span></h2>
+      <p class="res-sub" id="res-sub"></p>
+      <div class="sort" role="radiogroup" aria-label="Sortuj">
+        <label><input type="radio" name="sort" value="cena" checked><span>Najtańsze</span></label>
+        <label><input type="radio" name="sort" value="zakres"><span>Najszerszy zakres</span></label>
+      </div>
+    </div>
+    <ol class="offers" id="offers" aria-live="polite"></ol>
+    <p class="res-note">Ceny przykładowe, liczone z uproszczonego cennika. We wdrożeniu składki przychodzą z API Insly dla każdego towarzystwa, z którym współpracujecie.</p>
+  </section>
+
+  <section class="how" id="jak" aria-labelledby="jak-t">
+    <h2 id="jak-t">Jak to działa po wdrożeniu</h2>
+    <ol class="how-list">
+      <li><b>Klient liczy sam</b><span>na telefonie, bez długiego formularza i bez czekania na telefon.</span></li>
+      <li><b>Ceny z Insly</b><span>formularz wysyła dane do API Insly, wyniki wracają jako warianty do porównania.</span></li>
+      <li><b>Lead w CRM</b><span>„Wybieram” zapisuje klienta, wariant, cenę i kod polecający w Insly — doradca widzi wszystko od razu.</span></li>
+    </ol>
+    <div class="next" id="firmy">
+      <p class="next-k">Następny etap</p>
+      <p><b>Asystent czatu</b> — rozmawia o ubezpieczeniu, pyta o potrzeby, podsuwa wariant z porównywarki i przekazuje klienta doradcy.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Koncepcja przygotowana dla AUTOOCAC.PL · nazwy towarzystw (Velmora, Brizant, Kavelo, Norbis) i ceny są fikcyjne · dane z formularzy nie są nigdzie wysyłane.</p>
+</footer>
+
+<dialog id="lead" aria-labelledby="lead-t">
+  <div class="dlg">
+    <button type="button" class="dlg-x" id="lead-x" aria-label="Zamknij okno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div id="lead-form-wrap">
+      <h2 id="lead-t">Zostaw kontakt</h2>
+      <p class="dlg-sum" id="lead-sum"></p>
+      <form id="lead-form" novalidate>
+        <div class="field"><label for="l-imie">Imię</label><input id="l-imie" autocomplete="given-name" required></div>
+        <div class="field"><label for="l-tel">Telefon</label><input id="l-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="500 000 000" required><small class="err" id="l-tel-err" hidden>Wpisz 9 cyfr numeru telefonu.</small></div>
+        <div class="seg seg-sm" role="radiogroup" aria-label="Jak chcesz kontynuować">
+          <label><input type="radio" name="l-tryb" value="telefon" checked><span>Doradca oddzwoni</span></label>
+          <label><input type="radio" name="l-tryb" value="online"><span>Kupię online (link SMS)</span></label>
+        </div>
+        <label class="check"><input type="checkbox" id="l-zgoda" required><span>Zgadzam się na kontakt w sprawie oferty. Administrator danych: AUTOOCAC.PL (w demo dane nie są wysyłane).</span></label>
+        <small class="err" id="l-zgoda-err" hidden>Zaznacz zgodę, żeby doradca mógł się odezwać.</small>
+        <button type="submit" class="btn btn-big">Wyślij</button>
+      </form>
+    </div>
+    <div id="lead-ok" hidden>
+      <h2 tabindex="-1" id="lead-ok-t">Dziękujemy!</h2>
+      <p id="lead-ok-txt"></p>
+      <p class="k">Tak lead trafi do Insly we wdrożeniu (przykład):</p>
+      <pre id="lead-json"></pre>
+      <button type="button" class="btn" id="lead-close">Zamknij</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
