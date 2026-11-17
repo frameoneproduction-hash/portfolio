@@ -23,9 +23,9 @@ button { margin-top:12px; border:1.5px solid var(--line); background:#fff; borde
 
 /* Animacja: 4 s pętla. Ramiona krążą w tył naprzemiennie (przesunięcie o pół cyklu), tułów lekko się kołysze. */
 .arm { transform-box: view-box; transform-origin: 130px 120px; animation: circle 4s linear infinite; }
-/* postać patrzy w prawo: „w tył” = zgodnie z ruchem wskazówek zegara na ekranie (dół → tył → nad głową → przód) */
+/* postać patrzy w prawo: „w tył” = przeciwnie do ruchu wskazówek zegara na ekranie (dół → przód → nad głową → tył → dół) */
 .arm-far { animation-delay: -2s; }
-@keyframes circle { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes circle { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
 .torso { transform-box: view-box; transform-origin: 130px 280px; animation: sway 2s ease-in-out infinite alternate; }
 @keyframes sway { from { transform: rotate(-1deg); } to { transform: rotate(1deg); } }
 .paused * { animation-play-state: paused !important; }
@@ -72,7 +72,7 @@ button { margin-top:12px; border:1.5px solid var(--line); background:#fff; borde
       </g>
     </svg>
   </div>
-  <p class="cap">Podgląd w przeglądarce. W wersji końcowej: GIF i MP4 (oraz WebM z przezroczystością) w wybranym rozmiarze.</p>
+  <p class="cap">Podgląd w przeglądarce. W wersji końcowej: MP4 i GIF w wybranym rozmiarze, a na przezroczystym tle – GIF lub animowany WebP.</p>
   <button type="button" id="pause" aria-pressed="false">Pauza</button>
 
   <h2>Jak pracuję nad serią 5 animacji</h2>
@@ -80,7 +80,7 @@ button { margin-top:12px; border:1.5px solid var(--line); background:#fff; borde
     <li>jedna postać dziecka we wszystkich ćwiczeniach — rysuję ją raz według Państwa przykładowego stylu,</li>
     <li>ruch ustawiam krok po kroku według instrukcji trenera: kąty, tempo, moment zmiany ręki,</li>
     <li>najpierw jedna animacja do akceptacji, potem pozostałe cztery,</li>
-    <li>pliki: GIF i MP4, przezroczyste tło (WebM/PNG), pętla 5–10 s.</li>
+    <li>pliki: MP4 i GIF, pętla 5–10 s, przezroczyste tło – GIF lub animowany WebP.</li>
   </ul>
 </main>
 <script>
