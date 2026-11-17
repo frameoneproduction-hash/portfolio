@@ -25,14 +25,14 @@
   // Ranking
   var board = [[1, 'Oliwia M.', 71], [2, 'Kuba R.', 64], [3, 'Natalia W.', 59], [4, 'Maja S.', 47], [5, 'Szymon L.', 44], [7, 'Ty — Zuza K.', 38, true]];
   $('#board').innerHTML = board.map(function (r) {
-    return '<li class="' + (r[3] ? 'me' : (r[0] <= 3 ? 'top' : '')) + '"><span class="pos">#' + r[0] + '</span><span class="n">' + r[1] + '</span><span class="x">' + r[2] + ' zam.</span></li>';
+    return (r[3] ? '<li class="gap" aria-hidden="true">…</li>' : '') + '<li class="' + (r[3] ? 'me' : (r[0] <= 3 ? 'top' : '')) + '"><span class="pos">#' + r[0] + '</span><span class="n">' + r[1] + '</span><span class="x">' + r[2] + ' zam.</span></li>';
   }).join('');
 
   // Kopiuj kod
   $('#copy').addEventListener('click', function () {
     var b = this;
-    try { navigator.clipboard.writeText($('#mycode').textContent); } catch (e) {}
-    b.textContent = 'Skopiowano ✓'; setTimeout(function () { b.textContent = 'Kopiuj'; }, 1500);
+    var done = function (ok) { b.textContent = ok ? 'Skopiowano ✓' : 'Zaznacz i skopiuj'; setTimeout(function () { b.textContent = 'Kopiuj'; }, 1500); };
+    try { navigator.clipboard.writeText($('#mycode').textContent).then(function () { done(true); }, function () { done(false); }); } catch (e) { done(false); }
   });
 
   // Zaplecze: przykładowy import raportu

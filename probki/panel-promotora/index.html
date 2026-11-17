@@ -61,6 +61,10 @@ select { background:#1f1f26; color:var(--ink); border:1px solid var(--line); bor
 .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:0 0 12px; }
 .muted { color:var(--muted); }
 [hidden] { display:none !important; }
+#admin .card { overflow-x:auto; }
+#tbl select { display:block; margin-top:4px; max-width:100%; }
+@media (max-width:420px){ th,td{padding:8px 5px} table{font-size:13px} .rank .move{position:static; display:inline-block; margin-bottom:6px} }
+.board .gap { text-align:center; color:var(--muted); padding:2px; border:0; }
 </style>
 </head>
 <body>
@@ -110,7 +114,7 @@ select { background:#1f1f26; color:var(--ink); border:1px solid var(--line); bor
       <div class="card">
         <h2>Materiały do pobrania</h2>
         <div class="dl">
-          <a href="#" onclick="return false">Pakiet stories na Black Friday <span>ZIP · 12 plików</span></a>
+          <a href="#" onclick="return false" title="W demo pliki są nieaktywne">Pakiet stories na Black Friday <span>ZIP · 12 plików</span></a>
           <a href="#" onclick="return false">Zdjęcia produktów 2026 <span>ZIP · 48 zdjęć</span></a>
           <a href="#" onclick="return false">Zasady programu i statusy <span>PDF</span></a>
         </div>
@@ -136,7 +140,7 @@ select { background:#1f1f26; color:var(--ink); border:1px solid var(--line); bor
       </table>
       <div class="row" style="margin-top:12px" id="exp" hidden>
         <button class="btn btn-g" id="csv">Eksport CSV</button>
-        <span class="muted">Poprawki zapisują się w historii (kto i kiedy zmienił).</span>
+        <span class="muted">We wdrożeniu każda poprawka zapisuje się w historii (kto i kiedy zmienił).</span>
       </div>
     </div>
   </section>
