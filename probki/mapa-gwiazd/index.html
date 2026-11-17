@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mapa gwiazd 3D z flagami — demo</title>
+<meta name="description" content="Demo: interaktywna mapa gwiazd 3D w przeglądarce — obracanie, przybliżanie, wyszukiwanie gwiazd po nazwie i własne flagi z opisem zapisywane w przeglądarce.">
+<style>
+:root { --bg:#04060d; --panel:rgba(14,19,34,.86); --line:rgba(150,170,220,.22); --ink:#e9eefb; --muted:#9aa6c4; --acc:#ffcf5a; }
+* { box-sizing:border-box; }
+html, body { margin:0; height:100%; background:var(--bg); color:var(--ink); font:15px/1.45 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; overflow:hidden; }
+#scene { position:fixed; inset:0; }
+.demo { position:fixed; left:12px; bottom:12px; z-index:5; margin:0; background:#fff1d6; color:#5a3d00; font-size:12.5px; padding:6px 10px; border-radius:8px; max-width:calc(100vw - 24px); }
+.top { position:fixed; left:12px; top:12px; right:12px; z-index:5; display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; pointer-events:none; }
+.top > * { pointer-events:auto; }
+h1 { margin:0; font-size:17px; font-weight:700; letter-spacing:.01em; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:9px 13px; }
+.search { position:relative; }
+.search input { width:240px; background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:12px; padding:9px 12px; font:inherit; }
+.search ul { position:absolute; top:100%; left:0; right:0; margin:4px 0 0; padding:4px; list-style:none; background:#0e1322; border:1px solid var(--line); border-radius:10px; max-height:240px; overflow:auto; }
+.search li button { width:100%; text-align:left; background:none; border:0; color:var(--ink); padding:7px 8px; border-radius:7px; font:inherit; cursor:pointer; }
+.search li button:hover, .search li button:focus { background:rgba(255,207,90,.14); outline:none; }
+.panel { position:fixed; right:12px; top:64px; z-index:6; width:300px; max-width:calc(100vw - 24px); background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px; backdrop-filter:blur(6px); }
+.panel h2 { margin:0 0 2px; font-size:19px; }
+.panel .meta { color:var(--muted); font-size:13px; margin:0 0 12px; }
+.panel label { display:block; font-size:13px; color:var(--muted); margin:10px 0 4px; }
+.panel input, .panel textarea { width:100%; background:#0a0f1c; color:var(--ink); border:1px solid var(--line); border-radius:9px; padding:8px 10px; font:inherit; }
+.panel textarea { min-height:64px; resize:vertical; }
+.colors { display:flex; gap:6px; flex-wrap:wrap; }
+.colors button { width:26px; height:26px; border-radius:50%; border:2px solid transparent; cursor:pointer; }
+.colors button[aria-pressed="true"] { border-color:#fff; }
+.row { display:flex; gap:8px; margin-top:12px; }
+.btn { flex:1; border:0; border-radius:10px; padding:9px 12px; font:inherit; font-weight:700; cursor:pointer; }
+.btn-p { background:var(--acc); color:#1a1300; }
+.btn-g { background:transparent; color:var(--ink); border:1px solid var(--line); }
+.x { position:absolute; right:8px; top:8px; background:none; border:0; color:var(--muted); font-size:20px; cursor:pointer; }
+.flag { position:fixed; z-index:4; transform:translate(-2px,-100%); pointer-events:auto; cursor:pointer; display:flex; align-items:flex-end; gap:0; white-space:nowrap; }
+.flag .pole { width:2px; height:26px; background:#dfe6f7; }
+.flag .cloth { margin-bottom:12px; padding:3px 8px 3px 6px; font-size:12.5px; font-weight:700; color:#0b0f1a; border-radius:0 6px 6px 0; box-shadow:0 2px 8px rgba(0,0,0,.4); }
+.flag.hidden { display:none; }
+.hint { position:fixed; left:50%; bottom:12px; transform:translateX(-50%); z-index:5; color:var(--muted); font-size:12.5px; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+.mylist { position:fixed; left:12px; top:64px; z-index:5; width:220px; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:10px; font-size:13px; max-height:40vh; overflow:auto; }
+.mylist h3 { margin:0 0 6px; font-size:13px; color:var(--muted); font-weight:600; }
+.mylist button { display:flex; gap:6px; align-items:center; width:100%; text-align:left; background:none; border:0; color:var(--ink); padding:5px 4px; border-radius:6px; font:inherit; cursor:pointer; }
+.mylist button:hover { background:rgba(255,255,255,.06); }
+.mylist i { width:10px; height:10px; border-radius:2px; flex:none; }
+@media (max-width:700px) { .mylist { display:none; } .hint { display:none; } .search input { width:180px; } }
+</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+</head>
+<body>
+<div id="scene" aria-label="Trójwymiarowa mapa gwiazd"></div>
+<div class="top">
+  <h1>Mapa gwiazd · flagi</h1>
+  <div class="search">
+    <label for="q" style="position:absolute;left:-9999px">Szukaj gwiazdy</label>
+    <input id="q" placeholder="Szukaj gwiazdy, np. Wega" autocomplete="off">
+    <ul id="sug" hidden></ul>
+  </div>
+</div>
+<aside class="mylist" id="mylist" hidden><h3>Moje flagi</h3><div id="mylist-in"></div></aside>
+<aside class="panel" id="panel" hidden aria-live="polite">
+  <button class="x" id="close" aria-label="Zamknij">×</button>
+  <h2 id="p-name"></h2>
+  <p class="meta" id="p-meta"></p>
+  <label for="f-text">Napis na fladze</label>
+  <input id="f-text" maxlength="28" placeholder="np. Nasza gwiazda">
+  <label>Kolor flagi</label>
+  <div class="colors" id="colors"></div>
+  <label for="f-desc">Opis</label>
+  <textarea id="f-desc" maxlength="400" placeholder="Dlaczego ta gwiazda jest ważna?"></textarea>
+  <div class="row"><button class="btn btn-p" id="save">Zapisz flagę</button><button class="btn btn-g" id="del">Usuń</button></div>
+</aside>
+<p class="hint">Przeciągnij, aby obrócić · kółko — przybliż · kliknij gwiazdę, aby dodać flagę</p>
+<p class="demo"><b>Demo</b> — 30 jasnych gwiazd w przybliżonych pozycjach + tło przykładowe. We wdrożeniu: otwarta baza gwiazd (np. HYG), tysiące gwiazd z nazwami.</p>
+<script type="module" src="app.js"></script>
+</body>
+</html>
