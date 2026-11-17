@@ -80,6 +80,7 @@ function renderFlags() {
   for (const k in flagEls) delete flagEls[k];
   const list = document.getElementById('mylist-in'); list.innerHTML = '';
   Object.entries(flags).forEach(([id, f]) => {
+    if (!stars[id]) return;
     const el = document.createElement('div'); el.className = 'flag';
     el.innerHTML = '<span class="pole"></span><span class="cloth"></span>';
     el.querySelector('.cloth').textContent = f.text || stars[id].pl;
@@ -89,7 +90,7 @@ function renderFlags() {
     document.body.appendChild(el); flagEls[id] = el;
     const b = document.createElement('button');
     b.innerHTML = '<i></i><span></span>'; b.querySelector('i').style.background = f.color;
-    b.querySelector('span').textContent = (f.text || stars[id].pl) + ' · ' + stars[id].pl;
+    b.querySelector('span').textContent = f.text && f.text !== stars[id].pl ? f.text + ' · ' + stars[id].pl : stars[id].pl;
     b.addEventListener('click', () => { select(stars[id]); focus(stars[id]); });
     list.appendChild(b);
   });
@@ -108,7 +109,7 @@ COLORS.forEach(c => {
 function select(s) {
   current = s; const f = flags[s.id] || {};
   document.getElementById('p-name').textContent = s.pl;
-  document.getElementById('p-meta').textContent = s.ly ? `${s.en} · ok. ${s.ly.toLocaleString('pl-PL')} lat świetlnych od Ziemi` : 'Nasza gwiazda';
+  document.getElementById('p-meta').textContent = s.ly ? `${s.en} · ok. ${s.ly.toLocaleString('pl-PL')} ${lyWord(s.ly)} od Ziemi` : 'Nasza gwiazda';
   document.getElementById('f-text').value = f.text || '';
   document.getElementById('f-desc').value = f.desc || '';
   color = f.color || COLORS[0];
@@ -116,12 +117,14 @@ function select(s) {
   document.getElementById('del').disabled = !flags[s.id];
   panel.hidden = false;
 }
+function lyWord(n) { if (!Number.isInteger(n)) return 'roku świetlnego'; const a = n % 10, b = n % 100; return n === 1 ? 'rok świetlny' : (a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 'lata świetlne' : 'lat świetlnych'; }
 function rgb(v) { const m = v.match(/\d+/g); return m ? '#' + m.slice(0, 3).map(n => (+n).toString(16).padStart(2, '0')).join('') : v; }
 document.getElementById('close').onclick = () => { panel.hidden = true; current = null; };
 document.getElementById('save').onclick = () => {
   if (!current) return;
   flags[current.id] = { text: document.getElementById('f-text').value.trim(), desc: document.getElementById('f-desc').value.trim(), color };
   persist(); renderFlags(); document.getElementById('del').disabled = false;
+  const sv = document.getElementById('save'); sv.textContent = 'Zapisano ✓'; setTimeout(() => { sv.textContent = 'Zapisz flagę'; }, 1500);
 };
 document.getElementById('del').onclick = () => { if (!current) return; delete flags[current.id]; persist(); renderFlags(); panel.hidden = true; };
 
@@ -152,6 +155,8 @@ q.addEventListener('input', () => {
   sug.hidden = !sug.children.length;
 });
 q.addEventListener('keydown', e => { if (e.key === 'Enter') sug.querySelector('button')?.click(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') { sug.hidden = true; panel.hidden = true; current = null; } });
+addEventListener('pointerdown', e => { if (!e.target.closest('.search')) sug.hidden = true; });
 
 // Płynny lot kamery do gwiazdy
 let fly = null;
@@ -183,6 +188,7 @@ function frame() {
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
 
 // Przykładowa flaga przy pierwszym wejściu, żeby było widać, jak to wygląda
-if (!Object.keys(flags).length) { flags[4] = { text: 'Nasza gwiazda', desc: 'Przykładowa flaga — możesz ją zmienić lub usunąć.', color: '#ffcf5a' }; }
+let firstVisit = false; try { firstVisit = localStorage.getItem(KEY) === null; } catch (e) {}
+if (firstVisit) { flags[4] = { text: 'Nasza gwiazda', desc: 'Przykładowa flaga — możesz ją zmienić lub usunąć.', color: '#ffcf5a' }; persist(); }
 renderFlags();
 frame();
