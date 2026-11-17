@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel promotora — demo</title>
+<meta name="description" content="Demo panelu programu poleceń: ranking, sprzedaż w miesiącu, status, historia, materiały i zaplecze z importem raportu sprzedaży.">
+<style>
+@font-face { font-family:"Bricolage"; src:url(../../demo/porownywarka-oc-ac/fonts/bricolage-latin.woff2) format("woff2"); font-weight:600 800; font-display:swap; unicode-range:U+0000-00FF,U+2000-206F,U+20AC; }
+@font-face { font-family:"Bricolage"; src:url(../../demo/porownywarka-oc-ac/fonts/bricolage-latin-ext.woff2) format("woff2"); font-weight:600 800; font-display:swap; unicode-range:U+0100-02BA,U+1E00-1E9F; }
+:root { --bg:#0d0d10; --card:#17171c; --line:#2a2a33; --ink:#f4f4f6; --muted:#a3a3b2; --lime:#c8ff3d; --lilac:#b79cff; --pink:#ff6fb5; --r:20px; --head:"Bricolage", system-ui, sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+.demo { margin:0; background:#fff1d6; color:#5a3d00; font-size:13px; padding:7px 16px; text-align:center; }
+.wrap { max-width:1080px; margin:0 auto; padding:18px 16px 40px; }
+.tabs { display:inline-flex; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:4px; margin-bottom:18px; }
+.tabs button { border:0; background:none; color:var(--muted); font:inherit; font-weight:700; padding:8px 16px; border-radius:999px; cursor:pointer; }
+.tabs button[aria-selected="true"] { background:var(--lime); color:#111; }
+.hello { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.ava { width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--lilac),var(--pink)); display:grid; place-items:center; font:800 20px var(--head); color:#111; }
+.hello h1 { font:800 clamp(24px,4vw,34px)/1.05 var(--head); margin:0; letter-spacing:-.02em; }
+.hello p { margin:2px 0 0; color:var(--muted); }
+.badge { display:inline-flex; align-items:center; gap:6px; background:rgba(200,255,61,.12); color:var(--lime); border:1px solid rgba(200,255,61,.35); padding:3px 10px; border-radius:999px; font-weight:700; font-size:13px; }
+.grid { display:grid; grid-template-columns: 1.1fr 1fr; gap:14px; }
+@media (max-width:820px) { .grid { grid-template-columns:1fr; } }
+.card { background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:18px; }
+.rank { background:var(--lime); color:#111; border:0; position:relative; overflow:hidden; }
+.rank .k { font-weight:700; opacity:.7; }
+.rank .big { font:800 clamp(64px,12vw,112px)/.9 var(--head); letter-spacing:-.04em; margin:6px 0; }
+.rank .of { font-weight:700; }
+.rank .move { position:absolute; right:16px; top:16px; background:#111; color:var(--lime); border-radius:999px; padding:4px 10px; font-weight:800; font-size:13px; }
+.kpis { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.kpi .v { font:800 34px/1 var(--head); margin:6px 0 4px; }
+.kpi .s { color:var(--muted); font-size:13px; }
+.bar { height:10px; background:#25252d; border-radius:99px; overflow:hidden; margin-top:10px; }
+.bar i { display:block; height:100%; background:linear-gradient(90deg,var(--lilac),var(--pink)); border-radius:99px; }
+h2 { font:800 20px var(--head); margin:0 0 12px; letter-spacing:-.01em; }
+.hist svg { width:100%; height:auto; display:block; }
+.board { list-style:none; margin:0; padding:0; }
+.board li { display:grid; grid-template-columns:34px 1fr auto; gap:10px; align-items:center; padding:9px 8px; border-radius:12px; }
+.board li + li { border-top:1px solid var(--line); }
+.board .me { background:rgba(183,156,255,.14); border:1px solid rgba(183,156,255,.4); }
+.board .pos { font:800 16px var(--head); color:var(--muted); }
+.board .top .pos { color:var(--lime); }
+.board .n { font-weight:600; }
+.board .x { font-weight:700; }
+.dl { display:grid; gap:8px; }
+.dl a { display:flex; justify-content:space-between; align-items:center; background:#1f1f26; border:1px solid var(--line); color:var(--ink); text-decoration:none; padding:11px 13px; border-radius:12px; font-weight:600; }
+.dl a span { color:var(--muted); font-weight:400; font-size:13px; }
+.code { display:flex; gap:8px; align-items:center; margin-top:12px; }
+.code b { font:800 22px var(--head); letter-spacing:.06em; color:var(--lime); }
+.btn { border:0; border-radius:12px; padding:10px 14px; font:inherit; font-weight:700; cursor:pointer; background:var(--lime); color:#111; }
+.btn-g { background:#24242c; color:var(--ink); border:1px solid var(--line); }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th, td { text-align:left; padding:9px 8px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:600; }
+.ok { color:var(--lime); font-weight:700; }
+.bad { color:var(--pink); font-weight:700; }
+select { background:#1f1f26; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:5px 8px; font:inherit; }
+.row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:0 0 12px; }
+.muted { color:var(--muted); }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<p class="demo"><b>Demo</b> — marka, osoby i liczby przykładowe. Kolory i typografia we wdrożeniu z Państwa brandbooka.</p>
+<div class="wrap">
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="promotor">Widok promotora</button>
+    <button role="tab" aria-selected="false" data-tab="admin">Zaplecze programu</button>
+  </div>
+
+  <section id="promotor">
+    <div class="hello">
+      <div class="ava" aria-hidden="true">ZK</div>
+      <div><h1>Hej, Zuza 👋</h1><p>Listopad · <span class="badge">● Status: Gold</span></p></div>
+    </div>
+    <div class="grid">
+      <div class="card rank">
+        <span class="move">▲ 3 miejsca</span>
+        <div class="k">Twoje miejsce w rankingu</div>
+        <div class="big">#7</div>
+        <div class="of">z 142 promotorów w tym miesiącu</div>
+      </div>
+      <div class="kpis">
+        <div class="card kpi"><div class="muted">Sprzedaż w listopadzie</div><div class="v">38</div><div class="s">zamówień z Twoim kodem</div></div>
+        <div class="card kpi"><div class="muted">Przychód</div><div class="v">6 840 zł</div><div class="s">+22% vs październik</div></div>
+        <div class="card kpi" style="grid-column:1/-1"><div class="muted">Do statusu Platinum</div><div class="v">12 zamówień</div><div class="bar"><i style="width:76%"></i></div><div class="s">38 / 50 w tym miesiącu</div></div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:14px">
+      <div class="card hist">
+        <h2>Twoje miesiące</h2>
+        <svg viewBox="0 0 420 190" role="img" aria-label="Sprzedaż w ostatnich 6 miesiącach: czerwiec 12, lipiec 18, sierpień 15, wrzesień 24, październik 31, listopad 38">
+          <g font-family="system-ui" font-size="12" fill="#a3a3b2">
+            <line x1="0" y1="160" x2="420" y2="160" stroke="#2a2a33"/>
+          </g>
+          <g id="bars"></g>
+        </svg>
+      </div>
+      <div class="card">
+        <h2>Ranking — top 5 i Ty</h2>
+        <ol class="board" id="board"></ol>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:14px">
+      <div class="card">
+        <h2>Materiały do pobrania</h2>
+        <div class="dl">
+          <a href="#" onclick="return false">Pakiet stories na Black Friday <span>ZIP · 12 plików</span></a>
+          <a href="#" onclick="return false">Zdjęcia produktów 2026 <span>ZIP · 48 zdjęć</span></a>
+          <a href="#" onclick="return false">Zasady programu i statusy <span>PDF</span></a>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Twój kod</h2>
+        <p class="muted" style="margin:0">Każde zamówienie z tym kodem liczy się do Twojego wyniku.</p>
+        <div class="code"><b id="mycode">ZUZA15</b><button class="btn btn-g" id="copy">Kopiuj</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="admin" hidden>
+    <div class="card">
+      <h2>Import raportu sprzedaży — listopad</h2>
+      <div class="row">
+        <button class="btn" id="imp">Wgraj raport (przykładowy CSV)</button>
+        <span class="muted" id="sum">System przypisze zamówienia do promotorów po kodzie rabatowym.</span>
+      </div>
+      <table id="tbl" hidden>
+        <thead><tr><th>Zamówienie</th><th>Kod</th><th>Kwota</th><th>Promotor</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="row" style="margin-top:12px" id="exp" hidden>
+        <button class="btn btn-g" id="csv">Eksport CSV</button>
+        <span class="muted">Poprawki zapisują się w historii (kto i kiedy zmienił).</span>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
