@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Próbka: baza firm pod niszę</title>
+<meta name="description" content="Próbka bazy firm: 10 fikcyjnych pracowni mebli na wymiar z adresem do listu, stanowiskiem adresata, źródłem danych i pierwszym zdaniem listu dla każdej firmy. CSV i XLSX do pobrania.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/probki/baza-firm/">
+<link rel="preload" href="../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../../audyt-wp/img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --ink: #12241f; --paper: #f4f3ef; --card: #fff; --muted: #4b5a55; --line: #dbe0dd; --accent: #1e4d45; --soft: #e9efec; --lilac: #c9bdf5; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: .92em; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px 56px; }
+.top { padding: 44px 0 10px; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 12px; }
+h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.03; letter-spacing: -0.04em; margin: 0 0 16px; font-weight: 800; max-width: 16ch; }
+.lead { font-size: 18px; color: var(--muted); max-width: 62ch; margin: 0 0 14px; }
+.fake { display: inline-block; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.stat b { display: block; font-size: 40px; line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
+.stat span { font-size: 15px; color: var(--muted); }
+h2 { font-size: 26px; letter-spacing: -0.02em; margin: 40px 0 14px; }
+.how { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.how li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+.how p { margin: 0; }
+.step { color: var(--accent); font-weight: 700; padding-top: 1px; }
+.dl { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 0; }
+.btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 800; padding: 12px 22px; border-radius: 999px; }
+.btn.ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); padding: 10px 20px; }
+.firms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.firm { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; }
+.firm-h { display: grid; grid-template-columns: 44px 1fr; gap: 10px; }
+.num { font-family: ui-monospace, Consolas, monospace; font-weight: 700; color: var(--accent); background: var(--soft); border-radius: 10px; height: 36px; display: grid; place-items: center; font-size: 14px; }
+.firm h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
+.what { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+dl { margin: 14px 0 0; display: grid; gap: 6px; }
+dl div { display: grid; grid-template-columns: 150px 1fr; gap: 10px; font-size: 15px; }
+dt { color: var(--muted); font-weight: 600; }
+dd { margin: 0; overflow-wrap: anywhere; }
+blockquote { margin: 16px 0 0; padding: 14px 16px; background: var(--soft); border-left: 4px solid var(--lilac); border-radius: 0 12px 12px 0; flex: 1; }
+blockquote p { margin: 0; }
+.q-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; color: var(--accent); margin-bottom: 4px !important; }
+.kit { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.box { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; }
+.box h3 { margin: 0 0 8px; font-size: 17px; }
+.box ul { margin: 0; padding-left: 18px; }
+.box p { margin: 0; font-size: 15px; }
+footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px 48px; }
+  .firms, .kit { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .stat { padding: 14px; }
+  .stat b { font-size: 30px; }
+  .stat span { font-size: 13px; }
+  dl div { grid-template-columns: 1fr; gap: 0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="kicker">Próbka · projekt koncepcyjny</p>
+<h1>Baza firm pod niszę: 10&nbsp;pracowni mebli</h1>
+<p class="lead">Zamówienie przykładowe: fikcyjny producent frontów MDF lakierowanych z Poznania szuka pracowni mebli na wymiar w Wielkopolsce, które zlecają fronty podwykonawcy. Przy każdej firmie: adres do listu, stanowisko adresata, ogólny kontakt, źródło danych i pierwsze zdanie listu napisane pod tę firmę.</p>
+<p class="fake">Dane zmyślone: firmy, adresy i strony nie istnieją.</p>
+</header>
+
+<div class="stats" role="list">
+<div class="stat" role="listitem"><b>10</b><span>firm z jednej niszy</span></div>
+<div class="stat" role="listitem"><b>7</b><span>kolumn w CSV i XLSX</span></div>
+<div class="stat" role="listitem"><b>2</b><span>źródła z datą przy każdej firmie: strona i KRS</span></div>
+</div>
+
+<h2>Jak to robimy</h2>
+<p class="lead">Zbieram dane firm tylko z publicznych źródeł (strona firmy, KRS, CEIDG), z linkiem przy każdej firmie, i do każdej piszę pierwsze zdanie listu tradycyjnego.</p>
+<ol class="how">
+<li><span class="step mono">01</span><p>Tylko publiczne źródła: strona firmy oraz KRS lub CEIDG. Przy każdej firmie jest źródło i data.</p></li>
+<li><span class="step mono">02</span><p>Adresatem jest stanowisko, nie osoba. Ogólny e-mail firmy służy do odpowiedzi i kontaktu po zgodzie.</p></li>
+<li><span class="step mono">03</span><p>Do polskich firm pierwszy kontakt listem tradycyjnym – e-mail i telefon wymagają ich wcześniejszej zgody; przygotowuję więc pierwsze zdanie listu dla każdej firmy.</p></li>
+</ol>
+<div class="dl">
+<a class="btn" href="baza-firm-probka-dane-zmyslone.xlsx" download>Pobierz XLSX</a>
+<a class="btn ghost" href="baza-firm-probka-dane-zmyslone.csv" download>Pobierz CSV</a>
+</div>
+
+<h2>Próbka: 10 firm</h2>
+<div class="firms">
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">01</span><div><h3>Fornirak sp. z o.o.</h3><p class="what">kuchnie na wymiar, w galerii głównie matowe fronty lakierowane</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">fornirak.example</dd></div>
+<div><dt>Adresat</dt><dd>Zarząd (KRS)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 4, 00-000 Poznań</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@fornirak.example</dd></div>
+<div><dt>Źródło</dt><dd>fornirak.example: Realizacje, Kontakt; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Piszę do Państwa, bo w galerii realizacji Fornirak przeważają kuchnie z matowymi frontami lakierowanymi – właśnie takie fronty produkujemy na zamówienie dla pracowni z Wielkopolski.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">02</span><div><h3>Kantelia sp. z o.o.</h3><p class="what">szafy i garderoby wnękowe; na stronie czas realizacji 6 tygodni</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">kantelia.example</dd></div>
+<div><dt>Adresat</dt><dd>Kierownik produkcji (strona: Zespół)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 17, 00-000 Gniezno</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@kantelia.example</dd></div>
+<div><dt>Źródło</dt><dd>kantelia.example: Oferta, Zespół; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Na Państwa stronie jest informacja, że na szafę wnękową czeka się teraz sześć tygodni – fronty od nas przyjeżdżają w dziesięć dni roboczych, co może skrócić ten czas.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">03</span><div><h3>Słojownia sp. z o.o.</h3><p class="what">meble z litego dębu łączone z frontami fornirowanymi</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">slojownia.example</dd></div>
+<div><dt>Adresat</dt><dd>Zarząd (KRS)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 2, 00-000 Leszno</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@slojownia.example</dd></div>
+<div><dt>Źródło</dt><dd>slojownia.example: O nas, Meble; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Słojownia pokazuje na stronie meble z litego dębu łączone z frontami fornirowanymi – przy takim połączeniu dokładnie dopasowany front robi największą różnicę i tym właśnie się zajmujemy.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">04</span><div><h3>Wiórnia sp. z o.o.</h3><p class="what">zabudowy biurowe dla firm; w zakładce Kariera ogłoszenie: operator CNC</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">wiornia.example</dd></div>
+<div><dt>Adresat</dt><dd>Kierownik produkcji (strona: Kariera)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 31, 00-000 Kalisz</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@wiornia.example</dd></div>
+<div><dt>Źródło</dt><dd>wiornia.example: Realizacje, Kariera; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>W zakładce „Kariera” Wiórnia szuka operatora CNC, więc zamówień zapewne przybywa – w takim okresie zlecenie frontów na zewnątrz potrafi odciążyć produkcję.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">05</span><div><h3>Matowy Front sp. z o.o.</h3><p class="what">kuchnie bez uchwytów, frezowane krawędzie chwytowe</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">matowyfront.example</dd></div>
+<div><dt>Adresat</dt><dd>Dział zakupów (strona: Kontakt)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 9, 00-000 Konin</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@matowyfront.example</dd></div>
+<div><dt>Źródło</dt><dd>matowyfront.example: Portfolio, Kontakt; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Kuchnie bez uchwytów z Państwa portfolio mają frezowane krawędzie chwytowe – takie frezowanie wykonujemy w standardzie, w każdym kolorze z palety RAL.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">06</span><div><h3>Listwiarnia sp. z o.o.</h3><p class="what">meble na wymiar dla hoteli i pensjonatów</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">listwiarnia.example</dd></div>
+<div><dt>Adresat</dt><dd>Dyrektor handlowy (strona: Kontakt)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 23, 00-000 Piła</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@listwiarnia.example</dd></div>
+<div><dt>Źródło</dt><dd>listwiarnia.example: Dla hoteli, Kontakt; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Na stronie Listwiarni są realizacje dla hoteli nad morzem – przy takich zleceniach liczy się kilkadziesiąt identycznych frontów w jednym odcieniu, a to nasza codzienna praca.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">07</span><div><h3>Drewnolia sp. z o.o.</h3><p class="what">meble dziecięce na wymiar, lakiery wodne z atestem</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">drewnolia.example</dd></div>
+<div><dt>Adresat</dt><dd>Zarząd (KRS)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 6, 00-000 Śrem</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@drewnolia.example</dd></div>
+<div><dt>Źródło</dt><dd>drewnolia.example: O nas, Bezpieczeństwo; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Drewnolia podkreśla, że do mebli dziecięcych używa wyłącznie lakierów wodnych z atestem – nasze fronty lakierujemy właśnie takimi lakierami i chętnie prześlemy ich atesty.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">08</span><div><h3>Płycina sp. z o.o.</h3><p class="what">kuchnie i zabudowy; w aktualnościach: otwarcie salonu w Poznaniu</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">plycina.example</dd></div>
+<div><dt>Adresat</dt><dd>Zarząd (KRS)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 12, 00-000 Września</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@plycina.example</dd></div>
+<div><dt>Źródło</dt><dd>plycina.example: Aktualności, Kontakt; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Gratulujemy otwarcia salonu w Poznaniu, o którym piszą Państwo w aktualnościach – przy większej liczbie zamówień przydaje się sprawdzony dostawca frontów.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">09</span><div><h3>Wpustnia sp. z o.o.</h3><p class="what">meble łazienkowe na wymiar z płyty wodoodpornej</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">wpustnia.example</dd></div>
+<div><dt>Adresat</dt><dd>Kierownik produkcji (strona: Zespół)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 40, 00-000 Szamotuły</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@wpustnia.example</dd></div>
+<div><dt>Źródło</dt><dd>wpustnia.example: Łazienki, Zespół; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>Meble łazienkowe Wpustni powstają z płyty wodoodpornej – do wilgotnych pomieszczeń przygotowujemy fronty MDF z dodatkowo uszczelnionymi krawędziami.</p></blockquote>
+</article>
+<article class="firm">
+<header class="firm-h"><span class="num" aria-hidden="true">10</span><div><h3>Heblownia sp. z o.o.</h3><p class="what">meble w stylu retro, fronty ramiakowe, małe serie</p></div></header>
+<dl>
+<div><dt>Strona</dt><dd class="mono">heblownia.example</dd></div>
+<div><dt>Adresat</dt><dd>Zarząd (KRS)</dd></div>
+<div><dt>Adres do korespondencji</dt><dd>ul. Przykładowa 5, 00-000 Oborniki</dd></div>
+<div><dt>Kontakt ogólny</dt><dd class="mono">biuro@heblownia.example</dd></div>
+<div><dt>Źródło</dt><dd>heblownia.example: Realizacje, O nas; siedziba: KRS; stan na 17.11.2026</dd></div>
+</dl>
+<blockquote><p class="q-label">Pierwsze zdanie listu (poczta)</p><p>W realizacjach Heblowni jest dużo frontów ramiakowych w stylu retro – frezujemy takie fronty z MDF pod lakier, także w seriach od jednej sztuki.</p></blockquote>
+</article>
+</div>
+
+<h2>Co klient dostaje w komplecie</h2>
+<div class="kit">
+<div class="box"><h3>Plik i zasady</h3><ul>
+<li>Baza w XLSX i CSV, z kolumną „Źródło” przy każdej firmie.</li>
+<li>Dane są aktualne na dzień 17.11.2026; firmy, które zgłoszą sprzeciw, proszę usuwać z bazy.</li>
+<li>Swoją kopię danych usuwam 7 dni po odbiorze pracy.</li>
+</ul></div>
+<div class="box"><h3>Klauzula art. 14 RODO do pierwszego listu</h3><p>Informacja o przetwarzaniu danych (art. 14 RODO). Administratorem danych jest [nazwa Państwa firmy, adres, e-mail]. Dane kontaktowe Państwa firmy (nazwa, adres, ogólny adres e-mail, stanowisko adresata) pochodzą z publicznych źródeł: Państwa strony internetowej oraz [KRS / CEIDG]. Przetwarzamy je, aby przedstawić ofertę naszych usług, na podstawie prawnie uzasadnionego interesu (art. 6 ust. 1 lit. f RODO). Odbiorcy danych: [firma, która przygotowała bazę na nasze zlecenie; np. dostawca poczty i arkuszy w chmurze]. Dane przechowujemy do czasu wniesienia sprzeciwu, nie dłużej niż 12 miesięcy od pierwszego kontaktu. Mają Państwo prawo dostępu do danych, ich sprostowania, usunięcia i ograniczenia przetwarzania, prawo sprzeciwu (art. 21 RODO) oraz prawo skargi do Prezesa UODO. Wystarczy odpowiedzieć na ten list lub napisać na [e-mail].</p></div>
+</div>
+
+<footer>Projekt koncepcyjny Frame One. Nazwy firm sprawdzone w KRS, CEIDG i Google (17.11.2026): takich firm nie ma. Domeny .example są zarezerwowane do przykładów i nie prowadzą do żadnej strony.</footer>
+</div>
+</body>
+</html>
