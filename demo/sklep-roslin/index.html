@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://images.unsplash.com; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Liściownia – rośliny doniczkowe (demo sklepu)</title>
+<meta name="description" content="Demo sklepu internetowego z roślinami doniczkowymi: filtry, karty produktów z wariantami rozmiaru i osłonki, najniższa cena z 30 dni przy promocji, koszyk i zamówienie. Marka fikcyjna.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/demo/sklep-roslin/">
+<link rel="preload" href="../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 30V12' stroke='%232f5d3a' stroke-width='2'/%3E%3Cpath d='M16 14C16 8 20 4 27 3c0 7-4 11-11 11z' fill='%232f5d3a'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+<div class="demo-bar" role="note">Demo sklepu · marka Liściownia jest fikcyjna · zamówienia nie są wysyłane</div>
+<p class="promise">Darmowa dostawa od 199 zł · Zimą pakujemy rośliny w ocieplenie · 14 dni na zwrot</p>
+<header class="top">
+  <nav class="nav" aria-label="Menu główne">
+    <a href="#/">Sklep</a>
+    <a href="#/dostawa">Dostawa i zwroty</a>
+  </nav>
+  <a class="logo" href="#/" aria-label="Liściownia – strona główna"><span class="logo-stem" aria-hidden="true"></span>Liściownia</a>
+  <button class="cart-btn" type="button" aria-haspopup="dialog" aria-controls="cart">Koszyk <span class="cart-count" aria-live="polite">0</span></button>
+</header>
+<main id="main" tabindex="-1"></main>
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-brand">Liściownia</p>
+    <p>Rośliny doniczkowe z wysyłką w całej Polsce. Sklep fikcyjny: to demo przygotowane przez Frame One. Nazwa sprawdzona w KRS, CEIDG i Google 17.11.2026 – takiej firmy nie ma.</p>
+    <p>Zdjęcia: Unsplash (licencja Unsplash). Ceny i opisy są przykładowe.</p>
+    <p><a href="#/dostawa">Dostawa i zwroty</a></p>
+  </div>
+</footer>
+<div class="scrim" hidden></div>
+<aside id="cart" class="cart" role="dialog" aria-modal="true" aria-labelledby="cart-h" hidden>
+  <div class="cart-head"><h2 id="cart-h">Koszyk</h2><button type="button" class="x" aria-label="Zamknij koszyk">×</button></div>
+  <div class="cart-body"></div>
+</aside>
+<div class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
