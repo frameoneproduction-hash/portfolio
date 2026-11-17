@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Próbka animacji 2D: ćwiczenie na lądzie — ramiona jak w stylu grzbietowym</title>
+<meta name="description" content="Krótka zapętlona animacja 2D: dziecko na lądzie wykonuje naprzemienne krążenia ramion w tył, jak w stylu grzbietowym. Próbka stylu i płynności.">
+<style>
+:root { --ink:#1e2a3a; --muted:#566273; --bg:#f2f6fb; --line:#dbe3ee; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+main { max-width: 760px; margin:0 auto; padding: 28px 16px 44px; }
+.note { display:inline-block; background:#fff1d6; color:#5a3d00; border-radius:10px; padding:6px 12px; font-size:14px; }
+h1 { font-size: clamp(24px, 4vw, 34px); line-height:1.15; margin:12px 0 6px; letter-spacing:-.02em; }
+.lead { color:var(--muted); margin:0 0 18px; }
+.stage { background: repeating-conic-gradient(#e9eef5 0% 25%, #fff 0% 50%) 50% / 24px 24px; border:1px solid var(--line); border-radius:18px; display:grid; place-items:center; padding:12px; }
+.stage svg { width:min(100%, 420px); height:auto; display:block; }
+.cap { font-size:14px; color:var(--muted); margin:8px 2px 0; }
+h2 { font-size:19px; margin:24px 0 6px; }
+ul { margin:0; padding-left:20px; } li { margin:3px 0; }
+button { margin-top:12px; border:1.5px solid var(--line); background:#fff; border-radius:10px; padding:8px 14px; font:inherit; font-weight:600; cursor:pointer; }
+
+/* Animacja: 4 s pętla. Ramiona krążą w tył naprzemiennie (przesunięcie o pół cyklu), tułów lekko się kołysze. */
+.arm { transform-box: view-box; transform-origin: 130px 120px; animation: circle 4s linear infinite; }
+/* postać patrzy w prawo: „w tył” = zgodnie z ruchem wskazówek zegara na ekranie (dół → tył → nad głową → przód) */
+.arm-far { animation-delay: -2s; }
+@keyframes circle { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.torso { transform-box: view-box; transform-origin: 130px 280px; animation: sway 2s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: rotate(-1deg); } to { transform: rotate(1deg); } }
+.paused * { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .arm, .torso { animation-duration: 12s; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="note">Próbka — postać i styl przykładowe</p>
+  <h1>Ćwiczenie na lądzie: krążenia ramion w tył</h1>
+  <p class="lead">Widok z boku. Ruch ramion jak w stylu grzbietowym: naprzemiennie, prosta ręka, pełne koło w tył, ramię przechodzi blisko ucha. Pętla 4 s, przezroczyste tło.</p>
+
+  <div class="stage" id="stage">
+    <svg viewBox="0 0 260 300" role="img" aria-labelledby="t">
+      <title id="t">Dziecko w profilu stoi i naprzemiennie krąży prostymi ramionami w tył, jak w stylu grzbietowym</title>
+      <ellipse cx="130" cy="286" rx="46" ry="7" fill="#1e2a3a" opacity=".12"/>
+      <!-- ramię dalsze (za tułowiem), przesunięte o pół obrotu -->
+      <g class="arm arm-far">
+        <path d="M130 120 L130 188" stroke="#e3a283" stroke-width="12" stroke-linecap="round"/>
+        <circle cx="130" cy="192" r="7.5" fill="#e3a283"/>
+      </g>
+      <g class="torso">
+        <!-- nogi w profilu -->
+        <path d="M124 206 L122 276" stroke="#e8ab8a" stroke-width="14" stroke-linecap="round"/>
+        <path d="M136 206 L138 276" stroke="#f2b694" stroke-width="14" stroke-linecap="round"/>
+        <path d="M116 272 h18 a6 6 0 0 1 0 12 h-18z" fill="#1e2a3a"/>
+        <path d="M132 272 h18 a6 6 0 0 1 0 12 h-18z" fill="#1e2a3a"/>
+        <!-- tułów -->
+        <rect x="114" y="108" width="34" height="104" rx="17" fill="#2f7de1"/>
+        <path d="M114 174 h34 v21 a17 17 0 0 1 -17 17 a17 17 0 0 1 -17 -17z" fill="#ffb020"/>
+        <!-- szyja i głowa w profilu, czepek -->
+        <rect x="126" y="94" width="12" height="18" rx="5" fill="#f2b694"/>
+        <circle cx="134" cy="70" r="28" fill="#f2b694"/>
+        <path d="M150 74 q8 3 6 9 q-3 3 -8 1z" fill="#f2b694"/>
+        <path d="M106 70 a28 28 0 0 1 56 -2 q-24 -6 -56 2z" fill="#ff5a5f"/>
+        <circle cx="149" cy="72" r="3" fill="#1e2a3a"/>
+        <path d="M144 88 q6 3 10 -1" fill="none" stroke="#1e2a3a" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="140" cy="82" r="4" fill="#ff8f8f" opacity=".5"/>
+      </g>
+      <!-- ramię bliższe (przed tułowiem) -->
+      <g class="arm arm-near">
+        <path d="M130 120 L130 188" stroke="#f2b694" stroke-width="12" stroke-linecap="round"/>
+        <circle cx="130" cy="192" r="7.5" fill="#f2b694"/>
+      </g>
+    </svg>
+  </div>
+  <p class="cap">Podgląd w przeglądarce. W wersji końcowej: GIF i MP4 (oraz WebM z przezroczystością) w wybranym rozmiarze.</p>
+  <button type="button" id="pause" aria-pressed="false">Pauza</button>
+
+  <h2>Jak pracuję nad serią 5 animacji</h2>
+  <ul>
+    <li>jedna postać dziecka we wszystkich ćwiczeniach — rysuję ją raz według Państwa przykładowego stylu,</li>
+    <li>ruch ustawiam krok po kroku według instrukcji trenera: kąty, tempo, moment zmiany ręki,</li>
+    <li>najpierw jedna animacja do akceptacji, potem pozostałe cztery,</li>
+    <li>pliki: GIF i MP4, przezroczyste tło (WebM/PNG), pętla 5–10 s.</li>
+  </ul>
+</main>
+<script>
+document.getElementById('pause').addEventListener('click', function () {
+  var s = document.getElementById('stage'), p = s.classList.toggle('paused');
+  this.textContent = p ? 'Odtwórz' : 'Pauza'; this.setAttribute('aria-pressed', String(p));
+});
+</script>
+</body>
+</html>
