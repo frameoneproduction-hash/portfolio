@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Modular responsive HTML email template: table layout for Outlook and Gmail, layout variants, ActiveCampaign personalization tags. Fictional brand.">
+<meta name="theme-color" content="#f3eee7">
+<title>Modular HTML email: demo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23b0623f'/%3E%3Cpath d='M7 11h18v12H7z M7 11l9 7 9-7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#preview">Skip to the preview</a>
+
+<div class="demo-bar" role="region" aria-label="About this demo">
+  <p><strong>Demo</strong>: a modular, responsive HTML email built with tables for Outlook and Gmail. Fictional brand and products, sample texts.</p>
+</div>
+
+<div class="layout">
+  <aside class="panel" aria-labelledby="panel-title">
+    <h1 id="panel-title">Modular email template</h1>
+    <p class="lead">One master template, modules you switch on and off, two layouts for each block. Built to be pasted into ActiveCampaign as custom HTML.</p>
+
+    <fieldset>
+      <legend>Hero</legend>
+      <label><input type="radio" name="hero" value="hero-image" checked> Image + headline</label>
+      <label><input type="radio" name="hero" value="hero-text"> Colour band, text only</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Image + text</legend>
+      <label><input type="radio" name="it" value="image-text-left" checked> Image left</label>
+      <label><input type="radio" name="it" value="image-text-right"> Image right</label>
+      <label><input type="radio" name="it" value=""> Hidden</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Products</legend>
+      <label><input type="radio" name="prod" value="products-3" checked> 3 columns</label>
+      <label><input type="radio" name="prod" value="products-2"> 2 columns with links</label>
+      <label><input type="radio" name="prod" value=""> Hidden</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Extra blocks</legend>
+      <label><input type="checkbox" name="extra" value="coupon" checked> Coupon code</label>
+      <label><input type="checkbox" name="extra" value="quote"> Review quote</label>
+      <label><input type="checkbox" name="extra" value="view-online" checked> "View in browser" line</label>
+    </fieldset>
+
+    <div class="what">
+      <h2>What's inside</h2>
+      <ul>
+        <li>600px table layout, hybrid columns that stack on phones</li>
+        <li>Ghost tables and VML buttons for Outlook on Windows</li>
+        <li>Hidden preheader text for the inbox preview</li>
+        <li>Dark mode colours for Apple Mail and Outlook apps</li>
+        <li>ActiveCampaign tags: <code>%FIRSTNAME%</code>, <code>%WEBCOPY%</code>, <code>%UNSUBSCRIBELINK%</code>, <code>%UPDATELINK%</code>, <code>%SENDER-INFO-SINGLELINE%</code></li>
+        <li>Alt text on every image, real text instead of text in images</li>
+      </ul>
+      <p class="links"><a href="email.html" target="_blank" rel="noopener">Open the email on its own</a></p>
+    </div>
+  </aside>
+
+  <main id="preview" class="stage" aria-label="Email preview">
+    <div class="toolbar" role="group" aria-label="Preview options">
+      <div class="seg" role="radiogroup" aria-label="Screen width">
+        <button type="button" class="is-on" data-w="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-w="mobile" aria-pressed="false">Phone</button>
+      </div>
+      <div class="seg" role="radiogroup" aria-label="Colour scheme">
+        <button type="button" class="is-on" data-c="light" aria-pressed="true">Light</button>
+        <button type="button" data-c="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+    <div class="frame-wrap" id="frameWrap">
+      <iframe id="mail" src="email.html" title="Email preview"></iframe>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
