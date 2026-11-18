@@ -48,7 +48,7 @@
 
   var callouts = [
     { el: $('c1'), t0: 10.0, t1: 10 + 4 * BEAT, kb: { w: 1.0, cy: 0.36, fx: 0.42, fy: 0.56, s0: 1.5, s1: 1.8, r0: -3, r1: 1, dx: 3 } },
-    { el: $('c2'), t0: 10 + 4 * BEAT, t1: 10 + 8 * BEAT, kb: { w: 1.0, cy: 0.37, fx: 0.73, fy: 0.5, s0: 1.65, s1: 1.9, r0: 2, r1: -1, dx: -3 } },
+    { el: $('c2'), t0: 10 + 4 * BEAT, t1: 10 + 8 * BEAT, kb: { w: 1.0, cy: 0.38, fx: 0.79, fy: 0.42, s0: 1.75, s1: 1.95, r0: 1, r1: -1, dx: -2 } },
     { el: $('c3'), t0: 10 + 8 * BEAT, t1: 17.0, kb: { w: 1.0, cy: 0.37, fx: 0.62, fy: 0.62, s0: 1.25, s1: 1.5, r0: -1.5, r1: 1.5, dx: 2 } }
   ];
   callouts.forEach(function (c) {
@@ -62,7 +62,7 @@
   var eLines = [$('e1'), $('e2'), $('e3'), $('e4')];
 
   /* krople wody (atut 3) */
-  var DROPS = [[0.12, 0.22, 4.0], [0.32, 0.2, 3.2], [0.52, 0.24, 4.4], [0.64, 0.33, 3.0], [0.44, 0.37, 3.8], [0.22, 0.3, 2.8], [0.06, 0.34, 3.4]];
+  var DROPS = [[0.34, 0.25, 4.0], [0.5, 0.22, 3.2], [0.62, 0.27, 4.4], [0.7, 0.35, 3.0], [0.46, 0.36, 3.8], [0.32, 0.33, 2.8], [0.56, 0.42, 3.4]];
   var dropEls = DROPS.map(function (d) {
     var i = document.createElement('i');
     i.style.width = (d[2] * 1.3) + 'cqw'; i.style.height = (d[2] * 1.45) + 'cqw';
@@ -120,8 +120,8 @@
   var W = 0, H = 0, u = 1, L = {};
   // liny na zdjęciu: punkt wyjścia z górnej krawędzi (ułamek szerokości) i punkt zbiegu par lin
   // (ułamki szerokości/wysokości zdjęcia, zmierzone na zdjęciu 1)
-  var ROPE_TOP = [0.185, 0.477, 0.74, 0.917];
-  var JOIN = [[0.275, -0.905], [0.873, -0.75]];
+  var ROPE_TOP = [0.19, 0.479, 0.712, 0.917];
+  var JOIN = [[0.301, -0.881], [0.869, -1.089]];
   function layout() {
     W = stage.clientWidth; H = stage.clientHeight; u = W / 90;
     // telefon
@@ -133,7 +133,7 @@
     screen.style.width = (L.pw - 2 * L.b) + 'px'; screen.style.height = (L.ph - 2 * L.b) + 'px';
     screen.style.borderRadius = (L.pr - L.b) + 'px';
     // huśtawka
-    L.sw = 0.76 * W; L.sh = L.sw * 337 / 450; L.il = 0.13 * W; L.it = 0.4 * H;
+    L.sw = 0.72 * W; L.sh = L.sw * 337 / 450; L.il = 0.15 * W; L.it = 0.42 * H;
     L.icx = L.il + L.sw * 0.5; L.icy = L.it + L.sh * 0.5;
     L.py = 10.7 * u;
     var j1 = [L.il + JOIN[0][0] * L.sw, L.it + JOIN[0][1] * L.sh];
@@ -284,11 +284,11 @@
         cl.lines[1].style.transform += ' scale(' + (1 + 0.03 * pulse).toFixed(4) + ')';
         dropEls.forEach(function (de, di) {
           var st = cl.t0 + 0.15 + di * 0.2, fp = prog(t, st, st + 0.42);
-          var y = lerp(-60, 0, E.inCubic(fp)) + 3 * prog(t, st + 0.42, cl.t1 + 0.5);
+          var y = lerp(-28, 0, E.inCubic(fp)) + 3 * prog(t, st + 0.42, cl.t1 + 0.5);
           var land = prog(t, st + 0.42, st + 0.7);
           var sq = fp >= 1 ? 1 - 0.22 * Math.sin(Math.PI * land) : 1;
           de.style.transform = 'translate3d(0,' + y.toFixed(2) + 'cqw,0) scale(' + (2 - sq).toFixed(3) + ',' + sq.toFixed(3) + ')';
-          de.style.opacity = t < st ? 0 : 1;
+          de.style.opacity = prog(t, st, st + 0.15).toFixed(3);
         });
       }
     });
