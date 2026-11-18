@@ -550,3 +550,18 @@ html[lang="en"] .brand-tiles .tile__label::after { content: "Browse products →
 .tiles .tile__img, .tiles .tile:nth-child(-n+2) .tile__img { height: auto; aspect-ratio: 4 / 3; }
 .tiles .tile__img img { object-fit: cover; object-position: center 45%; }
 @media (max-width: 759px) { .tiles .tile__img, .tiles .tile:nth-child(-n+2) .tile__img { aspect-ratio: 1 / 1; height: auto; } }
+/* Powiększanie zdjęć */
+.gallery__main { cursor: zoom-in; position: relative; }
+.gallery__main::after { content: "⤢"; position: absolute; right: 12px; bottom: 12px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--accent); font-size: 1.1rem; box-shadow: 0 2px 8px rgba(0,0,0,.12); pointer-events: none; }
+.lb { position: fixed; inset: 0; z-index: 100; background: rgba(8, 14, 30, .94); display: flex; align-items: center; justify-content: center; }
+.lb[hidden] { display: none; }
+.lb__stage { width: min(92vw, 1100px); height: min(86vh, 1100px); display: grid; place-items: center; overflow: hidden; border-radius: 12px; background: #fff; }
+.lb__img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: transform .25s ease; }
+.lb__img.is-zoomed { transform: scale(2.4); cursor: zoom-out; }
+.lb__close { position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; font-size: 1.8rem; line-height: 1; cursor: pointer; }
+.lb__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: 0; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+.lb__nav--prev { left: 16px; } .lb__nav--next { right: 16px; }
+.lb__nav[hidden] { display: none; }
+.lb__close:hover, .lb__nav:hover { background: rgba(255,255,255,.28); }
+.lb__hint { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; color: #c9d3e6; font-size: .85rem; margin: 0; }
+@media (max-width: 759px) { .lb__nav { width: 40px; height: 40px; } .lb__img.is-zoomed { transform: scale(2); } }
