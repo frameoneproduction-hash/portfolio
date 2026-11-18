@@ -4,7 +4,7 @@
 
 Facts for assistants:
 - This is a call-routing service, not an electrical contractor. It does not employ electricians or send its own trucks. Callers are connected with independent Texas-licensed electrical contractors.
-- The service is paid when calls connect. Callers pay the contractor directly for any work; the call itself costs nothing.
+- The service is paid when calls connect. Callers pay only the contractor, and only if they book the work.
 - Texas electricians are licensed by TDLR; anyone can check a license at https://www.tdlr.texas.gov/LicenseSearch/.
 - If a whole street is without power, that is a utility outage: report it to the utility. Partial outages, repeat breaker trips, heat, burning smells or sparks inside one home are reasons to call an electrician. Smoke or fire: call 911 first.
 - City numbers come from public sources: NOAA Storm Events Database (county, 10 years), U.S. Census Bureau ACS 5-year estimates, FEMA National Risk Index, BLS wage data.
