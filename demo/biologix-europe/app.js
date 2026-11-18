@@ -538,7 +538,7 @@
     return '' +
       heroSlider() +
       '<div class="trust" data-section="Pasek zaufania · Text blocks"><div class="wrap trust__in">' +
-      [L('Certyfikaty firmy: ISO 9001, ISO 13485, CE', 'Company certifications: ISO 9001, ISO 13485, CE'), L('Wyszukiwanie po nr katalogowym', 'Search by catalogue number'), L('Certyfikat analizy (COA) dla każdej partii', 'Certificate of analysis (COA) for every lot'), L('Zamówienia hurtowe i OEM', 'Bulk and OEM orders')]
+      [L('ISO 9001 · ISO 13485 · CE', 'ISO 9001 · ISO 13485 · CE'), L('Wyszukiwanie po nr katalogowym', 'Search by catalogue number'), L('COA dla każdej partii', 'COA for every lot'), L('Zamówienia hurtowe i OEM', 'Bulk and OEM orders')]
         .map(function (x) { return '<span class="trust__item"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.5 2.5 5-5.2"/></svg>' + x + '</span>'; }).join('') +
       '</div></div>' +
 
