@@ -458,3 +458,6 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
 .rfq p { margin: 0; max-width: 60ch; color: var(--muted); }
 @media (max-width: 759px) { .rfq { padding: 24px; } .hero__search { flex-direction: row; } }
 .hero__img--brand + .hero__shade { background: linear-gradient(90deg, rgba(0, 22, 64, .94) 0%, rgba(0, 28, 77, .86) 36%, rgba(0, 40, 110, .55) 60%, rgba(0, 52, 140, .38) 100%); }
+/* Odstęp między „Wybrane produkty” a „Dlaczego Biologix” */
+.section.section--tight[data-section^="Polecane"] { padding-bottom: 24px; }
+.section.why { padding-top: clamp(48px, 5vw, 64px); }
