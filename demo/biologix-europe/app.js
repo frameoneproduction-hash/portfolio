@@ -539,7 +539,7 @@
     var featured = FEATURED.map(function (id) { return card(BY_ID[id]); }).join('');
     var cats = Object.keys(CATS).map(function (k) {
       var c = CATS[k];
-      var media = c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
+      var media = c.scene ? '<span class="tile__img tile__img--scene" style="--bd:url(' + c.img + ')"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
         : '<span class="tile__img tile__img--compose" style="--bd:url(' + c.backdrop + ')">' + cdnImg(c.img, '', 800) + '</span>';
       return '<a class="tile" href="#/sklep?kategoria=' + k + '">' + media +
         '<span class="tile__label"><span class="tile__name" lang="' + state.lang + '">' + esc(t(c)) + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(L(c.plDesc, c.enDesc)) + '</span></span></a>';
@@ -831,7 +831,7 @@
 
   function brandTile(k, name, desc, links) {
     var c = CATS[k];
-    var media = c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
+    var media = c.scene ? '<span class="tile__img tile__img--scene" style="--bd:url(' + c.img + ')"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
       : '<span class="tile__img tile__img--compose" style="--bd:url(' + c.backdrop + ')">' + cdnImg(c.img, '', 800) + '</span>';
     if (links) {
       return '<div class="tile tile--links">' + media + '<span class="tile__label"><span class="tile__name">' + name + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(desc) + '</span>' +
