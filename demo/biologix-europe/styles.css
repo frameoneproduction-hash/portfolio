@@ -12,6 +12,8 @@
   --warn: #b42318;
   --focus: #0a5bd8;
   --radius: 12px;
+  --display: Manrope, Inter, system-ui, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
   --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --shadow: 0 1px 2px rgba(24, 16, 10, .05), 0 8px 24px rgba(0, 58, 154, .07);
 }
@@ -23,7 +25,8 @@ img, svg { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { color: var(--accent-2); }
-h1, h2, h3 { font-family: var(--sans); font-weight: 700; line-height: 1.2; margin: 0 0 .5em; letter-spacing: -.015em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.12; margin: 0 0 .5em; letter-spacing: -.028em; }
+h1 em, h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
 h1 { font-size: clamp(1.8rem, 4vw, 2.75rem); }
 h2 { font-size: clamp(1.45rem, 2.6vw, 2rem); }
 h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -.005em; }
@@ -127,10 +130,16 @@ mark.ph { background: #fff4cc; color: inherit; border-radius: 3px; padding: 0 2p
 .tile { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; color: var(--ink); text-decoration: none; transition: border-color .15s, box-shadow .15s; }
 .tile:hover { border-color: #b8c7e3; box-shadow: var(--shadow); color: var(--ink); }
 .tile__img { display: block; aspect-ratio: 1; background: #fff; border-bottom: 1px solid var(--line); }
-.tile__img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; transition: transform .4s; }
+.tile__img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.tile__img--scene { background: #eef3fb; }
+.tile__img--scene img { object-fit: cover; padding: 0; }
+.tile__img--compose { position: relative; overflow: hidden; background: #eef3fb; }
+.tile__img--compose::before { content: ""; position: absolute; inset: -12%; background: var(--bd) center/cover; filter: blur(6px) saturate(1.05); opacity: .95; transform: scale(1.05); }
+.tile__img--compose::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 55%, rgba(255,255,255,.7) 0 30%, rgba(255,255,255,0) 62%); }
+.tile__img--compose img { position: relative; z-index: 1; mix-blend-mode: multiply; padding: 6%; }
 .tile:hover .tile__img img { transform: scale(1.04); }
 .tile__label { display: grid; gap: 4px; padding: 12px 14px 16px; }
-.tile__name { font-weight: 700; font-size: 1rem; line-height: 1.3; }
+.tile__name { font-family: var(--display); font-weight: 700; font-size: 1.02rem; line-height: 1.3; letter-spacing: -.01em; }
 .tile:hover .tile__name { color: var(--accent); }
 .tile__desc { font-size: .82rem; color: var(--muted); line-height: 1.4; }
 @media (max-width: 759px) { .tiles .tile:last-child:nth-child(odd) { grid-column: 1 / -1; flex-direction: row; } .tiles .tile:last-child:nth-child(odd) .tile__img { width: 40%; flex: none; border-bottom: 0; border-right: 1px solid var(--line); } .tiles .tile:last-child:nth-child(odd) .tile__label { align-content: center; } }
@@ -139,7 +148,8 @@ mark.ph { background: #fff4cc; color: inherit; border-radius: 3px; padding: 0 2p
 .why { background: var(--soft); }
 .why__item h3, .q-item h3 { margin-bottom: 6px; }
 .why__item p, .q-item p { color: var(--muted); margin: 0; }
-.why__icon { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-l); display: grid; place-items: center; margin-bottom: 12px; color: var(--accent); }
+.why__icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 16px; color: var(--accent);
+  background: linear-gradient(145deg, #ffffff 0%, #e9f0fc 100%); box-shadow: inset 0 0 0 1px rgba(0,58,154,.14), 0 10px 22px -12px rgba(0,58,154,.45); }
 .why__item { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
 .q-item { padding: 4px 0; }
 @media (max-width: 759px) { .why .grid--4, .quality .grid--3 { grid-template-columns: 1fr; gap: 16px; } }
@@ -384,3 +394,6 @@ body.show-sections .announce[data-section]::before { background: #fff; color: va
   .tabs__tab { padding: 12px 9px; font-size: .9rem; }
   .tabs { margin-top: 32px; }
 }
+
+.hero__title em { color: #cfe0ff; }
+.why__icon svg { width: 28px; height: 28px; }

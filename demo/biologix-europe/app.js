@@ -5,11 +5,11 @@
   /* ---------- Dane ---------- */
   var CDN = 'https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/';
   var CATS = {
-    lab: { pl: 'Artykuły laboratoryjne', en: 'General Laboratory Products', plDesc: 'Pipetowanie, probówki, filtracja, mikrobiologia', enDesc: 'Liquid handling, tubes, filtration, microbiology', img: CDN + '876431354/6388404828.jpg' },
-    cryo: { pl: 'Kriogenika – CryoKING®', en: 'Cryogenic storage', plDesc: 'Krioprobówki, pudełka kriogeniczne, regały do zamrażarek', enDesc: 'Cryogenic vials, cryogenic boxes, freezer racks', img: CDN + '875758057/6422559013.jpg' },
-    droso: { pl: 'Hodowla Drosophila – DrosoKING®', en: 'Drosophila', plDesc: 'Fiolki i butelki do hodowli muszek owocowych', enDesc: 'Vials and bottles for fruit fly culture', img: CDN + '875747886/6379274146.png' },
-    cell: { pl: 'Hodowla komórkowa', en: 'Cell culture', plDesc: 'Butelki i płytki hodowlane, pipety serologiczne, sitka komórkowe', enDesc: 'Culture flasks and plates, serological pipettes, cell strainers', img: CDN + '875758107/6379132164.jpg' },
-    instr: { pl: 'Aparatura laboratoryjna', en: 'Instruments', plDesc: 'Wirówki, mieszadła, pipety automatyczne', enDesc: 'Centrifuges, stirrers, micropipettes', img: CDN + '875467522/6377149436.png' }
+    lab: { pl: 'Artykuły laboratoryjne', en: 'General Laboratory Products', plDesc: 'Pipetowanie, probówki, filtracja, mikrobiologia', enDesc: 'Liquid handling, tubes, filtration, microbiology', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/6OXcjIf-600x600.webp', scene: true },
+    cryo: { pl: 'Kriogenika – CryoKING®', en: 'Cryogenic storage', plDesc: 'Krioprobówki, pudełka kriogeniczne, regały do zamrażarek', enDesc: 'Cryogenic vials, cryogenic boxes, freezer racks', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/MfIFGhj-600x600.webp', scene: true },
+    droso: { pl: 'Hodowla Drosophila – DrosoKING®', en: 'Drosophila', plDesc: 'Fiolki i butelki do hodowli muszek owocowych', enDesc: 'Vials and bottles for fruit fly culture', img: CDN + '875747886/6379274146.png', backdrop: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/6OXcjIf-600x600.webp' },
+    cell: { pl: 'Hodowla komórkowa', en: 'Cell culture', plDesc: 'Butelki i płytki hodowlane, pipety serologiczne, sitka komórkowe', enDesc: 'Culture flasks and plates, serological pipettes, cell strainers', img: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/logo-gallery-pTu3mr/GqSF3oP-600x600.webp', scene: true },
+    instr: { pl: 'Aparatura laboratoryjna', en: 'Instruments', plDesc: 'Wirówki, mieszadła, pipety automatyczne', enDesc: 'Centrifuges, stirrers, micropipettes', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/EozPNJc-600x600.webp', scene: true }
   };
 
   /* 8 produktów z eksportu katalogu Ecwid (18.11): nazwy, ceny, SKU, zdjęcia, opisy i opcje – prawdziwe.
@@ -359,7 +359,7 @@
     {
       id: '1579165466949-3180a3d056d5',
       eyebrow: 'BIOLOGIX® · CryoKING® · DrosoKING®',
-      h: { pl: 'Materiały laboratoryjne i odczynniki, na których można polegać', en: 'Laboratory consumables and reagents you can rely on' },
+      h: { pl: 'Materiały laboratoryjne i odczynniki, na których można <em>polegać</em>', en: 'Laboratory consumables and reagents you can <em>rely on</em>' },
       p: { pl: 'Produkty BIOLOGIX®, CryoKING® i DrosoKING® do badań, biobankowania i kontroli jakości – teraz dostępne w Polsce.', en: 'BIOLOGIX®, CryoKING® and DrosoKING® products for research, biobanking and quality control – now available in Poland.' },
       cta: { pl: 'Zobacz produkty', en: 'Browse products' }, href: '#/sklep',
       alt: { pl: 'Naukowiec pracujący z pipetą w laboratorium', en: 'Scientist working with a pipette in a laboratory' }
@@ -472,7 +472,7 @@
       return '<div class="hero__slide" role="group"' + (many ? ' aria-roledescription="' + L('slajd', 'slide') + '" aria-label="' + (i + 1) + L(' z ', ' of ') + HERO.length + '"' : '') + (i === 0 ? '' : ' hidden') + '>' +
         photo(h.id, h.alt[state.lang], 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' }) +
         '<div class="hero__shade" aria-hidden="true"></div>' +
-        '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]) + '</' + heading + '>' +
+        '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]).replace(/&lt;(\/?)em&gt;/g, '<$1em>') + '</' + heading + '>' +
         '<p class="hero__text">' + esc(h.p[state.lang]) + '</p><a class="btn btn--light" href="' + h.href + '">' + esc(h.cta[state.lang]) + '</a></div></div>';
     }).join('');
     var controls = '';
@@ -515,14 +515,14 @@
       '<p class="card__meta">' + esc(t(CATS[p.cat])) + ' · ' + esc(meta) + '</p>' +
       '<p class="card__price">' + (m.from ? L('od ', 'from ') : '') + zl(m.price) + '</p></div></a>';
   }
-  function icon(paths) { return '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">' + paths + '</svg>'; }
+  function icon(paths) { return '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg>'; }
   var ICONS = {
-    cert: '<circle cx="12" cy="9" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 13.8 8 21l4-2 4 2-1-7.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9.6 9 1.7 1.7 3.1-3.2" fill="none" stroke="currentColor" stroke-width="1.6"/>',
-    clean: '<path d="M12 3c3 4 6 7.3 6 10.5A6 6 0 0 1 6 13.5C6 10.3 9 7 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m9.5 13.5 1.8 1.8 3.4-3.6" fill="none" stroke="currentColor" stroke-width="1.6"/>',
-    lab: '<path d="M9 3h6M10 3v6.5L4.8 18.4A1.7 1.7 0 0 0 6.3 21h11.4a1.7 1.7 0 0 0 1.5-2.6L14 9.5V3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.4 15h9.2" fill="none" stroke="currentColor" stroke-width="1.6"/>',
-    inst: '<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
-    coa: '<path d="M7 3h7l4 4v14H7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M10 12h5M10 16h5" fill="none" stroke="currentColor" stroke-width="1.6"/>',
-    props: '<path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="1.6"/>'
+    cert: '<circle cx="12" cy="9.5" r="6" fill="currentColor" fill-opacity=".12"/><circle cx="12" cy="9.5" r="6"/><circle cx="12" cy="9.5" r="3.6"/><path d="m8.6 14.6-1.4 6.4 4.8-2.2 4.8 2.2-1.4-6.4"/>',
+    clean: '<path d="M12 2.8c3.4 4.3 6.5 7.6 6.5 11.1a6.5 6.5 0 0 1-13 0c0-3.5 3.1-6.8 6.5-11.1Z" fill="currentColor" fill-opacity=".12"/><path d="M12 2.8c3.4 4.3 6.5 7.6 6.5 11.1a6.5 6.5 0 0 1-13 0c0-3.5 3.1-6.8 6.5-11.1Z"/><path d="M8.8 14.2a3.4 3.4 0 0 0 3.2 3.1"/>',
+    lab: '<path d="M7.6 14.6h8.8l3 4.8a1.2 1.2 0 0 1-1 1.8H5.6a1.2 1.2 0 0 1-1-1.8z" fill="currentColor" fill-opacity=".12"/><path d="M9 2.8h6M10 2.8v6.6L4.6 19.4a1.2 1.2 0 0 0 1 1.8h12.8a1.2 1.2 0 0 0 1-1.8L14 9.4V2.8"/><path d="M7.6 14.6h8.8"/><circle cx="10.6" cy="17.6" r=".6" fill="currentColor"/><circle cx="13.6" cy="18.4" r=".6" fill="currentColor"/>',
+    inst: '<path d="M4 10h16v11H4z" fill="currentColor" fill-opacity=".12"/><path d="M2.8 21.2h18.4M4 21.2V10l8-6.4 8 6.4v11.2"/><path d="M8 21.2v-6.4h8v6.4M12 14.8v6.4"/>',
+    coa: '<path d="M6 2.8h8.4L18 6.4v14.8H6z" fill="currentColor" fill-opacity=".12"/><path d="M6 2.8h8.4L18 6.4v14.8H6z"/><path d="M14.2 2.8v3.8H18M9 11h6M9 14.4h6M9 17.8h3.6"/>',
+    props: '<rect x="3.2" y="4.4" width="17.6" height="15.2" rx="2.4" fill="currentColor" fill-opacity=".12"/><rect x="3.2" y="4.4" width="17.6" height="15.2" rx="2.4"/><path d="m6.8 9.2 1.4 1.4 2.4-2.6M12.6 9.6h4.6M6.8 14.6l1.4 1.4 2.4-2.6M12.6 15h4.6"/>'
   };
 
   /* ---------- Widoki ---------- */
@@ -530,7 +530,9 @@
     var featured = FEATURED.map(function (id) { return card(BY_ID[id]); }).join('');
     var cats = Object.keys(CATS).map(function (k) {
       var c = CATS[k];
-      return '<a class="tile" href="#/sklep?kategoria=' + k + '"><span class="tile__img">' + cdnImg(c.img, '', 400) + '</span>' +
+      var media = c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
+        : '<span class="tile__img tile__img--compose" style="--bd:url(' + c.backdrop + ')">' + cdnImg(c.img, '', 400) + '</span>';
+      return '<a class="tile" href="#/sklep?kategoria=' + k + '">' + media +
         '<span class="tile__label"><span class="tile__name" lang="' + state.lang + '">' + esc(t(c)) + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(L(c.plDesc, c.enDesc)) + '</span></span></a>';
     }).join('');
     return '' +
