@@ -395,23 +395,20 @@ body.show-sections .announce[data-section]::before { background: #fff; color: va
   .tabs { margin-top: 32px; }
 }
 
-.hero__title em { color: #cfe0ff; }
+.hero__title em { color: #9fc0ff; font-style: normal; }
 .why__icon svg { width: 28px; height: 28px; }
 
 .btn--primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .btn--primary:hover { background: var(--accent-2); color: #fff; }
 
-/* Jasna okładka na zdjęciu Biologix */
-.hero { background: #f4f8fd; color: var(--ink); }
-.hero__img { object-position: 70% 50%; }
-.hero__shade { background: linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.86) 34%, rgba(255,255,255,.2) 58%, rgba(255,255,255,0) 72%); }
-.hero__eyebrow { color: var(--accent); }
-.hero__title { color: var(--ink); }
-.hero__title em { color: var(--accent); }
-.hero__text { color: var(--muted); }
-.hero__dot::before { background: rgba(0,58,154,.3); }
-.hero__dot[aria-current="true"]::before { background: var(--accent); }
-@media (max-width: 759px) {
-  .hero__img { object-position: 78% 50%; }
-  .hero__shade { background: linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.92) 55%, rgba(255,255,255,.97) 100%); }
-}
+/* Spokojniej: mniej elementów naraz */
+mark.ph { background: none; color: var(--muted); border-bottom: 1px dashed #b9c4d6; border-radius: 0; padding: 0; }
+.announce mark.ph { display: none; }
+.demo-bar { font-size: .78rem; }
+.demo-bar__in { padding-top: 6px; padding-bottom: 6px; }
+.demo-bar__en { display: none; }
+.scope { display: none; }
+.card__name { -webkit-line-clamp: 2; font-weight: 500; }
+.section { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
+.why__item { border: 0; background: transparent; padding: 0; }
+.why { background: #fff; }

@@ -358,7 +358,6 @@
   var HERO = [
     {
       id: '1579165466949-3180a3d056d5',
-      src: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/cover-ZEzQsF/Er1KGMl-600x600.webp', /* okładka Biologix (biologix.jp) */
       eyebrow: 'BIOLOGIX® · CryoKING® · DrosoKING®',
       h: { pl: 'Materiały laboratoryjne i odczynniki, na których można <em>polegać</em>', en: 'Laboratory consumables and reagents you can <em>rely on</em>' },
       p: { pl: 'Produkty BIOLOGIX®, CryoKING® i DrosoKING® do badań, biobankowania i kontroli jakości – teraz dostępne w Polsce.', en: 'BIOLOGIX®, CryoKING® and DrosoKING® products for research, biobanking and quality control – now available in Poland.' },
@@ -372,10 +371,7 @@
   var PRICE_MAX = Math.ceil(Math.max.apply(null, PRODUCTS.map(function (p) { return minPrice(p).price; })) / 100) * 100;
   var state = {
     lang: params.get('lang') === 'en' ? 'en' : 'pl',
-    cart: [
-      { id: 'pudelka-kriogeniczne-pp-2-cale', sel: { o1: 0 }, qty: 2 },
-      { id: 'petle-inokulacyjne-1-10-ul', sel: { o1: 0 }, qty: 1 }
-    ],
+    cart: [],
     pay: 'online',
     sel: {},
     view: {},
@@ -475,7 +471,7 @@
           : photo(h.id, h.alt[state.lang], 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' })) +
         '<div class="hero__shade" aria-hidden="true"></div>' +
         '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]).replace(/&lt;(\/?)em&gt;/g, '<$1em>') + '</' + heading + '>' +
-        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p><a class="btn btn--primary" href="' + h.href + '">' + esc(h.cta[state.lang]) + '</a></div></div>';
+        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p><a class="btn btn--light" href="' + h.href + '">' + esc(h.cta[state.lang]) + '</a></div></div>';
     }).join('');
     var controls = '';
     if (many) {
@@ -514,7 +510,7 @@
     return '<a class="card" href="#/produkt/' + p.id + '">' +
       '<div class="card__img">' + productArt(p, null, 0) + '</div>' + badge +
       '<div class="card__body"><h3 class="card__name" lang="' + state.lang + '">' + esc(tx.name) + '</h3>' +
-      '<p class="card__meta">' + esc(t(CATS[p.cat])) + ' · ' + esc(meta) + '</p>' +
+
       '<p class="card__price">' + (m.from ? L('od ', 'from ') : '') + zl(m.price) + '</p></div></a>';
   }
   function icon(paths) { return '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg>'; }
@@ -554,17 +550,9 @@
         'Biologix supplies laboratories with everyday consumables, cryogenic storage and ready-to-use reagents. Our products are made in clean rooms under certified quality systems, for consistent quality from lot to lot.') + '</p></div></div>' +
       '<div class="grid grid--4">' +
       whyItem(ICONS.cert, L('Certyfikowana jakość', 'Certified quality'), L('Certyfikaty ISO 9001, ISO 13485 i CE.', 'ISO 9001, ISO 13485 and CE certifications.')) +
-      whyItem(ICONS.clean, L('Czystość i bezpieczeństwo', 'Clean and safe'), L('Wiele produktów jest sterylnych i wolnych od DNaz i RNaz; dla każdej partii dostępny jest certyfikat analizy.', 'Many products are sterile and DNase/RNase-free; a certificate of analysis is available for each lot.')) +
+      whyItem(ICONS.clean, L('Czystość i bezpieczeństwo', 'Clean and safe'), L('Wiele produktów jest sterylnych, wolnych od DNaz i RNaz. Certyfikat analizy (COA) dla każdej partii.', 'Many products are sterile and DNase/RNase-free; a certificate of analysis is available for each lot.')) +
       whyItem(ICONS.lab, L('Dla każdego laboratorium', 'For every lab'), L('Od końcówek do pipet i probówek wirówkowych po krioprobówki i zbiorniki na ciekły azot.', 'From pipette tips and centrifuge tubes to cryovials and liquid nitrogen tanks.')) +
       whyItem(ICONS.inst, L('Zamówienia dla instytucji', 'Orders for institutions'), fx(L('[Faktury VAT / zamówienia dla uczelni i firm].', '[VAT invoices / purchase orders for universities and companies].'))) +
-      '</div></div></section>' +
-
-      '<section class="section section--tight quality" data-section="Certyfikaty i jakość · Text blocks" aria-labelledby="h-q"><div class="wrap">' +
-      '<div class="section__head"><div><p class="eyebrow">' + L('Jakość', 'Quality') + '</p><h2 id="h-q">' + L('Certyfikaty i jakość', 'Certificates & quality') + '</h2></div></div>' +
-      '<div class="grid grid--3">' +
-      qItem(ICONS.cert, L('Certyfikaty firmy', 'Company certifications'), fx(L('ISO 9001, ISO 13485 i CE – certyfikaty firmy Biologix. [Kopie certyfikatów lub link – do potwierdzenia]', 'ISO 9001, ISO 13485 and CE – Biologix company certifications. [Certificate copies or link – to be confirmed]'))) +
-      qItem(ICONS.coa, L('Certyfikat analizy (COA)', 'Certificate of analysis (COA)'), L('Certyfikat analizy (COA) można pobrać na stronie Biologix – wystarczy numer katalogowy i numer partii (LOT) z etykiety.', 'Download the COA on the Biologix website using the catalogue number and the lot number from the label.')) +
-      qItem(ICONS.props, L('Właściwości produktów', 'Product properties'), L('Właściwości (sterylne, wolne od DNaz i RNaz, niepirogenne) są podane na stronie produktu.', 'These properties (sterile, DNase/RNase-free, pyrogen-free) are listed on the product page.')) +
       '</div></div></section>' +
 
       '<section class="section section--tight" data-section="Newsletter · Subscribe" aria-labelledby="h-news"><div class="wrap"><div class="newsletter">' +
@@ -771,7 +759,7 @@
   }
   function updateCount() {
     var n = state.cart.reduce(function (s, it) { return s + it.qty; }, 0);
-    document.getElementById('cartCount').textContent = n;
+    document.getElementById('cartCount').textContent = n; document.getElementById('cartCount').hidden = !n;
   }
 
   function viewAbout() {
