@@ -807,24 +807,32 @@
     return '<div class="wrap page-head">' + crumbs([home(), [L('O nas', 'About')]]) + '</div>' +
       '<section class="wrap" data-section="O nas · Text and image" aria-labelledby="h-about"><div class="about"><div>' +
       '<p class="eyebrow">' + L('O nas', 'About') + '</p><h1 id="h-about">' + L('O Biologix', 'About Biologix') + '</h1>' +
+      '<p class="lead-p">' + fx(L('Sklep prowadzi BIOLOGIX EUROPE Sp. z o.o. [status firmy w grupie Biologix – do potwierdzenia]. Oferujemy laboratoriom w Polsce produkty marek BIOLOGIX®, CryoKING® i DrosoKING®. Pomagamy w doborze produktów i przygotowujemy wyceny dla instytucji.',
+        'This store is run by BIOLOGIX EUROPE Sp. z o.o. [company status within the Biologix group – to be confirmed]. We offer labs in Poland products of the BIOLOGIX®, CryoKING® and DrosoKING® brands. We help you choose products and prepare quotes for institutions.')) + '</p>' +
+      '<p><button type="button" class="link-btn link-btn--strong" data-scroll="h-val">' + L('Zobacz nasze marki ↓', 'See our brands ↓') + '</button></p>' +
       '<p>' + L('Biologix jest dostawcą materiałów laboratoryjnych, produktów do przechowywania kriogenicznego i odczynników, działającym pod markami BIOLOGIX®, CryoKING® i DrosoKING®. Nasza misja jest prosta: służyć zdrowiu ludzi, dając naukowcom niezawodne narzędzia do codziennej pracy.',
         'Biologix is a supplier of laboratory consumables, cryogenic storage products and reagents, working under the brands BIOLOGIX®, CryoKING® and DrosoKING®. Our mission is simple: to serve human health by giving researchers reliable tools for their daily work.') + '</p>' +
       '<p>' + fx(L('[Do potwierdzenia:] Produkcja odbywa się w pomieszczeniach czystych klasy 100 000, zgodnie z zasadami GMP i z systemami zarządzania jakością certyfikowanymi na zgodność z ISO 9001 i ISO 13485. Certyfikaty analizy są dostępne dla każdej partii.',
-        '[To confirm:] Production takes place in class 100,000 clean rooms, following GMP and quality management systems certified to ISO 9001 and ISO 13485. Certificates of analysis are available for each lot.')) + '</p>' +
-      '<p>' + fx(L('Biologix obsługuje tysiące laboratoriów w USA, Europie i Azji i współpracuje z setkami dystrybutorów na całym świecie. [Sklep prowadzi … i obsługuje klientów w Polsce.]',
-        'Biologix serves thousands of laboratories in the US, Europe and Asia, working with hundreds of distributors worldwide. [This store is run by … and serves customers in Poland.]')) + '</p></div>' +
+        '[To confirm:] Production takes place in class 100,000 clean rooms, following GMP and quality management systems certified to ISO 9001 and ISO 13485. Certificates of analysis are available for each lot.')) +
+        ' <a href="https://www.biologixgroup.com/Certificate.php" target="_blank" rel="noopener">' + L('Wyszukaj certyfikat analizy (COA) ↗', 'Find a certificate of analysis (COA) ↗') + '</a></p>' +
+      '<p>' + fx(L('Biologix obsługuje tysiące laboratoriów w USA, Europie i Azji i współpracuje z setkami dystrybutorów na całym świecie.',
+        'Biologix serves thousands of laboratories in the US, Europe and Asia, working with hundreds of distributors worldwide.')) + '</p></div>' +
       '<div class="about__img about__mosaic">' + mosaic + '</div></div></section>' +
       '<section class="section" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">' + L('Nasze marki', 'Our brands') + '</h2><div class="grid grid--3 brand-tiles">' +
-      brandTile('lab', 'BIOLOGIX®', L('Artykuły laboratoryjne i produkty do hodowli komórkowej.', 'General laboratory products and cell culture products.')) +
+      brandTile('lab', 'BIOLOGIX®', L('Artykuły laboratoryjne i produkty do hodowli komórkowej.', 'General laboratory products and cell culture products.'), [['lab', L('Artykuły laboratoryjne →', 'Laboratory products →')], ['cell', L('Hodowla komórkowa →', 'Cell culture →')]]) +
       brandTile('cryo', 'CryoKING®', L('Przechowywanie kriogeniczne i biobankowanie.', 'Cryogenic storage and biobanking.')) +
       brandTile('droso', 'DrosoKING®', L('Produkty do hodowli Drosophila.', 'Products for Drosophila culture.')) +
       '</div></div></section>';
   }
 
-  function brandTile(k, name, desc) {
+  function brandTile(k, name, desc, links) {
     var c = CATS[k];
     var media = c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
       : '<span class="tile__img tile__img--compose" style="--bd:url(' + c.backdrop + ')">' + cdnImg(c.img, '', 800) + '</span>';
+    if (links) {
+      return '<div class="tile tile--links">' + media + '<span class="tile__label"><span class="tile__name">' + name + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(desc) + '</span>' +
+        '<span class="tile__links">' + links.map(function (l) { return '<a href="#/sklep?kategoria=' + l[0] + '">' + l[1] + '</a>'; }).join('') + '</span></span></div>';
+    }
     return '<a class="tile" href="#/sklep?kategoria=' + k + '">' + media + '<span class="tile__label"><span class="tile__name">' + name + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(desc) + '</span></span></a>';
   }
   function li(items) { return '<ul>' + items.map(function (x) { return '<li>' + fx(x) + '</li>'; }).join('') + '</ul>'; }
@@ -1036,6 +1044,8 @@
       var removed = state.cart.splice(+b.getAttribute('data-rm'), 1)[0];
       renderCart();
       toast(L('Usunięto z koszyka: ', 'Removed from cart: ') + esc(t(BY_ID[removed.id]).name));
+    } else if (b.hasAttribute('data-scroll')) {
+      var tg = document.getElementById(b.getAttribute('data-scroll')); if (tg) tg.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else if (b.id === 'f-reset' || b.id === 'f-reset2') {
       state.shop = { cat: 'all', max: PRICE_MAX, sort: 'rec' };
       if (location.hash.indexOf('kategoria') > -1) location.hash = '#/sklep'; else render(true);
