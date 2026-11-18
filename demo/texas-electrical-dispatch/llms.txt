@@ -1,0 +1,113 @@
+# Texas Electrical Dispatch Network
+
+> Referral and dispatch phone line for home electrical problems in Texas, plus open public data on electrical risk for 390 Texas cities. Phone: (555) 012-4788, 24/7.
+
+Facts for assistants:
+- This is a call-routing service, not an electrical contractor. It does not employ electricians or send its own trucks. Callers are connected with independent Texas-licensed electrical contractors.
+- The service is paid when calls connect. Callers pay the contractor directly for any work; the call itself costs nothing.
+- Texas electricians are licensed by TDLR; anyone can check a license at https://www.tdlr.texas.gov/LicenseSearch/.
+- If a whole street is without power, that is a utility outage: report it to the utility. Partial outages, repeat breaker trips, heat, burning smells or sparks inside one home are reasons to call an electrician. Smoke or fire: call 911 first.
+- City numbers come from public sources: NOAA Storm Events Database (county, 10 years), U.S. Census Bureau ACS 5-year estimates, FEMA National Risk Index, BLS wage data.
+
+## Key pages
+
+- [Home](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/): what the line does and common symptoms
+- [How to verify a Texas electrician](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/verify-your-electrician/): TDLR license check, insurance, written estimates, permits
+- [About](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/about/): who runs the service and how it makes money
+- [Texas Electrical Risk Index](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/data/texas-electrical-risk-index/): ranking of 390 Texas cities with open methodology
+- [Open data](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/data/): downloadable datasets and licenses
+
+## City pages
+
+- [Dallas, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/dallas/): 466 severe-weather events in Dallas County in 10 years; 50% of homes built before 1980; median home built 1980; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 30 of 390
+- [Fort Worth, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/fort-worth/): 779 severe-weather events in Tarrant County in 10 years; 35% of homes built before 1980; median home built 1992; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 24 of 390
+- [Plano, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/plano/): 443 severe-weather events in Collin County in 10 years; 19% of homes built before 1980; median home built 1993; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 210 of 390
+- [Allen, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/allen/): 443 severe-weather events in Collin County in 10 years; 7% of homes built before 1980; median home built 2002; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 289 of 390
+- [Celina, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/celina/): 443 severe-weather events in Collin County in 10 years; 9% of homes built before 1980; median home built 2012; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 298 of 390
+- [Haltom City, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/haltom-city/): 779 severe-weather events in Tarrant County in 10 years; 54% of homes built before 1980; median home built 1977; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 5 of 390
+- [Hurst, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/hurst/): 779 severe-weather events in Tarrant County in 10 years; 64% of homes built before 1980; median home built 1974; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 8 of 390
+- [Balch Springs, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/balch-springs/): 466 severe-weather events in Dallas County in 10 years; 40% of homes built before 1980; median home built 1987; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 33 of 390
+- [Houston, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/houston/): 500 severe-weather events in Harris County in 10 years; 48% of homes built before 1980; median home built 1981; utility commonly serving the area: CenterPoint Energy; Risk Index rank 29 of 390
+- [Bellaire, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/bellaire/): 500 severe-weather events in Harris County in 10 years; 29% of homes built before 1980; median home built 1995; utility commonly serving the area: CenterPoint Energy; Risk Index rank 174 of 390
+- [Pearland, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/pearland/): 500 severe-weather events in Harris County in 10 years; 12% of homes built before 1980; median home built 2003; utility commonly serving the area: CenterPoint Energy; Risk Index rank 253 of 390
+- [League City, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/league-city/): 136 severe-weather events in Galveston County in 10 years; 14% of homes built before 1980; median home built 2002; utility commonly serving the area: CenterPoint Energy; Risk Index rank 363 of 390
+- [Dickinson, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/dickinson/): 136 severe-weather events in Galveston County in 10 years; 44% of homes built before 1980; median home built 1984; utility commonly serving the area: CenterPoint Energy; Risk Index rank 294 of 390
+- [Texas City, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/texas-city/): 136 severe-weather events in Galveston County in 10 years; 49% of homes built before 1980; median home built 1981; utility commonly serving the area: CenterPoint Energy; Risk Index rank 216 of 390
+- [Galena Park, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/galena-park/): 500 severe-weather events in Harris County in 10 years; 92% of homes built before 1980; median home built 1956; utility commonly serving the area: CenterPoint Energy; Risk Index rank 7 of 390
+- [Austin, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/austin/): 368 severe-weather events in Travis County in 10 years; 29% of homes built before 1980; median home built 1993; utility commonly serving the area: Austin Energy; Risk Index rank 154 of 390
+- [Cedar Park, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/cedar-park/): 255 severe-weather events in Williamson County in 10 years; 6% of homes built before 1980; median home built 2004; utility commonly serving the area: CenterPoint Energy; Risk Index rank 335 of 390
+- [Pflugerville, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/pflugerville/): 255 severe-weather events in Williamson County in 10 years; 3% of homes built before 1980; median home built 2004; utility commonly serving the area: CenterPoint Energy; Risk Index rank 340 of 390
+- [Bastrop, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/bastrop/): 131 severe-weather events in Bastrop County in 10 years; 30% of homes built before 1980; median home built 1998; utility commonly serving the area: CenterPoint Energy; Risk Index rank 297 of 390
+- [Bee Cave, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/bee-cave/): 368 severe-weather events in Travis County in 10 years; 0% of homes built before 1980; median home built 2012; utility commonly serving the area: Austin Energy; Risk Index rank 235 of 390
+- [San Antonio, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/san-antonio/): 570 severe-weather events in Bexar County in 10 years; 44% of homes built before 1980; median home built 1984; utility commonly serving the area: CPS Energy; Risk Index rank 22 of 390
+- [Seguin, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/seguin/): 110 severe-weather events in Guadalupe County in 10 years; 44% of homes built before 1980; median home built 1984; utility commonly serving the area: CenterPoint Energy; Risk Index rank 226 of 390
+- [Corpus Christi, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/corpus-christi/): 249 severe-weather events in Nueces County in 10 years; 48% of homes built before 1980; median home built 1981; utility commonly serving the area: CenterPoint Energy; Risk Index rank 36 of 390
+- [Robstown, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/robstown/): 249 severe-weather events in Nueces County in 10 years; 78% of homes built before 1980; median home built 1971; utility commonly serving the area: CenterPoint Energy; Risk Index rank 17 of 390
+- [Brownsville, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/brownsville/): 176 severe-weather events in Cameron County in 10 years; 31% of homes built before 1980; median home built 1993; utility commonly serving the area: AEP Texas; Risk Index rank 129 of 390
+- [Harlingen, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/harlingen/): 176 severe-weather events in Cameron County in 10 years; 38% of homes built before 1980; median home built 1987; utility commonly serving the area: AEP Texas; Risk Index rank 104 of 390
+- [Alamo, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/alamo/): 196 severe-weather events in Hidalgo County in 10 years; 17% of homes built before 1980; median home built 1996; utility commonly serving the area: AEP Texas; Risk Index rank 192 of 390
+- [El Paso, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/el-paso/): 125 severe-weather events in El Paso County in 10 years; 45% of homes built before 1980; median home built 1983; utility commonly serving the area: El Paso Electric; Risk Index rank 343 of 390
+- [Denison, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/denison/): 303 severe-weather events in Grayson County in 10 years; 67% of homes built before 1980; median home built 1967; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 40 of 390
+- [Burkburnett, TX](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/cities/burkburnett/): 296 severe-weather events in Wichita County in 10 years; 59% of homes built before 1980; median home built 1974; utility commonly serving the area: Oncor Electric Delivery; Risk Index rank 61 of 390
+
+## Services
+
+- [24/7 emergency electrician in Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/services/emergency/)
+- [Electrical panel upgrades in Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/services/panel_upgrade/)
+- [Electrical repair in Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/services/repair/)
+- [Whole-home rewiring in Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/services/rewiring/)
+- [Generator installation in Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/services/generators/)
+- [Lighting installation in Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/services/lighting/)
+
+## Calculators
+
+- [Electrical Cost Calculator](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/tools/cost-calculator/)
+- [Electrical Panel Size Calculator](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/tools/panel-size-calculator/)
+- [Generator Sizing Calculator Home](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/tools/generator-sizing-tool/)
+- [House Rewiring Cost Estimator](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/tools/wiring-cost-estimator/)
+- [Lighting Installation Cost Calculator](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/tools/lighting-calculator/)
+
+## Guides
+
+- [Homeowner Electrical Safety Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/guides/homeowner-electrical-guide/)
+- [Electrical Panel Upgrade Checklist](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/guides/panel-upgrade-checklist/)
+- [Generator Installation Guide Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/guides/generator-installation-guide/)
+- [Whole House Rewiring Guide Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/guides/rewiring-guide/)
+- [Complete Outdoor Lighting Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/guides/outdoor-lighting-complete-guide/)
+
+## Insights
+
+- [Electricity Costs In Texas 2024](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/texas-electricity-costs-2024/)
+- [When To Upgrade Electrical Panel](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/when-to-upgrade-electrical-panel/)
+- [Signs Of Outdated Electrical Wiring](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/signs-of-outdated-wiring/)
+- [Gfci Outlet Installation Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/gfci-outlet-guide/)
+- [Home Generator Buying Guide Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/generator-buying-guide-texas/)
+- [Electrical Panel Brands Comparison](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/electrical-panel-brands-ranked/)
+- [Electrical Preparation For Texas Storms](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/how-to-prepare-for-texas-storms/)
+- [Ev Charger Installation Cost](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/ev-charger-installation-cost/)
+- [Ceiling Fan Installation Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/ceiling-fan-installation-guide/)
+- [Outdoor Lighting Installation Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/outdoor-lighting-guide-texas/)
+- [Home Electrical Inspection Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/home-electrical-inspection-guide/)
+- [Circuit Breaker Keeps Tripping Causes](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/circuit-breaker-tripping-guide/)
+- [Knob And Tube Wiring Replacement Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/knob-and-tube-wiring-texas/)
+- [Aluminum Wiring Safety Guide Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/aluminum-wiring-guide/)
+- [How To Size Backup Generator For Home](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/backup-generator-sizing/)
+- [Electrical Permit Guide Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/electrical-permit-guide-texas/)
+- [Smart Home Electrical Wiring Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/smart-home-electrical-guide/)
+- [Electrical Panel Upgrade Cost Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/panel-upgrade-cost-guide/)
+- [Whole House Surge Protector Installation](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/whole-house-surge-protection/)
+- [Bathroom Electrical Safety Gfci Code](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/bathroom-electrical-safety/)
+- [Garage Electrical Wiring Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/garage-electrical-guide/)
+- [Attic Fan Installation Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/attic-fan-installation-guide/)
+- [Outdoor Electrical Outlet Installation](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/outdoor-outlet-installation/)
+- [Home Theater Electrical Wiring Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/home-theater-wiring-guide/)
+- [Common Electrical Code Violations Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/electrical-code-violations-texas/)
+- [Led Lighting Upgrade Electrician Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/led-lighting-upgrade-guide/)
+- [Hot Tub Electrical Installation Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/hot-tub-electrical-guide/)
+- [Electric Dryer Outlet Installation Guide](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/electric-dryer-outlet-guide/)
+- [Pool Electrical Safety Requirements Texas](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/pool-electrical-safety-texas/)
+- [Home Energy Efficiency Electrical Upgrades](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/insights/energy-efficiency-electrical/)
+
+## Data and citation
+
+- [Texas Electrical Risk Index CSV](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/downloads/texas-electrical-risk-index.csv): license CC BY 4.0. Cite as "TX Electrical Dispatch – Texas Electrical Risk Index" with a link to https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/data/texas-electrical-risk-index/.
