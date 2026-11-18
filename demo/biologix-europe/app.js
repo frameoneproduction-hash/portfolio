@@ -357,7 +357,7 @@
       id: '1579165466949-3180a3d056d5',
       src: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/cover-ZEzQsF/Er1KGMl-1200x1200.webp', /* zdjęcie Biologix (biologix.jp) pod niebieskim filtrem */
       eyebrow: 'BIOLOGIX® · CryoKING® · DrosoKING®',
-      h: { pl: 'Materiały laboratoryjne i odczynniki, na których można <em>polegać</em>', en: 'Laboratory consumables and reagents you can <em>rely on</em>' },
+      h: { pl: 'Materiały laboratoryjne <em>BIOLOGIX®</em> dla laboratoriów w Polsce', en: '<em>BIOLOGIX®</em> laboratory supplies for labs in Poland' },
       p: { pl: 'Produkty BIOLOGIX®, CryoKING® i DrosoKING® do badań, biobankowania i kontroli jakości – teraz dostępne w Polsce.', en: 'BIOLOGIX®, CryoKING® and DrosoKING® products for research, biobanking and quality control – now available in Poland.' },
       cta: { pl: 'Zobacz produkty', en: 'Browse products' }, href: '#/sklep',
       alt: { pl: 'Naukowiec pracujący z pipetą w laboratorium', en: 'Scientist working with a pipette in a laboratory' }
@@ -469,11 +469,11 @@
           : photo(h.id, h.alt[state.lang], 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' })) +
         '<div class="hero__shade" aria-hidden="true"></div>' +
         '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]).replace(/&lt;(\/?)em&gt;/g, '<$1em>') + '</' + heading + '>' +
-        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p>' +
+        '<p class="hero__text">' + L('Znajdź produkt po numerze katalogowym lub poproś o wycenę dla swojej instytucji.', 'Find a product by catalogue number or request a quote for your institution.') + '</p>' +
         '<form class="hero__search" id="heroSearch" role="search"><label class="sr" for="hs-q">' + L('Szukaj produktu', 'Search products') + '</label>' +
         '<input id="hs-q" type="search" autocomplete="off" placeholder="' + L('Nazwa produktu lub nr katalogowy, np. 90-9100', 'Product name or catalogue no., e.g. 90-9100') + '">' +
         '<button class="btn btn--light" type="submit">' + L('Szukaj', 'Search') + '</button></form>' +
-        '<a class="hero__link" href="' + h.href + '">' + esc(h.cta[state.lang]) + ' →</a></div></div>';
+        '<a class="hero__link" href="#/kontakt">' + L('Zapytaj o wycenę dla instytucji →', 'Request a quote for your institution →') + '</a></div></div>';
     }).join('');
     var controls = '';
     if (many) {
