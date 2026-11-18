@@ -565,3 +565,7 @@ html[lang="en"] .brand-tiles .tile__label::after { content: "Browse products →
 .lb__close:hover, .lb__nav:hover { background: rgba(255,255,255,.28); }
 .lb__hint { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; color: #c9d3e6; font-size: .85rem; margin: 0; }
 @media (max-width: 759px) { .lb__nav { width: 40px; height: 40px; } .lb__img.is-zoomed { transform: scale(2); } }
+
+/* 2) Pasek szkicu po angielsku przy EN */
+html[lang="en"] .demo-bar__text p:first-child { display: none; }
+html[lang="en"] .demo-bar__text .demo-bar__en { display: block; color: #f2f4f8; font-size: .78rem; }

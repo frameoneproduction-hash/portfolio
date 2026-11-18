@@ -374,7 +374,7 @@
   var params = new URLSearchParams(location.search);
   var PRICE_MAX = Math.ceil(Math.max.apply(null, PRODUCTS.map(function (p) { return minPrice(p).price; })) / 100) * 100;
   var state = {
-    lang: params.get('lang') === 'en' ? 'en' : 'pl',
+    lang: params.get('lang') === 'en' ? 'en' : (params.get('lang') === 'pl' ? 'pl' : (function () { try { return localStorage.getItem('bgx-lang') === 'en' ? 'en' : 'pl'; } catch (e) { return 'pl'; } })()),
     cart: loadCart(),
     pay: 'online',
     sel: {},
@@ -594,6 +594,7 @@
     var cat = q.get('kategoria');
     if (cat && CATS[cat]) state.shop.cat = cat;
     state.shop.q = (q.get('q') || '').trim();
+    if (state.shop.q && !cat) { state.shop.cat = 'all'; state.shop.max = PRICE_MAX; }
     var counts = { all: PRODUCTS.length };
     Object.keys(CATS).forEach(function (k) { counts[k] = 0; });
     PRODUCTS.forEach(function (p) { counts[p.cat] += 1; });
@@ -816,8 +817,8 @@
       '<p><button type="button" class="link-btn link-btn--strong" data-scroll="h-val">' + L('Zobacz nasze marki ↓', 'See our brands ↓') + '</button></p>' +
       '<p>' + L('Biologix jest dostawcą materiałów laboratoryjnych, produktów do przechowywania kriogenicznego i odczynników, działającym pod markami BIOLOGIX®, CryoKING® i DrosoKING®. Nasza misja jest prosta: służyć zdrowiu ludzi, dając naukowcom niezawodne narzędzia do codziennej pracy.',
         'Biologix is a supplier of laboratory consumables, cryogenic storage products and reagents, working under the brands BIOLOGIX®, CryoKING® and DrosoKING®. Our mission is simple: to serve human health by giving researchers reliable tools for their daily work.') + '</p>' +
-      '<p>' + fx(L('[Do potwierdzenia:] Produkcja odbywa się w pomieszczeniach czystych klasy 100 000, zgodnie z zasadami GMP i z systemami zarządzania jakością certyfikowanymi na zgodność z ISO 9001 i ISO 13485. Certyfikaty analizy są dostępne dla każdej partii.',
-        '[To confirm:] Production takes place in class 100,000 clean rooms, following GMP and quality management systems certified to ISO 9001 and ISO 13485. Certificates of analysis are available for each lot.')) +
+      '<p>' + fx(L('Biologix posiada certyfikaty ISO 9001, ISO 13485 i CE, a certyfikat analizy (COA) jest dostępny dla każdej partii. [Do potwierdzenia: produkcja w pomieszczeniach czystych klasy 100 000, zgodnie z zasadami GMP.]',
+        'Biologix holds ISO 9001, ISO 13485 and CE certifications, and a certificate of analysis (COA) is available for every lot. [To confirm: production in class 100,000 clean rooms, following GMP.]')) +
         ' <a href="https://www.biologixgroup.com/Certificate.php" target="_blank" rel="noopener">' + L('Wyszukaj certyfikat analizy (COA) ↗', 'Find a certificate of analysis (COA) ↗') + '</a></p>' +
       '<p>' + fx(L('Biologix obsługuje tysiące laboratoriów w USA, Europie i Azji i współpracuje z setkami dystrybutorów na całym świecie.',
         'Biologix serves thousands of laboratories in the US, Europe and Asia, working with hundreds of distributors worldwide.')) + '</p></div>' +
@@ -1114,6 +1115,7 @@
   }
   function setLang(l) {
     state.lang = l;
+    try { localStorage.setItem('bgx-lang', l); } catch (e) {}
     document.querySelectorAll('.lang__btn').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
     applyStatic();
     render(true);
