@@ -491,3 +491,12 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
 .buy__label { margin: 0 0 6px; font-size: .88rem; font-weight: 600; color: var(--ink); }
 .trust__in { flex-wrap: nowrap; gap: 10px 20px; } @media (max-width: 1000px) { .trust__in { flex-wrap: wrap; } }
 .hero__title { max-width: 16ch; }
+/* Okładka: zdjęcie przesunięte w prawo, pipeta i płytka obok tekstu */
+.hero__img--brand { left: auto; right: -14%; width: 114%; object-position: 70% 40%; }
+.hero__img--brand + .hero__shade { background: linear-gradient(90deg, rgba(0, 22, 64, .95) 0%, rgba(0, 28, 77, .9) 34%, rgba(0, 40, 110, .45) 55%, rgba(0, 52, 140, .22) 75%, rgba(0, 52, 140, .18) 100%); }
+@media (max-width: 759px) { .hero__img--brand { right: 0; width: 100%; object-position: 80% 50%; } }
+.hero { background: #001640; }
+.hero__img--brand { inset: 0 auto 0 auto; left: 6%; right: auto; width: 100%; height: 100%; object-position: 62% 40%; }
+.hero__img--brand { left: 12%; width: 92%; object-position: 60% 40%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30%); mask-image: linear-gradient(90deg, transparent 0, #000 30%); }
+.hero__img--brand + .hero__shade { background: linear-gradient(90deg, rgba(0, 22, 64, .7) 0%, rgba(0, 28, 77, .55) 40%, rgba(0, 40, 110, .3) 60%, rgba(0, 52, 140, .2) 100%); }
+@media (max-width: 759px) { .hero__img--brand { left: 0; width: 100%; -webkit-mask-image: none; mask-image: none; } .hero__img--brand + .hero__shade { background: rgba(0, 28, 77, .8); } }
