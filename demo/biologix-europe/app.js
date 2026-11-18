@@ -434,7 +434,10 @@
     return v && v.sku ? v.sku : p.sku;
   }
   function variantText(p, sel) {
-    return p.options.map(function (o) { return o[state.lang] + ': ' + o.values[sel[o.key] || 0][state.lang]; }).join(' · ');
+    return p.options.map(function (o) { return optName(o) + ': ' + o.values[sel[o.key] || 0][state.lang]; }).join(' · ');
+  }
+  function optName(o) {
+    return /^(Ilość|Opakowanie|Rozmiar)$/.test(o.pl) && o.values.some(function (x) { return /szt|opak|karton|worek|pudeł/.test(x.pl); }) ? L('Wielkość opakowania', 'Pack size') : o[state.lang];
   }
 
   /* ---------- Zdjęcia ---------- */
