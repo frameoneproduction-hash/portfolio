@@ -507,3 +507,17 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
 .hero__content { height: auto; min-height: inherit; padding-top: 48px; padding-bottom: 52px; }
 .hero__title { max-width: 21ch; }
 .hero__title { max-width: 20ch; text-wrap: balance; }
+
+/* Filtry: na telefonie zwinięte pod „Filtry”, wyniki od razu */
+.filters__sum { list-style: none; cursor: pointer; font-family: var(--display); font-weight: 700; display: none; }
+.filters__sum::-webkit-details-marker { display: none; }
+@media (max-width: 759px) {
+  .filters { padding: 12px 16px; }
+  .filters__sum { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+  .filters__sum::after { content: "+"; color: var(--accent); font-size: 1.3rem; line-height: 1; }
+  .filters__det[open] .filters__sum::after { content: "–"; }
+  .filters__det[open] .filters__wrap { margin-top: 12px; }
+}
+/* Koszyk: suma tuż nad przyciskiem zamówienia */
+.pay-total { display: flex; justify-content: space-between; align-items: baseline; margin: 16px 0 10px; font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+#nipField { margin-top: 12px; }

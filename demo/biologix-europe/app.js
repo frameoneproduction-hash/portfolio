@@ -598,12 +598,12 @@
     return '<div class="wrap page-head">' + crumbs([home(), [L('Sklep', 'Shop')]]) + '<h1>' + L('Sklep', 'Shop') + '</h1>' +
       '<p class="muted">' + fx(L('W szkicu: 8 wybranych produktów z katalogu. [W sklepie: pełny katalog Ecwid]', 'In this draft: 8 selected products from the catalogue. [In the store: the full Ecwid catalogue]')) + '</p></div>' +
       '<section class="wrap" data-section="Katalog sklepu · Store page" aria-label="' + L('Produkty', 'Products') + '"><div class="shop">' +
-      '<aside class="filters" aria-label="' + L('Filtry', 'Filters') + '"><div class="filters__wrap">' +
+      '<aside class="filters" aria-label="' + L('Filtry', 'Filters') + '"><details class="filters__det"' + (window.matchMedia('(min-width: 760px)').matches ? ' open' : '') + '><summary class="filters__sum">' + L('Filtry', 'Filters') + '</summary><div class="filters__wrap">' +
       '<fieldset><legend>' + L('Kategoria', 'Category') + '</legend>' + catOpts + '</fieldset>' +
       '<fieldset><legend>' + L('Cena', 'Price') + '</legend><label class="sr" for="f-max">' + L('Cena maksymalna', 'Maximum price') + '</label>' +
       '<input class="range" id="f-max" type="range" min="0" max="' + PRICE_MAX + '" step="50" value="' + state.shop.max + '" aria-describedby="f-max-out">' +
       '<p class="range-out" id="f-max-out">' + L('do ', 'up to ') + zl(state.shop.max) + '</p></fieldset>' +
-      '</div><button type="button" class="link-btn" id="f-reset">' + L('Wyczyść filtry', 'Clear filters') + '</button></aside>' +
+      '</div><button type="button" class="link-btn" id="f-reset">' + L('Wyczyść filtry', 'Clear filters') + '</button></details></aside>' +
       '<div><form class="shop__search" id="shopSearch" role="search"><label class="sr" for="ss-q">' + L('Szukaj produktu', 'Search products') + '</label>' +
       '<input id="ss-q" type="search" autocomplete="off" value="' + esc(state.shop.q) + '" placeholder="' + L('Nazwa lub nr katalogowy', 'Name or catalogue no.') + '"><button class="btn btn--primary" type="submit">' + L('Szukaj', 'Search') + '</button></form>' +
       '<div class="shop__bar"><p id="resCount" aria-live="polite"></p>' +
@@ -707,6 +707,11 @@
       return '<button type="button" class="thumb" data-view="' + i + '" aria-pressed="' + (i === v) + '" aria-label="' + L('Zdjęcie ', 'Photo ') + (i + 1) + L(' z ', ' of ') + n + '">' + cdnImg(p.photos[i], '', SIZES.thumb) + '</button>';
     }).join('');
   }
+  function isPack(p, sel) {
+    if (p.options.length !== 1) return false;
+    var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0];
+    return !!(ov && /szt|opak|karton|worek|pudeł/.test(ov.pl));
+  }
   function priceBlock(p, sel) {
     var unit = '';
     if (p.options.length === 1) { var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0]; if (ov && /szt|opak|karton|worek|pudeł/.test(ov.pl)) unit = ' <span class="price__unit">/ ' + L('opakowanie', 'pack') + ' (' + esc(ov[state.lang]) + ')</span>'; }
@@ -733,6 +738,7 @@
       field('c-zip', L('Kod pocztowy', 'Postal code'), 'text', 'postal-code', false, L('Format: 00-000', 'Format: 00-000')) +
       field('c-city', L('Miejscowość', 'City'), 'text', 'address-level2', false) +
       '</div><label class="check-row"><input type="checkbox" id="c-invoice"> <span>' + L('Chcę otrzymać fakturę VAT (podam NIP)', 'I need a VAT invoice (I will provide the tax ID)') + '</span></label>' +
+      '<div class="fields" id="nipField" hidden>' + field('c-nip', 'NIP', 'text', 'off', false) + field('c-company', L('Nazwa firmy / instytucji', 'Company / institution name'), 'text', 'organization', false) + '</div>' +
       '<h2 style="margin-top:20px"><span class="step">3</span>' + L('Dostawa', 'Shipping') + '</h2>' +
       '<div class="choice choice--static"><span><strong>' + fx(L('[Przewoźnik]', '[Carrier]')) + '</strong><small>' + fx(L('Zwykle [X–Y dni roboczych]', 'Usually [X–Y business days]')) + '</small></span><span class="choice__price">' + fx(L('[koszt]', '[cost]')) + '</span></div>' +
       '<h2 style="margin-top:20px"><span class="step">4</span>' + L('Płatność', 'Payment') + '</h2><div role="radiogroup" aria-label="' + L('Metoda płatności', 'Payment method') + '">' +
@@ -740,7 +746,7 @@
       payChoice('invoice', L('Przelew na fakturę', 'Bank transfer on invoice'), fx(L('[Dla uczelni i firm – do potwierdzenia]', '[For universities and companies – to be confirmed]'))) +
       '</div>' +
       '<label class="check-row"><input type="checkbox" required> <span>' + L('Akceptuję <a href="#/dostawa-i-zwroty">regulamin sklepu</a>.', 'I accept the <a href="#/dostawa-i-zwroty">store terms</a>.') + '</span></label>' +
-      '<button class="btn btn--block" type="submit">' + L('Zamawiam i płacę', 'Place order and pay') + '</button>' +
+      '<p class="pay-total" id="payTotal"></p><button class="btn btn--block" type="submit">' + L('Zamawiam i płacę', 'Place order and pay') + '</button>' +
       '<p class="notice notice--demo" role="status" aria-live="polite"></p></form>' +
       '</div><aside class="panel summary" aria-labelledby="h-sum"><h2 id="h-sum">' + L('Podsumowanie', 'Summary') + '</h2><div id="cartSum"></div></aside></div></section>';
   }
@@ -762,7 +768,7 @@
         var vt = variantText(p, it.sel);
         return '<div class="line"><div class="line__img">' + productArt(p, it.sel, 0, 'line') + '</div><div>' +
           '<p class="line__name" lang="' + state.lang + '"><a href="#/produkt/' + p.id + '">' + esc(t(p).name) + '</a></p>' +
-          '<p class="line__var" lang="' + state.lang + '">' + (vt ? esc(vt) + ' · ' : '') + 'SKU ' + esc(skuOf(p, it.sel)) + ' · ' + zl(pr.price) + L('/szt.', '/pc') + '</p>' +
+          '<p class="line__var" lang="' + state.lang + '">' + (vt ? esc(vt) + ' · ' : '') + 'SKU ' + esc(skuOf(p, it.sel)) + ' · ' + zl(pr.price) + (isPack(p, it.sel) ? L(' za opakowanie', ' per pack') : L('/szt.', '/pc')) + '</p>' +
           '<div class="line__ctrl"><div class="qty qty--sm" role="group" aria-label="' + L('Ilość: ', 'Quantity: ') + esc(t(p).name) + '">' +
           '<button type="button" data-cq="-1" data-i="' + i + '" data-fid="m' + i + '" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
           '<input type="number" value="' + it.qty + '" readonly aria-label="' + L('Ilość', 'Quantity') + '" tabindex="-1">' +
@@ -773,8 +779,10 @@
     }
     var tt = cartTotals();
     var items = state.cart.reduce(function (s, it) { return s + it.qty; }, 0);
+    var pt = document.getElementById('payTotal'); if (pt) pt.innerHTML = '<span>' + L('Do zapłaty', 'Total') + '</span><span>' + zl(tt.sub) + '</span>';
+    var allPack = state.cart.length && state.cart.every(function (it) { return isPack(BY_ID[it.id], it.sel); });
     document.getElementById('cartSum').innerHTML =
-      '<div class="sum-row"><span>' + L('Wartość produktów', 'Products') + ' (' + items + L(' szt.', ' pcs') + ')</span><span>' + zl(tt.sub) + '</span></div>' +
+      '<div class="sum-row"><span>' + L('Wartość produktów', 'Products') + ' (' + items + (allPack ? L(' opak.', ' packs') : L(' szt.', ' pcs')) + ')</span><span>' + zl(tt.sub) + '</span></div>' +
       '<div class="sum-row"><span>' + L('Dostawa', 'Shipping') + '</span><span>' + fx(L('[koszt]', '[cost]')) + '</span></div>' +
       '<div class="sum-row sum-row--total"><span>' + L('Do zapłaty', 'Total') + '</span><span>' + zl(tt.sub) + '</span></div>' +
       '<p class="sum-note">' + fx(L('Bez kosztu dostawy. [Ceny brutto / netto, stawka VAT – do potwierdzenia]', 'Excluding shipping. [Gross / net prices, VAT rate – to be confirmed]')) + '</p>';
@@ -964,6 +972,7 @@
 
   main.addEventListener('change', function (e) {
     var el = e.target;
+    if (el.id === 'c-invoice') { var nf = document.getElementById('nipField'); if (nf) nf.hidden = !el.checked; return; }
     if (el.hasAttribute('data-opt')) {
       var p = currentProduct(); if (!p) return;
       var sel = selOf(p), key = el.getAttribute('data-opt');
