@@ -31,20 +31,20 @@
       "options": [
         {
           "key": "o1",
-          "en": "Qty",
-          "pl": "Ilość",
+          "en": "Packaging",
+          "pl": "Sposób pakowania",
           "values": [
             {
-              "en": "5 Pcs",
-              "pl": "5 szt.",
+              "en": "Pack (5 pcs)",
+              "pl": "Opakowanie (5 szt.)",
               "price": 24.59,
               "sku": "P90-9100",
               "img": "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422549494.jpg",
               "def": false
             },
             {
-              "en": "20 Pcs",
-              "pl": "20 szt.",
+              "en": "Case (20 pcs)",
+              "pl": "Karton (20 szt.)",
               "price": 54.39,
               "sku": "90-9100",
               "img": "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422554616.jpg",
@@ -480,7 +480,7 @@
         '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]).replace(/&lt;(\/?)em&gt;/g, '<$1em>') + '</' + heading + '>' +
         '<p class="hero__text">' + L('Znajdź produkt po numerze katalogowym lub poproś o wycenę dla swojej instytucji.', 'Find a product by catalogue number or request a quote for your institution.') + '</p>' +
         '<form class="hero__search" id="heroSearch" role="search"><label class="sr" for="hs-q">' + L('Szukaj produktu', 'Search products') + '</label>' +
-        '<input id="hs-q" type="search" autocomplete="off" placeholder="' + L('Nazwa produktu lub nr katalogowy, np. 90-9100', 'Product name or catalogue no., e.g. 90-9100') + '">' +
+        '<input id="hs-q" type="search" autocomplete="off" placeholder="' + L('Nr kat. lub nazwa, np. 90-9100', 'Cat. no. or name, e.g. 90-9100') + '">' +
         '<button class="btn btn--light" type="submit">' + L('Szukaj', 'Search') + '</button></form>' +
         '<a class="hero__link" href="#/kontakt">' + L('Zapytaj o wycenę dla instytucji →', 'Request a quote for your institution →') + '</a></div></div>';
     }).join('');
@@ -567,7 +567,7 @@
       whyItem(ICONS.cert, L('Certyfikowana jakość', 'Certified quality'), L('Certyfikaty ISO 9001, ISO 13485 i CE.', 'ISO 9001, ISO 13485 and CE certifications.')) +
       whyItem(ICONS.clean, L('Czystość i bezpieczeństwo', 'Clean and safe'), L('Wiele produktów jest sterylnych, wolnych od DNaz i RNaz. Certyfikat analizy (COA) dla każdej partii.', 'Many products are sterile and DNase/RNase-free; a certificate of analysis is available for each lot.')) +
       whyItem(ICONS.lab, L('Dla każdego laboratorium', 'For every lab'), L('Od końcówek do pipet i probówek wirówkowych po krioprobówki i zbiorniki na ciekły azot.', 'From pipette tips and centrifuge tubes to cryovials and liquid nitrogen tanks.')) +
-      whyItem(ICONS.inst, L('Zamówienia dla instytucji', 'Orders for institutions'), fx(L('[Faktury VAT / zamówienia dla uczelni i firm].', '[VAT invoices / purchase orders for universities and companies].'))) +
+      whyItem(ICONS.inst, L('Zamówienia dla instytucji', 'Orders for institutions'), fx(L('Faktura VAT z NIP podanym przy zamówieniu, wyceny dla uczelni i firm.', 'VAT invoice with the tax ID given at checkout, quotes for universities and companies.'))) +
       '</div></div></section>' +
 
       '<section class="section section--tight" data-section="Zapytanie ofertowe · Call to action" aria-labelledby="h-rfq"><div class="wrap"><div class="rfq">' +
@@ -682,8 +682,8 @@
       '<div id="pPrice">' + priceBlock(p, sel) + '</div>' +
       (d.note ? '<p class="desc-note desc-note--top">' + fx(d.note) + '</p>' : '') +
       '<form id="buyForm" novalidate><div lang="' + state.lang + '">' + opts + '</div>' +
-      '<p class="stock">' + fx(L('[Dostępność i czas wysyłki – do potwierdzenia]', '[Availability and dispatch time – to be confirmed]')) + '</p>' +
-      '<p class="buy__label">' + L('Liczba opakowań', 'Number of packs') + '</p><div class="buy"><div class="qty" role="group" aria-label="' + L('Liczba opakowań', 'Number of packs') + '"><button type="button" data-q="-1" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
+      '<p class="stock">' + L('Wysyłka zwykle w 1–2 dni robocze · bezpłatna dostawa w Polsce', 'Usually ships in 1–2 business days · free delivery in Poland') + '</p>' +
+      '<p class="buy__label">' + L('Liczba', 'Quantity') + '</p><div class="buy"><div class="qty" role="group" aria-label="' + L('Liczba', 'Quantity') + '"><button type="button" data-q="-1" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
       '<input id="qtyInput" type="number" min="1" max="99" value="' + qty + '" inputmode="numeric" aria-label="' + L('Ilość', 'Quantity') + '"><button type="button" data-q="1" aria-label="' + L('Zwiększ ilość', 'Increase quantity') + '">+</button></div>' +
       '<button class="btn" type="submit">' + L('Dodaj do koszyka', 'Add to cart') + '</button></div></form>' +
       '<a class="btn btn--ghost btn--quote" href="#/kontakt?wycena=' + p.id + '" id="quoteBtn">' + L('Zapytaj o wycenę hurtową', 'Request a bulk quote') + '</a>' +
@@ -698,8 +698,8 @@
       '<p class="muted small">' + L('Numer katalogowy do wyszukania certyfikatu: ', 'Catalogue number for the certificate search: ') + '<strong id="coaSku">' + esc(skuOf(p, sel)) + '</strong></p>' +
       '<p><a class="btn btn--ghost" href="https://www.biologixgroup.com/Certificate.php" target="_blank" rel="noopener">' + L('Znajdź certyfikat dla partii', 'Find the certificate for your lot') + ' ↗</a></p></div>' +
       '<div class="tabs__panel" role="tabpanel" id="tp-dostawa" aria-labelledby="tb-dostawa" tabindex="0" hidden>' +
-      '<p>' + fx(L('Zamówienia wysyłamy z [magazyn] w ciągu [1–2 dni roboczych]. Koszt dostawy: [koszt / bezpłatna od … zł]; dokładny koszt widać w koszyku przed płatnością.', 'Orders are shipped from [warehouse] within [1–2 business days]. Shipping cost: [cost / free from … PLN]; the exact cost is shown at checkout before you pay.')) + '</p>' +
-      '<p>' + fx(L('[Liczba] dni na zwrot produktu: prosimy najpierw o kontakt z numerem zamówienia i powodem zwrotu. Szczegóły: ', '[Number] days to return a product: please contact us first with your order number and the reason. Details: ')) + '<a href="#/dostawa-i-zwroty">' + L('Dostawa i zwroty', 'Shipping & returns') + '</a>.</p></div></div>' +
+      '<p>' + L('Bezpłatna dostawa w Polsce. Przygotowanie zamówienia zwykle 1–2 dni robocze, dostawa w Polsce 1–2 dni robocze.', 'Free delivery in Poland. Order preparation usually 1–2 business days, delivery in Poland 1–2 business days.') + '</p>' +
+      '<p>' + L('Zwrot można zgłosić w ciągu 30 dni od otrzymania produktu. Szczegóły: ', 'Returns can be reported within 30 days of receipt. Details: ') + '<a href="#/dostawa-i-zwroty">' + L('Dostawa i zwroty', 'Shipping & returns') + '</a>.</p></div></div>' +
       '</section>' +
 
       (related ? '<section class="section section--tight" aria-labelledby="h-rel"><div class="wrap"><div class="section__head"><h2 id="h-rel">' + L('Może Cię zainteresować', 'You may also like') + '</h2></div><div class="grid grid--3">' + related + '</div></div></section>' : '');
@@ -714,6 +714,12 @@
       return '<button type="button" class="thumb" data-view="' + i + '" aria-pressed="' + (i === v) + '" aria-label="' + L('Zdjęcie ', 'Photo ') + (i + 1) + L(' z ', ' of ') + n + '">' + cdnImg(p.photos[i], '', SIZES.thumb) + '</button>';
     }).join('');
   }
+  function unitOf(p, sel) {
+    var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0];
+    var m = /^(Opakowanie|Karton|Pack|Case)\s*\((.+)\)$/i.exec(ov[state.lang]);
+    if (m) return { word: m[1].toLowerCase(), full: m[1].toLowerCase() + ' (' + m[2] + ')' };
+    return { word: L('opakowanie', 'pack'), full: L('opakowanie', 'pack') + ' (' + ov[state.lang] + ')' };
+  }
   function isPack(p, sel) {
     if (p.options.length !== 1) return false;
     var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0];
@@ -721,9 +727,9 @@
   }
   function priceBlock(p, sel) {
     var unit = '';
-    if (p.options.length === 1) { var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0]; if (ov && /szt|opak|karton|worek|pudeł/.test(ov.pl)) unit = ' <span class="price__unit">/ ' + L('opakowanie', 'pack') + ' (' + esc(ov[state.lang]) + ')</span>'; }
+    if (p.options.length === 1) { var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0]; if (ov && /szt|opak|karton|worek|pudeł/.test(ov.pl)) unit = ' <span class="price__unit">/ ' + esc(unitOf(p, sel).full) + '</span>'; }
     return '<p class="price">' + zl(priceOf(p, sel).price) + unit + '</p>' +
-      '<p class="vat">' + fx(L('[Cena brutto / netto – do potwierdzenia]. Dokładny koszt dostawy widać w koszyku przed płatnością.', '[Gross / net price – to be confirmed]. The exact shipping cost is shown at checkout before you pay.')) + '</p>';
+      '<p class="vat">' + L('Cena z VAT. Dostawa w Polsce bezpłatna.', 'Price incl. VAT. Free delivery in Poland.') + '</p>';
   }
 
   function cartTotals() {
@@ -747,10 +753,10 @@
       '</div><label class="check-row"><input type="checkbox" id="c-invoice"> <span>' + L('Chcę otrzymać fakturę VAT (podam NIP)', 'I need a VAT invoice (I will provide the tax ID)') + '</span></label>' +
       '<div class="fields" id="nipField" hidden>' + field('c-nip', 'NIP', 'text', 'off', false) + field('c-company', L('Nazwa firmy / instytucji', 'Company / institution name'), 'text', 'organization', false) + '</div>' +
       '<h2 style="margin-top:20px"><span class="step">3</span>' + L('Dostawa', 'Shipping') + '</h2>' +
-      '<div class="choice choice--static"><span><strong>' + fx(L('[Przewoźnik]', '[Carrier]')) + '</strong><small>' + fx(L('Zwykle [X–Y dni roboczych]', 'Usually [X–Y business days]')) + '</small></span><span class="choice__price">' + fx(L('[koszt]', '[cost]')) + '</span></div>' +
+      '<div class="choice choice--static"><span><strong>' + L('Dostawa w Polsce – bezpłatna', 'Delivery in Poland – free') + '</strong><small>' + L('Zwykle 1–2 dni robocze od nadania', 'Usually 1–2 business days after dispatch') + '</small></span><span class="choice__price">' + L('bezpłatna', 'free') + '</span></div>' +
       '<h2 style="margin-top:20px"><span class="step">4</span>' + L('Płatność', 'Payment') + '</h2><div role="radiogroup" aria-label="' + L('Metoda płatności', 'Payment method') + '">' +
-      payChoice('online', fx(L('[Płatność online]', '[Online payment]')), fx(L('[Operator płatności – do potwierdzenia]', '[Payment provider – to be confirmed]'))) +
-      payChoice('invoice', L('Przelew na fakturę', 'Bank transfer on invoice'), fx(L('[Dla uczelni i firm – do potwierdzenia]', '[For universities and companies – to be confirmed]'))) +
+      payChoice('online', L('Karta płatnicza', 'Card payment'), L('Płatność przez Stripe', 'Paid via Stripe')) +
+      payChoice('invoice', L('Przelew na fakturę', 'Bank transfer on invoice'), fx(L('[Dla uczelni i firm – do potwierdzenia: obecnie sklep przyjmuje płatność kartą]', '[For universities and companies – to confirm: the store currently takes card payments]'))) +
       '</div>' +
       '<label class="check-row"><input type="checkbox" required> <span>' + L('Akceptuję <a href="#/dostawa-i-zwroty">regulamin sklepu</a>.', 'I accept the <a href="#/dostawa-i-zwroty">store terms</a>.') + '</span></label>' +
       '<p class="pay-total" id="payTotal"></p><button class="btn btn--block" type="submit">' + L('Zamawiam i płacę', 'Place order and pay') + '</button>' +
@@ -775,7 +781,7 @@
         var vt = variantText(p, it.sel);
         return '<div class="line"><div class="line__img">' + productArt(p, it.sel, 0, 'line') + '</div><div>' +
           '<p class="line__name" lang="' + state.lang + '"><a href="#/produkt/' + p.id + '">' + esc(t(p).name) + '</a></p>' +
-          '<p class="line__var" lang="' + state.lang + '">' + (vt ? esc(vt) + ' · ' : '') + 'SKU ' + esc(skuOf(p, it.sel)) + ' · ' + zl(pr.price) + (isPack(p, it.sel) ? L(' za opakowanie', ' per pack') : L('/szt.', '/pc')) + '</p>' +
+          '<p class="line__var" lang="' + state.lang + '">' + (vt ? esc(vt) + ' · ' : '') + 'SKU ' + esc(skuOf(p, it.sel)) + ' · ' + zl(pr.price) + (isPack(p, it.sel) ? L(' za ', ' per ') + esc(unitOf(p, it.sel).word) : L('/szt.', '/pc')) + '</p>' +
           '<div class="line__ctrl"><div class="qty qty--sm" role="group" aria-label="' + L('Ilość: ', 'Quantity: ') + esc(t(p).name) + '">' +
           '<button type="button" data-cq="-1" data-i="' + i + '" data-fid="m' + i + '" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
           '<input type="number" value="' + it.qty + '" readonly aria-label="' + L('Ilość', 'Quantity') + '" tabindex="-1">' +
@@ -789,10 +795,10 @@
     var pt = document.getElementById('payTotal'); if (pt) pt.innerHTML = '<span>' + L('Do zapłaty', 'Total') + '</span><span>' + zl(tt.sub) + '</span>';
     var allPack = state.cart.length && state.cart.every(function (it) { return isPack(BY_ID[it.id], it.sel); });
     document.getElementById('cartSum').innerHTML =
-      '<div class="sum-row"><span>' + L('Wartość produktów', 'Products') + ' (' + items + (allPack ? L(' opak.', ' packs') : L(' szt.', ' pcs')) + ')</span><span>' + zl(tt.sub) + '</span></div>' +
-      '<div class="sum-row"><span>' + L('Dostawa', 'Shipping') + '</span><span>' + fx(L('[koszt]', '[cost]')) + '</span></div>' +
+      '<div class="sum-row"><span>' + L('Wartość produktów', 'Products') + '</span><span>' + zl(tt.sub) + '</span></div>' +
+      '<div class="sum-row"><span>' + L('Dostawa', 'Shipping') + '</span><span>' + L('bezpłatna', 'free') + '</span></div>' +
       '<div class="sum-row sum-row--total"><span>' + L('Do zapłaty', 'Total') + '</span><span>' + zl(tt.sub) + '</span></div>' +
-      '<p class="sum-note">' + fx(L('Bez kosztu dostawy. [Ceny brutto / netto, stawka VAT – do potwierdzenia]', 'Excluding shipping. [Gross / net prices, VAT rate – to be confirmed]')) + '</p>';
+      '<p class="sum-note">' + fx(L('Ceny zawierają VAT. Dostawa w Polsce bezpłatna.', 'Prices include VAT. Free delivery in Poland.')) + '</p>';
     if (active) {
       var el = document.querySelector('[data-fid="' + active + '"]');
       if (el) el.focus();
@@ -812,8 +818,8 @@
     return '<div class="wrap page-head">' + crumbs([home(), [L('O nas', 'About')]]) + '</div>' +
       '<section class="wrap" data-section="O nas · Text and image" aria-labelledby="h-about"><div class="about"><div>' +
       '<p class="eyebrow">' + L('O nas', 'About') + '</p><h1 id="h-about">' + L('O Biologix', 'About Biologix') + '</h1>' +
-      '<p class="lead-p">' + fx(L('Sklep prowadzi BIOLOGIX EUROPE Sp. z o.o. [status firmy w grupie Biologix – do potwierdzenia]. Oferujemy laboratoriom w Polsce produkty marek BIOLOGIX®, CryoKING® i DrosoKING®. Pomagamy w doborze produktów i przygotowujemy wyceny dla instytucji.',
-        'This store is run by BIOLOGIX EUROPE Sp. z o.o. [company status within the Biologix group – to be confirmed]. We offer labs in Poland products of the BIOLOGIX®, CryoKING® and DrosoKING® brands. We help you choose products and prepare quotes for institutions.')) + '</p>' +
+      '<p class="lead-p">' + fx(L('Sklep prowadzi BIOLOGIX EUROPE Sp. z o.o., część międzynarodowej grupy Biologix. Oferujemy laboratoriom w Polsce produkty marek BIOLOGIX®, CryoKING® i DrosoKING®. Pomagamy w doborze produktów i przygotowujemy wyceny dla instytucji.',
+        'This store is run by BIOLOGIX EUROPE Sp. z o.o., part of the international Biologix group. We offer labs in Poland products of the BIOLOGIX®, CryoKING® and DrosoKING® brands. We help you choose products and prepare quotes for institutions.')) + '</p>' +
       '<p><button type="button" class="link-btn link-btn--strong" data-scroll="h-val">' + L('Zobacz nasze marki ↓', 'See our brands ↓') + '</button></p>' +
       '<p>' + L('Biologix jest dostawcą materiałów laboratoryjnych, produktów do przechowywania kriogenicznego i odczynników, działającym pod markami BIOLOGIX®, CryoKING® i DrosoKING®. Nasza misja jest prosta: służyć zdrowiu ludzi, dając naukowcom niezawodne narzędzia do codziennej pracy.',
         'Biologix is a supplier of laboratory consumables, cryogenic storage products and reagents, working under the brands BIOLOGIX®, CryoKING® and DrosoKING®. Our mission is simple: to serve human health by giving researchers reliable tools for their daily work.') + '</p>' +
@@ -845,51 +851,56 @@
     var title = L('Dostawa i zwroty', 'Shipping & returns');
     return '<div class="wrap page-head">' + crumbs([home(), [title]]) + '<h1>' + title + '</h1></div>' +
       '<section class="wrap" data-section="Strona informacyjna · Policy page" aria-label="' + title + '"><div class="prose">' +
-      '<p class="legal-note">' + fx(L('<strong>Szkic</strong> – warunki w [nawiasach] uzupełni Biologix Europe. Ostateczny regulamin zatwierdza sklep.', '<strong>Draft</strong> – terms in [brackets] will be provided by Biologix Europe. The store approves the final terms.')) + '</p>' +
+      '<p class="legal-note">' + L('Na podstawie obecnych stron sklepu biologixeurope.pl („Informacje o wysyłce i płatności”, „Zasady zwrotu”). Pełne warunki – w regulaminie sklepu.', 'Based on the current biologixeurope.pl pages ("Shipping and payment", "Returns policy"). Full terms are in the store terms and conditions.') + '</p>' +
       '<h2>' + L('Dostawa', 'Shipping') + '</h2>' +
       (state.lang === 'en' ? li([
-        'Orders are shipped from [warehouse] within [1–2 business days].',
-        'Delivery to Poland: [carrier], usually [X–Y business days].',
-        'Shipping cost: [cost / free from … PLN]; the exact cost is shown at checkout before you pay.',
-        '[Suggestion – please confirm: you’ll receive a tracking number by email as soon as your order ships.]',
-        'Reagents: [any special conditions, e.g. temperature-controlled shipping].'
+        'Free delivery for all orders within Poland, with no minimum order value.',
+        'We also deliver to other supported European countries; options and costs are shown after you enter the delivery address, before you pay.',
+        'Order preparation usually takes 1–2 business days. Delivery after dispatch: Poland 1–2 business days, other countries 2–8 business days.',
+        'After dispatch we send an email with the tracking number.'
       ]) : li([
-        'Zamówienia wysyłamy z [magazyn] w ciągu [1–2 dni roboczych].',
-        'Dostawa do Polski: [przewoźnik], zwykle [X–Y dni roboczych].',
-        'Koszt dostawy: [koszt / bezpłatna od … zł]; dokładny koszt widać w koszyku przed płatnością.',
-        '[Propozycja – do potwierdzenia: numer do śledzenia przesyłki wyślemy e-mailem, gdy tylko zamówienie zostanie nadane.]',
-        'Odczynniki: [ewentualne warunki, np. transport w kontrolowanej temperaturze].'
+        'Bezpłatna dostawa wszystkich zamówień na terenie Polski, bez minimalnej wartości zamówienia.',
+        'Realizujemy też dostawy do innych obsługiwanych krajów europejskich – opcje i koszty widać po podaniu adresu, przed płatnością.',
+        'Przygotowanie zamówienia trwa zwykle 1–2 dni robocze. Dostawa od nadania: Polska 1–2 dni robocze, pozostałe kraje 2–8 dni roboczych.',
+        'Po wysyłce przesyłamy e-mail z numerem przesyłki.'
+      ])) +
+      '<h2>' + L('Płatność i faktura', 'Payment and invoice') + '</h2>' +
+      (state.lang === 'en' ? li([
+        'Card payment via Stripe when placing the order. All amounts in PLN; consumer prices include VAT.',
+        'For company or institution purchases, enter the full name, address and NIP (tax ID) at checkout.'
+      ]) : li([
+        'Płatność kartą przez Stripe podczas składania zamówienia. Kwoty w PLN; ceny dla konsumentów zawierają VAT.',
+        'Przy zakupie na firmę lub instytucję prosimy podać pełną nazwę, adres i NIP podczas składania zamówienia.'
       ])) +
       '<h2>' + L('Zwroty', 'Returns') + '</h2>' +
       (state.lang === 'en' ? li([
-        '[Number] days to return a product: please contact us first with your order number and the reason.',
-        '[Suggestion – please confirm: products must be unopened and in their original packaging; sterile products can only be returned unopened.]',
-        '[Restocking fee, if any.] Special and custom orders are reviewed individually.',
-        '[Suggestion – please confirm: refunds are made to the original payment method within X days after we receive the return.]',
-        '[Suggestion – please confirm: damaged or wrong item? Contact us within X days of delivery and we’ll replace it at our cost.]'
+        'Report a return within 30 days of receiving the product to pl@biologixeurope.com, with the product name, invoice number and reason. Apart from statutory rights, a return requires our prior written consent; send the product within 14 days of the consent.',
+        'Returned products should be unused, unopened, complete and in the original packaging. Custom orders and products whose opening affects resale are reviewed individually.',
+        'If the return is due to a defect, a wrong item or our error, we cover the return shipping.',
+        'Refunds go to the original payment method: unshipped orders within 3 business days of cancellation, returned products within 7 days of receipt.'
       ]) : li([
-        '[Liczba] dni na zwrot produktu: prosimy najpierw o kontakt z numerem zamówienia i powodem zwrotu.',
-        '[Propozycja – do potwierdzenia: produkty muszą być nieotwarte i w oryginalnym opakowaniu; produkty sterylne przyjmujemy wyłącznie nieotwarte.]',
-        '[Ewentualna opłata manipulacyjna.] Zamówienia specjalne i realizowane na indywidualne zlecenie rozpatrujemy osobno.',
-        '[Propozycja – do potwierdzenia: zwrot pieniędzy następuje na pierwotną metodę płatności w ciągu X dni od otrzymania zwrotu.]',
-        '[Propozycja – do potwierdzenia: produkt uszkodzony lub niezgodny z zamówieniem? Prosimy o kontakt w ciągu X dni od dostawy – wymienimy go na nasz koszt.]'
+        'Zwrot prosimy zgłosić w ciągu 30 dni od otrzymania produktu na pl@biologixeurope.com, podając nazwę produktu, numer faktury i powód. Poza ustawowymi prawami odesłanie wymaga naszej wcześniejszej pisemnej zgody; produkt należy odesłać w ciągu 14 dni od jej otrzymania.',
+        'Zwracane produkty powinny być nieużywane, nieotwarte, kompletne i w oryginalnym opakowaniu. Zamówienia indywidualne i produkty, których otwarcie wpływa na ponowną sprzedaż, rozpatrujemy indywidualnie.',
+        'Jeżeli zwrot wynika z wady, wysłania niewłaściwego towaru lub naszego błędu, pokrywamy koszty odesłania.',
+        'Środki zwracamy tą samą metodą płatności: zamówienia niewysłane – w ciągu 3 dni roboczych od anulowania, produkty odesłane – w ciągu 7 dni od ich otrzymania.'
       ])) +
+      '<p class="muted small">' + L('Warunki te nie ograniczają ustawowego prawa odstąpienia od umowy. Szczegóły i opłaty – w „Zasadach zwrotu” sklepu.', 'These terms do not limit the statutory right of withdrawal. Details and fees are in the store’s "Returns policy".') + '</p>' +
       '</div></section>';
   }
 
   var FAQ = [
-    ['Czy uczelnia lub firma może zamówić na fakturę?', '[Tak – faktura VAT / zamówienie: jak.]',
-      'Can my university or company order with an invoice?', '[Yes – VAT invoice / purchase order: how.]'],
+    ['Czy uczelnia lub firma może zamówić na fakturę?', 'Tak – podczas składania zamówienia prosimy podać pełną nazwę, adres i NIP. [Płatność na fakturę z odroczonym terminem – do potwierdzenia]',
+      'Can my university or company order with an invoice?', 'Yes – enter the full name, address and NIP (tax ID) at checkout. [Invoice payment with deferred terms – to be confirmed]'],
     ['Gdzie znajdę certyfikat analizy?', 'Certyfikat analizy (COA) można pobrać na stronie Biologix – wystarczy numer katalogowy i numer partii (LOT) z etykiety.',
       'Where can I find a certificate of analysis?', 'Download the COA on the Biologix website using the catalogue number and the lot number from the label.'],
     ['Czy produkty są sterylne i wolne od DNaz i RNaz?', 'Właściwości (sterylne, wolne od DNaz i RNaz, niepirogenne) są podane na stronie produktu.',
       'Are your products sterile and DNase/RNase-free?', 'These properties (sterile, DNase/RNase-free, pyrogen-free) are listed on the product page.'],
-    ['Jak szybko dotrze zamówienie?', '[Czas wysyłki + czas dostawy do Polski.]',
-      'How fast will my order arrive?', '[Dispatch time + delivery time to Poland.]'],
-    ['Ile kosztuje dostawa?', '[Koszt / próg darmowej dostawy.] Dokładny koszt widać w koszyku.',
-      'How much is shipping?', '[Cost / free shipping threshold.] The exact cost is shown at checkout.'],
-    ['Czy mogę zwrócić produkt?', 'Tak, w ciągu [X] dni – szczegóły w zakładce <a href="#/dostawa-i-zwroty">„Dostawa i zwroty”</a>.',
-      'Can I return a product?', 'Yes, within [X] days – see <a href="#/dostawa-i-zwroty">Shipping &amp; Returns</a>.'],
+    ['Jak szybko dotrze zamówienie?', 'Przygotowanie zamówienia trwa zwykle 1–2 dni robocze, a dostawa w Polsce 1–2 dni robocze od nadania.',
+      'How fast will my order arrive?', 'Order preparation usually takes 1–2 business days, and delivery in Poland 1–2 business days after dispatch.'],
+    ['Ile kosztuje dostawa?', 'Dostawa w Polsce jest bezpłatna, bez minimalnej wartości zamówienia.',
+      'How much is shipping?', 'Delivery in Poland is free, with no minimum order value.'],
+    ['Czy mogę zwrócić produkt?', 'Tak – zwrot można zgłosić w ciągu 30 dni od otrzymania produktu; szczegóły w zakładce <a href="#/dostawa-i-zwroty">„Dostawa i zwroty”</a>.',
+      'Can I return a product?', 'Yes – returns can be reported within 30 days of receipt; see <a href="#/dostawa-i-zwroty">Shipping &amp; Returns</a>.'],
     ['Czy oferujecie ceny hurtowe lub OEM?', 'Tak – prosimy o listę produktów i ilości, przygotujemy wycenę.',
       'Do you offer bulk pricing or OEM?', 'Yes – send us the products and quantities, and we’ll prepare a quote.'],
     ['Jak przechowywać odczynniki?', '[Warunki przechowywania – gdzie podane: strona produktu / etykieta – do potwierdzenia]',
@@ -910,16 +921,15 @@
     var p = BY_ID[id]; if (!p) return '';
     var sel = selOf(p), parts = [t(p).name, L('Nr kat.: ', 'Cat. no.: ') + skuOf(p, sel)];
     p.options.forEach(function (o) { var nm = /^(Ilość|Opakowanie|Rozmiar)$/.test(o.pl) && o.values.some(function (x) { return /szt|opak|karton|worek|pudeł/.test(x.pl); }) ? L('Wielkość opakowania', 'Pack size') : o[state.lang]; parts.push(nm + ': ' + o.values[sel[o.key] || 0][state.lang]); });
-    return L('Proszę o wycenę hurtową:\n', 'Please send a bulk quote for:\n') + parts.join('\n') + L('\nLiczba opakowań: ', '\nNumber of packs: ') + (state.qty[id] || 1) + L('\nAdres dostawy / instytucja: ', '\nDelivery address / institution: ');
+    return L('Proszę o wycenę hurtową:\n', 'Please send a bulk quote for:\n') + parts.join('\n') + L('\nLiczba: ', '\nQuantity: ') + (state.qty[id] || 1) + L('\nAdres dostawy / instytucja: ', '\nDelivery address / institution: ');
   }
   function viewContact(q) {
     var qid = q && q.get ? q.get('wycena') : null, qtext = qid ? quoteText(qid) : '';
     return '<div class="wrap page-head">' + crumbs([home(), [L('Kontakt', 'Contact')]]) + '<h1>' + L('Kontakt', 'Contact us') + '</h1></div>' +
       '<section class="wrap" data-section="Kontakt · Contact info" aria-label="' + L('Kontakt', 'Contact') + '"><div class="contact">' +
       '<div><p>' + L('Chętnie pomożemy w sprawie produktów, wycen większych ilości, certyfikatów analizy i zamówień dla instytucji.', 'We’re happy to help with product questions, quotes for larger quantities, certificates of analysis and orders for institutions.') + '</p><dl>' +
-      '<dt>' + L('E-mail', 'Email') + '</dt><dd>' + fx(L('[e-mail]', '[email]')) + '</dd>' +
-      '<dt>' + L('Telefon', 'Phone') + '</dt><dd>' + fx(L('[telefon], [godziny]', '[phone], [hours]')) + '</dd>' +
-      '<dt>' + L('Adres', 'Address') + '</dt><dd>' + fx(L('[firma i adres]', '[company and address]')) + '</dd></dl></div>' +
+      '<dt>' + L('E-mail', 'Email') + '</dt><dd>' + '<a href="mailto:pl@biologixeurope.com">pl@biologixeurope.com</a>' + '</dd>' +
+      '<dt>' + L('Adres', 'Address') + '</dt><dd>' + 'BIOLOGIX EUROPE Sp. z o.o.<br>ul. Hoża 86/210, 00-682 Warszawa' + '</dd></dl></div>' +
       '<form class="panel" data-demo-form="contact" novalidate aria-labelledby="h-form"><h2 id="h-form">' + (qtext ? L('Zapytanie o wycenę hurtową', 'Bulk quote request') : L('Napisz do nas', 'Send us a message')) + '</h2><div class="fields">' +
       field('k-name', L('Imię i nazwisko', 'Name'), 'text', 'name', false) + field('k-email', L('E-mail', 'Email'), 'email', 'email', false) +
       field('k-org', L('Instytucja (opcjonalnie)', 'Organization (optional)'), 'text', 'organization', true) +
@@ -1093,7 +1103,7 @@
       var ex = state.cart.filter(function (it) { return it.id === p.id && JSON.stringify(it.sel) === key; })[0];
       if (ex) ex.qty = Math.min(99, ex.qty + qty); else state.cart.push({ id: p.id, sel: sel, qty: qty });
       updateCount();
-      toast(L('Dodano do koszyka: ', 'Added to cart: ') + esc(t(p).name) + ' (' + qty + L(' szt.', ' pcs') + ') <a href="#/koszyk">' + L('Przejdź do koszyka', 'Go to cart') + '</a>');
+      toast(L('Dodano do koszyka: ', 'Added to cart: ') + esc(t(p).name) + ' (× ' + qty + ') <a href="#/koszyk">' + L('Przejdź do koszyka', 'Go to cart') + '</a>');
       return;
     }
     var note = f.querySelector('.notice');
