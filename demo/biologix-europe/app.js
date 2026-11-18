@@ -358,6 +358,7 @@
   var HERO = [
     {
       id: '1579165466949-3180a3d056d5',
+      src: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/cover-ZEzQsF/Er1KGMl-1200x1200.webp', /* zdjęcie Biologix (biologix.jp) pod niebieskim filtrem */
       eyebrow: 'BIOLOGIX® · CryoKING® · DrosoKING®',
       h: { pl: 'Materiały laboratoryjne i odczynniki, na których można <em>polegać</em>', en: 'Laboratory consumables and reagents you can <em>rely on</em>' },
       p: { pl: 'Produkty BIOLOGIX®, CryoKING® i DrosoKING® do badań, biobankowania i kontroli jakości – teraz dostępne w Polsce.', en: 'BIOLOGIX®, CryoKING® and DrosoKING® products for research, biobanking and quality control – now available in Poland.' },
@@ -376,7 +377,7 @@
     sel: {},
     view: {},
     qty: {},
-    shop: { cat: 'all', max: PRICE_MAX, sort: 'rec' }
+    shop: { cat: 'all', max: PRICE_MAX, sort: 'rec', q: '' }
   };
 
   /* ---------- Narzędzia ---------- */
@@ -467,11 +468,15 @@
     var slides = HERO.map(function (h, i) {
       var heading = i === 0 ? 'h1' : 'h2';
       return '<div class="hero__slide" role="group"' + (many ? ' aria-roledescription="' + L('slajd', 'slide') + '" aria-label="' + (i + 1) + L(' z ', ' of ') + HERO.length + '"' : '') + (i === 0 ? '' : ' hidden') + '>' +
-        (h.src ? '<img class="hero__img" src="' + h.src + '" alt="' + esc(h.alt[state.lang]) + '" fetchpriority="high" decoding="async">'
+        (h.src ? '<img class="hero__img hero__img--brand" src="' + h.src + '" alt="' + esc(h.alt[state.lang]) + '" fetchpriority="high" decoding="async">'
           : photo(h.id, h.alt[state.lang], 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' })) +
         '<div class="hero__shade" aria-hidden="true"></div>' +
         '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]).replace(/&lt;(\/?)em&gt;/g, '<$1em>') + '</' + heading + '>' +
-        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p><a class="btn btn--light" href="' + h.href + '">' + esc(h.cta[state.lang]) + '</a></div></div>';
+        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p>' +
+        '<form class="hero__search" id="heroSearch" role="search"><label class="sr" for="hs-q">' + L('Szukaj produktu', 'Search products') + '</label>' +
+        '<input id="hs-q" type="search" autocomplete="off" placeholder="' + L('Nazwa produktu lub nr katalogowy, np. 90-9100', 'Product name or catalogue no., e.g. 90-9100') + '">' +
+        '<button class="btn btn--light" type="submit">' + L('Szukaj', 'Search') + '</button></form>' +
+        '<a class="hero__link" href="' + h.href + '">' + esc(h.cta[state.lang]) + ' →</a></div></div>';
     }).join('');
     var controls = '';
     if (many) {
@@ -555,6 +560,11 @@
       whyItem(ICONS.inst, L('Zamówienia dla instytucji', 'Orders for institutions'), fx(L('[Faktury VAT / zamówienia dla uczelni i firm].', '[VAT invoices / purchase orders for universities and companies].'))) +
       '</div></div></section>' +
 
+      '<section class="section section--tight" data-section="Zapytanie ofertowe · Call to action" aria-labelledby="h-rfq"><div class="wrap"><div class="rfq">' +
+      '<div><h2 id="h-rfq">' + L('Zapytaj o ofertę dla instytucji', 'Request a quote for your institution') + '</h2>' +
+      '<p>' + L('Uczelnie, szpitale, laboratoria i firmy: prześlij listę produktów i ilości – przygotujemy wycenę, także dla zamówień hurtowych i OEM.', 'Universities, hospitals, labs and companies: send us the products and quantities – we will prepare a quote, including bulk and OEM orders.') + '</p></div>' +
+      '<a class="btn btn--primary" href="#/kontakt">' + L('Zapytaj o ofertę', 'Request a quote') + '</a></div></div></section>' +
+
       '<section class="section section--tight" data-section="Newsletter · Subscribe" aria-labelledby="h-news"><div class="wrap"><div class="newsletter">' +
       '<div><h2 id="h-news">' + L('Nowości i promocje', 'News and offers') + '</h2><p>' + L('Zapisz się, aby otrzymywać informacje o nowych produktach i promocjach.', 'Subscribe to hear about new products and offers.') + '</p></div>' +
       '<form data-demo-form="news" novalidate><label class="sr" for="nl-email">' + L('Adres e-mail', 'Email address') + '</label>' +
@@ -573,6 +583,7 @@
   function viewShop(q) {
     var cat = q.get('kategoria');
     if (cat && CATS[cat]) state.shop.cat = cat;
+    state.shop.q = (q.get('q') || '').trim();
     var counts = { all: PRODUCTS.length };
     Object.keys(CATS).forEach(function (k) { counts[k] = 0; });
     PRODUCTS.forEach(function (p) { counts[p.cat] += 1; });
@@ -589,7 +600,9 @@
       '<input class="range" id="f-max" type="range" min="0" max="' + PRICE_MAX + '" step="50" value="' + state.shop.max + '" aria-describedby="f-max-out">' +
       '<p class="range-out" id="f-max-out">' + L('do ', 'up to ') + zl(state.shop.max) + '</p></fieldset>' +
       '</div><button type="button" class="link-btn" id="f-reset">' + L('Wyczyść filtry', 'Clear filters') + '</button></aside>' +
-      '<div><div class="shop__bar"><p id="resCount" aria-live="polite"></p>' +
+      '<div><form class="shop__search" id="shopSearch" role="search"><label class="sr" for="ss-q">' + L('Szukaj produktu', 'Search products') + '</label>' +
+      '<input id="ss-q" type="search" autocomplete="off" value="' + esc(state.shop.q) + '" placeholder="' + L('Nazwa lub nr katalogowy', 'Name or catalogue no.') + '"><button class="btn btn--primary" type="submit">' + L('Szukaj', 'Search') + '</button></form>' +
+      '<div class="shop__bar"><p id="resCount" aria-live="polite"></p>' +
       '<label><span class="sr">' + L('Sortuj według', 'Sort by') + '</span><select class="select" id="f-sort">' +
       [['rec', 'Polecane', 'Featured'], ['asc', 'Cena: od najniższej', 'Price: low to high'], ['desc', 'Cena: od najwyższej', 'Price: high to low'], ['name', 'Nazwa: A–Z', 'Name: A–Z']].map(function (o) {
         return '<option value="' + o[0] + '"' + (state.shop.sort === o[0] ? ' selected' : '') + '>' + L(o[1], o[2]) + '</option>';
@@ -600,7 +613,7 @@
     var box = document.getElementById('results');
     if (!box) return;
     var list = PRODUCTS.filter(function (p) {
-      return (state.shop.cat === 'all' || p.cat === state.shop.cat) && minPrice(p).price <= state.shop.max;
+      return (state.shop.cat === 'all' || p.cat === state.shop.cat) && minPrice(p).price <= state.shop.max && matchQ(p, state.shop.q);
     });
     var s = state.shop.sort;
     if (s === 'asc') list.sort(function (a, b) { return minPrice(a).price - minPrice(b).price; });
@@ -616,6 +629,11 @@
     document.getElementById('f-max-out').textContent = L('do ', 'up to ') + zl(state.shop.max);
   }
 
+  function matchQ(p, q) {
+    if (!q) return true;
+    var hay = (JSON.stringify(p.sku || '') + ' ' + JSON.stringify(p.pl || {}) + ' ' + JSON.stringify(p.en || {}) + ' ' + JSON.stringify(p.options || [])).toLowerCase();
+    return q.toLowerCase().split(/\s+/).every(function (w) { return hay.indexOf(w) > -1; });
+  }
   function descBlock(p) {
     var html, lang, note = '';
     if (state.lang === 'pl') {
@@ -1011,6 +1029,12 @@
   main.addEventListener('submit', function (e) {
     e.preventDefault();
     var f = e.target;
+    if (f.id === 'heroSearch' || f.id === 'shopSearch') {
+      var v = (f.querySelector('input').value || '').trim();
+      location.hash = '#/sklep' + (v ? '?q=' + encodeURIComponent(v) : '');
+      if (f.id === 'shopSearch') { state.shop.q = v; render(true); }
+      return;
+    }
     if (f.id === 'buyForm') {
       var p = currentProduct(); if (!p) return;
       var sel = JSON.parse(JSON.stringify(selOf(p)));
