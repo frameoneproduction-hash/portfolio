@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Animacja produktu ze zdjęć – demo dla GiGiTOys</title>
+<meta name="description" content="Demo 20 s w pionie 9:16: huśtawka Bocianie Gniazdo XXL wycięta ze zdjęć produktu – hak w 2 sekundy, paralaksa, najazd kamery, napisy w rytm muzyki i plansza końcowa.">
+<link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bricolage-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="layout">
+  <section class="intro">
+    <p class="tag">Próbka dla GiGiTOys · film 1 z 5</p>
+    <h1>„Ekran czy ogród?”</h1>
+    <p class="lead">Huśtawka Bocianie Gniazdo XXL – 20 sekund w pionie 9:16, zrobione wyłącznie ze zdjęć produktu ze sklepu. Produkt wycięty z tła, głębia i paralaksa, najazd kamery, napisy w rytm muzyki.</p>
+    <ol class="plan">
+      <li><b>0–2 s</b> hak: bajka na telefonie gaśnie, huśtawka wylatuje z ekranu</li>
+      <li><b>2–10 s</b> huśtawka oddzielona od tła, w ogrodzie: głębia, najazd kamery, bujanie</li>
+      <li><b>10–17 s</b> trzy atuty w rytm muzyki</li>
+      <li><b>17–20 s</b> produkt, nazwa sklepu, wezwanie do zakupu</li>
+    </ol>
+  </section>
+
+  <section class="player" aria-label="Podgląd animacji">
+    <div class="stage" id="stage" role="img" aria-label="Animacja: bajka na telefonie gaśnie, z ekranu wylatuje huśtawka Bocianie Gniazdo XXL, buja się w ogrodzie, potem trzy atuty i plansza końcowa gigitoys.pl">
+      <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gGround" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#a7a66c"/><stop offset=".35" stop-color="#7f8a4f"/><stop offset="1" stop-color="#4f5f34"/>
+          </linearGradient>
+          <linearGradient id="gFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#4e5f32"/><stop offset="1" stop-color="#2f3b1f"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- 1. Hak: telefon z bajką -->
+      <div class="hook layer" id="hook">
+        <div class="phone" id="phone">
+          <div class="screen" id="screen">
+            <div class="toon" id="toon">
+              <span class="sh s1"></span><span class="sh s2"></span><span class="sh s3"></span>
+              <span class="sh s4"></span><span class="sh s5"></span><span class="sh s6"></span>
+              <span class="sh s7"></span>
+            </div>
+            <div class="status"><span>19:42</span><span class="bat"></span></div>
+            <div class="vbar"><span id="vbarFill"></span></div>
+            <div class="dim" id="dim"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Ogród: warstwy paralaksy -->
+      <div class="world layer" id="world">
+        <div class="pl sky" data-d=".12"></div>
+        <div class="pl sun" data-d=".2"><i></i></div>
+        <svg class="pl" data-d=".3" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M-30 101 C-10 93 6 96 20 99 S48 92 62 96 S92 100 120 94 V170 H-30Z" fill="#ecd0b0"/>
+        </svg>
+        <svg class="pl" data-d=".45" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M-30 107 C-6 101 14 106 34 104 S70 99 88 104 S110 106 120 103 V170 H-30Z" fill="#d6c79f"/>
+        </svg>
+        <svg class="pl" data-d=".62" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="#a3a57c">
+            <circle cx="-4" cy="94" r="9"/><circle cx="7" cy="98" r="7.5"/><circle cx="16" cy="102" r="5.5"/><circle cx="-12" cy="99" r="8"/>
+            <rect x="5.4" y="100" width="1.2" height="9"/>
+            <circle cx="84" cy="96" r="8"/><circle cx="95" cy="92" r="10"/><circle cx="74" cy="102" r="5"/><circle cx="104" cy="99" r="8"/>
+            <rect x="83.5" y="100" width="1.2" height="9"/>
+          </g>
+        </svg>
+        <svg class="pl" data-d="1" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M-40 118 C-6 114 30 117 52 116 S96 113 130 117 V175 H-40Z" fill="url(#gGround)"/>
+          <ellipse id="shadow" cx="45" cy="125" rx="24" ry="2.8" fill="#2f3519" opacity=".3" filter="url(#fBlur)"/>
+          <defs><filter id="fBlur" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="1.1"/></filter></defs>
+          <!-- drzewo, na którego gałęzi wisi huśtawka -->
+          <g class="hero-tree">
+            <path d="M-14 160 C-9 120 -6 70 -4 30 C-3 18 -6 6 -12 -10 L4 -10 C3 8 5 22 4 34 C3 74 2 120 6 160Z" fill="#4a3e2e"/>
+            <path d="M-6 13.5 C14 9.5 34 9.8 52 10.8 C68 11.6 84 9.8 104 7.2 L104 4.2 C84 7 68 8.2 52 7.6 C34 6.8 14 6.4 -6 9Z" fill="#54442f"/>
+            <path d="M24 9.6 C30 4 36 2 44 0.5 L44.6 1.8 C38 3.4 32 6 27 10Z" fill="#54442f"/>
+            <g fill="#56623f">
+              <circle cx="-6" cy="-4" r="16"/><circle cx="14" cy="-8" r="13"/><circle cx="34" cy="-11" r="12"/>
+              <circle cx="70" cy="-10" r="13"/><circle cx="92" cy="-6" r="14"/>
+            </g>
+            <g fill="#6d7a4d">
+              <circle cx="4" cy="-2" r="7"/><circle cx="24" cy="-4" r="6"/><circle cx="78" cy="-3" r="6.5"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- huśtawka: osobna warstwa, mieszanie „multiply” usuwa białe tło zdjęcia -->
+      <div class="swing-plane" id="plane">
+        <div class="swing-pend" id="pend">
+          <svg class="ropes" id="ropes" aria-hidden="true"></svg>
+          <div class="ph swing-ph" data-photo="1">
+            <img id="swingImg" alt="" src="https://gigitoys.pl/hpeciai/144670d506b43267d716d9a249567f8f/pol_pm_Hustawka-Bocianie-Gniazdo-XXL-1079_1.png" referrerpolicy="no-referrer" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <div class="fg layer" id="fg">
+        <svg class="pl" data-d="1.35" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path id="blades" fill="url(#gFront)"/>
+        </svg>
+        <svg class="pl leaves" data-d="1.6" viewBox="0 0 90 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="#3c4729"><circle cx="98" cy="20" r="10"/><circle cx="90" cy="9" r="8"/><circle cx="-8" cy="150" r="9"/></g>
+        </svg>
+        <div class="pl pollen" data-d="1.25" id="pollen"></div>
+      </div>
+
+      <!-- napisy: hak i ogród -->
+      <div class="cap cap-hook" aria-hidden="true">
+        <span class="ln"><span class="w" id="hk1">Ekran<i class="strike" id="strike"></i></span></span>
+        <span class="ln"><span class="w" id="hk2">czy <em>ogród?</em></span></span>
+      </div>
+      <div class="cap cap-garden" aria-hidden="true">
+        <span class="ln"><span class="w small" id="gd1">Huśtawka</span></span>
+        <span class="ln"><span class="w" id="gd2">Bocianie Gniazdo XXL</span></span>
+      </div>
+
+      <!-- 3. Trzy atuty -->
+      <div class="panel callout" id="c1" aria-hidden="true">
+        <div class="sheet"></div>
+        <div class="kb ph" data-photo="1"><img alt="" src="https://gigitoys.pl/hpeciai/144670d506b43267d716d9a249567f8f/pol_pm_Hustawka-Bocianie-Gniazdo-XXL-1079_1.png" referrerpolicy="no-referrer" decoding="async"></div>
+        <div class="count">01 / 03</div>
+        <div class="ctext">
+          <span class="ln"><span class="w lbl">Do</span></span>
+          <span class="ln"><span class="w big"><b class="num" id="num100">100</b> <span class="unit">kg</span></span></span>
+          <div class="gauge"><span id="gauge"></span></div>
+          <span class="ln"><span class="w sub">maksymalne obciążenie</span></span>
+        </div>
+      </div>
+      <div class="panel callout" id="c2" aria-hidden="true">
+        <div class="sheet"></div>
+        <div class="kb ph" data-photo="3"><img alt="" src="https://gigitoys.pl/hpeciai/ccfb42799769656884c33f064b2af664/pol_pm_Hustawka-Bocianie-Gniazdo-XXL-1079_3.png" referrerpolicy="no-referrer" decoding="async"></div>
+        <div class="count">02 / 03</div>
+        <div class="ctext">
+          <span class="ln"><span class="w lbl">Siedzisko</span></span>
+          <span class="ln"><span class="w mid">165 × 75 cm</span></span>
+          <div class="measure" aria-hidden="true"><span id="measure"></span></div>
+        </div>
+      </div>
+      <div class="panel callout" id="c3" aria-hidden="true">
+        <div class="sheet"></div>
+        <div class="kb ph" data-photo="2"><img alt="" src="https://gigitoys.pl/hpeciai/36223fe70e89631ab96faf7539859d88/pol_pm_Hustawka-Bocianie-Gniazdo-XXL-1079_2.png" referrerpolicy="no-referrer" decoding="async"></div>
+        <div class="drops" id="drops"></div>
+        <div class="count">03 / 03</div>
+        <div class="ctext">
+          <span class="ln"><span class="w mid">Wodoodporny</span></span>
+          <span class="ln"><span class="w mid accent">materiał</span></span>
+        </div>
+      </div>
+
+      <!-- 4. Plansza końcowa -->
+      <div class="panel endcard" id="end" aria-hidden="true">
+        <div class="sheet"></div>
+        <div class="glow"></div>
+        <div class="ph end-ph" data-photo="1" id="endSwing"><img alt="" src="https://gigitoys.pl/hpeciai/144670d506b43267d716d9a249567f8f/pol_pm_Hustawka-Bocianie-Gniazdo-XXL-1079_1.png" referrerpolicy="no-referrer" decoding="async"></div>
+        <svg class="stamp" id="stamp" viewBox="0 0 100 100" aria-hidden="true">
+          <defs><path id="circ" d="M50 50 m-37 0 a37 37 0 1 1 74 0 a37 37 0 1 1 -74 0"/></defs>
+          <text><textPath href="#circ" textLength="230" lengthAdjust="spacing">GIGITOYS.PL · HUŚTAWKI · OGRÓD ·</textPath></text>
+          <circle cx="50" cy="50" r="5" />
+        </svg>
+        <div class="etext">
+          <span class="ln"><span class="w small" id="e1">Huśtawka</span></span>
+          <span class="ln"><span class="w name" id="e2">Bocianie</span></span>
+          <span class="ln"><span class="w name" id="e3">Gniazdo XXL</span></span>
+          <span class="ln"><span class="w soft" id="e4">Mniej ekranu, więcej podwórka.</span></span>
+        </div>
+        <div class="cta" id="cta"><span>Sprawdź w sklepie</span><i id="ctaArrow">→</i></div>
+        <div class="domain" id="domain">gigitoys.pl</div>
+      </div>
+
+      <div class="fade" id="fade"></div>
+      <div class="grain" aria-hidden="true"></div>
+    </div>
+
+    <div class="controls">
+      <button type="button" id="play" aria-pressed="false">Pauza</button>
+      <button type="button" id="replay">Od początku</button>
+      <span class="time" id="time" aria-live="off">0:00 / 0:20</span>
+    </div>
+    <div class="progress" id="progress" role="slider" tabindex="0" aria-label="Pozycja w animacji" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+      <span class="seg" style="flex:2"></span><span class="seg" style="flex:8"></span><span class="seg" style="flex:7"></span><span class="seg" style="flex:3"></span>
+      <span class="fill" id="fill"></span>
+    </div>
+    <div class="legend" aria-hidden="true"><span style="flex:2">hak</span><span style="flex:8">ogród</span><span style="flex:7">atuty</span><span style="flex:3">finał</span></div>
+    <p class="note">Demo: animacja ze zdjęć produktu ze sklepu gigitoys.pl (zdjęcia: GiGiTOys). W gotowym pliku: MP4 9:16, muzyka i efekty z licencjonowanej biblioteki. Demo bez dźwięku.</p>
+    <p class="note warn" id="imgNote" hidden>Nie udało się wczytać zdjęć ze sklepu – w ich miejscu pokazuję rysunek zastępczy.</p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
