@@ -545,3 +545,4 @@ html[lang="en"] .brand-tiles .tile__label::after { content: "Browse products →
 /* Marki: zdjęcia w całości (kwadrat jak oryginał) */
 .brand-tiles .tile__img { height: auto; aspect-ratio: 1 / 1; }
 .brand-tiles .tile__img img { object-position: center; }
+#nipField[hidden] { display: none !important; }

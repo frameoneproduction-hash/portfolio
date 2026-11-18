@@ -368,11 +368,14 @@
   ];
 
   /* ---------- Stan (tylko w pamięci, bez cookies i localStorage) ---------- */
+  function loadCart() {
+    try { var c = JSON.parse(localStorage.getItem('bgx-cart') || '[]'); return Array.isArray(c) ? c.filter(function (it) { return it && BY_ID[it.id]; }) : []; } catch (e) { return []; }
+  }
   var params = new URLSearchParams(location.search);
   var PRICE_MAX = Math.ceil(Math.max.apply(null, PRODUCTS.map(function (p) { return minPrice(p).price; })) / 100) * 100;
   var state = {
     lang: params.get('lang') === 'en' ? 'en' : 'pl',
-    cart: [],
+    cart: loadCart(),
     pay: 'online',
     sel: {},
     view: {},
@@ -796,6 +799,7 @@
     updateCount();
   }
   function updateCount() {
+    try { localStorage.setItem('bgx-cart', JSON.stringify(state.cart)); } catch (e) {}
     var n = state.cart.reduce(function (s, it) { return s + it.qty; }, 0);
     document.getElementById('cartCount').textContent = n; document.getElementById('cartCount').hidden = !n;
   }
