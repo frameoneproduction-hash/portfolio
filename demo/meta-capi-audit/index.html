@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Sample audit report: Meta Pixel and Conversions API on a WooCommerce store. Pass/fail table for five events, deduplication checklist, fixes. Fictional store and data.">
+<title>Meta Pixel + CAPI audit: sample report</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23163a5f'/%3E%3Cpath d='M8 17l5 5 11-12' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="demo-bar" role="note"><p><strong>Sample report.</strong> Fictional store, made-up numbers. It shows the format and the checks, not a real audit.</p></div>
+
+<main class="wrap">
+  <header class="head">
+    <p class="kicker">Independent tracking audit</p>
+    <h1>Meta Pixel + Conversions API</h1>
+    <p class="lead">WooCommerce store <strong>Northpeak PC</strong> (fictional), tracking through a pixel plugin with server events turned on. Read-only audit: dataset access in Events Manager, plugin settings from screenshots, no test purchases, no changes to the live site.</p>
+    <dl class="meta">
+      <div><dt>Period checked</dt><dd>last 28 days</dd></div>
+      <div><dt>Currency</dt><dd>CAD</dd></div>
+      <div><dt>Events</dt><dd>5</dd></div>
+      <div><dt>Result</dt><dd><span class="pill pass">2 pass</span> <span class="pill fail">3 fail</span></dd></div>
+    </dl>
+  </header>
+
+  <section aria-labelledby="t1">
+    <h2 id="t1">1. Pass/fail by event</h2>
+    <p class="note">Browser and server columns: events received in Events Manager. Dedup: share of server events matched to a browser event by <code>event_name</code> + <code>event_id</code>.</p>
+    <div class="table-wrap">
+    <table class="audit">
+      <thead>
+        <tr><th scope="col">Event</th><th scope="col">Browser</th><th scope="col">Server</th><th scope="col">Dedup</th><th scope="col">Parameters</th><th scope="col">Result</th><th scope="col">Fix</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" data-l="Event">PageView</th>
+          <td data-l="Browser">41,820</td><td data-l="Server">40,977</td><td data-l="Dedup">97%</td>
+          <td data-l="Parameters">event_source_url, fbp present</td>
+          <td data-l="Result"><span class="pill pass">Pass</span></td>
+          <td data-l="Fix">None needed.</td>
+        </tr>
+        <tr>
+          <th scope="row" data-l="Event">ViewContent</th>
+          <td data-l="Browser">18,404</td><td data-l="Server">18,112</td><td data-l="Dedup">96%</td>
+          <td data-l="Parameters"><code>content_ids</code> = SKU in browser events, post ID in server events; catalog uses SKU</td>
+          <td data-l="Result"><span class="pill fail">Fail</span></td>
+          <td data-l="Fix">Set the plugin's product ID type to the one the catalog uses (SKU here) for both browser and server events. Check one product in Test Events after the change.</td>
+        </tr>
+        <tr>
+          <th scope="row" data-l="Event">AddToCart</th>
+          <td data-l="Browser">2,236</td><td data-l="Server">2,201</td><td data-l="Dedup">95%</td>
+          <td data-l="Parameters">value, currency CAD, content_ids (SKU), quantity</td>
+          <td data-l="Result"><span class="pill pass">Pass</span></td>
+          <td data-l="Fix">None needed.</td>
+        </tr>
+        <tr>
+          <th scope="row" data-l="Event">InitiateCheckout</th>
+          <td data-l="Browser">1,388</td><td data-l="Server">702</td><td data-l="Dedup">11%</td>
+          <td data-l="Parameters">server events have a new <code>event_id</code> on every page load, browser fires again on checkout refresh</td>
+          <td data-l="Result"><span class="pill fail">Fail</span></td>
+          <td data-l="Fix">Pass the same <code>event_id</code> to the pixel (<code>eventID</code>) and to the server event; fire once per checkout session. Most often a page cache or a checkout plugin breaks this, so check the checkout page is excluded from cache.</td>
+        </tr>
+        <tr>
+          <th scope="row" data-l="Event">Purchase</th>
+          <td data-l="Browser">214</td><td data-l="Server">236</td><td data-l="Dedup">88%</td>
+          <td data-l="Parameters">value incl. shipping and tax (CAD); 19 events from orders still on-hold (bank transfer), 3 from failed payments</td>
+          <td data-l="Result"><span class="pill fail">Fail</span></td>
+          <td data-l="Fix">Send Purchase only for paid orders (processing or completed). Turn off firing on the thank-you page for on-hold and failed orders, then compare Purchase count with paid orders in WooCommerce for the same days.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="t2">
+    <h2 id="t2">2. Deduplication checklist</h2>
+    <ul class="checks">
+      <li class="ok">Same <code>event_name</code> in browser and server (e.g. <code>Purchase</code>, not <code>purchase</code>)</li>
+      <li class="ok">Same <code>event_id</code>: pixel <code>eventID</code> equals server <code>event_id</code> for each event</li>
+      <li class="ok">Server event sent within 48 hours of the browser event</li>
+      <li class="ok"><code>fbp</code> and <code>fbc</code> cookies passed to server events</li>
+      <li class="ok"><code>action_source = website</code>, <code>event_source_url</code> and <code>event_time</code> (seconds) present</li>
+      <li class="bad">Checkout page cached, so <code>event_id</code> changes on refresh (see InitiateCheckout)</li>
+      <li class="ok">No second pixel on the site (theme, another plugin or GTM)</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="t3" class="two">
+    <div>
+      <h2 id="t3">3. Matching and consent</h2>
+      <ul class="checks">
+        <li class="ok">Advanced matching: hashed email, phone, name, city, postal code, country on Purchase</li>
+        <li class="ok"><code>external_id</code> sent for logged-in customers</li>
+        <li class="warn">Event match quality on AddToCart lower than on Purchase: email is not known before checkout, that is normal</li>
+        <li class="ok">Consent: no pixel requests before the visitor accepts marketing cookies</li>
+        <li class="warn">Server events sent for visitors who declined: confirm with your consent policy</li>
+      </ul>
+    </div>
+    <div>
+      <h2 id="t4">4. Events Manager diagnostics</h2>
+      <ul class="checks">
+        <li class="bad">“Content IDs don't match catalog” on ViewContent (see table)</li>
+        <li class="bad">“Low deduplication rate” on InitiateCheckout</li>
+        <li class="ok">No “missing currency” or “invalid value” warnings</li>
+        <li class="ok">Domain verified, events from own domain only</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="t5">
+    <h2 id="t5">What you get</h2>
+    <ol class="steps">
+      <li><strong>The table above for your store</strong>, one row per event, with a fix for every fail. As a Google Sheet or PDF.</li>
+      <li><strong>A short screen recording</strong> going through Events Manager and the findings, with notes on screen.</li>
+      <li><strong>A list of the plugin screenshots I need</strong> before I start, so nobody has to log in or share a screen.</li>
+    </ol>
+  </section>
+
+  <footer class="foot"><p>Sample by Maria (Frame One). Northpeak PC and all figures are invented for this demo.</p></footer>
+</main>
+</body>
+</html>
