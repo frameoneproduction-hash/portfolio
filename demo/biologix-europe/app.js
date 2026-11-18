@@ -22,11 +22,11 @@
       "base": 24.59,
       "photos": [
         "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422559013.jpg",
-        "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422549446.jpg",
+        "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422554610.jpg",
         "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422554598.jpg",
+        "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422549446.jpg",
         "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422549452.jpg",
-        "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422559019.jpg",
-        "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422554610.jpg"
+        "https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/875758057/6422559019.jpg"
       ],
       "options": [
         {
