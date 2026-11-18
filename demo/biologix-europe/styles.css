@@ -475,3 +475,14 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
 .btn--quote { display: block; width: 100%; text-align: center; margin: 10px 0 14px; }
 /* Menu: czytelniej */
 .nav a { font-family: var(--display); font-weight: 600; font-size: 1rem; letter-spacing: -.005em; }
+/* Filtry: więcej powietrza */
+@media (min-width: 760px) {
+  .filters { padding: 28px 26px; border-radius: 16px; }
+  .filters fieldset { margin-bottom: 30px; }
+  .filters legend { font-family: var(--display); font-size: 1.02rem; margin-bottom: 14px; }
+  .opt-row { padding: 9px 0; gap: 12px; }
+  .opt-row .count { min-width: 1.5em; text-align: right; }
+  .range-out { margin-top: 10px; }
+  .link-btn { margin-top: 4px; }
+}
+@media (min-width: 1000px) { .shop { grid-template-columns: 310px 1fr; gap: 40px; } }
