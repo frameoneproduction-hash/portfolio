@@ -814,13 +814,19 @@
       '<p>' + fx(L('Biologix obsługuje tysiące laboratoriów w USA, Europie i Azji i współpracuje z setkami dystrybutorów na całym świecie. [Sklep prowadzi … i obsługuje klientów w Polsce.]',
         'Biologix serves thousands of laboratories in the US, Europe and Asia, working with hundreds of distributors worldwide. [This store is run by … and serves customers in Poland.]')) + '</p></div>' +
       '<div class="about__img about__mosaic">' + mosaic + '</div></div></section>' +
-      '<section class="section" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">' + L('Nasze marki', 'Our brands') + '</h2><ul class="values grid grid--3">' +
-      '<li><h3>BIOLOGIX®</h3><p class="muted">' + L('Artykuły laboratoryjne i produkty do hodowli komórkowej.', 'General laboratory products and cell culture products.') + ' <a href="#/sklep?kategoria=lab">' + L('Zobacz', 'View') + ' →</a></p></li>' +
-      '<li><h3>CryoKING®</h3><p class="muted">' + L('Przechowywanie kriogeniczne i biobankowanie.', 'Cryogenic storage and biobanking.') + ' <a href="#/sklep?kategoria=cryo">' + L('Zobacz', 'View') + ' →</a></p></li>' +
-      '<li><h3>DrosoKING®</h3><p class="muted">' + L('Produkty do hodowli Drosophila.', 'Products for Drosophila culture.') + ' <a href="#/sklep?kategoria=droso">' + L('Zobacz', 'View') + ' →</a></p></li>' +
-      '</ul></div></section>';
+      '<section class="section" aria-labelledby="h-val"><div class="wrap"><h2 id="h-val">' + L('Nasze marki', 'Our brands') + '</h2><div class="grid grid--3 brand-tiles">' +
+      brandTile('lab', 'BIOLOGIX®', L('Artykuły laboratoryjne i produkty do hodowli komórkowej.', 'General laboratory products and cell culture products.')) +
+      brandTile('cryo', 'CryoKING®', L('Przechowywanie kriogeniczne i biobankowanie.', 'Cryogenic storage and biobanking.')) +
+      brandTile('droso', 'DrosoKING®', L('Produkty do hodowli Drosophila.', 'Products for Drosophila culture.')) +
+      '</div></div></section>';
   }
 
+  function brandTile(k, name, desc) {
+    var c = CATS[k];
+    var media = c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
+      : '<span class="tile__img tile__img--compose" style="--bd:url(' + c.backdrop + ')">' + cdnImg(c.img, '', 800) + '</span>';
+    return '<a class="tile" href="#/sklep?kategoria=' + k + '">' + media + '<span class="tile__label"><span class="tile__name">' + name + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(desc) + '</span></span></a>';
+  }
   function li(items) { return '<ul>' + items.map(function (x) { return '<li>' + fx(x) + '</li>'; }).join('') + '</ul>'; }
   function viewShipping() {
     var title = L('Dostawa i zwroty', 'Shipping & returns');
