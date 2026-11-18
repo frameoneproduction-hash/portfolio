@@ -473,3 +473,5 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
 /* Druga ścieżka zakupu na karcie produktu */
 .btn--quote { display: inline-block; margin-top: 10px; }
 .btn--quote { display: block; width: 100%; text-align: center; margin: 10px 0 14px; }
+/* Menu: czytelniej */
+.nav a { font-family: var(--display); font-weight: 600; font-size: 1rem; letter-spacing: -.005em; }
