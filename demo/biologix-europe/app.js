@@ -358,6 +358,7 @@
   var HERO = [
     {
       id: '1579165466949-3180a3d056d5',
+      src: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/cover-ZEzQsF/Er1KGMl-600x600.webp', /* okładka Biologix (biologix.jp) */
       eyebrow: 'BIOLOGIX® · CryoKING® · DrosoKING®',
       h: { pl: 'Materiały laboratoryjne i odczynniki, na których można <em>polegać</em>', en: 'Laboratory consumables and reagents you can <em>rely on</em>' },
       p: { pl: 'Produkty BIOLOGIX®, CryoKING® i DrosoKING® do badań, biobankowania i kontroli jakości – teraz dostępne w Polsce.', en: 'BIOLOGIX®, CryoKING® and DrosoKING® products for research, biobanking and quality control – now available in Poland.' },
@@ -470,10 +471,11 @@
     var slides = HERO.map(function (h, i) {
       var heading = i === 0 ? 'h1' : 'h2';
       return '<div class="hero__slide" role="group"' + (many ? ' aria-roledescription="' + L('slajd', 'slide') + '" aria-label="' + (i + 1) + L(' z ', ' of ') + HERO.length + '"' : '') + (i === 0 ? '' : ' hidden') + '>' +
-        photo(h.id, h.alt[state.lang], 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' }) +
+        (h.src ? '<img class="hero__img" src="' + h.src + '" alt="' + esc(h.alt[state.lang]) + '" fetchpriority="high" decoding="async">'
+          : photo(h.id, h.alt[state.lang], 1600, 800, { widths: [800, 1200, 1600, 2000], sizes: '(max-width: 759px) 260vw, 100vw', eager: i === 0, cls: 'hero__img' })) +
         '<div class="hero__shade" aria-hidden="true"></div>' +
         '<div class="wrap hero__content"><p class="hero__eyebrow">' + esc(h.eyebrow) + '</p><' + heading + ' class="hero__title">' + esc(h.h[state.lang]).replace(/&lt;(\/?)em&gt;/g, '<$1em>') + '</' + heading + '>' +
-        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p><a class="btn btn--light" href="' + h.href + '">' + esc(h.cta[state.lang]) + '</a></div></div>';
+        '<p class="hero__text">' + esc(h.p[state.lang]) + '</p><a class="btn btn--primary" href="' + h.href + '">' + esc(h.cta[state.lang]) + '</a></div></div>';
     }).join('');
     var controls = '';
     if (many) {
