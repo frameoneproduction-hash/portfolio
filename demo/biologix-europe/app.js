@@ -4,12 +4,13 @@
 
   /* ---------- Dane ---------- */
   var CDN = 'https://d2j6dbq0eux0bg.cloudfront.net/images/144774751/products/';
+  var OWNCATS = /[?&]kategorie=wlasne\b/.test(location.search);
   var CATS = {
-    lab: { pl: 'Artykuły laboratoryjne', en: 'General Laboratory Products', plDesc: 'Pipetowanie, probówki, filtracja, mikrobiologia', enDesc: 'Liquid handling, tubes, filtration, microbiology', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/6OXcjIf-600x600.webp', scene: true },
-    cryo: { pl: 'Kriogenika – CryoKING®', en: 'Cryogenic storage', plDesc: 'Krioprobówki, pudełka kriogeniczne, regały do zamrażarek', enDesc: 'Cryogenic vials, cryogenic boxes, freezer racks', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/MfIFGhj-600x600.webp', scene: true },
-    droso: { pl: 'Hodowla Drosophila – DrosoKING®', en: 'Drosophila', plDesc: 'Fiolki i butelki do hodowli muszek owocowych', enDesc: 'Vials and bottles for fruit fly culture', img: CDN + '875747886/6379274146.png', backdrop: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/6OXcjIf-600x600.webp' },
-    cell: { pl: 'Hodowla komórkowa', en: 'Cell culture', plDesc: 'Butelki i płytki hodowlane, pipety serologiczne, sitka komórkowe', enDesc: 'Culture flasks and plates, serological pipettes, cell strainers', img: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/logo-gallery-pTu3mr/GqSF3oP-600x600.webp', scene: true },
-    instr: { pl: 'Aparatura laboratoryjna', en: 'Instruments', plDesc: 'Wirówki, mieszadła, pipety automatyczne', enDesc: 'Centrifuges, stirrers, micropipettes', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/EozPNJc-600x600.webp', scene: true }
+    lab: { pl: 'Artykuły laboratoryjne', en: 'General Laboratory Products', plDesc: 'Pipetowanie, probówki, filtracja, mikrobiologia', enDesc: 'Liquid handling, tubes, filtration, microbiology', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/6OXcjIf-600x600.webp', scene: true, own: CDN + '876431354/6388404828.jpg' },
+    cryo: { pl: 'Kriogenika – CryoKING®', en: 'Cryogenic storage', plDesc: 'Krioprobówki, pudełka kriogeniczne, regały do zamrażarek', enDesc: 'Cryogenic vials, cryogenic boxes, freezer racks', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/MfIFGhj-600x600.webp', scene: true, own: CDN + '875758057/6422559013.jpg' },
+    droso: { pl: 'Hodowla Drosophila – DrosoKING®', en: 'Drosophila', plDesc: 'Fiolki i butelki do hodowli muszek owocowych', enDesc: 'Vials and bottles for fruit fly culture', img: CDN + '875747886/6379274146.png', own: CDN + '875747886/6379274146.png', backdrop: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/6OXcjIf-600x600.webp' },
+    cell: { pl: 'Hodowla komórkowa', en: 'Cell culture', plDesc: 'Butelki i płytki hodowlane, pipety serologiczne, sitka komórkowe', enDesc: 'Culture flasks and plates, serological pipettes, cell strainers', img: 'https://dfvc2y3mjtc8v.cloudfront.net/140367758/logo-gallery-pTu3mr/GqSF3oP-600x600.webp', scene: true, own: CDN + '875758107/6379132164.jpg' },
+    instr: { pl: 'Aparatura laboratoryjna', en: 'Instruments', plDesc: 'Wirówki, mieszadła, pipety automatyczne', enDesc: 'Centrifuges, stirrers, micropipettes', img: 'https://d2gt4h1eeousrn.cloudfront.net/140367758/logo-gallery-pTu3mr/EozPNJc-600x600.webp', scene: true, own: CDN + '875467522/6377149436.png' }
   };
 
   /* 8 produktów z eksportu katalogu Ecwid (18.11): nazwy, ceny, SKU, zdjęcia, opisy i opcje – prawdziwe.
@@ -528,7 +529,7 @@
     var featured = FEATURED.map(function (id) { return card(BY_ID[id]); }).join('');
     var cats = Object.keys(CATS).map(function (k) {
       var c = CATS[k];
-      var media = c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
+      var media = OWNCATS ? '<span class="tile__img tile__img--brand">' + cdnImg(c.own, '', 400) + '</span>' : c.scene ? '<span class="tile__img tile__img--scene"><img src="' + c.img + '" alt="" loading="lazy" decoding="async"></span>'
         : '<span class="tile__img tile__img--compose" style="--bd:url(' + c.backdrop + ')">' + cdnImg(c.img, '', 400) + '</span>';
       return '<a class="tile" href="#/sklep?kategoria=' + k + '">' + media +
         '<span class="tile__label"><span class="tile__name" lang="' + state.lang + '">' + esc(t(c)) + '</span><span class="tile__desc" lang="' + state.lang + '">' + esc(L(c.plDesc, c.enDesc)) + '</span></span></a>';
