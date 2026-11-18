@@ -94,7 +94,10 @@
         "html": "<h4><strong><em>Zastosowanie:</em></strong></h4><ul><li>Przeznaczone do przechowywania i organizacji probówek o pojemności od 1,0 ml do 2,0 ml.</li><li>Odpowiednie do przechowywania próbek w zamrażarkach pionowych i skrzyniowych.</li></ul><h4><strong><em>Cechy produktu:</em></strong></h4><ul><li>Wodoodporna powłoka: Wykonane z kartonu pokrytego warstwą ochronną, która zwiększa odporność na wilgoć.</li><li>Pokrywa na zawiasach: Pokrywa połączona z pudełkiem za pomocą nitów zapobiega jej oddzieleniu i ułatwia przechowywanie.</li><li>Różne rodzaje przegródek: Dostępne trzy warianty przegródek: kartonowa kratka prosta, prosta kratka z PP oraz przegródki typu słupkowego z PP.</li><li>Oznaczenia alfanumeryczne: Oznaczenia na pokrywie, spodzie i czterech bokach ułatwiają szybką identyfikację i lokalizację próbek.</li><li>Metalowe nity: Solidne metalowe zawiasy zapewniają trwałość konstrukcji i ograniczają ryzyko pękania lub poluzowania pokrywy przy częstym otwieraniu i zamykaniu.</li><li>Temperatura pracy: Do −86°C.</li></ul><h4><strong><em>Specyfikacja techniczna:</em></strong></h4><div><div class=\"table-wrap\"><table class=\"spec-table\"><tbody><tr><th><p>Nr katalogowy</p></th><th><p>Wysokość</p></th><th><p>Liczba miejsc</p></th><th><p>Kolor</p></th><th><p>Rodzaj przegródek</p></th><th><p>Sterylność</p></th><th><p>Opakowanie</p></th></tr><tr><td><p>90-3200B</p></td><td><p>2 cale</p></td><td><p>100 miejsc</p></td><td><p>Niebieski</p></td><td><p>Kartonowa kratka prosta</p></td><td><p>Niesterylne</p></td><td><p>5 szt./opakowanie, 4 opakowania/karton</p></td></tr></tbody></table></div></div>",
         "lang": "pl"
       },
-      "descPl": null,
+      "descPl": null
+    },
+    {
+      "id": "fiolki-do-hodowli-muszek-owocowych",
       "cat": "droso",
       "sku": "51-0800",
       "base": 820.85,
@@ -877,7 +880,7 @@
     var p = BY_ID[id]; if (!p) return '';
     var sel = selOf(p), parts = [t(p).name, L('Nr kat.: ', 'Cat. no.: ') + skuOf(p, sel)];
     p.options.forEach(function (o) { var nm = /^(Ilość|Opakowanie|Rozmiar)$/.test(o.pl) && o.values.some(function (x) { return /szt|opak|karton|worek|pudeł/.test(x.pl); }) ? L('Wielkość opakowania', 'Pack size') : o[state.lang]; parts.push(nm + ': ' + o.values[sel[o.key] || 0][state.lang]); });
-    return L('Proszę o wycenę hurtową:\n', 'Please send a bulk quote for:\n') + parts.join('\n') + L('\nLiczba opakowań: \nAdres dostawy / instytucja: ', '\nNumber of packs: \nDelivery address / institution: ');
+    return L('Proszę o wycenę hurtową:\n', 'Please send a bulk quote for:\n') + parts.join('\n') + L('\nLiczba opakowań: ', '\nNumber of packs: ') + (state.qty[id] || 1) + L('\nAdres dostawy / instytucja: ', '\nDelivery address / institution: ');
   }
   function viewContact(q) {
     var qid = q && q.get ? q.get('wycena') : null, qtext = qid ? quoteText(qid) : '';

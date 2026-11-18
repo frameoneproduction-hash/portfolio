@@ -502,3 +502,8 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
 @media (max-width: 759px) { .hero__img--brand { left: 0; width: 100%; -webkit-mask-image: none; mask-image: none; } .hero__img--brand + .hero__shade { background: rgba(0, 28, 77, .8); } }
 /* Filtr jak wcześniej – czytelny tekst */
 .hero__img--brand + .hero__shade { background: linear-gradient(90deg, rgba(0, 22, 64, .94) 0%, rgba(0, 28, 77, .86) 36%, rgba(0, 40, 110, .55) 60%, rgba(0, 52, 140, .38) 100%); }
+/* Okładka: wysokość według treści – nic nie ucina się pod menu ani na dole */
+.hero__slide { height: auto; min-height: clamp(460px, 62vh, 620px); }
+.hero__content { height: auto; min-height: inherit; padding-top: 48px; padding-bottom: 52px; }
+.hero__title { max-width: 21ch; }
+.hero__title { max-width: 20ch; text-wrap: balance; }
