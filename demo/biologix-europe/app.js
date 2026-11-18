@@ -63,7 +63,7 @@
         "html": "<p>CryoKING® 2-inch cryogenic storage boxes are designed for organized storage of 1.5 mL and 2.0 mL microtubes and cryogenic vials in mechanical freezers.</p><p><strong>Features</strong><br></p><ul><li>Made of polypropylene, chemically resistant to alcohols and mild organic solvents</li><li>Can be repeatedly frozen and thawed</li><li> 10x10 (100-well)</li><li> Compatible with 1.5ml or 2.0ml microtubes and cryogenic vials</li><li>Boxes feature numbered grids for sample identification</li><li> Drain holes and air vents minimize condensation</li><li> Five assorted colors available</li><li>Suitable for storage in mechanical freezers</li><li> Temperature range: stable from -86℃ to 121℃</li></ul><div class=\"table-wrap\"><table class=\"spec-table\"><thead><tr><th>Parameter</th><th>Details</th></tr></thead><tbody><tr><td>Catalog Number</td><td>90-9100</td></tr><tr><td>Box Height</td><td>2 in.</td></tr><tr><td>Capacity</td><td>100 wells</td></tr><tr><td>Grid Configuration</td><td>10 × 10</td></tr><tr><td>Compatible Tubes</td><td>1.5 mL and 2.0 mL</td></tr><tr><td>Material</td><td>Polypropylene</td></tr><tr><td>Color</td><td>Assorted colors</td></tr><tr><td>Dimensions</td><td>141 × 154 × 55 mm</td></tr><tr><td>Packaging</td><td>5 boxes/pack, 4 packs/case</td></tr><tr><td>Case Quantity</td><td>20 boxes</td></tr></tbody></table></div>",
         "lang": "en"
       },
-      "descPl": null,
+      "descPl": "<p>Pudełka kriogeniczne CryoKING® o wysokości 2 cali służą do uporządkowanego przechowywania mikroprobówek i krioprobówek 1,5 ml i 2,0 ml w zamrażarkach mechanicznych.</p><p><strong>Cechy</strong><br></p><ul><li>Wykonane z polipropylenu, odporne chemicznie na alkohole i łagodne rozpuszczalniki organiczne</li><li>Można je wielokrotnie zamrażać i rozmrażać</li><li>10 × 10 (100 miejsc)</li><li>Pasują do mikroprobówek i krioprobówek 1,5 ml lub 2,0 ml</li><li>Numerowana siatka ułatwia identyfikację próbek</li><li>Otwory odpływowe i wentylacyjne ograniczają kondensację</li><li>Dostępne w pięciu kolorach</li><li>Do przechowywania w zamrażarkach mechanicznych</li><li>Zakres temperatur: stabilne od −86 °C do 121 °C</li></ul><div class=\"table-wrap\"><table class=\"spec-table\"><thead><tr><th>Parametr</th><th>Szczegóły</th></tr></thead><tbody><tr><td>Nr katalogowy</td><td>90-9100</td></tr><tr><td>Wysokość pudełka</td><td>2 cale</td></tr><tr><td>Pojemność</td><td>100 miejsc</td></tr><tr><td>Układ siatki</td><td>10 × 10</td></tr><tr><td>Pasujące probówki</td><td>1,5 ml i 2,0 ml</td></tr><tr><td>Materiał</td><td>Polipropylen</td></tr><tr><td>Kolor</td><td>Różne kolory</td></tr><tr><td>Wymiary</td><td>141 × 154 × 55 mm</td></tr><tr><td>Opakowanie</td><td>5 pudełek/opakowanie, 4 opakowania/karton</td></tr><tr><td>Liczba w kartonie</td><td>20 pudełek</td></tr></tbody></table></div>",
       "badge": {
         "pl": "Bestseller",
         "en": "Best Seller",
@@ -94,10 +94,7 @@
         "html": "<h4><strong><em>Zastosowanie:</em></strong></h4><ul><li>Przeznaczone do przechowywania i organizacji probówek o pojemności od 1,0 ml do 2,0 ml.</li><li>Odpowiednie do przechowywania próbek w zamrażarkach pionowych i skrzyniowych.</li></ul><h4><strong><em>Cechy produktu:</em></strong></h4><ul><li>Wodoodporna powłoka: Wykonane z kartonu pokrytego warstwą ochronną, która zwiększa odporność na wilgoć.</li><li>Pokrywa na zawiasach: Pokrywa połączona z pudełkiem za pomocą nitów zapobiega jej oddzieleniu i ułatwia przechowywanie.</li><li>Różne rodzaje przegródek: Dostępne trzy warianty przegródek: kartonowa kratka prosta, prosta kratka z PP oraz przegródki typu słupkowego z PP.</li><li>Oznaczenia alfanumeryczne: Oznaczenia na pokrywie, spodzie i czterech bokach ułatwiają szybką identyfikację i lokalizację próbek.</li><li>Metalowe nity: Solidne metalowe zawiasy zapewniają trwałość konstrukcji i ograniczają ryzyko pękania lub poluzowania pokrywy przy częstym otwieraniu i zamykaniu.</li><li>Temperatura pracy: Do −86°C.</li></ul><h4><strong><em>Specyfikacja techniczna:</em></strong></h4><div><div class=\"table-wrap\"><table class=\"spec-table\"><tbody><tr><th><p>Nr katalogowy</p></th><th><p>Wysokość</p></th><th><p>Liczba miejsc</p></th><th><p>Kolor</p></th><th><p>Rodzaj przegródek</p></th><th><p>Sterylność</p></th><th><p>Opakowanie</p></th></tr><tr><td><p>90-3200B</p></td><td><p>2 cale</p></td><td><p>100 miejsc</p></td><td><p>Niebieski</p></td><td><p>Kartonowa kratka prosta</p></td><td><p>Niesterylne</p></td><td><p>5 szt./opakowanie, 4 opakowania/karton</p></td></tr></tbody></table></div></div>",
         "lang": "pl"
       },
-      "descPl": null
-    },
-    {
-      "id": "fiolki-do-hodowli-muszek-owocowych",
+      "descPl": null,
       "cat": "droso",
       "sku": "51-0800",
       "base": 820.85,
@@ -541,7 +538,7 @@
     return '' +
       heroSlider() +
       '<div class="trust" data-section="Pasek zaufania · Text blocks"><div class="wrap trust__in">' +
-      ['ISO 9001 · ISO 13485', L('Certyfikat CE', 'CE certification'), L('Certyfikat analizy (COA) dla każdej partii', 'Certificate of analysis (COA) for every lot'), L('Zamówienia hurtowe i OEM', 'Bulk and OEM orders')]
+      [L('Certyfikaty firmy: ISO 9001, ISO 13485, CE', 'Company certifications: ISO 9001, ISO 13485, CE'), L('Wyszukiwanie po nr katalogowym', 'Search by catalogue number'), L('Certyfikat analizy (COA) dla każdej partii', 'Certificate of analysis (COA) for every lot'), L('Zamówienia hurtowe i OEM', 'Bulk and OEM orders')]
         .map(function (x) { return '<span class="trust__item"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.5 2.5 5-5.2"/></svg>' + x + '</span>'; }).join('') +
       '</div></div>' +
 
@@ -659,7 +656,8 @@
         var checked = (sel[o.key] || 0) === i ? ' checked' : '';
         return '<label class="pill"><input type="radio" name="opt-' + o.key + '" value="' + i + '" data-opt="' + o.key + '"' + checked + '><span>' + esc(val[state.lang]) + '</span></label>';
       }).join('');
-      return '<fieldset class="opt"><legend>' + esc(o[state.lang]) + ': <span id="optv-' + o.key + '">' + esc(o.values[sel[o.key] || 0][state.lang]) + '</span></legend><div class="opt__vals">' + vals + '</div></fieldset>';
+      var oname = /^(Ilość|Opakowanie|Rozmiar)$/.test(o.pl) && o.values.some(function (x) { return /szt|opak|karton|worek|pudeł/.test(x.pl); }) ? L('Wielkość opakowania', 'Pack size') : o[state.lang];
+      return '<fieldset class="opt"><legend>' + esc(oname) + ': <span id="optv-' + o.key + '">' + esc(o.values[sel[o.key] || 0][state.lang]) + '</span></legend><div class="opt__vals">' + vals + '</div></fieldset>';
     }).join('');
     var related = PRODUCTS.filter(function (x) { return x.cat === p.cat && x.id !== p.id; }).slice(0, 3).map(card).join('');
     var d = descBlock(p);
@@ -675,10 +673,10 @@
       (d.note ? '<p class="desc-note desc-note--top">' + fx(d.note) + '</p>' : '') +
       '<form id="buyForm" novalidate><div lang="' + state.lang + '">' + opts + '</div>' +
       '<p class="stock">' + fx(L('[Dostępność i czas wysyłki – do potwierdzenia]', '[Availability and dispatch time – to be confirmed]')) + '</p>' +
-      '<div class="buy"><div class="qty" role="group" aria-label="' + L('Ilość', 'Quantity') + '"><button type="button" data-q="-1" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
+      '<p class="buy__label">' + L('Liczba opakowań', 'Number of packs') + '</p><div class="buy"><div class="qty" role="group" aria-label="' + L('Liczba opakowań', 'Number of packs') + '"><button type="button" data-q="-1" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
       '<input id="qtyInput" type="number" min="1" max="99" value="' + qty + '" inputmode="numeric" aria-label="' + L('Ilość', 'Quantity') + '"><button type="button" data-q="1" aria-label="' + L('Zwiększ ilość', 'Increase quantity') + '">+</button></div>' +
       '<button class="btn" type="submit">' + L('Dodaj do koszyka', 'Add to cart') + '</button></div></form>' +
-      '<a class="btn btn--ghost btn--quote" href="#/kontakt">' + L('Zapytaj o wycenę hurtową', 'Request a bulk quote') + '</a>' +
+      '<a class="btn btn--ghost btn--quote" href="#/kontakt?wycena=' + p.id + '" id="quoteBtn">' + L('Zapytaj o wycenę hurtową', 'Request a bulk quote') + '</a>' +
       '<p class="sku">SKU: <span id="pSku">' + esc(skuOf(p, sel)) + '</span> · ' + L('Kategoria', 'Category') + ': ' + esc(t(CATS[p.cat])) + '</p>' +
       '</div></div>' +
 
@@ -687,7 +685,8 @@
       '<div class="tabs__panel" role="tabpanel" id="tp-opis" aria-labelledby="tb-opis" tabindex="0">' + d.html + '</div>' +
       '<div class="tabs__panel" role="tabpanel" id="tp-coa" aria-labelledby="tb-coa" tabindex="0" hidden>' +
       '<p>' + L('Certyfikat analizy (COA) można pobrać na stronie Biologix – wystarczy numer katalogowy i numer partii (LOT) z etykiety.', 'Download the COA on the Biologix website using the catalogue number and the lot number from the label.') + '</p>' +
-      '<p class="muted small">' + L('Numer katalogowy tego produktu: ', 'Catalogue number of this product: ') + '<strong>' + esc(skuOf(p, sel)) + '</strong>' + fx(L(' · [Link do strony z certyfikatami – do potwierdzenia]', ' · [Link to the certificates page – to be confirmed]')) + '</p></div>' +
+      '<p class="muted small">' + L('Numer katalogowy do wyszukania certyfikatu: ', 'Catalogue number for the certificate search: ') + '<strong id="coaSku">' + esc(skuOf(p, sel)) + '</strong></p>' +
+      '<p><a class="btn btn--ghost" href="https://www.biologixgroup.com/Certificate.php" target="_blank" rel="noopener">' + L('Znajdź certyfikat dla partii', 'Find the certificate for your lot') + ' ↗</a></p></div>' +
       '<div class="tabs__panel" role="tabpanel" id="tp-dostawa" aria-labelledby="tb-dostawa" tabindex="0" hidden>' +
       '<p>' + fx(L('Zamówienia wysyłamy z [magazyn] w ciągu [1–2 dni roboczych]. Koszt dostawy: [koszt / bezpłatna od … zł]; dokładny koszt widać w koszyku przed płatnością.', 'Orders are shipped from [warehouse] within [1–2 business days]. Shipping cost: [cost / free from … PLN]; the exact cost is shown at checkout before you pay.')) + '</p>' +
       '<p>' + fx(L('[Liczba] dni na zwrot produktu: prosimy najpierw o kontakt z numerem zamówienia i powodem zwrotu. Szczegóły: ', '[Number] days to return a product: please contact us first with your order number and the reason. Details: ')) + '<a href="#/dostawa-i-zwroty">' + L('Dostawa i zwroty', 'Shipping & returns') + '</a>.</p></div></div>' +
@@ -706,7 +705,9 @@
     }).join('');
   }
   function priceBlock(p, sel) {
-    return '<p class="price">' + zl(priceOf(p, sel).price) + '</p>' +
+    var unit = '';
+    if (p.options.length === 1) { var ov = p.options[0].values[(sel || {})[p.options[0].key] || 0]; if (ov && /szt|opak|karton|worek|pudeł/.test(ov.pl)) unit = ' <span class="price__unit">/ ' + L('opakowanie', 'pack') + ' (' + esc(ov[state.lang]) + ')</span>'; }
+    return '<p class="price">' + zl(priceOf(p, sel).price) + unit + '</p>' +
       '<p class="vat">' + fx(L('[Cena brutto / netto – do potwierdzenia]. Dokładny koszt dostawy widać w koszyku przed płatnością.', '[Gross / net price – to be confirmed]. The exact shipping cost is shown at checkout before you pay.')) + '</p>';
   }
 
@@ -872,17 +873,24 @@
       '</div></section>';
   }
 
-  function viewContact() {
+  function quoteText(id) {
+    var p = BY_ID[id]; if (!p) return '';
+    var sel = selOf(p), parts = [t(p).name, L('Nr kat.: ', 'Cat. no.: ') + skuOf(p, sel)];
+    p.options.forEach(function (o) { var nm = /^(Ilość|Opakowanie|Rozmiar)$/.test(o.pl) && o.values.some(function (x) { return /szt|opak|karton|worek|pudeł/.test(x.pl); }) ? L('Wielkość opakowania', 'Pack size') : o[state.lang]; parts.push(nm + ': ' + o.values[sel[o.key] || 0][state.lang]); });
+    return L('Proszę o wycenę hurtową:\n', 'Please send a bulk quote for:\n') + parts.join('\n') + L('\nLiczba opakowań: \nAdres dostawy / instytucja: ', '\nNumber of packs: \nDelivery address / institution: ');
+  }
+  function viewContact(q) {
+    var qid = q && q.get ? q.get('wycena') : null, qtext = qid ? quoteText(qid) : '';
     return '<div class="wrap page-head">' + crumbs([home(), [L('Kontakt', 'Contact')]]) + '<h1>' + L('Kontakt', 'Contact us') + '</h1></div>' +
       '<section class="wrap" data-section="Kontakt · Contact info" aria-label="' + L('Kontakt', 'Contact') + '"><div class="contact">' +
       '<div><p>' + L('Chętnie pomożemy w sprawie produktów, wycen większych ilości, certyfikatów analizy i zamówień dla instytucji.', 'We’re happy to help with product questions, quotes for larger quantities, certificates of analysis and orders for institutions.') + '</p><dl>' +
       '<dt>' + L('E-mail', 'Email') + '</dt><dd>' + fx(L('[e-mail]', '[email]')) + '</dd>' +
       '<dt>' + L('Telefon', 'Phone') + '</dt><dd>' + fx(L('[telefon], [godziny]', '[phone], [hours]')) + '</dd>' +
       '<dt>' + L('Adres', 'Address') + '</dt><dd>' + fx(L('[firma i adres]', '[company and address]')) + '</dd></dl></div>' +
-      '<form class="panel" data-demo-form="contact" novalidate aria-labelledby="h-form"><h2 id="h-form">' + L('Napisz do nas', 'Send us a message') + '</h2><div class="fields">' +
+      '<form class="panel" data-demo-form="contact" novalidate aria-labelledby="h-form"><h2 id="h-form">' + (qtext ? L('Zapytanie o wycenę hurtową', 'Bulk quote request') : L('Napisz do nas', 'Send us a message')) + '</h2><div class="fields">' +
       field('k-name', L('Imię i nazwisko', 'Name'), 'text', 'name', false) + field('k-email', L('E-mail', 'Email'), 'email', 'email', false) +
       field('k-org', L('Instytucja (opcjonalnie)', 'Organization (optional)'), 'text', 'organization', true) +
-      '<div class="field field--full"><label for="k-msg">' + L('Wiadomość', 'Message') + '</label><textarea id="k-msg"></textarea></div></div>' +
+      '<div class="field field--full"><label for="k-msg">' + L('Wiadomość', 'Message') + '</label><textarea id="k-msg" rows="7">' + esc(qtext) + '</textarea></div></div>' +
       '<label class="check-row"><input type="checkbox"> <span>' + L('Wyrażam zgodę na przetwarzanie moich danych w celu udzielenia odpowiedzi.', 'I agree to the processing of my data to answer my message.') + '</span></label>' +
       '<button class="btn" type="submit">' + L('Wyślij', 'Send') + '</button>' +
       '<p class="notice notice--demo" role="status" aria-live="polite"></p></form></div></section>';
@@ -912,7 +920,7 @@
     else if (a === 'o-nas') html = viewAbout();
     else if (a === 'dostawa-i-zwroty') html = viewShipping();
     else if (a === 'faq') html = viewFaq();
-    else if (a === 'kontakt') html = viewContact();
+    else if (a === 'kontakt') html = viewContact(r.q);
     else html = viewNotFound();
     main.innerHTML = html;
     document.title = (title || titles()[a] || L('Strona', 'Page')) + ' – BIOLOGIX EUROPE (' + L('szkic', 'draft') + ')';
@@ -961,6 +969,7 @@
       document.getElementById('optv-' + key).textContent = o.values[sel[key]][state.lang];
       document.getElementById('pPrice').innerHTML = priceBlock(p, sel);
       document.getElementById('pSku').textContent = skuOf(p, sel);
+      var cs = document.getElementById('coaSku'); if (cs) cs.textContent = skuOf(p, sel);
       if (o.values[sel[key]].img) { state.view[p.id] = 0; refreshGallery(p); }
     } else if (el.name === 'f-cat') {
       state.shop.cat = el.value;

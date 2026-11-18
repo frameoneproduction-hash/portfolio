@@ -486,3 +486,6 @@ html[lang="en"] .tiles .tile__label::after { content: "Browse products →"; }
   .link-btn { margin-top: 4px; }
 }
 @media (min-width: 1000px) { .shop { grid-template-columns: 310px 1fr; gap: 40px; } }
+
+.price__unit { font-size: .95rem; font-weight: 500; color: var(--muted); }
+.buy__label { margin: 0 0 6px; font-size: .88rem; font-weight: 600; color: var(--ink); }
