@@ -514,7 +514,7 @@
     var meta = variants > 1 ? count(variants, 'wariant', 'warianty', 'wariantów', 'variant', 'variants') : 'SKU ' + p.sku;
     return '<a class="card" href="#/produkt/' + p.id + '">' +
       '<div class="card__img">' + productArt(p, null, 0) + '</div>' + badge +
-      '<div class="card__body"><h3 class="card__name" lang="' + state.lang + '">' + esc(tx.name) + '</h3>' +
+      '<div class="card__body"><p class="card__sku">' + L('Nr kat. ', 'Cat. no. ') + esc(String(p.sku).split('/')[0]) + '</p><h3 class="card__name" lang="' + state.lang + '">' + esc(tx.name) + '</h3>' +
 
       '<p class="card__price">' + (m.from ? L('od ', 'from ') : '') + zl(m.price) + '</p></div></a>';
   }
@@ -540,6 +540,10 @@
     }).join('');
     return '' +
       heroSlider() +
+      '<div class="trust" data-section="Pasek zaufania · Text blocks"><div class="wrap trust__in">' +
+      ['ISO 9001 · ISO 13485', L('Certyfikat CE', 'CE certification'), L('Certyfikat analizy (COA) dla każdej partii', 'Certificate of analysis (COA) for every lot'), L('Zamówienia hurtowe i OEM', 'Bulk and OEM orders')]
+        .map(function (x) { return '<span class="trust__item"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.5 2.5 5-5.2"/></svg>' + x + '</span>'; }).join('') +
+      '</div></div>' +
 
       '<section class="section" data-section="Kategorie · Categories" aria-labelledby="h-cats"><div class="wrap">' +
       '<div class="section__head"><div><p class="eyebrow">' + L('Kategorie', 'Categories') + '</p><h2 id="h-cats">' + L('Kategorie produktów', 'Product categories') + '</h2></div><a href="#/sklep">' + L('Wszystkie produkty →', 'All products →') + '</a></div>' +
@@ -562,7 +566,7 @@
 
       '<section class="section section--tight" data-section="Zapytanie ofertowe · Call to action" aria-labelledby="h-rfq"><div class="wrap"><div class="rfq">' +
       '<div><h2 id="h-rfq">' + L('Zapytaj o ofertę dla instytucji', 'Request a quote for your institution') + '</h2>' +
-      '<p>' + L('Uczelnie, szpitale, laboratoria i firmy: prześlij listę produktów i ilości – przygotujemy wycenę, także dla zamówień hurtowych i OEM.', 'Universities, hospitals, labs and companies: send us the products and quantities – we will prepare a quote, including bulk and OEM orders.') + '</p></div>' +
+      '<p>' + L('Uczelnie, szpitale, laboratoria, firmy i dystrybutorzy: prześlij listę produktów i ilości – przygotujemy wycenę, także dla zamówień hurtowych i OEM.', 'Universities, hospitals, labs, companies and distributors: send us the products and quantities – we will prepare a quote, including bulk and OEM orders.') + '</p></div>' +
       '<a class="btn btn--primary" href="#/kontakt">' + L('Zapytaj o ofertę', 'Request a quote') + '</a></div></div></section>' +
 
       '<section class="section section--tight" data-section="Newsletter · Subscribe" aria-labelledby="h-news"><div class="wrap"><div class="newsletter">' +
@@ -674,6 +678,7 @@
       '<div class="buy"><div class="qty" role="group" aria-label="' + L('Ilość', 'Quantity') + '"><button type="button" data-q="-1" aria-label="' + L('Zmniejsz ilość', 'Decrease quantity') + '">−</button>' +
       '<input id="qtyInput" type="number" min="1" max="99" value="' + qty + '" inputmode="numeric" aria-label="' + L('Ilość', 'Quantity') + '"><button type="button" data-q="1" aria-label="' + L('Zwiększ ilość', 'Increase quantity') + '">+</button></div>' +
       '<button class="btn" type="submit">' + L('Dodaj do koszyka', 'Add to cart') + '</button></div></form>' +
+      '<a class="btn btn--ghost btn--quote" href="#/kontakt">' + L('Zapytaj o wycenę hurtową', 'Request a bulk quote') + '</a>' +
       '<p class="sku">SKU: <span id="pSku">' + esc(skuOf(p, sel)) + '</span> · ' + L('Kategoria', 'Category') + ': ' + esc(t(CATS[p.cat])) + '</p>' +
       '</div></div>' +
 
