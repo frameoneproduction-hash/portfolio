@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Próbka artykułu SEO na blog sklepu</title>
+<meta name="description" content="Próbka artykułu SEO dla fikcyjnego sklepu z roślinami: 775 słów, struktura H2/H3, meta title i description, linki wewnętrzne do kart produktów, FAQ z danymi strukturalnymi.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/probki/artykul-seo/">
+<link rel="preload" href="../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../../audyt-wp/img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --ink: #17211b; --paper: #ffffff; --card: #f4f4f5; --muted: #4f5c55; --line: #dfe3e1; --accent: #2f5d3a;
+  --serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: .9em; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px 56px; }
+.top { padding: 44px 0 10px; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 12px; }
+.top h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.03; letter-spacing: -0.04em; margin: 0 0 16px; font-weight: 800; max-width: 17ch; }
+.lead { font-size: 18px; color: var(--muted); max-width: 62ch; margin: 0 0 14px; }
+.fake { display: inline-block; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; }
+.top2 { font-size: 26px; letter-spacing: -0.02em; margin: 44px 0 14px; }
+.seo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.seo > * { min-width: 0; }
+.serp .u, .serp .t, .serp .d, .cnt { overflow-wrap: anywhere; }
+.box { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.box h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); margin: 0 0 10px; }
+.serp { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.serp .u { font-size: 13px; color: var(--muted); }
+.serp .t { font-size: 19px; color: #1a4fb4; margin: 2px 0 4px; line-height: 1.3; }
+.serp .d { font-size: 14px; color: var(--muted); margin: 0; }
+.cnt { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+.cnt b { color: var(--accent); }
+.box ul { margin: 0; padding-left: 0; list-style: none; font-size: 14px; }
+.box li { padding: 3px 0; }
+.o-h3 { padding-left: 22px !important; color: var(--muted); }
+.o-h1 { font-weight: 700; }
+pre { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; overflow-x: auto; font-size: 12.5px; line-height: 1.5; margin: 0; max-height: 280px; }
+.wide { grid-column: 1 / -1; }
+article { max-width: 720px; margin: 0 auto; padding: 36px 0 8px; border-top: 1px solid var(--line); }
+article .shop { font-family: var(--serif); font-size: 22px; color: var(--accent); margin: 0 0 18px; }
+article h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.4vw, 46px); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 18px; }
+article h2 { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.15; margin: 38px 0 12px; }
+article h3 { font-size: 19px; margin: 24px 0 6px; }
+article p, article li { font-size: 17px; line-height: 1.7; }
+article .lede { font-size: 19px; color: var(--muted); }
+article ul { padding-left: 22px; }
+a.int { background: #ecf2ed; border-radius: 4px; padding: 0 4px; text-decoration: none; border-bottom: 1px solid var(--accent); }
+footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px 48px; }
+  .seo { grid-template-columns: 1fr; }
+  article p, article li { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="kicker">Próbka tekstu SEO · projekt koncepcyjny</p>
+<h1>Artykuł SEO na blog sklepu internetowego</h1>
+<p class="lead">Poradnik dla fikcyjnego sklepu z&nbsp;roślinami „Liściownia”: 775 słów, jedno główne słowo kluczowe, struktura H2/H3, meta title i&nbsp;description, linki do kart produktów i&nbsp;FAQ z&nbsp;danymi strukturalnymi. Najpierw karta SEO, niżej cały tekst.</p>
+<p class="fake">Sklep fikcyjny – linki prowadzą do demo sklepu.</p>
+</header>
+
+<h2 class="top2">Karta SEO</h2>
+<section class="seo" aria-label="Karta SEO">
+<div class="box wide">
+<h3>Podgląd w&nbsp;Google</h3>
+<div class="serp"><p class="u">lisciownia.example › blog › rosliny-do-ciemnego-biura</p><p class="t">Rośliny do ciemnego biura: 4 gatunki bez słońca | Liściownia</p><p class="d">Biuro bez słońca? Zamiokulkas, sansewieria, epipremnum i kalatea poradzą sobie w półcieniu. Jak je podlewać i których roślin nie stawiać w cieniu.</p></div>
+<p class="cnt">Meta title: <b>60</b> z&nbsp;60 znaków · meta description: <b>146</b> z&nbsp;155 znaków · adres: <span class="mono">/blog/rosliny-do-ciemnego-biura/</span></p>
+</div>
+<div class="box">
+<h3>Słowa kluczowe</h3>
+<ul>
+<li><b>główne:</b> rośliny do ciemnego biura</li>
+<li>rośliny do biura bez okna</li><li>rośliny do cienia</li><li>rośliny do biura</li>
+</ul>
+<p class="cnt">Główne słowo jest w&nbsp;title, H1, adresie i&nbsp;pierwszym akapicie; pozostałe – w&nbsp;nagłówkach i&nbsp;tekście, bez upychania.</p>
+</div>
+<div class="box">
+<h3>Linki wewnętrzne</h3>
+<ul>
+<li>„zamiokulkas w naszym sklepie” → <span class="mono">/sklep/#/p/zamiokulkas</span></li>
+<li>„sansewieria gwinejska” → <span class="mono">/sklep/#/p/sansewieria</span></li>
+<li>„epipremnum złociste” → <span class="mono">/sklep/#/p/epipremnum</span></li>
+<li>„kalatea okrągłolistna” → <span class="mono">/sklep/#/p/kalatea</span></li>
+<li>„ofercie dla firm” → <span class="mono">/dla-firm/</span></li>
+</ul>
+<p class="cnt">Opisowe kotwice zamiast „kliknij tutaj”.</p>
+</div>
+<div class="box">
+<h3>Struktura nagłówków</h3>
+<ul>
+<li class="o-h1"><span class="mono">H1</span> Rośliny do ciemnego biura: 4 gatunki, które poradzą sobie bez słońca</li>
+<li class="o-h2"><span class="mono">H2</span> Ile światła potrzebuje roślina w biurze?</li>
+<li class="o-h2"><span class="mono">H2</span> 4 rośliny do ciemniejszego biura</li>
+<li class="o-h3"><span class="mono">H3</span> Zamiokulkas – dla zapominalskich</li>
+<li class="o-h3"><span class="mono">H3</span> Sansewieria – stoi tam, gdzie ją postawisz</li>
+<li class="o-h3"><span class="mono">H3</span> Epipremnum złociste – na półkę i szafę</li>
+<li class="o-h3"><span class="mono">H3</span> Kalatea – dla biura z kotem</li>
+<li class="o-h2"><span class="mono">H2</span> Czego nie stawiać w cieniu</li>
+<li class="o-h2"><span class="mono">H2</span> Jak podlewać rośliny w biurze, żeby ich nie przelać</li>
+<li class="o-h2"><span class="mono">H2</span> Najczęstsze pytania</li>
+<li class="o-h3"><span class="mono">H3</span> Czy roślina przeżyje w biurze bez okna?</li>
+<li class="o-h3"><span class="mono">H3</span> Jak często podlewać rośliny w biurze?</li>
+<li class="o-h3"><span class="mono">H3</span> Które rośliny do biura są bezpieczne dla kota i psa?</li>
+<li class="o-h3"><span class="mono">H3</span> Co zrobić, gdy liście żółkną?</li>
+<li class="o-h2"><span class="mono">H2</span> Rośliny w biurze bez Waszej pracy</li>
+</ul>
+</div>
+<div class="box">
+<h3>FAQ – dane strukturalne (JSON-LD)</h3>
+<pre class="mono">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;FAQPage&quot;,
+  &quot;mainEntity&quot;: [
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Czy roślina przeżyje w biurze bez okna?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Tylko wtedy, gdy przez większość dnia ma światło z lamp. Bez światła nie przeżyje żadna roślina. Najlepiej radzą sobie zamiokulkas i sansewieria postawione blisko lampy.&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Jak często podlewać rośliny w biurze?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Zależy od gatunku: zamiokulkas co 2–3 tygodnie, sansewieria co 2–4 tygodnie, a kalatea potrzebuje stale lekko wilgotnej ziemi. Zawsze sprawdzaj palcem, czy ziemia przeschła.&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Które rośliny do biura są bezpieczne dla kota i psa?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Z gatunków z tego artykułu – kalatea. Zamiokulkas, sansewieria i epipremnum są dla zwierząt trujące, więc w biurze, do którego przychodzą psy, stawiamy je poza ich zasięgiem.&quot;
+      }
+    },
+    {
+      &quot;@type&quot;: &quot;Question&quot;,
+      &quot;name&quot;: &quot;Co zrobić, gdy liście żółkną?&quot;,
+      &quot;acceptedAnswer&quot;: {
+        &quot;@type&quot;: &quot;Answer&quot;,
+        &quot;text&quot;: &quot;Najczęściej to znak nadmiaru wody. Odstaw konewkę, wylej wodę z osłonki i podlej dopiero wtedy, gdy ziemia przeschnie.&quot;
+      }
+    }
+  ]
+}</pre>
+</div>
+</section>
+
+<article>
+<p class="shop">Liściownia · blog</p>
+
+<h1>Rośliny do ciemnego biura: 4 gatunki, które poradzą sobie bez słońca</h1>
+<p class="lede">Biurko daleko od okna, okna na północ albo pokój bez okien – w wielu biurach słońca jest mało. To nie znaczy, że trzeba zrezygnować z&nbsp;zieleni. Dobre rośliny do ciemnego biura to gatunki, które w&nbsp;naturze rosną w&nbsp;cieniu większych roślin. Trzeba je tylko dobrze postawić i&nbsp;nie przelewać. Poniżej cztery takie rośliny, krótko o&nbsp;tym, jak o&nbsp;nie dbać, i&nbsp;lista tych, których w&nbsp;cieniu lepiej nie stawiać.</p>
+
+<h2>Ile światła potrzebuje roślina w&nbsp;biurze?</h2>
+<p>Każda roślina potrzebuje światła, różnią się tylko ilością. W&nbsp;opisach roślin spotkasz trzy określenia:</p>
+<ul>
+<li><b>jasne stanowisko</b> – blisko okna, dużo światła przez cały dzień;</li>
+<li><b>półcień</b> – kilka metrów od okna albo przy oknie na północ, bez bezpośredniego słońca;</li>
+<li><b>cień</b> – daleki kąt pokoju, korytarz, pokój z&nbsp;małym oknem.</li>
+</ul>
+<p>Jak sprawdzić, które to miejsce? W&nbsp;słoneczny dzień około południa trzymaj dłoń 30 cm nad kartką papieru w&nbsp;miejscu, gdzie ma stanąć roślina. Ostry, wyraźny cień dłoni oznacza jasne stanowisko. Cień rozmyty, ale widoczny – półcień. Ledwo widoczny albo żaden – cień. Taki test zajmuje minutę i&nbsp;oszczędza roślinę, która w&nbsp;złym miejscu przez kilka tygodni powoli traciłaby liście.</p>
+<p>W&nbsp;biurze bez okien jedynym źródłem jest światło lamp. Wtedy wybieraj najbardziej odporne gatunki z&nbsp;listy poniżej i&nbsp;stawiaj je jak najbliżej lampy, na przykład na szafce pod oświetleniem, a&nbsp;nie na podłodze w&nbsp;rogu.</p>
+
+<h2>4 rośliny do ciemniejszego biura</h2>
+
+<h3>Zamiokulkas – dla zapominalskich</h3>
+<p>Błyszczące, ciemnozielone liście dobrze wyglądają nawet w&nbsp;ciemniejszym kącie. Zamiokulkas magazynuje wodę w&nbsp;kłączach, dlatego dobrze znosi długi weekend i&nbsp;urlop bez podlewania. Najlepiej czuje się w&nbsp;półcieniu albo w&nbsp;jasnym miejscu bez ostrego słońca. Podlewaj go co 2–3 tygodnie, gdy ziemia całkiem przeschnie. Uwaga: jest trujący dla kotów i&nbsp;psów.</p>
+<p>Zobacz: <a href="../../demo/sklep-roslin/#/p/zamiokulkas" class="int">zamiokulkas w&nbsp;naszym sklepie</a>.</p>
+
+<h3>Sansewieria – stoi tam, gdzie ją postawisz</h3>
+<p>Sztywne, wyprostowane liście zajmują mało miejsca, więc sansewieria mieści się przy biurku i&nbsp;na parapecie. Znosi każde światło, od cienia po jasne okno, a&nbsp;także suche powietrze z&nbsp;klimatyzacji. Podlewaj ją rzadko – co 2–4 tygodnie, zimą jeszcze rzadziej. Najczęstszy błąd to za dużo wody, nie za mało.</p>
+<p>Zobacz: <a href="../../demo/sklep-roslin/#/p/sansewieria" class="int">sansewieria gwinejska</a>.</p>
+
+<h3>Epipremnum złociste – na półkę i&nbsp;szafę</h3>
+<p>Zwisające pędy dobrze wyglądają na regale, szafie albo w&nbsp;koszu podwieszonym pod sufitem. Epipremnum rośnie od półcienia po jasne miejsce i&nbsp;wybacza zapomniane podlewanie. Podlewaj je, gdy ziemia przeschnie do połowy doniczki. Zbyt długie pędy możesz przyciąć i&nbsp;ukorzenić w&nbsp;wodzie – tak powstaje kolejna roślina do innego pokoju.</p>
+<p>Zobacz: <a href="../../demo/sklep-roslin/#/p/epipremnum" class="int">epipremnum złociste</a>.</p>
+
+<h3>Kalatea – dla biura z&nbsp;kotem</h3>
+<p>Duże, okrągłe liście w&nbsp;srebrzyste pasy wieczorem lekko się unoszą, a&nbsp;rano opadają. Kalatea lubi półcień, bez bezpośredniego słońca, i&nbsp;ziemię stale lekko wilgotną. Podlewaj ją odstaną wodą i&nbsp;postaw z&nbsp;dala od grzejnika – lubi wilgotne powietrze. To jedyna roślina z&nbsp;tej listy bezpieczna dla kotów i&nbsp;psów.</p>
+<p>Zobacz: <a href="../../demo/sklep-roslin/#/p/kalatea" class="int">kalatea okrągłolistna</a>.</p>
+
+<h2>Czego nie stawiać w&nbsp;cieniu</h2>
+<p>Niektóre popularne rośliny w&nbsp;ciemnym biurze szybko tracą liście. Te lepiej postawić przy oknie:</p>
+<ul>
+<li><b>fikus lirolistny</b> – potrzebuje bardzo jasnego miejsca blisko okna i&nbsp;nie lubi przestawiania;</li>
+<li><b>pilea</b> – lubi jasne, rozproszone światło;</li>
+<li><b>monstera</b> – rośnie w&nbsp;jasnym miejscu bez ostrego słońca w&nbsp;południe.</li>
+</ul>
+<p>Jeśli w&nbsp;biurze jest choć jedno jasne okno, ustaw przy nim właśnie te gatunki, a&nbsp;dalej od okna – rośliny z&nbsp;listy powyżej.</p>
+
+<h2>Jak podlewać rośliny w&nbsp;biurze, żeby ich nie przelać</h2>
+<p>W&nbsp;biurze rośliny częściej giną od nadmiaru wody niż od jej braku. Kilka prostych zasad:</p>
+<ul>
+<li><b>Jedna osoba odpowiada za podlewanie.</b> Gdy podlewa każdy, kto przechodzi obok, roślina dostaje wodę kilka razy w&nbsp;tygodniu.</li>
+<li><b>Sprawdzaj ziemię palcem.</b> Wsadź palec na 2–3 cm. Jeśli ziemia jest wilgotna, nie podlewaj.</li>
+<li><b>Wylewaj wodę z&nbsp;osłonki.</b> Po 15 minutach od podlania wylej to, co spłynęło na dno osłonki.</li>
+<li><b>Zimą podlewaj rzadziej.</b> Rośliny rosną wtedy wolniej i&nbsp;zużywają mniej wody.</li>
+</ul>
+
+<h2>Najczęstsze pytania</h2>
+<h3>Czy roślina przeżyje w biurze bez okna?</h3><p>Tylko wtedy, gdy przez większość dnia ma światło z lamp. Bez światła nie przeżyje żadna roślina. Najlepiej radzą sobie zamiokulkas i sansewieria postawione blisko lampy.</p><h3>Jak często podlewać rośliny w biurze?</h3><p>Zależy od gatunku: zamiokulkas co 2–3 tygodnie, sansewieria co 2–4 tygodnie, a kalatea potrzebuje stale lekko wilgotnej ziemi. Zawsze sprawdzaj palcem, czy ziemia przeschła.</p><h3>Które rośliny do biura są bezpieczne dla kota i psa?</h3><p>Z gatunków z tego artykułu – kalatea. Zamiokulkas, sansewieria i epipremnum są dla zwierząt trujące, więc w biurze, do którego przychodzą psy, stawiamy je poza ich zasięgiem.</p><h3>Co zrobić, gdy liście żółkną?</h3><p>Najczęściej to znak nadmiaru wody. Odstaw konewkę, wylej wodę z osłonki i podlej dopiero wtedy, gdy ziemia przeschnie.</p>
+
+<h2>Rośliny w&nbsp;biurze bez Waszej pracy</h2>
+<p>Jeśli nikt w&nbsp;zespole nie ma czasu na podlewanie, możemy zająć się tym za Was: dobieramy rośliny do światła w&nbsp;biurze, ogrodnik przychodzi najwyżej co 14 dni, a&nbsp;roślinę, która marnieje, wymieniamy bez dopłaty. Szczegóły znajdziecie w&nbsp;<a href="../prezentacja/" class="int">ofercie dla firm</a>.</p>
+
+</article>
+
+<footer>Projekt koncepcyjny Frame One. Sklep „Liściownia” jest fikcyjny (nazwa sprawdzona w&nbsp;KRS, CEIDG i&nbsp;Google 17.11.2026); domena w&nbsp;podglądzie Google to adres przykładowy. Porady pielęgnacyjne są zgodne z&nbsp;kartami produktów w&nbsp;<a href="../../demo/sklep-roslin/">demo sklepu</a>.</footer>
+</div>
+</body>
+</html>
