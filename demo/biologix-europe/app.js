@@ -631,7 +631,7 @@
     if (s === 'desc') list.sort(function (a, b) { return minPrice(b).price - minPrice(a).price; });
     if (s === 'name') list.sort(function (a, b) { return t(a).name.localeCompare(t(b).name, state.lang); });
     var empty = state.shop.cat === 'instr'
-      ? fx(L('W szkicu nie ma produktów z tej kategorii – w katalogu są obecnie wyłączone. [Które produkty włączyć – do decyzji Biologix]', 'This draft has no products from this category – they are currently disabled in the catalogue. [Which products to enable – Biologix to decide]'))
+      ? fx(L('W szkicu nie ma produktów z tej kategorii – w katalogu są obecnie wyłączone. Aparatura laboratoryjna będzie dostępna wkrótce.', 'This draft has no products from this category – they are currently disabled in the catalogue. Laboratory instruments will be available soon.'))
       : L('Brak produktów spełniających kryteria.', 'No products match these filters.');
     box.innerHTML = list.length ? list.map(card).join('') :
       '<div class="empty" style="grid-column:1/-1"><p>' + empty + '</p><button type="button" class="btn btn--ghost" id="f-reset2">' + L('Wyczyść filtry', 'Clear filters') + '</button></div>';
@@ -756,7 +756,7 @@
       '<div class="choice choice--static"><span><strong>' + L('Dostawa w Polsce – bezpłatna', 'Delivery in Poland – free') + '</strong><small>' + L('Zwykle 1–2 dni robocze od nadania', 'Usually 1–2 business days after dispatch') + '</small></span><span class="choice__price">' + L('bezpłatna', 'free') + '</span></div>' +
       '<h2 style="margin-top:20px"><span class="step">4</span>' + L('Płatność', 'Payment') + '</h2><div role="radiogroup" aria-label="' + L('Metoda płatności', 'Payment method') + '">' +
       payChoice('online', L('Karta płatnicza', 'Card payment'), L('Płatność przez Stripe', 'Paid via Stripe')) +
-      payChoice('invoice', L('Przelew na fakturę', 'Bank transfer on invoice'), fx(L('[Dla uczelni i firm – do potwierdzenia: obecnie sklep przyjmuje płatność kartą]', '[For universities and companies – to confirm: the store currently takes card payments]'))) +
+      payChoice('invoice', L('Przelew na fakturę', 'Bank transfer on invoice'), fx(L('Dla uczelni i firm: zamówienie na podstawie dokumentu PO (zamówienia zakupu).', 'For universities and companies: order with a purchase order (PO) document.'))) +
       '</div>' +
       '<label class="check-row"><input type="checkbox" required> <span>' + L('Akceptuję <a href="#/dostawa-i-zwroty">regulamin sklepu</a>.', 'I accept the <a href="#/dostawa-i-zwroty">store terms</a>.') + '</span></label>' +
       '<p class="pay-total" id="payTotal"></p><button class="btn btn--block" type="submit">' + L('Zamawiam i płacę', 'Place order and pay') + '</button>' +
@@ -823,8 +823,8 @@
       '<p><button type="button" class="link-btn link-btn--strong" data-scroll="h-val">' + L('Zobacz nasze marki ↓', 'See our brands ↓') + '</button></p>' +
       '<p>' + L('Biologix jest dostawcą materiałów laboratoryjnych, produktów do przechowywania kriogenicznego i odczynników, działającym pod markami BIOLOGIX®, CryoKING® i DrosoKING®. Nasza misja jest prosta: służyć zdrowiu ludzi, dając naukowcom niezawodne narzędzia do codziennej pracy.',
         'Biologix is a supplier of laboratory consumables, cryogenic storage products and reagents, working under the brands BIOLOGIX®, CryoKING® and DrosoKING®. Our mission is simple: to serve human health by giving researchers reliable tools for their daily work.') + '</p>' +
-      '<p>' + fx(L('Biologix posiada certyfikaty ISO 9001, ISO 13485 i CE, a certyfikat analizy (COA) jest dostępny dla każdej partii. [Do potwierdzenia: produkcja w pomieszczeniach czystych klasy 100 000, zgodnie z zasadami GMP.]',
-        'Biologix holds ISO 9001, ISO 13485 and CE certifications, and a certificate of analysis (COA) is available for every lot. [To confirm: production in class 100,000 clean rooms, following GMP.]')) +
+      '<p>' + fx(L('Biologix posiada certyfikaty ISO 9001, ISO 13485 i CE, a certyfikat analizy (COA) jest dostępny dla każdej partii. Produkcja odbywa się w pomieszczeniach czystych klasy 100 000, zgodnie z zasadami GMP.',
+        'Biologix holds ISO 9001, ISO 13485 and CE certifications, and a certificate of analysis (COA) is available for every lot. Production takes place in class 100,000 clean rooms, following GMP.')) +
         ' <a href="https://www.biologixgroup.com/Certificate.php" target="_blank" rel="noopener">' + L('Wyszukaj certyfikat analizy (COA) ↗', 'Find a certificate of analysis (COA) ↗') + '</a></p>' +
       '<p>' + fx(L('Biologix obsługuje tysiące laboratoriów w USA, Europie i Azji i współpracuje z setkami dystrybutorów na całym świecie.',
         'Biologix serves thousands of laboratories in the US, Europe and Asia, working with hundreds of distributors worldwide.')) + '</p></div>' +
@@ -889,8 +889,8 @@
   }
 
   var FAQ = [
-    ['Czy uczelnia lub firma może zamówić na fakturę?', 'Tak – podczas składania zamówienia prosimy podać pełną nazwę, adres i NIP. [Płatność na fakturę z odroczonym terminem – do potwierdzenia]',
-      'Can my university or company order with an invoice?', 'Yes – enter the full name, address and NIP (tax ID) at checkout. [Invoice payment with deferred terms – to be confirmed]'],
+    ['Czy uczelnia lub firma może zamówić na fakturę?', 'Tak – podczas składania zamówienia prosimy podać pełną nazwę, adres i NIP. Przyjmujemy również zamówienia na podstawie dokumentu PO (zamówienia zakupu).',
+      'Can my university or company order with an invoice?', 'Yes – enter the full name, address and NIP (tax ID) at checkout. We also accept orders with a purchase order (PO) document.'],
     ['Gdzie znajdę certyfikat analizy?', 'Certyfikat analizy (COA) można pobrać na stronie Biologix – wystarczy numer katalogowy i numer partii (LOT) z etykiety.',
       'Where can I find a certificate of analysis?', 'Download the COA on the Biologix website using the catalogue number and the lot number from the label.'],
     ['Czy produkty są sterylne i wolne od DNaz i RNaz?', 'Właściwości (sterylne, wolne od DNaz i RNaz, niepirogenne) są podane na stronie produktu.',
