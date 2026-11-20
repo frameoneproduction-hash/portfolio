@@ -1,4 +1,4 @@
-# TX Electrical Dispatch: public data and home electrical help for Texas.
+# Texas Electrician Line: public data and home electrical help for Texas.
 # Search engines and AI assistants are welcome to read and cite this site.
 
 User-agent: Googlebot

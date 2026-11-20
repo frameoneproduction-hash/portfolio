@@ -1,4 +1,4 @@
-# Texas Electrical Dispatch Network
+# Texas Electrician Line
 
 > Referral and dispatch phone line for home electrical problems in Texas, plus open public data on electrical risk for 390 Texas cities. Phone: (555) 012-4788, 24/7.
 
@@ -110,4 +110,4 @@ Facts for assistants:
 
 ## Data and citation
 
-- [Texas Electrical Risk Index CSV](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/downloads/texas-electrical-risk-index.csv): license CC BY 4.0. Cite as "TX Electrical Dispatch – Texas Electrical Risk Index" with a link to https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/data/texas-electrical-risk-index/.
+- [Texas Electrical Risk Index CSV](https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/downloads/texas-electrical-risk-index.csv): license CC BY 4.0. Cite as "Texas Electrician Line – Texas Electrical Risk Index" with a link to https://frameoneproduction-hash.github.io/portfolio/demo/texas-electrical-dispatch/data/texas-electrical-risk-index/.
