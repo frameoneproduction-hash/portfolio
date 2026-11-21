@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GA4 + GTM + Consent Mode v2: live tracking demo</title>
+<meta name="description" content="Live demo of e-commerce tracking for GA4 via Google Tag Manager with Consent Mode v2: click through a fictional store and see every dataLayer event, its key parameters and the consent state. Nothing is sent to Google.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/probki/ga4-tracking/">
+<link rel="preload" href="../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="kicker">Sample · fictional store · nothing is sent to Google</p>
+<h1>GA4 + GTM + Consent Mode v2: live tracking demo</h1>
+<p class="lead">Click through a small store and watch what Google Tag Manager would receive: the consent default before any tag, every e-commerce event with its key parameters, and a guard that stops a duplicate purchase when the thank-you page is reloaded.</p>
+<p class="fake">Fictional plant shop. GTM is not loaded on this page: the panel shows the <span class="mono">dataLayer</span> pushes it would read.</p>
+</header>
+
+<section class="demo" aria-label="Tracking demo">
+<div class="store">
+<p class="brand">Liściownia · demo store</p>
+<div class="consent" id="consent" role="region" aria-label="Cookie consent (demo)">
+<p><b>Cookies (demo).</b> Analytics and ads stay off until you choose.</p>
+<div class="btns">
+<button type="button" data-consent="all">Accept all</button>
+<button type="button" data-consent="analytics">Analytics only</button>
+<button type="button" data-consent="none" class="ghost">Reject</button>
+</div>
+</div>
+
+<div class="product">
+<div class="pic" aria-hidden="true"></div>
+<div>
+<p class="pname">Rubber plant <span>Ficus elastica</span></p>
+<label for="size">Size</label>
+<select id="size">
+<option value="S">S · 45 cm · 69 PLN</option>
+<option value="M" selected>M · 80 cm · 119 PLN</option>
+</select>
+<label for="qty">Quantity</label>
+<input id="qty" type="number" min="1" max="9" value="1" inputmode="numeric">
+<button type="button" id="add">Add to cart</button>
+</div>
+</div>
+
+<ol class="steps">
+<li><button type="button" id="cart" disabled>View cart</button></li>
+<li><button type="button" id="checkout" disabled>Begin checkout</button></li>
+<li><label for="ship" class="sr">Shipping</label><select id="ship" disabled><option value="Courier">Courier · 14.99 PLN</option><option value="Parcel locker">Parcel locker · 11.99 PLN</option></select><button type="button" id="shipping" disabled>Add shipping</button></li>
+<li><label for="pay" class="sr">Payment</label><select id="pay" disabled><option>Card</option><option>BLIK</option><option>Bank transfer</option></select><button type="button" id="payment" disabled>Add payment</button></li>
+<li><button type="button" id="order" disabled>Place order</button></li>
+<li><button type="button" id="reload" class="ghost" disabled>Reload thank-you page</button></li>
+</ol>
+<p class="hint" id="hint">Start with a consent choice or “Add to cart”.</p>
+<p class="last mono" id="last" aria-live="polite"></p>
+<button type="button" id="reset" class="link">Start over</button>
+</div>
+
+<div class="panel">
+<div class="states" aria-label="Consent state">
+<span data-key="analytics_storage">analytics_storage</span>
+<span data-key="ad_storage">ad_storage</span>
+<span data-key="ad_user_data">ad_user_data</span>
+<span data-key="ad_personalization">ad_personalization</span>
+</div>
+<p class="ptitle">dataLayer <span id="count">0</span> <small>newest first</small></p>
+<ol class="log" id="log" aria-live="polite"></ol>
+</div>
+</section>
+
+<h2>Tracking plan</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Event</th><th>When it fires</th><th>Key parameters</th></tr></thead>
+<tbody>
+<tr><td class="mono">view_item</td><td>Product page opens</td><td>currency, value, items</td></tr>
+<tr><td class="mono">add_to_cart</td><td>“Add to cart” clicked</td><td>currency, value, items (id, name, variant, price, quantity)</td></tr>
+<tr><td class="mono">view_cart</td><td>Cart opens</td><td>currency, value, items</td></tr>
+<tr><td class="mono">begin_checkout</td><td>Checkout starts</td><td>currency, value, items</td></tr>
+<tr><td class="mono">add_shipping_info</td><td>Shipping method chosen</td><td>shipping_tier, currency, value, items</td></tr>
+<tr><td class="mono">add_payment_info</td><td>Payment method chosen</td><td>payment_type, currency, value, items</td></tr>
+<tr><td class="mono">purchase</td><td>Thank-you page, once per order</td><td>transaction_id, currency, value, shipping, items</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Before every e-commerce push the previous <span class="mono">ecommerce</span> object is cleared (<span class="mono">{ ecommerce: null }</span>), so parameters from one event do not leak into the next.</p>
+
+<h2>Consent Mode v2</h2>
+<ul class="feat">
+<li><span class="step mono">01</span><div><b>Default first</b><p>A consent default with everything denied is pushed before GTM loads any tag. Then the banner choice sends a consent update.</p></div></li>
+<li><span class="step mono">02</span><div><b>Four signals</b><p><span class="mono">analytics_storage</span> and <span class="mono">ad_storage</span> for cookies, <span class="mono">ad_user_data</span> (sending user data to Google for ads) and <span class="mono">ad_personalization</span> (personalised ads and remarketing) – the two Google added in v2.</p></div></li>
+<li><span class="step mono">03</span><div><b>Basic or advanced</b><p>Basic: Google tags wait for consent. Advanced: tags load with consent denied and send cookieless pings. We pick one with you, based on your privacy policy and ads needs.</p></div></li>
+<li><span class="step mono">04</span><div><b>Works with your banner</b><p>Your cookie banner (CMP) sends the update; I check in Tag Assistant that no Google tag fires before the default.</p></div></li>
+</ul>
+
+<h2>What I check in a tracking audit</h2>
+<ul class="check">
+<li>Purchase counted twice after a thank-you page reload or a payment redirect</li>
+<li><span class="mono">value</span> sent without <span class="mono">currency</span>, so revenue is missing in reports</li>
+<li>Consent default missing, or set after the first Google tag</li>
+<li>Payment gateways stealing the session source (unwanted referrals)</li>
+<li>Your own team’s visits counted as customers (internal traffic)</li>
+<li>Personal data such as email addresses in page URLs sent to GA4</li>
+<li>Old Universal Analytics or duplicate GA4 tags still on the site</li>
+</ul>
+
+<h2>What you get</h2>
+<ul class="feat">
+<li><span class="step mono">01</span><div><b>GTM container</b><p>Tags, triggers and variables, named so your team can find them. Exported as a JSON file for backup.</p></div></li>
+<li><span class="step mono">02</span><div><b>Tracking plan</b><p>A sheet like the table above, for your store: every event, when it fires, its parameters.</p></div></li>
+<li><span class="step mono">03</span><div><b>Test report</b><p>Screenshots from Tag Assistant and GA4 DebugView on your site, including a test order for each payment method that has a test mode.</p></div></li>
+<li><span class="step mono">04</span><div><b>Access without passwords</b><p>You add me as a user in GTM and GA4; you can remove me after the job.</p></div></li>
+</ul>
+
+<footer>Concept project by Frame One. “Liściownia” is a fictional plant shop (name checked in the Polish company registers KRS and CEIDG and on Google on 17 November 2026). Prices, orders and transaction IDs on this page are made up. No Google tags, cookies or network requests are used by the demo.</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
