@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Próbka audytu konta Google Ads (raport PDF)</title>
+<meta name="description" content="Próbka jednorazowego audytu konta Google Ads dla fikcyjnego sklepu: pomiar konwersji, wyszukiwane hasła, Performance Max i marka, lokalizacja, plan zmian na 30 dni. Dane fikcyjne.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/probki/audyt-google-ads/">
+<link rel="preload" href="../../audyt-wp/img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../../audyt-wp/img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --ink: #17211b; --paper: #ffffff; --card: #f4f4f5; --muted: #4f5c55; --line: #dfe3e1; --accent: #2f5d3a; --bad: #a3361f; --warn: #8a5a00; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 24px 56px; }
+.top { padding: 44px 0 10px; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 12px; }
+h1 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.05; letter-spacing: -0.04em; margin: 0 0 16px; font-weight: 800; max-width: 20ch; }
+.lead { font-size: 18px; color: var(--muted); max-width: 64ch; margin: 0 0 14px; }
+.fake { display: inline-block; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; }
+.dl { margin: 18px 0 0; }
+.btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 800; padding: 12px 22px; border-radius: 999px; }
+h2 { font-size: 26px; letter-spacing: -0.02em; margin: 44px 0 12px; }
+h3 { font-size: 19px; margin: 0 0 6px; }
+.meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 24px; }
+.meta div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.meta b { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.meta span { font-weight: 700; }
+.sum { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 8px; }
+.sum li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.sum li::before { content: counter(s); font-weight: 800; color: #fff; background: var(--accent); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--card); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+td.num, th.num { text-align: right; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.tag { display: inline-block; font-size: 12px; font-weight: 800; border-radius: 6px; padding: 1px 8px; white-space: nowrap; }
+.high { background: #f6e1dc; color: var(--bad); }
+.mid { background: #f6ecd6; color: var(--warn); }
+.low { background: #e3eee6; color: var(--accent); }
+.find { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; }
+.find p { margin: 6px 0 0; }
+.find .fix { color: var(--accent); font-weight: 600; }
+.note { color: var(--muted); font-size: 15px; }
+.plan { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.plan li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 15px; }
+.plan b { display: block; color: var(--accent); }
+footer { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px 48px; }
+  .meta, .plan { grid-template-columns: 1fr 1fr; }
+}
+@media print {
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  body { font-size: 12.5px; }
+  .wrap { max-width: none; padding: 0; }
+  .top { padding-top: 0; }
+  h1 { font-size: 30px; }
+  h2 { font-size: 19px; margin-top: 22px; break-after: avoid; }
+  .dl, .noprint { display: none; }
+  .find, .sum li, .plan li, tr, .tablewrap { break-inside: avoid; }
+  .meta { grid-template-columns: repeat(4, 1fr); }
+  .plan { grid-template-columns: repeat(4, 1fr); }
+  a { color: var(--ink); text-decoration: none; }
+  footer { margin-top: 14px; padding-top: 8px; font-size: 11px; }
+  .find { padding: 12px 14px; margin-bottom: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="kicker">Próbka audytu Google Ads · dane fikcyjne</p>
+<h1>Audyt konta Google Ads: co poprawić w&nbsp;pierwszej kolejności</h1>
+<p class="lead">Jednorazowy audyt na danych z&nbsp;konta i&nbsp;raportów: co psuje pomiar, na co idzie budżet bez efektu i&nbsp;jaka kolejność zmian ma sens. Bez stałego prowadzenia kampanii – dostajesz raport i&nbsp;listę zmian.</p>
+<p class="fake">Sklep „Liściownia” i&nbsp;wszystkie liczby w&nbsp;raporcie są fikcyjne.</p>
+<p class="dl noprint"><a class="btn" href="audyt-google-ads-probka.pdf">Otwórz raport PDF</a></p>
+<div class="meta">
+<div><b>Konto</b><span>sklep z&nbsp;roślinami (fikcyjny)</span></div>
+<div><b>Okres</b><span>ostatnie 30 dni</span></div>
+<div><b>Wydatki</b><span>4&nbsp;200&nbsp;zł</span></div>
+<div><b>Dostęp</b><span>tylko odczyt</span></div>
+</div>
+</header>
+
+<h2>Najważniejsze w&nbsp;5 punktach</h2>
+<ol class="sum">
+<li>Konto liczy część zakupów dwa razy: 126 konwersji w&nbsp;Google Ads, a&nbsp;w&nbsp;sklepie 71 zamówień. Wszystkie decyzje o&nbsp;budżecie opierają się na zawyżonych danych.</li>
+<li>Kampania „Rośliny – ogólne” wydaje 30% budżetu, a&nbsp;część zapytań nie ma związku ze sprzedażą (choroby roślin, darmowe sadzonki, kwiaciarnie).</li>
+<li>Performance Max przejmuje wyszukiwania nazwy sklepu, które i&nbsp;tak trafiłyby do tańszej kampanii na markę.</li>
+<li>Reklamy wyświetlają się też osobom „zainteresowanym” Polską poza krajem, choć sklep wysyła tylko w&nbsp;Polsce.</li>
+<li>Kampania na markę traci część wyświetleń z&nbsp;powodu zbyt niskiego budżetu dziennego.</li>
+</ol>
+
+<h2>Kampanie w&nbsp;liczbach</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Kampania</th><th>Typ</th><th class="num">Koszt</th><th class="num">Konwersje*</th><th class="num">Wartość*</th><th class="num">ROAS*</th></tr></thead>
+<tbody>
+<tr><td>Marka – Liściownia</td><td>Sieć wyszukiwania</td><td class="num">380 zł</td><td class="num">61</td><td class="num">9&nbsp;150 zł</td><td class="num">24,1</td></tr>
+<tr><td>Rośliny – ogólne</td><td>Sieć wyszukiwania</td><td class="num">1&nbsp;240 zł</td><td class="num">14</td><td class="num">2&nbsp;030 zł</td><td class="num">1,6</td></tr>
+<tr><td>Cały sklep</td><td>Performance Max</td><td class="num">2&nbsp;260 zł</td><td class="num">48</td><td class="num">7&nbsp;900 zł</td><td class="num">3,5</td></tr>
+<tr><td>Remarketing</td><td>Sieć reklamowa</td><td class="num">320 zł</td><td class="num">3</td><td class="num">410 zł</td><td class="num">1,3</td></tr>
+<tr><td><b>Razem</b></td><td></td><td class="num"><b>4&nbsp;200 zł</b></td><td class="num"><b>126</b></td><td class="num"><b>19&nbsp;490 zł</b></td><td class="num"><b>4,6</b></td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">* Tak, jak raportuje konto. Po naprawie pomiaru (ustalenie 1) liczby konwersji i&nbsp;wartości spadną, a&nbsp;ROAS kampanii trzeba będzie policzyć od nowa.</p>
+
+<h2>Ustalenia i&nbsp;co zrobić</h2>
+
+<div class="find">
+<h3><span class="tag high">Wysoki</span> 1. Podwójne liczenie zakupów</h3>
+<p>Jako konwersje główne ustawione są dwie akcje: tag zakupu Google Ads i&nbsp;zakup zaimportowany z&nbsp;Google Analytics 4. Zamówienia liczą się podwójnie, a&nbsp;automatyczne strategie ustalania stawek uczą się na zawyżonych danych.</p>
+<p class="fix">Zmiana: zostawić jedną akcję zakupu jako główną (tag Google Ads z&nbsp;rozszerzonymi konwersjami, przy zgodzie użytkownika – Consent Mode v2), import z&nbsp;GA4 ustawić jako dodatkową. Sprawdzić, czy identyfikator transakcji jest przekazywany.</p>
+</div>
+
+<div class="find">
+<h3><span class="tag high">Wysoki</span> 2. Zapytania bez związku ze sprzedażą</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Wyszukiwane hasło</th><th class="num">Koszt</th><th class="num">Konwersje</th><th>Decyzja</th></tr></thead>
+<tbody>
+<tr><td>monstera choroby liści</td><td class="num">214 zł</td><td class="num">0</td><td>wykluczyć „choroby”</td></tr>
+<tr><td>kwiaciarnia warszawa</td><td class="num">158 zł</td><td class="num">0</td><td>wykluczyć „kwiaciarnia”</td></tr>
+<tr><td>darmowe sadzonki</td><td class="num">96 zł</td><td class="num">0</td><td>wykluczyć „darmowe”</td></tr>
+<tr><td>zamiokulkas cena</td><td class="num">88 zł</td><td class="num">4</td><td>dodać jako słowo kluczowe</td></tr>
+</tbody>
+</table>
+</div>
+<p class="fix">Zmiana: lista słów wykluczających na poziomie konta (w&nbsp;pełnym audycie – gotowy plik do importu) i&nbsp;dodanie haseł, które sprzedają, jako osobnych słów kluczowych.</p>
+</div>
+
+<div class="find">
+<h3><span class="tag mid">Średni</span> 3. Performance Max i&nbsp;nazwa sklepu</h3>
+<p>W&nbsp;raporcie wyszukiwanych haseł Performance Max widać zapytania z&nbsp;nazwą „Liściownia”. Te osoby szukają już sklepu, a&nbsp;kampania na markę obsłużyłaby je taniej.</p>
+<p class="fix">Zmiana: dodać wykluczenie marki w&nbsp;ustawieniach Performance Max i&nbsp;porównać koszt marki przez 2 tygodnie.</p>
+</div>
+
+<div class="find">
+<h3><span class="tag mid">Średni</span> 4. Lokalizacja: „obecność lub zainteresowanie”</h3>
+<p>Kampanie docierają też do osób spoza Polski, które interesują się Polską. Sklep wysyła rośliny tylko w&nbsp;kraju.</p>
+<p class="fix">Zmiana: w&nbsp;opcjach lokalizacji wybrać samą „Obecność” (osoby w&nbsp;Polsce) zamiast „Obecność lub zainteresowanie”.</p>
+</div>
+
+<div class="find">
+<h3><span class="tag low">Niski</span> 5. Budżet kampanii na markę</h3>
+<p>Kampania na markę traci część wyświetleń z&nbsp;powodu budżetu, choć to najtańsze kliknięcia na koncie.</p>
+<p class="fix">Zmiana: podnieść budżet dzienny marki tak, by nie był limitem; środki przesunąć z&nbsp;remarketingu.</p>
+</div>
+
+<h2>Plan na 30 dni</h2>
+<ul class="plan">
+<li><b>Tydzień 1</b>Naprawa pomiaru: jedna główna konwersja zakupu, sprawdzenie identyfikatora transakcji; lokalizacja „Obecność”.</li>
+<li><b>Tydzień 2</b>Słowa wykluczające i&nbsp;nowe słowa kluczowe.</li>
+<li><b>Tydzień 3</b>Wykluczenie marki w&nbsp;Performance Max, budżet marki.</li>
+<li><b>Tydzień 4</b>Nowe liczby po naprawie pomiaru i&nbsp;decyzja o&nbsp;podziale budżetu.</li>
+</ul>
+
+<h2>Jak pracuję przy audycie</h2>
+<ul class="note">
+<li>Dostęp tylko do odczytu albo eksport raportów – bez stałego logowania do Twojego konta.</li>
+<li>Raport PDF po polsku, ustalenia według wpływu na budżet, przy każdym – konkretna zmiana.</li>
+<li>Pliki do importu (słowa wykluczające) i&nbsp;lista zmian do wprowadzenia przez Ciebie lub Twoją agencję.</li>
+<li>Nie obiecuję konkretnego ROAS ani liczby sprzedaży – wynik zależy też od sklepu, cen i&nbsp;sezonu.</li>
+</ul>
+
+<footer>Projekt koncepcyjny Frame One. Sklep „Liściownia” jest fikcyjny (nazwa sprawdzona w&nbsp;KRS, CEIDG i&nbsp;Google 17.11.2026), wszystkie liczby, hasła i&nbsp;kampanie w&nbsp;raporcie są zmyślone. Ta sama marka: <a href="../../demo/sklep-roslin/">demo sklepu</a>.</footer>
+</div>
+</body>
+</html>
