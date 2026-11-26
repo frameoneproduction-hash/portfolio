@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Sample affiliate launch plan: Refgrow with Paddle checkout for two digital products. Tracking flow, commission setup, launch checklist and test plan. Fictional products.">
+<title>Affiliate launch plan: sample</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23243b6b'/%3E%3Cpath d='M9 20l5-5 4 4 6-7' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="demo-bar" role="note"><p><strong>Sample plan.</strong> Fictional products and numbers. Setup steps follow Refgrow's public docs for Paddle (read 26.11.2026).</p></div>
+
+<main class="wrap">
+  <header class="head">
+    <p class="kicker">Affiliate program launch</p>
+    <h1>Refgrow + Paddle: from referral link to paid commission</h1>
+    <p class="lead">A launch plan for two digital products sold through Paddle: <strong>Studio Course</strong> (one-time, $199) and <strong>Studio Club</strong> (subscription, $29/month). Fictional products. The same plan works for your two products once I have your prices and commission rules.</p>
+  </header>
+
+  <section aria-labelledby="f">
+    <h2 id="f">1. How a sale reaches the affiliate</h2>
+    <ol class="flow">
+      <li><b>Click</b><span>Affiliate shares <code>yoursite.com/?ref=ANNA10</code></span></li>
+      <li><b>Cookie</b><span>Refgrow script stores the code for 30 days (cookie + localStorage backup)</span></li>
+      <li><b>Checkout</b><span>The code goes into Paddle as <code>custom_data.referral_code</code>, or via the payment-link helper</span></li>
+      <li><b>Webhook</b><span>Paddle sends <code>transaction.completed</code> to Refgrow, signed with your secret</span></li>
+      <li><b>Commission</b><span>Product rate applied, held for the refund window, then released for payout</span></li>
+    </ol>
+    <p class="note">Coupon codes are a second path: a buyer who never clicked a link can still be attributed through the affiliate's coupon.</p>
+  </section>
+
+  <section aria-labelledby="c">
+    <h2 id="c">2. Commission setup</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Setting</th><th scope="col">Studio Course</th><th scope="col">Studio Club</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Price</th><td>$199 one-time</td><td>$29/month</td></tr>
+        <tr><th scope="row">Commission</th><td>30%</td><td>20% for 12 months</td></tr>
+        <tr><th scope="row">Calculated on</th><td colspan="2">Subtotal after discount, before tax and Paddle fees</td></tr>
+        <tr><th scope="row">Hold period</th><td colspan="2">30 days, so refunds and chargebacks land before release</td></tr>
+        <tr><th scope="row">Refund</th><td colspan="2">Commission reversed in proportion to the refund</td></tr>
+        <tr><th scope="row">Overrides</th><td colspan="2">Per-affiliate rate for partners you agree a special deal with</td></tr>
+        <tr><th scope="row">Payouts</th><td colspan="2">Manual approval, PayPal or Wise, minimum $50 (your choice)</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="s">
+    <h2 id="s">3. Setup checklist</h2>
+    <ul class="checks">
+      <li>Tracking script in the <code>&lt;head&gt;</code> of every marketing and checkout page</li>
+      <li>Paddle API key with Notifications (read/write), Transactions, Subscriptions and Customers (read)</li>
+      <li>Webhook in Paddle to Refgrow's URL for <code>transaction.completed</code>, <code>subscription.created</code>, <code>subscription.updated</code>; signing secret pasted into Refgrow</li>
+      <li>Referral code passed in <code>custom_data</code> on every checkout, including payment links</li>
+      <li>Product rates on both products, hold period, payout methods and minimum</li>
+      <li>Affiliate portal: public signup or invite-only, logo and name, resources and links</li>
+      <li>Admin access stays on your accounts; keys stored in Paddle and Refgrow only</li>
+      <li>Sandbox first, then the same tests on live with a small real purchase</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="t">
+    <h2 id="t">4. Test plan before launch</h2>
+    <div class="table-wrap">
+    <table class="tests">
+      <thead><tr><th scope="col">#</th><th scope="col">Test</th><th scope="col">Expected result</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Click affiliate link, buy Studio Course</td><td>30% commission on the subtotal, status: on hold</td></tr>
+        <tr><td>2</td><td>Click link, buy Studio Club</td><td>20% on first payment; renewal adds a new commission</td></tr>
+        <tr><td>3</td><td>Buy through a payment link, as a guest</td><td>Referral code still reaches Paddle and Refgrow</td></tr>
+        <tr><td>4</td><td>No link, buyer uses an affiliate coupon</td><td>Sale attributed to the coupon owner</td></tr>
+        <tr><td>5</td><td>Click on day 1, buy on day 29</td><td>Attributed; on day 31, not attributed</td></tr>
+        <tr><td>6</td><td>Refund half of a sale</td><td>Commission reduced by half</td></tr>
+        <tr><td>7</td><td>Cancel Studio Club</td><td>Earned commission stays, future ones stop</td></tr>
+        <tr><td>8</td><td>Affiliate buys through own link</td><td>Check how it is handled; if it pays out, block self-referrals in the terms and review manually</td></tr>
+        <tr><td>9</td><td>Webhook with a wrong signature</td><td>Should be rejected with no commission; if not, flag it to Refgrow support before launch</td></tr>
+        <tr><td>10</td><td>New signup, sale, payout</td><td>Email sent at each step, visible in send history</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="g">
+    <h2 id="g">5. Gaps I would flag before launch</h2>
+    <ul class="flags">
+      <li><b>Emails.</b> Refgrow's built-in emails cover new referral signup, conversion and payout. Welcome and approval messages need your own email tool or a manual step.</li>
+      <li><b>Portal branding.</b> The hosted portal shows your logo and name; full brand colours are available in the embedded widget.</li>
+      <li><b>Cross-domain checkout.</b> If checkout runs on another domain, the code has to travel in the URL or checkout data, or the cookie is lost.</li>
+    </ul>
+  </section>
+
+  <footer class="foot"><p>Sample by Maria (Frame One). Studio Course and Studio Club are invented for this plan.</p></footer>
+</main>
+</body>
+</html>
