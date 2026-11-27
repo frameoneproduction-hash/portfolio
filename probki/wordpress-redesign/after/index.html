@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tarnfield Build &amp; Engineering – extensions, steel frames and structural design</title>
+<meta name="description" content="Rear extensions, steel frames and structural calculations, designed and built by one team. Fixed quote in writing within 5 working days. Concept project – fictional company.">
+<link rel="preload" href="../img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/frame-720.webp" as="image" imagesrcset="img/frame-720.webp 720w, img/frame-1200.webp 1200w" imagesizes="(min-width: 900px) 50vw, 100vw">
+<style>
+@font-face { font-family: "Manrope"; src: url("../img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --paper: #f4f2ed; --ink: #16201c; --muted: #4d5752; --line: #d9d5cc; --green: #1f4a3b; --green-2: #2a5f4c; --white: #fff; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--green); }
+:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 20; }
+.skip:focus { left: 8px; }
+.demo-note { background: #e6e1d6; color: var(--ink); font-size: 14px; text-align: center; padding: 6px 16px; }
+.e-con { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+/* header */
+header { position: sticky; top: 0; z-index: 10; background: rgba(244, 242, 237, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+.logo { font-weight: 800; letter-spacing: -0.02em; font-size: 20px; color: var(--ink); text-decoration: none; margin-right: auto; padding: 10px 0; }
+.logo span { color: var(--muted); font-weight: 600; }
+nav ul { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+nav a { display: block; padding: 10px 12px; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 16px; border-radius: 999px; }
+nav a:hover { background: #e9e5dc; }
+.pill { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--green); color: #fff; text-decoration: none; font-weight: 700; font-size: 16px; border: 2px solid var(--green); }
+.pill:hover { background: var(--green-2); }
+.pill.ghost { background: transparent; color: var(--green); }
+.menu-btn { display: none; min-width: 48px; min-height: 48px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font: inherit; font-weight: 700; }
+/* hero */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 40px; }
+.label { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--green); margin: 0 0 14px; }
+h1 { font-size: clamp(38px, 5.4vw, 66px); line-height: 1.02; letter-spacing: -0.045em; margin: 0 0 20px; font-weight: 800; }
+.lead { font-size: 19px; color: var(--muted); max-width: 46ch; margin: 0 0 28px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.call { font-weight: 700; color: var(--ink); text-decoration: none; padding: 12px 6px; }
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 18px 18px 18px 96px; overflow: hidden; }
+.panel img { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; }
+.trust { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 24px 0 0; padding: 0; list-style: none; font-size: 15px; font-weight: 600; color: var(--muted); }
+.trust li::before { content: "✓ "; color: var(--green); font-weight: 800; }
+/* intro */
+.intro { font-size: clamp(22px, 2.6vw, 31px); line-height: 1.35; letter-spacing: -0.02em; font-weight: 600; max-width: 30ch; padding: 48px 0 64px; margin: 0; border-bottom: 1px solid var(--line); }
+.intro em { font-style: normal; color: var(--green); }
+/* services */
+section { padding: 72px 0; }
+.head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: end; margin-bottom: 36px; }
+h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.08; letter-spacing: -0.035em; margin: 0; }
+.head p { margin: 0; color: var(--muted); max-width: 44ch; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
+.card img { aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--line); }
+.card div { padding: 20px 22px 24px; }
+.card h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -0.02em; }
+.card p { margin: 0 0 12px; color: var(--muted); font-size: 16px; }
+.card .price { font-weight: 700; color: var(--ink); font-size: 15px; margin: 0; }
+/* why */
+.why { background: var(--green); color: #fff; border-radius: 28px; padding: 56px; }
+.why h2 { color: #fff; margin-bottom: 28px; }
+.why .label { color: #cfe3d9; }
+.reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.reason { border-top: 1px solid rgba(255,255,255,.28); padding: 20px 0 24px; }
+.reason h3 { margin: 0 0 6px; font-size: 20px; }
+.reason p { margin: 0; color: #e2eee8; font-size: 16px; }
+/* process */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: s; list-style: none; padding: 0; margin: 0; }
+.steps li { border-top: 2px solid var(--ink); padding-top: 16px; }
+.steps li::before { counter-increment: s; content: "0" counter(s); font-family: ui-monospace, Consolas, monospace; font-size: 14px; color: var(--green); font-weight: 700; }
+.steps h3 { margin: 6px 0 6px; font-size: 19px; }
+.steps p { margin: 0; color: var(--muted); font-size: 16px; }
+/* quote form */
+.quote { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 48px; }
+.quote dl { margin: 24px 0 0; }
+.quote dt { font-weight: 700; margin-top: 12px; }
+.quote dd { margin: 0; color: var(--muted); }
+form { display: grid; gap: 14px; }
+label { font-weight: 700; font-size: 15px; display: grid; gap: 6px; }
+input, select, textarea { font: inherit; font-size: 16px; padding: 12px 14px; border: 1px solid #a9a399; border-radius: 12px; background: var(--paper); color: var(--ink); min-height: 48px; }
+textarea { min-height: 120px; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.small { font-size: 14px; color: var(--muted); margin: 0; }
+button.pill { cursor: pointer; justify-self: start; font-family: inherit; }
+/* faq */
+details { border-top: 1px solid var(--line); padding: 16px 0; }
+details:last-child { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; font-weight: 700; font-size: 18px; min-height: 32px; }
+details p { margin: 10px 0 0; color: var(--muted); max-width: 70ch; }
+footer { background: var(--ink); color: #d9ddd9; padding: 48px 0 32px; margin-top: 72px; font-size: 16px; }
+footer .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+footer a { color: #fff; }
+footer h2 { font-size: 18px; letter-spacing: 0; color: #fff; margin: 0 0 8px; }
+footer p { margin: 0 0 6px; }
+.legal { border-top: 1px solid #34403b; margin-top: 32px; padding-top: 16px; font-size: 14px; color: #aab3ae; }
+@media (max-width: 900px) {
+  nav { display: none; }
+  .menu-btn { display: inline-block; }
+  .bar .pill { padding: 0 16px; }
+  .hero, .head, .quote, .reasons { grid-template-columns: 1fr; }
+  .hero { padding-top: 36px; gap: 28px; }
+  .cards { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .why, .quote { padding: 32px 22px; border-radius: 22px; }
+  footer .cols { grid-template-columns: 1fr; }
+  section { padding: 56px 0; }
+}
+@media (max-width: 900px) {
+  nav.open { display: block; position: absolute; left: 0; right: 0; top: 100%; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 16px 16px; }
+  nav.open ul { flex-direction: column; }
+  nav.open a { padding: 14px 12px; font-size: 18px; }
+}
+@media (max-width: 520px) {
+  .steps, .row { grid-template-columns: 1fr; }
+  .bar { gap: 10px; }
+  .logo span { display: none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-note">Concept project – fictional company. This is the “after” version.</div>
+
+<!-- Elementor: Header (Theme Builder) -->
+<header>
+  <div class="e-con bar">
+    <a class="logo" href="#main">Tarnfield <span>Build &amp; Engineering</span></a>
+    <nav id="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How we work</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#quote">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="pill" href="#quote">Get a quote <span aria-hidden="true">↗</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Elementor container: Hero -->
+  <div class="e-con hero">
+    <div>
+      <p class="label">Extensions · Steel frames · Structural design</p>
+      <h1>Design and build, signed off by one engineer.</h1>
+      <p class="lead">Rear extensions, loft conversions and steel frames for homes and small commercial units. Drawings, calculations and the build itself come from one team.</p>
+      <div class="actions">
+        <a class="pill" href="#quote">Get a fixed quote <span aria-hidden="true">↗</span></a>
+        <a class="call" href="tel:+441632960418">or call 01632 960 418</a>
+      </div>
+      <ul class="trust">
+        <li>Fixed price in writing</li>
+        <li>Building control paperwork included</li>
+        <li>Site visit within a week</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <img src="img/frame-720.webp" srcset="img/frame-720.webp 720w, img/frame-1200.webp 1200w" sizes="(min-width: 900px) 50vw, 100vw" width="1200" height="750" alt="Line drawing of a three-storey steel frame with cross bracing" fetchpriority="high">
+    </div>
+  </div>
+
+  <!-- Elementor container: Intro (local SEO paragraph) -->
+  <div class="e-con">
+    <p class="intro">We are a small engineering and building team. We design, calculate and build <em>extensions, steel frames and structural alterations</em> in the town and the villages around it – one contact from the first drawing to the final inspection.</p>
+  </div>
+
+  <!-- Elementor container: Services -->
+  <section id="services" aria-labelledby="services-h">
+    <div class="e-con">
+      <div class="head">
+        <div><p class="label">What we do</p><h2 id="services-h">Three services, one team</h2></div>
+        <p>Every job starts with a drawing and a written price. You know the cost before anything is ordered.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <img src="img/extension-720.webp" srcset="img/extension-720.webp 720w, img/extension-1200.webp 1200w" sizes="(min-width: 900px) 33vw, 100vw" width="1200" height="750" alt="Section drawing of a single-storey rear extension with glazed doors" loading="lazy">
+          <div><h3>Rear and side extensions</h3><p>Planning drawings, building control, foundations, roof and glazing.</p><p class="price">Quote after a free site visit</p></div>
+        </article>
+        <article class="card">
+          <img src="img/frame-720.webp" srcset="img/frame-720.webp 720w, img/frame-1200.webp 1200w" sizes="(min-width: 900px) 33vw, 100vw" width="1200" height="750" alt="Drawing of a steel frame, four bays and three floors" loading="lazy">
+          <div><h3>Steel frames and beams</h3><p>Openings in load-bearing walls, frames for workshops and small units.</p><p class="price">Calculations included in the price</p></div>
+        </article>
+        <article class="card">
+          <img src="img/bridge-720.webp" srcset="img/bridge-720.webp 720w, img/bridge-1200.webp 1200w" sizes="(min-width: 900px) 33vw, 100vw" width="1200" height="750" alt="Drawing of a footbridge truss on two supports" loading="lazy">
+          <div><h3>Structural calculations</h3><p>Calculations and drawings for your own builder or architect.</p><p class="price">Fixed fee per job</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Elementor container: Why (brand block) -->
+  <div class="e-con">
+    <div class="why">
+      <p class="label">Why clients stay with us</p>
+      <h2>No hand-offs between designer and builder.</h2>
+      <div class="reasons">
+        <div class="reason"><h3>One person answers your questions</h3><p>The engineer who draws your project visits the site during the build.</p></div>
+        <div class="reason"><h3>Price in writing before work starts</h3><p>Changes are priced and agreed in writing before they are made.</p></div>
+        <div class="reason"><h3>Paperwork handled</h3><p>We prepare drawings for planning and building control and book the inspections.</p></div>
+        <div class="reason"><h3>Clean site, clear schedule</h3><p>A weekly plan by e-mail, so you know who is coming and when.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Elementor container: Process -->
+  <section id="process" aria-labelledby="process-h">
+    <div class="e-con">
+      <div class="head"><div><p class="label">How we work</p><h2 id="process-h">From first call to final inspection</h2></div><p>Four steps, the same on every job.</p></div>
+      <ol class="steps">
+        <li><h3>Site visit</h3><p>We measure, take photos and listen to what you need.</p></li>
+        <li><h3>Drawing and price</h3><p>Drawings and a fixed price in writing within 5 working days.</p></li>
+        <li><h3>Approvals</h3><p>Planning and building control, if your project needs them.</p></li>
+        <li><h3>Build</h3><p>Weekly updates and a final inspection with the engineer.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Elementor container: Quote form (Elementor Pro Form widget) -->
+  <div class="e-con" id="quote">
+    <div class="quote">
+      <div>
+        <p class="label">Get a quote</p>
+        <h2>Tell us about your project</h2>
+        <p class="lead">We reply within one working day with a date for the site visit.</p>
+        <dl>
+          <dt>Phone</dt><dd><a href="tel:+441632960418">01632 960 418</a></dd>
+          <dt>E-mail</dt><dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+          <dt>Office</dt><dd>Mon–Fri, 8:00–17:00</dd>
+        </dl>
+      </div>
+      <form action="#" onsubmit="event.preventDefault(); this.querySelector('.small').textContent = 'Demo form – nothing was sent.';">
+        <div class="row">
+          <label>Your name <input name="name" autocomplete="name" required></label>
+          <label>Phone or e-mail <input name="contact" autocomplete="email" required></label>
+        </div>
+        <label>Type of project
+          <select name="type"><option>Rear or side extension</option><option>Steel frame or beam</option><option>Structural calculations only</option><option>Something else</option></select>
+        </label>
+        <label>Short description <textarea name="message" placeholder="For example: single-storey rear extension, about 4 × 5 m"></textarea></label>
+        <button class="pill" type="submit">Send request <span aria-hidden="true">↗</span></button>
+        <p class="small" aria-live="polite">We only use your details to reply to this request.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Elementor container: FAQ (Accordion widget) -->
+  <section id="faq" aria-labelledby="faq-h">
+    <div class="e-con">
+      <div class="head"><div><p class="label">FAQ</p><h2 id="faq-h">Questions we hear most</h2></div><p>Anything else – ask in the form above.</p></div>
+      <details><summary>Do I need planning permission for a rear extension?</summary><p>Many single-storey rear extensions do not, but it depends on size and location. We check this at the site visit and tell you in writing.</p></details>
+      <details><summary>Can you only do the calculations, without the build?</summary><p>Yes. We prepare structural calculations and drawings for your own builder or architect for a fixed fee.</p></details>
+      <details><summary>How long does a typical extension take?</summary><p>We give you a schedule together with the price, after we have seen the site and agreed the drawings.</p></details>
+    </div>
+  </section>
+</main>
+
+<!-- Elementor: Footer (Theme Builder) -->
+<footer>
+  <div class="e-con">
+    <div class="cols">
+      <div><h2>Tarnfield Build &amp; Engineering</h2><p>Extensions, steel frames and structural design.</p><p>Concept project – fictional company, address and phone number.</p></div>
+      <div><h2>Contact</h2><p><a href="tel:+441632960418">01632 960 418</a></p><p><a href="mailto:hello@example.com">hello@example.com</a></p></div>
+      <div><h2>Pages</h2><p><a href="#services">Services</a></p><p><a href="#process">How we work</a></p><p><a href="#faq">FAQ</a></p></div>
+    </div>
+    <p class="legal">Demo by Frame One. The “before” version of this site is a separate page made for the comparison.</p>
+  </div>
+</footer>
+<script>
+var b = document.querySelector('.menu-btn'), n = document.getElementById('main-nav');
+b.addEventListener('click', function () { var o = n.classList.toggle('open'); b.setAttribute('aria-expanded', o); });
+n.addEventListener('click', function (e) { if (e.target.tagName === 'A') { n.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); } });
+</script>
+</body>
+</html>
