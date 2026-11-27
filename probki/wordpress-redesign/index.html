@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WordPress redesign sample: before and after</title>
+<meta name="description" content="Before/after sample of a WordPress + Elementor redesign for a small building and engineering firm: page weight, accessibility, mobile layout and 10 changes explained. Fictional company.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://frameoneproduction-hash.github.io/portfolio/probki/wordpress-redesign/">
+<link rel="preload" href="img/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("img/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+:root { --paper: #ffffff; --card: #f4f2ed; --ink: #16201c; --muted: #4d5752; --line: #dcd8cf; --accent: #1f4a3b; --bad: #9a3412; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px 64px; }
+.top { padding: 48px 0 8px; }
+.kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; color: var(--accent); margin: 0 0 12px; }
+h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.04; letter-spacing: -0.04em; margin: 0 0 16px; font-weight: 800; max-width: 18ch; }
+.lead { font-size: 19px; color: var(--muted); max-width: 62ch; margin: 0 0 16px; }
+.fake { display: inline-block; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; }
+h2 { font-size: clamp(26px, 3vw, 34px); letter-spacing: -0.03em; line-height: 1.15; margin: 56px 0 14px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0 0; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+.stat .num { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.stat .num s { color: var(--bad); text-decoration-thickness: 2px; font-weight: 700; }
+.stat .num b { color: var(--accent); }
+.stat span { font-size: 15px; color: var(--muted); }
+/* compare slider */
+.tabs { display: inline-flex; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 4px; margin: 0 0 16px; }
+.tabs button { font: inherit; font-weight: 700; font-size: 15px; border: 0; background: transparent; color: var(--ink); border-radius: 999px; padding: 10px 18px; min-height: 44px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.compare { position: relative; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--card); margin: 0 auto; user-select: none; }
+.compare.desktop { aspect-ratio: 1200 / 750; }
+.compare.phone { aspect-ratio: 750 / 1624; max-width: 360px; }
+.compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+.compare .after { clip-path: inset(0 0 0 var(--pos, 50%)); }
+.compare .line { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.25); pointer-events: none; }
+.compare .knob { position: absolute; top: 50%; left: var(--pos, 50%); width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 15px; pointer-events: none; }
+.compare .tag { position: absolute; top: 12px; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 800; background: rgba(22,32,28,.85); color: #fff; }
+.compare .tag.l { left: 12px; } .compare .tag.r { right: 12px; background: var(--accent); }
+.compare input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.compare input[type=range]:focus-visible + .line { background: #ffd34d; }
+.hint { font-size: 15px; color: var(--muted); margin: 10px 0 0; text-align: center; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; justify-content: center; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 2px solid var(--ink); color: var(--ink); }
+.btn.dark { background: var(--accent); border-color: var(--accent); color: #fff; }
+/* table */
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { background: var(--card); font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
+tbody tr:last-child td { border-bottom: 0; }
+td.b { color: var(--bad); font-weight: 700; } td.a { color: var(--accent); font-weight: 800; }
+.note { font-size: 15px; color: var(--muted); max-width: 75ch; }
+/* changes */
+ol.changes { list-style: none; counter-reset: c; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+ol.changes li { counter-increment: c; border-top: 1px solid var(--line); padding: 18px 0 20px 52px; position: relative; }
+ol.changes li::before { content: counter(c, decimal-leading-zero); position: absolute; left: 0; top: 20px; font-family: ui-monospace, Consolas, monospace; font-weight: 700; color: var(--accent); }
+ol.changes h3 { margin: 0 0 4px; font-size: 19px; letter-spacing: -0.01em; }
+ol.changes p { margin: 0; color: var(--muted); font-size: 16px; }
+.scope { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; margin-top: 56px; }
+.scope h2 { margin-top: 0; }
+.scope ul { margin: 0; padding-left: 20px; }
+footer { border-top: 1px solid var(--line); margin-top: 56px; padding-top: 20px; font-size: 15px; color: var(--muted); }
+@media (max-width: 760px) {
+  .stats, ol.changes { grid-template-columns: 1fr; }
+  .compare.desktop { aspect-ratio: 4 / 3; }
+  table { min-width: 0; }
+  thead { display: none; }
+  tr { display: block; border-bottom: 1px solid var(--line); padding: 12px 16px; }
+  tbody tr:last-child { border-bottom: 0; }
+  td { display: block; border: 0; padding: 2px 0; }
+  td:first-child { font-weight: 700; padding-bottom: 6px; }
+  td[data-l]::before { content: attr(data-l) ": "; color: var(--muted); font-weight: 600; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="kicker">Sample · WordPress + Elementor redesign</p>
+    <h1>From a 2015 theme to a fast, clear Elementor site</h1>
+    <p class="lead">The same small building firm, the same services, two versions of its home page. On the left, a typical theme from around 2015. On the right, the rebuild we would do: one clear message, a quote button on every screen, a real mobile layout and images that load fast.</p>
+    <span class="fake">Fictional company “Tarnfield Build &amp; Engineering” – concept project</span>
+    <div class="stats">
+      <div class="stat"><span class="num"><s>6.5 MB</s> → <b>95 kB</b></span><span>page weight, home page</span></div>
+      <div class="stat"><span class="num"><s>16</s> → <b>5</b></span><span>files the browser downloads</span></div>
+      <div class="stat"><span class="num"><s>39</s> → <b>0</b></span><span>elements with accessibility errors, axe-core (WCAG 2.2 A/AA)</span></div>
+    </div>
+  </header>
+
+  <main>
+    <h2 id="compare-h">Drag to compare</h2>
+    <div class="tabs" role="tablist" aria-label="Device">
+      <button role="tab" aria-selected="true" aria-controls="cmp" data-v="desktop">Desktop</button>
+      <button role="tab" aria-selected="false" aria-controls="cmp" data-v="phone">Phone</button>
+    </div>
+    <div class="compare desktop" id="cmp" role="tabpanel">
+      <img class="before" src="img/before-desktop.webp" width="1200" height="750" alt="Before: dark blue full-width slider with the caption “Welcome to our website”, small grey text, seven-item menu, contact details only in the footer">
+      <img class="after" src="img/after-desktop.webp" width="1200" height="750" alt="After: headline “Design and build, signed off by one engineer.”, a green “Get a fixed quote” button, phone number and a line drawing of a steel frame">
+      <input type="range" min="0" max="100" value="50" aria-label="Move the divider between before and after">
+      <span class="line" aria-hidden="true"></span><span class="knob" aria-hidden="true">↔</span>
+      <span class="tag l">Before</span><span class="tag r">After</span>
+    </div>
+    <p class="hint">Use the mouse, a finger or the arrow keys. Screenshots of the first screen.</p>
+    <div class="links">
+      <a class="btn" href="before/">Open the “before” page</a>
+      <a class="btn dark" href="after/">Open the “after” page</a>
+    </div>
+
+    <h2>What we measured</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Measure</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>Page weight (home page, compressed)</td><td class="b" data-l="Before">6.5 MB</td><td class="a" data-l="After">95 kB</td></tr>
+          <tr><td>Files downloaded</td><td class="b" data-l="Before">16</td><td class="a" data-l="After">5</td></tr>
+          <tr><td>Elements with accessibility errors, axe-core 4.14 (WCAG 2.2 A/AA)</td><td class="b" data-l="Before">39 in 4 rules: contrast 31, images without alt 6, page language 1, link without name 1</td><td class="a" data-l="After">0</td></tr>
+          <tr><td>Mobile layout</td><td class="b" data-l="Before">fixed 980 px width, phone shows a zoomed-out desktop page</td><td class="a" data-l="After">responsive, text 17 px, buttons at least 44 px</td></tr>
+          <tr><td>Contact in the first screen</td><td class="b" data-l="Before">no – phone only in the footer</td><td class="a" data-l="After">quote button and phone number</td></tr>
+          <tr><td>Lighthouse, phone: performance / accessibility / best practices / SEO*</td><td class="b" data-l="Before">73 / 61 / 96 / 36</td><td class="a" data-l="After">99 / 100 / 100 / 63</td></tr>
+          <tr><td>Largest Contentful Paint, phone (Lighthouse)</td><td class="b" data-l="Before">35.3 s</td><td class="a" data-l="After">0.8 s</td></tr>
+          <tr><td>Lighthouse, desktop: performance / accessibility / best practices / SEO*</td><td class="b" data-l="Before">97 / 61 / 100 / 36</td><td class="a" data-l="After">100 / 100 / 100 / 63</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Measured on 27.11.2026 in Chrome, by us, on the two static pages linked above. A real Elementor site also loads Elementor's own styles and scripts, so its page will be heavier and its scores lower than here – on your site we measure before and after and send you both numbers. Page weight is the sum of all downloaded files as the server sends them. You can check both pages yourself in any browser’s developer tools. Lighthouse scores come from <a href="https://pagespeed.web.dev/analysis/https-frameoneproduction-hash-github-io-portfolio-probki-wordpress-redesign-before/n0hmie2coejx16w4cakb9o">PageSpeed Insights for “before”</a> and <a href="https://pagespeed.web.dev/analysis/https-frameoneproduction-hash-github-io-portfolio-probki-wordpress-redesign-after/jyfcj9nmc25hc1h1d0j58l">for “after”</a>, run once each on 27.11.2026 on the published pages; a new run can differ by a few points. *Both sample pages are hidden from Google on purpose (noindex), which lowers the SEO score of both; on a live site this tag is not there.</p>
+
+    <h2>10 changes and why</h2>
+    <ol class="changes">
+      <li><h3>One message in the first screen</h3><p>“Welcome to our website” became what the firm does and for whom. A visitor sees at once if they are in the right place.</p></li>
+      <li><h3>Quote button and phone at the top</h3><p>A “Get a quote” button stays in the sticky header, the phone number is next to the main button. Before, contact details were only in the footer.</p></li>
+      <li><h3>Slider removed</h3><p>Three rotating 1 MB images became one light drawing. A slider hides 2 of its 3 messages, and here it weighed 3 MB on its own.</p></li>
+      <li><h3>Images as WebP in two sizes</h3><p>The browser picks 720 or 1200 px. Images below the first screen load only when the visitor scrolls to them. Before, three 900 px PNG icons alone weighed 3.4 MB.</p></li>
+      <li><h3>Real mobile layout</h3><p>Viewport set, one column on phones, text 17 px instead of 12 px, tap targets at least 44 px, a working menu button.</p></li>
+      <li><h3>Menu from 7 items and 3 levels to 4 links</h3><p>Hover-only dropdowns do not work on phones. Services, How we work, FAQ, Contact – everything is on one page.</p></li>
+      <li><h3>Readable contrast</h3><p>Light grey on white failed WCAG in 31 places. Now dark text on warm paper, one green accent for buttons and links.</p></li>
+      <li><h3>A quote form people finish</h3><p>Visible labels instead of placeholders, a project type list, a short privacy line and a clear reply time.</p></li>
+      <li><h3>Basic SEO in place</h3><p>Page title and description, one H1, language set, text about the area the firm works in, no tag cloud.</p></li>
+      <li><h3>One font file instead of three</h3><p>Two Google Fonts families (6 styles, 3 font files) became one variable font hosted with the site, and no script blocks the page from showing.</p></li>
+    </ol>
+
+    <section class="scope" aria-labelledby="scope-h">
+      <h2 id="scope-h">How this is done on a real WordPress site</h2>
+      <ul>
+        <li>We rebuild the pages in Elementor containers on a copy of your site first. With Elementor Pro we use Theme Builder for the header and footer and the Form widget; on free Elementor, a header template and the form plugin you already have.</li>
+        <li>Content, URLs and contact details stay; old slider and page builder add-ons are removed only after you approve the new pages.</li>
+        <li>Images are converted to WebP, unused plugins and fonts are removed, then we measure again and send you the before/after numbers.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Sample by Frame One. Both versions were made for this comparison and are static copies; the company, address, phone number (UK drama range) and e-mail are fictional. Drawings are generated, not photos.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('cmp'), r = box.querySelector('input'), b = box.querySelector('.before'), a = box.querySelector('.after');
+  var src = { desktop: ['img/before-desktop.webp', 'img/after-desktop.webp', 1200, 750], phone: ['img/before-mobile.webp', 'img/after-mobile.webp', 750, 1624] };
+  var alts = { desktop: [b.alt, a.alt], phone: ['Before on a phone: the desktop page zoomed out, the menu cut off, text too small to read', 'After on a phone: large headline, green quote button, phone number and three short promises'] };
+  function set() { box.style.setProperty('--pos', r.value + '%'); }
+  r.addEventListener('input', set); set();
+  document.querySelectorAll('.tabs button').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.tabs button').forEach(function (x) { x.setAttribute('aria-selected', x === t); });
+      var v = t.dataset.v, s = src[v];
+      box.className = 'compare ' + v;
+      b.src = s[0]; a.src = s[1]; b.width = a.width = s[2]; b.height = a.height = s[3];
+      b.alt = alts[v][0]; a.alt = alts[v][1];
+    });
+  });
+})();
+</script>
+</body>
+</html>
