@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog rules audit sample: 10 products, Italian sources</title>
+<meta name="description" content="Sample review of AI-produced product data against Italian sources: each value marked correct, wrong or can't tell, causes traced to rules, rule changes written for a machine. Fictional products.">
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1d1f21;--muted:#62666b;--line:#e2e2de;--ok:#2f7d4f;--ok-bg:#e6f3ea;--bad:#b03a2e;--bad-bg:#fbe9e7;--q:#8a6a00;--q-bg:#fdf4d6;--acc:#2b4c7e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+header{padding:40px 0 18px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 10px}
+h2{font-size:22px;margin:40px 0 10px}
+p.lead{color:var(--muted);max-width:46em;margin:0}
+.flag{display:inline-block;font-size:12px;background:#ececE8;border:1px solid var(--line);border-radius:6px;padding:3px 8px;margin-bottom:14px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat b{display:block;font-size:26px}
+.stat span{font-size:13px;color:var(--muted)}
+.stat.bad b{color:var(--bad)} .stat.q b{color:var(--q)} .stat.ok b{color:var(--ok)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 12px}
+.filters button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;cursor:pointer}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:14px}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:#fafaf8;position:sticky;top:0}
+td.src{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:#3b3f44}
+td.prod{white-space:nowrap;font-weight:600}
+.m{display:inline-block;font-size:12px;font-weight:600;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.m.ok{background:var(--ok-bg);color:var(--ok)} .m.bad{background:var(--bad-bg);color:var(--bad)} .m.q{background:var(--q-bg);color:var(--q)}
+.empty{color:var(--muted);font-style:italic}
+.rules{display:grid;gap:12px}
+.rule{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px}
+.rule h3{margin:0 0 6px;font-size:16px}
+.rule dl{display:grid;grid-template-columns:150px 1fr;gap:4px 12px;margin:8px 0 0;font-size:14px}
+.rule dt{color:var(--muted)} .rule dd{margin:0}
+.rule code{font-size:13px;background:#f0f0ec;padding:1px 5px;border-radius:4px}
+.rule.guard{border-left-color:var(--q)}
+.rule.open{border-left-color:var(--bad)}
+ol.plan li{margin-bottom:6px}
+.btn{font:inherit;font-size:14px;background:var(--acc);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+footer{color:var(--muted);font-size:13px;padding:36px 0 48px}
+@media (max-width:700px){.stats{grid-template-columns:1fr 1fr}.rule dl{grid-template-columns:1fr}.rule dt{margin-top:6px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="flag">Sample · fictional products and sources, made for this page</span>
+  <h1>Catalog rules audit: 10 products, Italian sources</h1>
+  <p class="lead">AI-produced values for 5 washing machines and 5 cordless drills, checked against the Italian source text. Each value is marked correct, wrong or can't tell. Every error is traced to a rule or marked as a one-off, and the fix is written as a rule a machine can apply: label, attribute, unit, allowed values.</p>
+</header>
+
+<div class="stats" id="stats"></div>
+
+<h2>1. Value review</h2>
+<div class="filters" id="filters">
+  <button class="on" data-f="all">All values</button>
+  <button data-f="bad">Wrong</button>
+  <button data-f="q">Can't tell</button>
+  <button data-f="empty">Correctly empty</button>
+  <button type="button" class="btn" id="csv" style="margin-left:auto">Download as CSV</button>
+</div>
+<div class="tablewrap"><table>
+  <thead><tr><th>Product</th><th>Attribute</th><th>Source (IT)</th><th>AI value</th><th>Mark</th><th>Cause</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table></div>
+
+<h2>2. Proposed rule changes</h2>
+<p class="lead">Proposals only. You approve and apply them, then the same sample is measured again.</p>
+<div class="rules" id="rules"></div>
+
+<h2>3. How the next round is measured</h2>
+<ol class="plan">
+  <li>Apply the approved rules, then regenerate the same 10 products.</li>
+  <li>Mark every value again with the same three marks and compare wrong / can't tell / correct with this round.</li>
+  <li>Check a fresh sample from the categories each rule touches (column “Also affects”), because a rule that fixes one product can break another.</li>
+  <li>Anything still “can't tell” goes back to you as a question with an example, not as a guess.</li>
+</ol>
+
+<footer>Brands Lavanta and Ferrox, model numbers and source lines are invented for this sample. Built by Frame One.</footer>
+</div>
+
+<script>
+// p: product, a: attribute, s: source line, v: AI value ('' = left empty), m: ok|bad|q, c: cause
+const R=[
+ {p:"Lavanta LV-8140",a:"capacity_kg",s:"Capacità di carico: 8 kg",v:"8",m:"ok"},
+ {p:"Lavanta LV-8140",a:"spin_speed_rpm",s:"Velocità max centrifuga: 1.400 giri/min",v:"1400",m:"ok"},
+ {p:"Lavanta LV-8140",a:"energy_class",s:"Classe energetica: A (etichetta UE 2021)",v:"A",m:"ok"},
+ {p:"Lavanta LV-8140",a:"noise_class",s:"Emissione di rumore: 72 dB(A), classe B",v:"B",m:"ok"},
+ {p:"Lavanta LV-8140",a:"depth_cm",s:"Profondità: 55 cm",v:"55",m:"ok"},
+ {p:"Lavanta LV-8140",a:"title",s:"Lavatrice LV-8140 8 kg",v:"Lavanta LV-8140 washing machine, 8 kg, 1400 rpm",m:"ok"},
+
+ {p:"Lavanta LV-9120",a:"capacity_kg",s:"Capacità: 9 kg",v:"9",m:"ok"},
+ {p:"Lavanta LV-9120",a:"spin_speed_rpm",s:"Centrifuga: 1.200 giri/min",v:"1200",m:"ok"},
+ {p:"Lavanta LV-9120",a:"energy_class",s:"Classe energetica: A+++",v:"A",m:"bad",c:"Rule R1: old-scale label converted to the 2021 scale. Should be empty."},
+ {p:"Lavanta LV-9120",a:"noise_class",s:"Rumorosità centrifuga: 76 dB",v:"",m:"ok",c:"No class in the source, left empty."},
+ {p:"Lavanta LV-9120",a:"depth_cm",s:"Profondità: 60 cm (con oblò 64 cm)",v:"64",m:"bad",c:"Rule R2: took the depth with the door. Should be 60."},
+ {p:"Lavanta LV-9120",a:"title",s:"Lavatrice LV-9120 9 kg",v:"Lavanta LV-9120 washing machine, 9 kg, 1200 rpm",m:"ok"},
+
+ {p:"Lavanta LV-7100",a:"capacity_kg",s:"Capacità: 7 kg",v:"7",m:"ok"},
+ {p:"Lavanta LV-7100",a:"spin_speed_rpm",s:"Centrifuga: 1.000 giri/min",v:"1000",m:"ok"},
+ {p:"Lavanta LV-7100",a:"energy_class",s:"Classe energetica: A",v:"A",m:"ok"},
+ {p:"Lavanta LV-7100",a:"noise_class",s:"Classe di efficienza della centrifuga: B · Rumore: 74 dB(A), classe C",v:"B",m:"bad",c:"Rule R3: spin-drying efficiency class read as noise class. Should be C."},
+ {p:"Lavanta LV-7100",a:"depth_cm",s:"Profondità: 45 cm",v:"45",m:"ok"},
+ {p:"Lavanta LV-7100",a:"title",s:"Lavatrice slim LV-7100",v:"Lavanta LV-7100 slim washing machine, 7 kg, 1000 rpm",m:"ok"},
+
+ {p:"Lavanta LV-10140",a:"capacity_kg",s:"Capacità: 10,5 kg",v:"105",m:"bad",c:"One-off: decimal comma read correctly on other products (61,5 cm, 2,0 Ah). Guard G4 catches the whole class."},
+ {p:"Lavanta LV-10140",a:"spin_speed_rpm",s:"Centrifuga: 1.400 giri/min",v:"1400",m:"ok"},
+ {p:"Lavanta LV-10140",a:"energy_class",s:"Classe energetica: B",v:"B",m:"ok"},
+ {p:"Lavanta LV-10140",a:"noise_class",s:"Rumore: 71 dB(A), classe A",v:"A",m:"ok"},
+ {p:"Lavanta LV-10140",a:"depth_cm",s:"Profondità: 61,5 cm",v:"61.5",m:"ok"},
+ {p:"Lavanta LV-10140",a:"title",s:"Lavatrice LV-10140",v:"Lavanta LV-10140 washing machine, 1400 rpm",m:"ok",c:"Capacity left out of the title – fine while the value is under review."},
+
+ {p:"Lavanta LV-6080",a:"capacity_kg",s:"Capacità: 6 kg",v:"6",m:"ok"},
+ {p:"Lavanta LV-6080",a:"spin_speed_rpm",s:"(not stated)",v:"",m:"ok",c:"Not in the source, left empty."},
+ {p:"Lavanta LV-6080",a:"energy_class",s:"Classe energetica: D",v:"D",m:"ok"},
+ {p:"Lavanta LV-6080",a:"noise_class",s:"(not stated)",v:"",m:"ok",c:"Not in the source, left empty."},
+ {p:"Lavanta LV-6080",a:"depth_cm",s:"Profondità: 52 cm",v:"52",m:"ok"},
+ {p:"Lavanta LV-6080",a:"title",s:"OFFERTA TOP – Lavatrice LV-6080 6 kg",v:"Lavanta LV-6080 washing machine 6 kg – TOP OFFER",m:"bad",c:"Rule R5: promo words from the source headline copied into the title."},
+
+ {p:"Ferrox FX-18",a:"voltage_v",s:"Tensione: 18 V",v:"18",m:"ok"},
+ {p:"Ferrox FX-18",a:"max_torque_nm",s:"Coppia max: 50 Nm (avvitatura dura) / 22 Nm (morbida)",v:"50",m:"ok",c:"Correct, but only because the hard value came first – see FX-12 and R8."},
+ {p:"Ferrox FX-18",a:"chuck_mm",s:"Mandrino autoserrante 13 mm",v:"13",m:"ok"},
+ {p:"Ferrox FX-18",a:"battery_ah",s:"2 batterie 2,0 Ah incluse",v:"2.0",m:"ok"},
+ {p:"Ferrox FX-18",a:"batteries_included",s:"2 batterie 2,0 Ah incluse",v:"yes",m:"ok"},
+ {p:"Ferrox FX-18",a:"title",s:"Trapano avvitatore FX-18",v:"Ferrox FX-18 cordless drill driver, 18 V, 50 Nm",m:"ok"},
+
+ {p:"Ferrox FX-18B",a:"voltage_v",s:"Tensione: 18 V",v:"18",m:"ok"},
+ {p:"Ferrox FX-18B",a:"max_torque_nm",s:"Coppia: 45 Nm (dura)",v:"45",m:"ok"},
+ {p:"Ferrox FX-18B",a:"chuck_mm",s:"Mandrino 10 mm",v:"10",m:"ok"},
+ {p:"Ferrox FX-18B",a:"battery_ah",s:"Solo corpo macchina. Compatibile con batterie Ferrox 18 V da 2,0 a 5,0 Ah",v:"5.0",m:"bad",c:"Rule R6: compatibility range used as kit contents. Should be empty."},
+ {p:"Ferrox FX-18B",a:"batteries_included",s:"Batteria e caricabatterie non inclusi",v:"no",m:"ok"},
+ {p:"Ferrox FX-18B",a:"title",s:"Trapano avvitatore FX-18B solo corpo",v:"Ferrox FX-18B cordless drill driver, 18 V, body only",m:"ok"},
+
+ {p:"Ferrox FX-20",a:"voltage_v",s:"20 V max (18 V nominali)",v:"20",m:"bad",c:"Rule R7: marketing “max” voltage used instead of nominal. Should be 18."},
+ {p:"Ferrox FX-20",a:"max_torque_nm",s:"Coppia 60 Nm",v:"60",m:"q",c:"Open question Q1: no hard/soft label. Needs your decision with an example."},
+ {p:"Ferrox FX-20",a:"chuck_mm",s:"Mandrino 13 mm",v:"13",m:"ok"},
+ {p:"Ferrox FX-20",a:"battery_ah",s:"1 batteria 4,0 Ah inclusa",v:"4.0",m:"ok"},
+ {p:"Ferrox FX-20",a:"batteries_included",s:"1 batteria 4,0 Ah inclusa",v:"yes",m:"ok"},
+ {p:"Ferrox FX-20",a:"title",s:"Trapano FX-20",v:"Ferrox FX-20 cordless drill driver, 20 V",m:"bad",c:"Rule R7: same wrong voltage carried into the title."},
+
+ {p:"Ferrox FX-12",a:"voltage_v",s:"12 V",v:"12",m:"ok"},
+ {p:"Ferrox FX-12",a:"max_torque_nm",s:"Coppia morbida 18 Nm / dura 30 Nm",v:"18",m:"bad",c:"Rule R8: took the first number (soft). Should be 30."},
+ {p:"Ferrox FX-12",a:"chuck_mm",s:"Mandrino 10 mm",v:"10",m:"ok"},
+ {p:"Ferrox FX-12",a:"battery_ah",s:"2 x 1,5 Ah incluse",v:"1.5",m:"ok"},
+ {p:"Ferrox FX-12",a:"batteries_included",s:"2 x 1,5 Ah incluse",v:"yes",m:"ok"},
+ {p:"Ferrox FX-12",a:"title",s:"Trapano avvitatore FX-12",v:"Ferrox FX-12 cordless drill driver, 12 V, 18 Nm",m:"bad",c:"Rule R8: wrong torque carried into the title."},
+
+ {p:"Ferrox FX-18C",a:"voltage_v",s:"Tensione nominale: 18 V",v:"18",m:"ok"},
+ {p:"Ferrox FX-18C",a:"max_torque_nm",s:"Coppia max 65 Nm (dura)",v:"65",m:"ok"},
+ {p:"Ferrox FX-18C",a:"chuck_mm",s:"Mandrino autoserrante 13 mm",v:"13",m:"ok"},
+ {p:"Ferrox FX-18C",a:"battery_ah",s:"2 batterie 5,0 Ah incluse",v:"5.0",m:"ok"},
+ {p:"Ferrox FX-18C",a:"batteries_included",s:"2 batterie 5,0 Ah incluse",v:"yes",m:"ok"},
+ {p:"Ferrox FX-18C",a:"title",s:"Trapano avvitatore FX-18C",v:"Ferrox FX-18C cordless drill driver, 18 V, 65 Nm",m:"ok"}
+];
+
+const RULES=[
+ {id:"R1",t:"Energy class: only the 2021 scale",cls:"",d:[
+  ["Source labels","Classe energetica, Classe di efficienza energetica"],
+  ["Attribute","<code>energy_class</code> (washing machines, EU 2019/2014 label)"],
+  ["Allowed values","A, B, C, D, E, F, G"],
+  ["Rule","A+, A++, A+++ belong to the old scale and are not converted → leave empty and flag <code>old_scale_label</code>. Fill only from a 2021-scale label or an EPREL record."],
+  ["Fixes","LV-9120"],
+  ["Also affects","Dishwashers, fridges, freezers, TVs and other products moved to the A–G scale: older source sheets still show A+++ for them."]]},
+ {id:"R2",t:"Depth: cabinet depth, not with the door",cls:"",d:[
+  ["Source labels","Profondità → depth_cm · “con oblò”, “oblò incluso”, “con maniglia” → depth_with_door_cm (or ignored)"],
+  ["Attribute","<code>depth_cm</code>, unit cm, one decimal"],
+  ["Rule","If two depths are given, the one without the door/handle qualifier goes to depth_cm."],
+  ["Fixes","LV-9120"],
+  ["Also affects","Dishwashers, dryers, ovens, fridges (depth with handle)."]]},
+ {id:"R3",t:"Noise class only from the noise line",cls:"",d:[
+  ["Source labels","“Classe di efficienza della centrifuga” → <code>spin_efficiency_class</code> (A–G) · “classe” after “rumore / emissione di rumore” → <code>noise_class</code>"],
+  ["Allowed values","noise_class: A, B, C, D (a letter E–G can only be spin efficiency)"],
+  ["Rule","A class letter is mapped by the label right before it, never by position in the line."],
+  ["Fixes","LV-7100"],
+  ["Also affects","Washer-dryers (they carry both classes)."]]},
+ {id:"G4",t:"Guard: plausible range for capacity",cls:"guard",d:[
+  ["Attribute","<code>capacity_kg</code>, washing machines"],
+  ["Rule","Value outside 3–15 kg → leave empty and send to review. Italian numbers: comma = decimal, dot = thousands."],
+  ["Why a guard, not a rule","The model read decimal commas right on other products, so this was a one-off. A range check still catches the whole class of misreads."],
+  ["Fixes","LV-10140"]]},
+ {id:"R5",t:"Titles: no words from the source headline",cls:"",d:[
+  ["Attribute","<code>title</code> = brand + model + product type + up to 2 key attributes"],
+  ["Rule","Title is built only from attributes, never copied from the source headline. Blocked words: offerta, promo, sconto, top, novità, best seller, imperdibile."],
+  ["Fixes","LV-6080"],
+  ["Also affects","Every category: retailer feeds often put promo text in the headline."]]},
+ {id:"R6",t:"Battery capacity only from kit contents",cls:"",d:[
+  ["Source labels","“batteria/e … inclusa/e”, “in dotazione”, “kit con” → battery_ah · “compatibile con” → never"],
+  ["Attribute","<code>battery_ah</code>, unit Ah, one decimal"],
+  ["Rule","“solo corpo”, “senza batteria”, “non inclusa” → battery_ah empty, batteries_included = no."],
+  ["Fixes","FX-18B"],
+  ["Also affects","All cordless tools sold as body only (impact drivers, grinders, saws)."]]},
+ {id:"R7",t:"Voltage: nominal, not “max”",cls:"",d:[
+  ["Source labels","“V nominali”, “tensione nominale”, plain “18 V” → voltage_v · “V max” → never"],
+  ["Attribute","<code>voltage_v</code>"],
+  ["Rule","If only a “max” value is given → leave empty and flag. No conversion of 20 V max to 18 V unless the source states the nominal value."],
+  ["Fixes","FX-20 (attribute and title)"],
+  ["Also affects","All cordless tools on 20 V max platforms."]]},
+ {id:"R8",t:"Torque: hard-joint value by label",cls:"",d:[
+  ["Source labels","“dura”, “avvitatura dura”, “hard” → max_torque_nm · “morbida”, “soft” → ignored"],
+  ["Attribute","<code>max_torque_nm</code>, unit Nm"],
+  ["Rule","Map by label, never by order. FX-18 was right only because the hard value came first."],
+  ["Fixes","FX-12 (attribute and title), protects FX-18"],
+  ["Also affects","Drill drivers, impact drivers, screwdrivers."]]},
+ {id:"Q1",t:"Open question: one torque value with no label",cls:"open",d:[
+  ["Example","FX-20: “Coppia 60 Nm”"],
+  ["Options","(a) treat an unlabeled single value as max_torque_nm; (b) leave empty until the source says hard or soft."],
+  ["Until you decide","Marked “can't tell”, not filled."]]}
+];
+
+const tb=document.getElementById('rows');
+function draw(f){
+  tb.innerHTML=R.filter(r=>f==='all'||(f==='empty'?(r.v===''&&r.m==='ok'):r.m===f)).map(r=>{
+    const mark=r.m==='ok'?'<span class="m ok">correct</span>':r.m==='bad'?'<span class="m bad">wrong</span>':'<span class="m q">can\'t tell</span>';
+    const v=r.v===''?'<span class="empty">empty</span>':r.v;
+    return `<tr><td class="prod">${r.p}</td><td>${r.a}</td><td class="src">${r.s}</td><td>${v}</td><td>${mark}</td><td>${r.c||''}</td></tr>`;
+  }).join('');
+}
+draw('all');
+document.querySelectorAll('#filters button[data-f]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#filters button[data-f]').forEach(x=>x.classList.remove('on'));b.classList.add('on');draw(b.dataset.f);
+});
+const n=R.length,bad=R.filter(r=>r.m==='bad').length,q=R.filter(r=>r.m==='q').length,empt=R.filter(r=>r.v===''&&r.m==='ok').length;
+document.getElementById('stats').innerHTML=
+ `<div class="stat"><b>${n}</b><span>values checked, 10 products</span></div>`+
+ `<div class="stat bad"><b>${bad}</b><span>wrong</span></div>`+
+ `<div class="stat q"><b>${q}</b><span>can't tell</span></div>`+
+ `<div class="stat ok"><b>${n-bad-q}</b><span>correct, of them ${empt} correctly empty</span></div>`;
+document.getElementById('rules').innerHTML=RULES.map(r=>`<div class="rule ${r.cls}"><h3>${r.id} · ${r.t}</h3><dl>${r.d.map(x=>`<dt>${x[0]}</dt><dd>${x[1]}</dd>`).join('')}</dl></div>`).join('');
+document.getElementById('csv').onclick=()=>{
+  const esc=s=>'"'+String(s??'').replace(/"/g,'""')+'"';
+  const csv=['product,attribute,source_it,ai_value,mark,cause'].concat(R.map(r=>[r.p,r.a,r.s,r.v,r.m==='ok'?'correct':r.m==='bad'?'wrong':"can't tell",r.c].map(esc).join(','))).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv'}));a.download='catalog-rules-audit-sample.csv';a.click();
+};
+</script>
+</body>
+</html>
