@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the studio community – Saltmarsh Yoga (demo)</title>
+<meta name="description" content="Demo sign-up page that leads students into a members-only community space. Fictional studio.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1ea; --card:#fffdf9; --ink:#2c2620; --muted:#6f655b; --line:#e4dacd;
+  --sage:#5f7a63; --sage-d:#46604b; --clay:#c7845f; --soft:#e9efe6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+a{color:var(--sage-d)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.demo-bar{background:var(--ink);color:#efe7dc;font-size:13px;text-align:center;padding:8px 16px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-family:Fraunces,serif;font-size:20px;display:flex;gap:10px;align-items:center}
+.logo svg{flex:none}
+.top a.btn-s{font-size:14px;text-decoration:none;border:1px solid var(--ink);color:var(--ink);padding:8px 14px;border-radius:999px}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:32px 0 64px}
+.eyebrow{display:inline-block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-d);background:var(--soft);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,6vw,64px)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:30em;margin:18px 0 26px}
+.note{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;max-width:31em}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--clay),#e2b48f);flex:none;display:grid;place-items:center;color:#fff;font-family:Fraunces,serif;font-size:18px}
+.note p{margin:0;font-size:15px}
+.note b{display:block;font-size:14px;color:var(--muted);font-weight:500;margin-top:4px}
+
+.form-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 20px 50px -30px rgba(60,40,20,.35)}
+.form-card h2{font-size:26px;margin-bottom:6px}
+.form-card .sub{color:var(--muted);font-size:15px;margin:0 0 20px}
+label{display:block;font-size:14px;font-weight:500;margin:14px 0 6px}
+input[type=text],input[type=email]{width:100%;font:inherit;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid var(--sage);outline-offset:1px;border-color:var(--sage)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);margin-top:16px}
+.check input{margin-top:4px;accent-color:var(--sage)}
+button.primary{width:100%;margin-top:20px;font:600 16px Inter,sans-serif;background:var(--sage);color:#fff;border:0;border-radius:999px;padding:15px;cursor:pointer}
+button.primary:hover{background:var(--sage-d)}
+.small{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.err{color:#a3412a;font-size:14px;margin-top:10px;min-height:1em}
+
+.done{display:none}
+.done.show{display:block}
+.done .tick{width:54px;height:54px;border-radius:50%;background:var(--soft);display:grid;place-items:center;margin-bottom:14px}
+
+section{padding:56px 0}
+section h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+.intro{color:var(--muted);max-width:38em;margin:0 0 30px}
+.spaces{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.space{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.space .ic{font-size:22px;margin-bottom:10px}
+.space h3{font-size:19px;margin-bottom:6px}
+.space p{margin:0;font-size:14px;color:var(--muted)}
+
+/* member area preview */
+.member{display:grid;grid-template-columns:220px 1fr;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;min-height:360px}
+.member aside{background:#efe8dd;padding:20px 14px;border-right:1px solid var(--line)}
+.member aside .g{font-family:Fraunces,serif;font-size:17px;padding:0 8px 14px}
+.member aside button{display:flex;gap:8px;width:100%;text-align:left;font:inherit;font-size:15px;padding:9px 10px;border:0;border-radius:10px;background:transparent;color:var(--ink);cursor:pointer}
+.member aside button.on{background:var(--card);font-weight:600}
+.member main{padding:22px}
+.post{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;background:#fff}
+.post .who{font-size:14px;font-weight:600}
+.post .when{font-size:12px;color:var(--muted);font-weight:400;margin-left:6px}
+.post p{margin:6px 0 0;font-size:15px}
+.locked{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);background:var(--soft);border-radius:12px;padding:10px 12px;margin-bottom:14px}
+
+/* steps */
+.steps{counter-reset:s;display:grid;gap:12px;max-width:780px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 18px 64px;position:relative}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px}
+.step h3{font-family:Inter,sans-serif;font-size:16px;margin-bottom:4px}
+.step p{margin:0;font-size:15px;color:var(--muted)}
+.step code{font-size:13px;background:var(--soft);padding:1px 6px;border-radius:6px;color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:12px}
+  .spaces{grid-template-columns:1fr 1fr}
+  .member{grid-template-columns:1fr}
+  .member aside{display:flex;gap:6px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:12px}
+  .member aside .g{display:none}
+  .member aside button{width:auto;white-space:nowrap}
+}
+@media (max-width:480px){
+  .spaces{grid-template-columns:1fr}
+  .form-card{padding:22px}
+  .step{padding-left:58px}
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">Demo with a fictional studio. The form sends nothing – it only shows what students would see.</div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="#5f7a63"/><path d="M6 18c3-4 6-4 9 0s6 4 9 0" stroke="#f6f1ea" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Saltmarsh Yoga
+    </div>
+    <a class="btn-s" href="#member">Already a member? Log in</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <span class="eyebrow">Free for all current students</span>
+      <h1>Join the studio community</h1>
+      <p class="lead">One calm place for class updates, practice check-ins and questions – no feed, no ads, no algorithm. Sign up once and you are in.</p>
+      <div class="note">
+        <div class="avatar">A</div>
+        <p>“We are moving from our Facebook group to our own space. Everything you liked about the group is here, minus the noise. See you inside.”<b>Anna, your teacher</b></p>
+      </div>
+    </div>
+
+    <div class="form-card" id="signup">
+      <div id="formView">
+        <h2>Get your access</h2>
+        <p class="sub">Takes 30 seconds. You get your login by email right away.</p>
+        <form id="f" novalidate>
+          <label for="fn">First name</label>
+          <input id="fn" type="text" autocomplete="given-name" placeholder="Maya">
+          <label for="em">Email</label>
+          <input id="em" type="email" autocomplete="email" placeholder="maya@example.com">
+          <label class="check"><input id="ok" type="checkbox"> I agree to receive studio emails about classes and the community. I can unsubscribe anytime.</label>
+          <button class="primary" type="submit">Join the community</button>
+          <div class="err" id="err" role="alert"></div>
+          <p class="small">Already joined? Use “Log in” at the top.</p>
+        </form>
+      </div>
+      <div class="done" id="doneView" aria-live="polite">
+        <div class="tick"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#46604b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+        <h2>You are in, <span id="nm">friend</span></h2>
+        <p class="sub">Your access to the member area is active. Check your inbox for the login email (and the spam folder, just in case).</p>
+        <button class="primary" type="button" onclick="document.getElementById('member').scrollIntoView()">Open the member area</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section style="background:#efe8dd">
+  <div class="wrap">
+    <h2>What is inside</h2>
+    <p class="intro">Four spaces, each with one job, so nothing gets lost in a long feed.</p>
+    <div class="spaces">
+      <div class="space"><div class="ic">📣</div><h3>Announcements</h3><p>Schedule changes, retreats and new classes. Only the teacher posts here.</p></div>
+      <div class="space"><div class="ic">🌿</div><h3>Practice check-ins</h3><p>Share how your home practice went this week. Small wins count.</p></div>
+      <div class="space"><div class="ic">💬</div><h3>Questions</h3><p>Ask about poses, injuries or props – Anna answers within a day.</p></div>
+      <div class="space"><div class="ic">▶️</div><h3>Class replays</h3><p>Short recordings and breathing sessions to follow at home.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="member">
+  <div class="wrap">
+    <h2>The member area</h2>
+    <p class="intro">This is what a student sees after signing up. Click the spaces on the left.</p>
+    <div class="member">
+      <aside>
+        <div class="g">Saltmarsh Circle</div>
+        <button class="on" data-s="0">📣 Announcements</button>
+        <button data-s="1">🌿 Check-ins</button>
+        <button data-s="2">💬 Questions</button>
+        <button data-s="3">▶️ Replays</button>
+      </aside>
+      <main id="feed"></main>
+    </div>
+  </div>
+</section>
+
+<section style="background:#efe8dd">
+  <div class="wrap">
+    <h2>How this is built in GoHighLevel</h2>
+    <p class="intro">The same setup in your own GHL account, done in this order. Nothing to install, no extra apps.</p>
+    <div class="steps">
+      <div class="step"><h3>Community group with spaces</h3><p>In <code>Memberships → Communities</code> create a private group and the four spaces (channels). Only the teacher can post in Announcements.</p></div>
+      <div class="step"><h3>Sign-up page</h3><p>In <code>Sites → Funnels</code> build one mobile-first page like this one, with your photo, your words and a short form (name, email, consent).</p></div>
+      <div class="step"><h3>Automatic access</h3><p>A workflow: trigger <code>Form submitted</code> → tag the contact → grant access to the community group → welcome email with the login link. No manual approvals.</p></div>
+      <div class="step"><h3>Test sign-up</h3><p>A test student signs up on a phone: the email arrives, the login works, the spaces are visible. Then the test contact is removed.</p></div>
+      <div class="step"><h3>Short guide for the teacher</h3><p>One page: how to post, pin a message, approve or remove a member, and the link to share with students.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Saltmarsh Yoga and Anna are fictional, made up for this demo. Built by Frame One.</div>
+</footer>
+
+<script>
+const feeds=[
+ [{w:"Anna",t:"pinned",p:"Welcome to our new home! Start by saying hi in Check-ins. The Facebook group stays open until the end of the month."},
+  {w:"Anna",t:"2 h ago",p:"Saturday 9:00 class moves to 10:00 this week only. Same room."}],
+ [{w:"Maya",t:"1 h ago",p:"Three mornings of sun salutations this week. Hamstrings say hello."},
+  {w:"Tom",t:"yesterday",p:"First time holding crow pose for 5 breaths!"}],
+ [{w:"Lena",t:"3 h ago",p:"Any tips for wrists in downward dog? They ache after 10 minutes."},
+  {w:"Anna",t:"2 h ago",p:"Spread the fingers wide and press through the knuckles – I'll show it on Thursday."}],
+ [{w:"Anna",t:"Mon",p:"Replay: 20-minute evening wind-down (gentle, all levels)."},
+  {w:"Anna",t:"last week",p:"Replay: breathing for busy days, 8 minutes."}]
+];
+const feed=document.getElementById('feed');
+let joined=false;
+function render(i){
+  const lock=joined?'':'<div class="locked">🔒 Preview. Students see this after they join.</div>';
+  feed.innerHTML=lock+feeds[i].map(x=>`<div class="post"><div class="who">${x.w}<span class="when">${x.t}</span></div><p>${x.p}</p></div>`).join('');
+}
+document.querySelectorAll('.member aside button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.member aside button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');render(+b.dataset.s);
+}));
+render(0);
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  const fn=document.getElementById('fn').value.trim(),em=document.getElementById('em').value.trim(),ok=document.getElementById('ok').checked,err=document.getElementById('err');
+  if(!fn){err.textContent='Please add your first name.';return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.textContent='Please check the email address.';return}
+  if(!ok){err.textContent='Please tick the box so we can send your login.';return}
+  err.textContent='';
+  document.getElementById('nm').textContent=fn;
+  document.getElementById('formView').style.display='none';
+  document.getElementById('doneView').classList.add('show');
+  joined=true;render(+document.querySelector('.member aside button.on').dataset.s);
+});
+</script>
+</body>
+</html>
